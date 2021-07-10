@@ -82,7 +82,7 @@
     "cldr-localenames-full": "^41.0.0",
     "concat-files": "^0.1.1",
     "d3": "~7.6.1",
-    "editor-layer-index": "github:osmlab/editor-layer-index#gh-pages",
+    "ohm-editor-layer-index": "github:openhistoricalmap/ohm-editor-layer-index#dist",
     "esbuild": "^0.15.7",
     "esbuild-visualizer": "^0.3.1",
     "eslint": "^8.8.0",
