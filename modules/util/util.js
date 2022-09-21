@@ -629,3 +629,45 @@ export function utilOldestID(ids) {
 
     return ids[oldestIDIndex];
 }
+
+// Returns whether two date component arrays represent the same date.
+// A date component array contains the full date, followed by year, month, day.
+// Dates are only compared to the lowest common precision.
+function isSameDate(date1, date2) {
+    return isBefore(date1, date2) && isAfter(date1, date2);
+}
+
+function isBefore(date1, date2) {
+    if (date1[1] > date2[1]) return false;
+    if (date1[2] && date2[2] && date1[2] > date2[2]) return false;
+    if (date1[3] && date2[3] && date1[3] > date2[3]) return false;
+    return true;
+}
+
+function isAfter(date1, date2) {
+    if (date1[1] < date2[1]) return false;
+    if (date1[2] && date2[2] && date1[2] < date2[2]) return false;
+    if (date1[3] && date2[3] && date1[3] < date2[3]) return false;
+    return true;
+}
+
+// Returns whether the two sets of tags overlap temporally.
+export function utilDatesOverlap(tags1, tags2) {
+    // If the feature has a valid start date but no valid end date, assume it
+    // starts at the beginning of time.
+    var dateRegex = /^(-?\d{1,4})(?:-(\d\d))?(?:-(\d\d))?$/;
+    var minDate = ['-9999', '-9999'],
+        maxDate = ['9999', '9999'],
+        start1 = (tags1.start_date || '').match(dateRegex) || minDate,
+        start2 = (tags2.start_date || '').match(dateRegex) || minDate,
+        end1 = (tags1.end_date || '').match(dateRegex) || maxDate,
+        end2 = (tags2.end_date || '').match(dateRegex) || maxDate;
+
+    // No overlap if one feature ends at the very moment that another begins.
+    if (isSameDate(end1, start2) || isSameDate(end2, start1)) return false;
+
+    return ((isAfter(start1, start2) && isBefore(start1, end2)) ||
+            (isAfter(start2, start1) && isBefore(start2, end1)) ||
+            (isAfter(end1, start2) && isBefore(end1, end2)) ||
+            (isAfter(end2, start1) && isBefore(end2, end1)));
+}

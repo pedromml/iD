@@ -305,4 +305,25 @@ describe('iD.util', function() {
             expect(iD.utilOldestID(['z', 'a', 'A', 'Z'])).to.eql('z');
         });
     });
+
+    describe('utilDatesOverlap', function() {
+        it('compares years', function() {
+            expect(iD.utilDatesOverlap({start_date: '1970', end_date: '2000'},
+                                       {start_date: '1970', end_date: '2000'})).to.eql(true);
+            expect(iD.utilDatesOverlap({start_date: '1970', end_date: '2000'},
+                                       {start_date: '2000', end_date: '2038'})).to.eql(false);
+            expect(iD.utilDatesOverlap({start_date: '2000', end_date: '2038'},
+                                       {start_date: '1970', end_date: '2000'})).to.eql(false);
+            expect(iD.utilDatesOverlap({start_date: '1970', end_date: '2000'},
+                                       {start_date: '2000-01', end_date: '2038'})).to.eql(false);
+        });
+        it('compares full dates', function() {
+            expect(iD.utilDatesOverlap({start_date: '1970-01-01', end_date: '2000-01-01'},
+                                       {start_date: '1970-01-01', end_date: '2000-01-01'})).to.eql(true);
+            expect(iD.utilDatesOverlap({start_date: '1970-01-01', end_date: '2000-01-01'},
+                                       {start_date: '2000-01-01', end_date: '2038-01-01'})).to.eql(false);
+            expect(iD.utilDatesOverlap({start_date: '2000-01-01', end_date: '2038-01-01'},
+                                       {start_date: '1970-01-01', end_date: '2000-01-01'})).to.eql(false);
+        });
+    });
 });
