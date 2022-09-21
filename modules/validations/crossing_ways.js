@@ -471,6 +471,12 @@ export function validationCrossingWays(context) {
                     }
                 }
 
+                // changing the date range is always an option
+                fixes.push(new validationIssueFix({
+                    icon: 'iD-operation-change-date-range',
+                    title: t.append('issues.fix.change_date_range.title')
+                }));
+
                 // repositioning the features is always an option
                 fixes.push(new validationIssueFix({
                     icon: 'iD-operation-move',

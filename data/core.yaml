@@ -1746,40 +1746,40 @@ en:
         reference: "Separate points should not share a location."
     crossing_ways:
       title: Crossing Ways
-      message: "{feature} crosses {feature2}"
-      tip: "Find features that incorrectly cross over one another"
+      message: "{feature} crosses {feature2} during the same time period"
+      tip: "Find features that incorrectly cross over one another during the same time period"
       building-building:
-        reference: "Buildings should not intersect except on different layers."
+        reference: "Buildings should not intersect except on different layers or within different date ranges."
       building-highway:
-        reference: "Highways crossing buildings should use bridges, tunnels, or different layers."
+        reference: "Highways crossing buildings should use bridges, tunnels, or different layers or have different date ranges."
       building-railway:
-        reference: "Railways crossing buildings should use bridges, tunnels, or different layers."
+        reference: "Railways crossing buildings should use bridges, tunnels, or different layers or have different date ranges."
       building-waterway:
-        reference: "Waterways crossing buildings should use tunnels or different layers."
+        reference: "Waterways crossing buildings should use tunnels or different layers or have different date ranges."
       highway-highway:
-        reference: "Crossing highways should use bridges, tunnels, or intersections."
+        reference: "Crossing highways should use bridges, tunnels, or intersections or have different date ranges."
       highway-railway:
-        reference: "Highways crossing railways should use bridges, tunnels, or level crossings."
+        reference: "Highways crossing railways should use bridges, tunnels, or level crossings or have different date ranges."
       highway-waterway:
-        reference: "Highways crossing waterways should use bridges, tunnels, or fords."
+        reference: "Highways crossing waterways should use bridges, tunnels, or fords or have different date ranges."
       railway-railway:
-        reference: "Crossing railways should be connected or use bridges or tunnels."
+        reference: "Crossing railways should be connected, use bridges or tunnels, or have different date ranges."
       railway-waterway:
-        reference: "Railways crossing waterways should use bridges or tunnels."
+        reference: "Railways crossing waterways should use bridges or tunnels or have different date ranges."
       waterway-waterway:
-        reference: "Crossing waterways should be connected or use tunnels."
+        reference: "Crossing waterways should be connected, use tunnels, or have different date ranges."
       tunnel-tunnel:
-        reference: "Crossing tunnels should use different layers."
+        reference: "Crossing tunnels should use different layers or have different date ranges."
       tunnel-tunnel_connectable:
-        reference: "Crossing tunnels should be connected or use different layers."
+        reference: "Crossing tunnels should be connected, use different layers, or have different date ranges."
       bridge-bridge:
-        reference: "Crossing bridges should use different layers."
+        reference: "Crossing bridges should use different layers or have different date ranges."
       bridge-bridge_connectable:
-        reference: "Crossing bridges should be connected or use different layers."
+        reference: "Crossing bridges should be connected, use different layers, or have different date ranges."
       indoor-indoor:
-        reference: "Crossing indoor features should use different levels."
+        reference: "Crossing indoor features should use different levels or have different date ranges."
       indoor-indoor_connectable:
-        reference: "Crossing indoor features should be connected or use different levels."
+        reference: "Crossing indoor features should be connected, use different levels, or have different date ranges."
     disconnected_way:
       title: Disconnected Ways
       tip: "Find unroutable roads, paths, and ferry routes"
@@ -1916,6 +1916,8 @@ en:
         annotation: Added a tunnel.
       address_the_concern:
         title: Address the concern
+      change_date_range:
+        title: Change the Start Date and End Date
       connect_almost_junction:
         annotation: Connected very close features.
       connect_crossing_features:
