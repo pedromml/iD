@@ -1817,6 +1817,10 @@ en:
         message: '{feature} has an invalid email address'
         message_multi: '{feature} has multiple invalid email addresses'
         reference: 'Email addresses must look like "user@example.com".'
+      date:
+        message_start: '{feature} has an invalid start date'
+        message_end: '{feature} has an invalid end date'
+        reference: 'A date must be formatted as YYYY-MM-DD, YYYY-MM, or YYYY.'
     line_as_area:
       message: '{feature} should be a line, not an area'
     line_as_point:
@@ -1951,6 +1955,9 @@ en:
       move_tags:
         title: Move the tags
         annotation: Moved tags.
+      reformat_date:
+        title: Tag as {date}
+        annotation: Tagged a date with the correct format.
       remove_from_relation:
         title: Remove from relation
       remove_generic_name:

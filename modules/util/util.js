@@ -629,3 +629,57 @@ export function utilOldestID(ids) {
 
     return ids[oldestIDIndex];
 }
+
+// Returns an object containing the given date string normalized as an ISO 8601 date string and parsed as a Date object.
+// Date components are padded for compatibility with tagging conventions.
+// Dates such as January 0, February 31, and Duodecember 1 are wrapped to make more sense.
+export function utilNormalizeDateString(raw) {
+    var date;
+
+    // Enforce the same date formats supported by DateFunctions-plpgsql and decimaldate-python.
+    var dateRegex = /^(-)?(\d+)(?:-(\d\d?)(?:-(\d\d?))?)?$/;
+    var match = raw.match(dateRegex);
+    if (match !== null) {
+        // Manually construct a Date.
+        // Passing the string directly into the Date constructor would throw an error on negative years.
+        date = new Date(0);
+        date.setUTCFullYear(parseInt((match[1] || '') + match[2], 10));
+        if (match[3]) date.setUTCMonth(parseInt(match[3], 10) - 1); // 0-based
+        if (match[4]) date.setUTCDate(parseInt(match[4], 10));
+    } else {
+        // Fall back on whatever the browser can parse into a date.
+        date = new Date(raw);
+        try {
+            date.toISOString();
+        } catch (exc) {
+            return null;
+        }
+    }
+
+    // Reconstruct the date string.
+    // Avoid Date.toISOString() because it has fixed precision and excessively pads negative years.
+    var normalized = '';
+    if (match !== null && date.getUTCFullYear() < 0) {
+        var absYear = Math.abs(date.getUTCFullYear());
+        normalized += '-' + String(absYear).padStart(4, '0');
+    } else {
+        normalized += String(date.getUTCFullYear()).padStart(4, '0');
+    }
+    if (match === null || match[3]) {
+        normalized += '-' + String(date.getUTCMonth() + 1).padStart(2, '0');
+    }
+    if (match === null || match[4]) {
+        normalized += '-' + String(date.getUTCDate()).padStart(2, '0');
+    }
+    return {
+        date: date,
+        value: normalized,
+        localeOptions: {
+            year: 'numeric',
+            era: date.getUTCFullYear() < 1 ? 'short' : undefined,
+            month: (match === null || match[3]) ? 'long' : undefined,
+            day: (match === null || match[4]) ? 'numeric' : undefined,
+            timeZone: 'UTC'
+        }
+    };
+}
