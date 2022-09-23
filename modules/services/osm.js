@@ -14,7 +14,7 @@ import { utilArrayChunk, utilArrayGroupBy, utilArrayUniq, utilObjectOmit, utilRe
 var tiler = utilTiler();
 var dispatch = d3_dispatch('apiStatusChange', 'authLoading', 'authDone', 'change', 'loading', 'loaded', 'loadedNotes');
 
-var urlroot = 'https://www.openstreetmap.org';
+var urlroot = 'https://www.openhistoricalmap.org';
 var redirectPath = window.location.origin + window.location.pathname;
 var oauth = osmAuth({
     url: urlroot,
