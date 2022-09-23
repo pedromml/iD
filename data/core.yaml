@@ -616,7 +616,7 @@ en:
     about_changeset_comments: About changeset comments
     about_changeset_comments_link: //wiki.openstreetmap.org/wiki/Good_changeset_comments
     google_warning: "You mentioned Google in this comment: remember that copying from Google Maps is strictly forbidden."
-    google_warning_link: https://www.openstreetmap.org/copyright
+    google_warning_link: https://www.openhistoricalmap.org/copyright
   contributors:
     list: "Edits by {users}"
     truncated_list:
@@ -649,9 +649,9 @@ en:
       last_edit: Last Edit
       edited_by: Edited By
       changeset: Changeset
-      changeset_link: Changeset on osm.org
-      profile_link: Profile on osm.org
-      history_link: History on osm.org
+      changeset_link: Changeset on openhistoricalmap.org
+      profile_link: Profile on openhistoricalmap.org
+      history_link: History on openhistoricalmap.org
       unknown: Unknown
       note_no_history: "No History (New Note)"
       note_comments: Comments
@@ -1461,12 +1461,12 @@ en:
       title: Help
       welcome: "Welcome to the iD editor for [OpenHistoricalMap](https://www.openhistoricalmap.org/). With this editor you can update OpenHistoricalMap right from your web browser."
       open_data_h: "Open Data"
-      open_data: "Edits that you make on this map will be visible to everyone who uses OpenHistoricalMap. Your edits can be based on personal knowledge, on-the-ground surveying, or imagery collected from aerial or street level photos. Copying from commercial sources, like Google Maps, [is strictly forbidden](https://www.openhistoricalmap.org/copyright)."
+      open_data: "Edits that you make on this map will be visible to everyone who uses OpenHistoricalMap. Your edits can be based on personal knowledge, on-the-ground surveying, imagery collected from aerial or street level photos, or out-of-copyright maps. Copying from commercial sources, like Google Maps, [is strictly forbidden](https://www.openhistoricalmap.org/copyright)."
       before_start_h: "Before you start"
       before_start: "You should be familiar with OpenHistoricalMap and this editor before you start editing. iD contains a walkthrough to teach you the basics of editing OpenHistoricalMap. Press the \"{start_the_walkthrough}\" button on this screen to start the tutorial—it takes only about 15 minutes."
       open_source_h: "Open Source"
-      open_source: "The iD editor is a collaborative open source project, and you are using version {version} now. The source code is available [on GitHub](https://github.com/openhistoricalmap/iD)."
-      open_source_help: "You can help iD by [translating](https://github.com/openhistoricalmap/iD/blob/develop/CONTRIBUTING.md#translating) or [reporting bugs](https://github.com/openhistoricalmap/iD/issues)."
+      open_source: "The iD editor is a collaborative open source project, and you are using version {version} now. The source code is available [on GitHub](https://github.com/OpenHistoricalMap/iD)."
+      open_source_help: "You can help iD by [translating](https://github.com/OpenHistoricalMap/iD/blob/staging/CONTRIBUTING.md#translating) or [reporting bugs](https://github.com/OpenHistoricalMap/issues/issues)."
     overview:
       title: Overview
       navigation_h: "Navigation"
@@ -1509,7 +1509,7 @@ en:
       fields_add_field: "You can also use the \"Add field\" dropdown to add more fields, such as a description, Wikipedia link, wheelchair access, and more."
       tags_h: "Tags"
       tags_all_tags: "Below the fields section, you can expand the \"{tags}\" section to edit any of the OpenHistoricalMap *tags* for the selected feature. Each tag consists of a *key* and *value*, data elements that define all of the features stored in OpenHistoricalMap."
-      tags_resources: "Editing a feature's tags requires intermediate knowledge about OpenHistoricalMap. You should consult resources like the [OpenHistoricalMap Wiki](https://wiki.openstreetmap.org/wiki/Main_Page) or [Taginfo](https://taginfo.openhistoricalmap.org/) to learn more about accepted OpenHistoricalMap tagging practices."
+      tags_resources: "Editing a feature's tags requires intermediate knowledge about OpenHistoricalMap. You should consult resources like the [OpenStreetMap Wiki](https://wiki.openstreetmap.org/wiki/OpenHistoricalMap) or [Taginfo](https://taginfo.openhistoricalmap.org/) to learn more about accepted OpenHistoricalMap tagging practices."
     points:
       title: Points
       intro: "*Points* can be used to represent features such as shops, restaurants, and monuments. They mark a specific location, and describe what's there."
@@ -1519,7 +1519,7 @@ en:
       move_point_h: "Moving Points"
       move_point: "To move a point, {leftclick} left-click and drag it with a mouse or {touchdrag_icon} tap-and-drag it on a touchscreen."
       delete_point_h: "Deleting Points"
-      delete_point: "It's OK to delete features that don't exist in the real world. Deleting a feature from OpenHistoricalMap removes it from the map that everyone uses, so you should make sure a feature is really gone before you delete it."
+      delete_point: "Only delete features that have never existed in the real world. If the feature used to exist but is now gone, keep it but set its End Date to the date when the feature was relocated, demolished, etc. Deleting a feature from OpenHistoricalMap removes it from the map that everyone uses, so you should make sure a feature is really a mistake before you delete it."
       delete_point_command: "To delete a point, {rightclick} right-click or {longpress_icon} long-press the point to show the edit menu, then use the {delete_icon} **{delete}** operation."
     lines:
       title: Lines
@@ -2176,7 +2176,7 @@ en:
       update_close: "**When you are finished updating the cafe, press the {button} button or `{esc}` to close the feature editor.**"
       rightclick: "You can {rightclick} right-click on any feature to see the *edit menu*, which shows a list of editing operations that can be performed.{br}A right-click might be the same as a control-click or two-finger click. **Right-click to select the point you created and show the edit menu.**"
       edit_menu_touch: "You can {longpress_icon} long-press on any feature to see the *edit menu*, which shows a list of editing operations that can be performed. **Press-and-hold the point you created to show the edit menu.**"
-      delete: "It's OK to delete features that don't exist in the real world.{br}Deleting a feature from OpenHistoricalMap removes it from the map that everyone uses, so you should make sure a feature is really gone before you delete it. **Press the {delete_icon} {delete} button to remove the point.**"
+      delete: "Only delete features that have never existed in the real world.{br}If the feature used to exist but is now gone, keep it but set its End Date to the date when the feature was relocated, demolished, etc.{br}Deleting a feature from OpenHistoricalMap removes it from the map that everyone uses, so you should make sure a feature is really a mistake before you delete it. **Press the {delete_icon} {delete} button to remove the point.**"
       undo: "You can always undo any changes up until you save your edits to OpenHistoricalMap. **Press the {undo_icon} {undo} button to get the point back.**"
       play: "Now that you know how to create and edit points, try creating a few more points for practice! **When you are ready to continue to the next chapter, press '{next}'.**"
     areas:
@@ -2244,7 +2244,7 @@ en:
       play: "Great! Use the skills that you've learned in this chapter to practice editing some more lines. **When you are ready to continue to the next chapter, press '{next}'.**"
     buildings:
       title: "Buildings"
-      add_building: "OpenHistoricalMap is the world's largest database of buildings.{br}You can help improve this database by tracing buildings that aren't already mapped. **Press the {area_icon} {area} button to add a new area.**"
+      add_building: "OpenHistoricalMap aims to tell the histories of all the world's buildings.{br}You can help improve this database by tracing buildings that aren't already mapped. **Press the {area_icon} {area} button to add a new area.**"
       start_building: "Let's add this house to the map by tracing its outline.{br}Buildings should be traced around their footprint as accurately as possible."
       building_corner_click: "**Click or press `{space}` to place a starting node on one of the corners of the building.**"
       building_corner_tap: "**{tap_icon} Tap one of the corners of the building to place a starting node.**"
