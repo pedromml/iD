@@ -1728,12 +1728,12 @@ en:
       annotation: Fixed several validation issues.
     almost_junction:
       title: Almost Junctions
-      message: "{feature} is very close but not connected to {feature2}"
-      tip: "Find features that should possibly be connected to other nearby features"
+      message: "{feature} is very close but not connected to {feature2} during the same time period"
+      tip: "Find features that should possibly be connected to other nearby features during the same time period"
       self:
         message: "{feature} ends very close to itself but does not reconnect"
       highway-highway:
-        reference: Intersecting highways should share a junction vertex.
+        reference: Highways that intersect and have overlapping date ranges should share a junction vertex.
     area_as_point:
       message: '{feature} should be an area, not a point'
     close_nodes:
