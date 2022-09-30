@@ -1742,8 +1742,8 @@ en:
       message: "Two points in {way} are very close together"
       reference: "Redundant points in a way should be merged or moved apart."
       detached:
-        message: "{feature} is too close to {feature2}"
-        reference: "Separate points should not share a location."
+        message: "{feature} is too close to {feature2} during the same time period"
+        reference: "Separate points should not share a location if their date ranges overlap."
     crossing_ways:
       title: Crossing Ways
       message: "{feature} crosses {feature2} during the same time period"
