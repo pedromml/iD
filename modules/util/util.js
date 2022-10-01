@@ -670,6 +670,7 @@ export function utilDatesOverlap(tags1, tags2) {
             (isAfter(start2, start1) && isBefore(start2, end1)) ||
             (isAfter(end1, start2) && isBefore(end1, end2)) ||
             (isAfter(end2, start1) && isBefore(end2, end1)));
+}
 
 // Returns an object containing the given date string normalized as an ISO 8601 date string and parsed as a Date object.
 // Date components are padded for compatibility with tagging conventions.

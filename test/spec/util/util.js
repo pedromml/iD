@@ -324,6 +324,8 @@ describe('iD.util', function() {
                                        {start_date: '2000-01-01', end_date: '2038-01-01'})).to.eql(false);
             expect(iD.utilDatesOverlap({start_date: '2000-01-01', end_date: '2038-01-01'},
                                        {start_date: '1970-01-01', end_date: '2000-01-01'})).to.eql(false);
+        });
+    });
 
     describe('utilNormalizeDateString', function() {
         it('pads dates', function() {
