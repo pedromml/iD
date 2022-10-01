@@ -34,6 +34,7 @@ export { utilGetSetValue } from './get_set_value';
 export { utilHashcode } from './util';
 export { utilHighlightEntities } from './util';
 export { utilKeybinding } from './keybinding';
+export { utilNormalizeDateString } from './util';
 export { utilNoAuto } from './util';
 export { utilObjectOmit } from './object';
 export { utilCompareIDs } from './util';
