@@ -940,6 +940,16 @@ en:
     full:
       description: Full Fill
       tooltip: "Areas are drawn fully filled."
+  date_ranges:
+    title: Date Range
+    start_date:
+      description: Start Date
+      tooltip: The start date in YYYY-MM-DD format, for example 1215-06-15. Use -0001 for the year 2 BCE.
+      placeholder: YYYY-MM-DD
+    end_date:
+      description: End Date
+      tooltip: The end date in YYYY-MM-DD format, for example 1969-07-16. Use -0001 for the year 2 BCE.
+      placeholder: YYYY-MM-DD
   settings:
     custom_background:
       tooltip: Edit custom background
