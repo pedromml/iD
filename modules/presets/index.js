@@ -72,6 +72,24 @@ export function presetIndex() {
           presets: vals[2],
           fields: vals[3]
         });
+
+        // Add OpenHistoricalMap-specific fields.
+        _this.merge({
+          fields: {
+            end_date: {
+              ...vals[3].start_date,
+              key: 'end_date'
+            },
+            license: {
+              key: 'license',
+              type: 'combo',
+              universal: true,
+              snake_case: false,
+              caseSensitive: true
+            }
+          }
+        });
+
         osmSetAreaKeys(_this.areaKeys());
         osmSetPointTags(_this.pointTags());
         osmSetVertexTags(_this.vertexTags());
