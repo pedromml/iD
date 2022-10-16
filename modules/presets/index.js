@@ -19,6 +19,27 @@ export { presetPreset };
 let _mainPresetIndex = presetIndex(); // singleton
 export { _mainPresetIndex as presetManager };
 
+/**
+ * Adds fields specific to OpenHistoricalMap.
+ */
+function addHistoricalFields(fields) {
+  fields.end_date = {
+    ...fields.start_date,
+    key: 'end_date'
+  };
+
+  // A combo box would encourage mappers to choose one of the suggestions, but we want mappers to be as detailed as possible.
+  fields.source.type = 'text';
+
+  fields.license = {
+    key: 'license',
+    type: 'combo',
+    universal: true,
+    snake_case: false,
+    caseSensitive: true
+  };
+}
+
 //
 // `presetIndex` wraps a `presetCollection`
 // with methods for loading new data and returning defaults
@@ -66,28 +87,12 @@ export function presetIndex() {
         fileFetcher.get('preset_fields')
       ])
       .then(vals => {
+        addHistoricalFields(vals[3]);
         _this.merge({
           categories: vals[0],
           defaults: vals[1],
           presets: vals[2],
           fields: vals[3]
-        });
-
-        // Add OpenHistoricalMap-specific fields.
-        _this.merge({
-          fields: {
-            end_date: {
-              ...vals[3].start_date,
-              key: 'end_date'
-            },
-            license: {
-              key: 'license',
-              type: 'combo',
-              universal: true,
-              snake_case: false,
-              caseSensitive: true
-            }
-          }
         });
 
         osmSetAreaKeys(_this.areaKeys());
