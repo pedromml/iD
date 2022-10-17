@@ -2446,3 +2446,13 @@ en:
     identifier: "Identifier"
     label: "Label"
     description: "Description"
+  custom_presets:
+    fields:
+      end_date:
+        label: End Date
+        placeholder: YYYY-MM-DD
+        terms: abandoned, destruction, destroyed, demolition, demolished, closed, closure
+      license:
+        label: License
+        placeholder: CC0
+        terms: copyleft, copyright
