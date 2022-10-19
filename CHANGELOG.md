@@ -38,9 +38,7 @@ _Breaking developer changes, which may affect downstream projects or sites that 
 [@xxxx]: https://github.com/xxxx
 -->
 
-# Unreleased
-
-#### :newspaper: News
+# 2.22.0
 #### :tada: New Features
 * Consider lifecycle prefixes when deciding whether features should be rendered as a line or an area ([#8881], thanks [@k-yle])
 * Render side-markers on all coastlines (new: also coastlines of small islands mapped as an area) ([#9293])
@@ -74,6 +72,8 @@ _Breaking developer changes, which may affect downstream projects or sites that 
 * Better fallback icons for untagged points, vertices, lines and areas ([#9157])
 * Add fallback values for access field for barrier presets
 * Support incrementing cardinal directions with the up/down buttons ([#9141], thanks [@k-yle])
+* Don't suggest (newly) hidden presets in preset selection list
+* Always include the current matching preset of the selected object in the preset selection list ([#9298])
 #### :hammer: Development
 * Reduce uses of unsafe html injecting code
 * Upgrade dependencies: maki to `v8.0`, `osm-community-index` to `v5.2`, `d3` to `v7.6`, `togeojson` to `v5.2`, `mocha` to `v10`
@@ -103,6 +103,7 @@ _Breaking developer changes, which may affect downstream projects or sites that 
 [#9293]: https://github.com/openstreetmap/iD/issues/9293
 [#9241]: https://github.com/openstreetmap/iD/pull/9241
 [#9242]: https://github.com/openstreetmap/iD/pull/9242
+[#9298]: https://github.com/openstreetmap/iD/issues/9298
 [@furkanmutlu]: https://github.com/furkanmutlu
 [@JackNUMBER]: https://github.com/JackNUMBER
 [@aaditya0000]: https://github.com/aaditya0000
