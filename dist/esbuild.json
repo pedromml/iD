@@ -5,7 +5,7 @@
       "imports": []
     },
     "node_modules/abortcontroller-polyfill/dist/polyfill-patch-fetch.js": {
-      "bytes": 16605,
+      "bytes": 17813,
       "imports": []
     },
     "modules/actions/add_entity.js": {
@@ -4100,7 +4100,7 @@
       "imports": []
     },
     "modules/util/index.js": {
-      "bytes": 2365,
+      "bytes": 2458,
       "imports": [
         {
           "path": "modules/util/aes.js",
@@ -4152,6 +4152,10 @@
         },
         {
           "path": "modules/util/clean_tags.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "modules/util/util.js",
           "kind": "import-statement"
         },
         {
@@ -4232,6 +4236,10 @@
         },
         {
           "path": "modules/util/keybinding.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "modules/util/util.js",
           "kind": "import-statement"
         },
         {
@@ -16635,7 +16643,7 @@
       ]
     },
     "modules/core/localizer.js": {
-      "bytes": 15895,
+      "bytes": 16034,
       "imports": [
         {
           "path": "node_modules/lodash-es/lodash.js",
@@ -16690,7 +16698,7 @@
       ]
     },
     "modules/presets/field.js": {
-      "bytes": 1740,
+      "bytes": 2262,
       "imports": [
         {
           "path": "modules/core/localizer.js",
@@ -16724,7 +16732,7 @@
       ]
     },
     "modules/presets/index.js": {
-      "bytes": 19814,
+      "bytes": 20314,
       "imports": [
         {
           "path": "node_modules/d3-dispatch/src/index.js",
@@ -16769,7 +16777,7 @@
       ]
     },
     "modules/util/util.js": {
-      "bytes": 19069,
+      "bytes": 23464,
       "imports": [
         {
           "path": "node_modules/diacritics/index.js",
@@ -19362,7 +19370,7 @@
       ]
     },
     "node_modules/marked/lib/marked.esm.js": {
-      "bytes": 77095,
+      "bytes": 77072,
       "imports": []
     },
     "modules/services/osmose.js": {
@@ -19570,7 +19578,7 @@
       ]
     },
     "node_modules/name-suggestion-index/config/matchGroups.json": {
-      "bytes": 5981,
+      "bytes": 6122,
       "imports": []
     },
     "node_modules/name-suggestion-index/config/genericWords.json": {
@@ -19746,7 +19754,7 @@
       ]
     },
     "modules/validations/almost_junction.js": {
-      "bytes": 11490,
+      "bytes": 11949,
       "imports": [
         {
           "path": "modules/geo/index.js",
@@ -19787,7 +19795,7 @@
       ]
     },
     "modules/validations/close_nodes.js": {
-      "bytes": 11701,
+      "bytes": 12298,
       "imports": [
         {
           "path": "modules/actions/merge_nodes.js",
@@ -19820,7 +19828,7 @@
       ]
     },
     "modules/validations/crossing_ways.js": {
-      "bytes": 35090,
+      "bytes": 35624,
       "imports": [
         {
           "path": "modules/actions/add_midpoint.js",
@@ -19976,8 +19984,12 @@
       ]
     },
     "modules/validations/invalid_format.js": {
-      "bytes": 3918,
+      "bytes": 7274,
       "imports": [
+        {
+          "path": "modules/actions/change_tags.js",
+          "kind": "import-statement"
+        },
         {
           "path": "modules/core/localizer.js",
           "kind": "import-statement"
@@ -20562,7 +20574,7 @@
       ]
     },
     "modules/renderer/features.js": {
-      "bytes": 18673,
+      "bytes": 19842,
       "imports": [
         {
           "path": "node_modules/d3-dispatch/src/index.js",
@@ -20650,7 +20662,7 @@
       "imports": []
     },
     "node_modules/@tmcw/togeojson/dist/togeojson.es.mjs": {
-      "bytes": 28849,
+      "bytes": 33725,
       "imports": []
     },
     "modules/svg/data.js": {
@@ -21659,7 +21671,7 @@
       ]
     },
     "modules/ui/feature_info.js": {
-      "bytes": 1858,
+      "bytes": 1988,
       "imports": [
         {
           "path": "modules/core/localizer.js",
@@ -21740,7 +21752,7 @@
       ]
     },
     "modules/ui/panels/history.js": {
-      "bytes": 7800,
+      "bytes": 6777,
       "imports": [
         {
           "path": "modules/core/localizer.js",
@@ -23598,7 +23610,7 @@
       ]
     },
     "modules/ui/sections/preset_fields.js": {
-      "bytes": 5580,
+      "bytes": 6038,
       "imports": [
         {
           "path": "node_modules/d3-dispatch/src/index.js",
@@ -26157,8 +26169,25 @@
         }
       ]
     },
+    "modules/ui/sections/map_daterange.js": {
+      "bytes": 5529,
+      "imports": [
+        {
+          "path": "modules/core/localizer.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "modules/ui/section.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "modules/util/index.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
     "modules/ui/panes/map_data.js": {
-      "bytes": 841,
+      "bytes": 946,
       "imports": [
         {
           "path": "modules/core/localizer.js",
@@ -26182,6 +26211,10 @@
         },
         {
           "path": "modules/ui/sections/photo_overlays.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "modules/ui/sections/map_daterange.js",
           "kind": "import-statement"
         }
       ]
@@ -26682,7 +26715,7 @@
       ]
     },
     "node_modules/osm-auth/src/osm-auth.mjs": {
-      "bytes": 12176,
+      "bytes": 12190,
       "imports": [
         {
           "path": "node_modules/store/dist/store.legacy.js",
@@ -26691,7 +26724,7 @@
       ]
     },
     "modules/services/osm.js": {
-      "bytes": 46566,
+      "bytes": 46570,
       "imports": [
         {
           "path": "node_modules/lodash-es/throttle.js",
@@ -30849,7 +30882,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 5850983
+      "bytes": 5886389
     },
     "dist/iD.js": {
       "imports": [],
@@ -31022,10 +31055,10 @@
           "bytesInOutput": 16429
         },
         "node_modules/abortcontroller-polyfill/dist/polyfill-patch-fetch.js": {
-          "bytesInOutput": 12707
+          "bytesInOutput": 13820
         },
         "modules/index.js": {
-          "bytesInOutput": 19152
+          "bytesInOutput": 19258
         },
         "modules/actions/add_entity.js": {
           "bytesInOutput": 107
@@ -31589,7 +31622,7 @@
           "bytesInOutput": 1746
         },
         "modules/util/util.js": {
-          "bytesInOutput": 13990
+          "bytesInOutput": 16936
         },
         "modules/util/svg_paths_rtl_fix.js": {
           "bytesInOutput": 1588
@@ -31721,7 +31754,7 @@
           "bytesInOutput": 335
         },
         "modules/core/localizer.js": {
-          "bytesInOutput": 10503
+          "bytesInOutput": 10647
         },
         "modules/presets/collection.js": {
           "bytesInOutput": 5550
@@ -31730,13 +31763,13 @@
           "bytesInOutput": 1733
         },
         "modules/presets/field.js": {
-          "bytesInOutput": 1471
+          "bytesInOutput": 1850
         },
         "modules/presets/preset.js": {
           "bytesInOutput": 8294
         },
         "modules/presets/index.js": {
-          "bytesInOutput": 17123
+          "bytesInOutput": 17467
         },
         "modules/osm/entity.js": {
           "bytesInOutput": 6106
@@ -32033,7 +32066,7 @@
           "bytesInOutput": 8211
         },
         "node_modules/marked/lib/marked.esm.js": {
-          "bytesInOutput": 70281
+          "bytesInOutput": 70256
         },
         "modules/services/mapillary.js": {
           "bytesInOutput": 19739
@@ -32057,7 +32090,7 @@
           "bytesInOutput": 1335
         },
         "node_modules/name-suggestion-index/config/matchGroups.json": {
-          "bytesInOutput": 6484
+          "bytesInOutput": 6637
         },
         "node_modules/name-suggestion-index/config/genericWords.json": {
           "bytesInOutput": 745
@@ -32093,13 +32126,13 @@
           "bytesInOutput": 1017
         },
         "modules/validations/almost_junction.js": {
-          "bytesInOutput": 9900
+          "bytesInOutput": 10268
         },
         "modules/validations/close_nodes.js": {
-          "bytesInOutput": 9431
+          "bytesInOutput": 9848
         },
         "modules/validations/crossing_ways.js": {
-          "bytesInOutput": 25916
+          "bytesInOutput": 26262
         },
         "modules/behavior/draw_way.js": {
           "bytesInOutput": 12421
@@ -32111,7 +32144,7 @@
           "bytesInOutput": 6313
         },
         "modules/validations/invalid_format.js": {
-          "bytesInOutput": 1549
+          "bytesInOutput": 4334
         },
         "modules/validations/help_request.js": {
           "bytesInOutput": 1357
@@ -32168,7 +32201,7 @@
           "bytesInOutput": 6730
         },
         "modules/renderer/features.js": {
-          "bytesInOutput": 15372
+          "bytesInOutput": 16080
         },
         "modules/svg/areas.js": {
           "bytesInOutput": 6075
@@ -32189,7 +32222,7 @@
           "bytesInOutput": 12165
         },
         "node_modules/@tmcw/togeojson/dist/togeojson.es.mjs": {
-          "bytesInOutput": 17656
+          "bytesInOutput": 21451
         },
         "modules/svg/debug.js": {
           "bytesInOutput": 3330
@@ -32294,7 +32327,7 @@
           "bytesInOutput": 7171
         },
         "modules/ui/feature_info.js": {
-          "bytesInOutput": 1417
+          "bytesInOutput": 1544
         },
         "modules/ui/flash.js": {
           "bytesInOutput": 2398
@@ -32312,7 +32345,7 @@
           "bytesInOutput": 159
         },
         "modules/ui/panels/history.js": {
-          "bytesInOutput": 5979
+          "bytesInOutput": 5253
         },
         "modules/util/units.js": {
           "bytesInOutput": 3535
@@ -32492,7 +32525,7 @@
           "bytesInOutput": 3611
         },
         "modules/ui/sections/preset_fields.js": {
-          "bytesInOutput": 4370
+          "bytesInOutput": 4693
         },
         "modules/ui/sections/raw_member_editor.js": {
           "bytesInOutput": 9817
@@ -32716,8 +32749,11 @@
         "modules/ui/sections/photo_overlays.js": {
           "bytesInOutput": 7650
         },
+        "modules/ui/sections/map_daterange.js": {
+          "bytesInOutput": 3763
+        },
         "modules/ui/panes/map_data.js": {
-          "bytesInOutput": 416
+          "bytesInOutput": 451
         },
         "modules/ui/panes/preferences.js": {
           "bytesInOutput": 320
@@ -32735,10 +32771,10 @@
           "bytesInOutput": 15089
         },
         "node_modules/osm-auth/src/osm-auth.mjs": {
-          "bytesInOutput": 6680
+          "bytesInOutput": 6694
         },
         "modules/services/osm.js": {
-          "bytesInOutput": 37915
+          "bytesInOutput": 37919
         },
         "modules/services/osm_wikibase.js": {
           "bytesInOutput": 8424
@@ -32858,7 +32894,7 @@
           "bytesInOutput": 472
         }
       },
-      "bytes": 3495357
+      "bytes": 3512519
     }
   }
 }
