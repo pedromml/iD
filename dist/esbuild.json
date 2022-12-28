@@ -5,7 +5,7 @@
       "imports": []
     },
     "node_modules/abortcontroller-polyfill/dist/polyfill-patch-fetch.js": {
-      "bytes": 17813,
+      "bytes": 16605,
       "imports": []
     },
     "modules/actions/add_entity.js": {
@@ -3869,7 +3869,7 @@
       "imports": []
     },
     "package.json": {
-      "bytes": 5331,
+      "bytes": 5346,
       "imports": []
     },
     "modules/core/file_fetcher.js": {
@@ -19578,7 +19578,7 @@
       ]
     },
     "node_modules/name-suggestion-index/config/matchGroups.json": {
-      "bytes": 6122,
+      "bytes": 5981,
       "imports": []
     },
     "node_modules/name-suggestion-index/config/genericWords.json": {
@@ -20662,7 +20662,7 @@
       "imports": []
     },
     "node_modules/@tmcw/togeojson/dist/togeojson.es.mjs": {
-      "bytes": 33725,
+      "bytes": 28849,
       "imports": []
     },
     "modules/svg/data.js": {
@@ -30882,7 +30882,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 5886389
+      "bytes": 5876063
     },
     "dist/iD.js": {
       "imports": [],
@@ -31055,7 +31055,7 @@
           "bytesInOutput": 16429
         },
         "node_modules/abortcontroller-polyfill/dist/polyfill-patch-fetch.js": {
-          "bytesInOutput": 13820
+          "bytesInOutput": 12707
         },
         "modules/index.js": {
           "bytesInOutput": 19258
@@ -31634,7 +31634,7 @@
           "bytesInOutput": 3806
         },
         "package.json": {
-          "bytesInOutput": 5496
+          "bytesInOutput": 5511
         },
         "node_modules/@ideditor/country-coder/dist/country-coder.mjs": {
           "bytesInOutput": 679069
@@ -32090,7 +32090,7 @@
           "bytesInOutput": 1335
         },
         "node_modules/name-suggestion-index/config/matchGroups.json": {
-          "bytesInOutput": 6637
+          "bytesInOutput": 6484
         },
         "node_modules/name-suggestion-index/config/genericWords.json": {
           "bytesInOutput": 745
@@ -32222,7 +32222,7 @@
           "bytesInOutput": 12165
         },
         "node_modules/@tmcw/togeojson/dist/togeojson.es.mjs": {
-          "bytesInOutput": 21451
+          "bytesInOutput": 17656
         },
         "modules/svg/debug.js": {
           "bytesInOutput": 3330
@@ -32894,7 +32894,7 @@
           "bytesInOutput": 472
         }
       },
-      "bytes": 3512519
+      "bytes": 3507473
     }
   }
 }

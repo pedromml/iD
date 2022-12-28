@@ -9089,8 +9089,8 @@
           function createRelationalOperation(operator) {
             return function(value, other) {
               if (!(typeof value == "string" && typeof other == "string")) {
-                value = toNumber3(value);
-                other = toNumber3(other);
+                value = toNumber2(value);
+                other = toNumber2(other);
               }
               return operator(value, other);
             };
@@ -9124,7 +9124,7 @@
           function createRound(methodName) {
             var func = Math2[methodName];
             return function(number3, precision2) {
-              number3 = toNumber3(number3);
+              number3 = toNumber2(number3);
               precision2 = precision2 == null ? 0 : nativeMin2(toInteger(precision2), 292);
               if (precision2 && nativeIsFinite(number3)) {
                 var pair2 = (toString2(number3) + "e").split("e"), value = func(pair2[0] + "e" + (+pair2[1] + precision2));
@@ -10482,11 +10482,11 @@
             if (typeof func != "function") {
               throw new TypeError2(FUNC_ERROR_TEXT3);
             }
-            wait = toNumber3(wait) || 0;
+            wait = toNumber2(wait) || 0;
             if (isObject2(options2)) {
               leading = !!options2.leading;
               maxing = "maxWait" in options2;
-              maxWait = maxing ? nativeMax2(toNumber3(options2.maxWait) || 0, wait) : maxWait;
+              maxWait = maxing ? nativeMax2(toNumber2(options2.maxWait) || 0, wait) : maxWait;
               trailing = "trailing" in options2 ? !!options2.trailing : trailing;
             }
             function invokeFunc(time) {
@@ -10562,7 +10562,7 @@
             return baseDelay(func, 1, args);
           });
           var delay = baseRest(function(func, wait, args) {
-            return baseDelay(func, toNumber3(wait) || 0, args);
+            return baseDelay(func, toNumber2(wait) || 0, args);
           });
           function flip(func) {
             return createWrap(func, WRAP_FLIP_FLAG);
@@ -10859,7 +10859,7 @@
             if (!value) {
               return value === 0 ? value : 0;
             }
-            value = toNumber3(value);
+            value = toNumber2(value);
             if (value === INFINITY2 || value === -INFINITY2) {
               var sign2 = value < 0 ? -1 : 1;
               return sign2 * MAX_INTEGER;
@@ -10873,7 +10873,7 @@
           function toLength(value) {
             return value ? baseClamp(toInteger(value), 0, MAX_ARRAY_LENGTH) : 0;
           }
-          function toNumber3(value) {
+          function toNumber2(value) {
             if (typeof value == "number") {
               return value;
             }
@@ -11136,14 +11136,14 @@
               lower2 = undefined2;
             }
             if (upper !== undefined2) {
-              upper = toNumber3(upper);
+              upper = toNumber2(upper);
               upper = upper === upper ? upper : 0;
             }
             if (lower2 !== undefined2) {
-              lower2 = toNumber3(lower2);
+              lower2 = toNumber2(lower2);
               lower2 = lower2 === lower2 ? lower2 : 0;
             }
-            return baseClamp(toNumber3(number3), lower2, upper);
+            return baseClamp(toNumber2(number3), lower2, upper);
           }
           function inRange(number3, start2, end) {
             start2 = toFinite(start2);
@@ -11153,7 +11153,7 @@
             } else {
               end = toFinite(end);
             }
-            number3 = toNumber3(number3);
+            number3 = toNumber2(number3);
             return baseInRange(number3, start2, end);
           }
           function random(lower2, upper, floating) {
@@ -11939,7 +11939,7 @@
           lodash.toInteger = toInteger;
           lodash.toLength = toLength;
           lodash.toLower = toLower;
-          lodash.toNumber = toNumber3;
+          lodash.toNumber = toNumber2;
           lodash.toSafeInteger = toSafeInteger;
           lodash.toString = toString2;
           lodash.toUpper = toUpper;
@@ -15005,9 +15005,6 @@
         _defineProperties(Constructor.prototype, protoProps);
       if (staticProps)
         _defineProperties(Constructor, staticProps);
-      Object.defineProperty(Constructor, "prototype", {
-        writable: false
-      });
       return Constructor;
     }
     function _inherits(subClass, superClass) {
@@ -15021,20 +15018,17 @@
           configurable: true
         }
       });
-      Object.defineProperty(subClass, "prototype", {
-        writable: false
-      });
       if (superClass)
         _setPrototypeOf(subClass, superClass);
     }
     function _getPrototypeOf(o) {
-      _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf2(o2) {
+      _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf2(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       };
       return _getPrototypeOf(o);
     }
     function _setPrototypeOf(o, p) {
-      _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf2(o2, p2) {
+      _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o2, p2) {
         o2.__proto__ = p2;
         return o2;
       };
@@ -15064,8 +15058,6 @@
     function _possibleConstructorReturn(self2, call) {
       if (call && (typeof call === "object" || typeof call === "function")) {
         return call;
-      } else if (call !== void 0) {
-        throw new TypeError("Derived constructors may only return object or undefined");
       }
       return _assertThisInitialized(self2);
     }
@@ -15090,22 +15082,22 @@
       }
       return object;
     }
-    function _get() {
+    function _get(target, property, receiver) {
       if (typeof Reflect !== "undefined" && Reflect.get) {
-        _get = Reflect.get.bind();
+        _get = Reflect.get;
       } else {
-        _get = function _get2(target, property, receiver) {
-          var base = _superPropBase(target, property);
+        _get = function _get2(target2, property2, receiver2) {
+          var base = _superPropBase(target2, property2);
           if (!base)
             return;
-          var desc = Object.getOwnPropertyDescriptor(base, property);
+          var desc = Object.getOwnPropertyDescriptor(base, property2);
           if (desc.get) {
-            return desc.get.call(arguments.length < 3 ? target : receiver);
+            return desc.get.call(receiver2);
           }
           return desc.value;
         };
       }
-      return _get.apply(this, arguments);
+      return _get(target, property, receiver || target);
     }
     var Emitter = /* @__PURE__ */ function() {
       function Emitter2() {
@@ -15187,11 +15179,6 @@
           writable: true,
           configurable: true
         });
-        Object.defineProperty(_assertThisInitialized(_this), "reason", {
-          value: void 0,
-          writable: true,
-          configurable: true
-        });
         return _this;
       }
       _createClass(AbortSignal2, [{
@@ -15224,7 +15211,7 @@
       }
       _createClass(AbortController3, [{
         key: "abort",
-        value: function abort(reason) {
+        value: function abort() {
           var event;
           try {
             event = new Event("abort");
@@ -15245,21 +15232,6 @@
               };
             }
           }
-          var signalReason = reason;
-          if (signalReason === void 0) {
-            if (typeof document === "undefined") {
-              signalReason = new Error("This operation was aborted");
-              signalReason.name = "AbortError";
-            } else {
-              try {
-                signalReason = new DOMException("signal is aborted without reason");
-              } catch (err) {
-                signalReason = new Error("This operation was aborted");
-                signalReason.name = "AbortError";
-              }
-            }
-          }
-          this.signal.reason = signalReason;
           this.signal.dispatchEvent(event);
         }
       }, {
@@ -22480,7 +22452,7 @@
       "cldr-localenames-full": "^41.0.0",
       "concat-files": "^0.1.1",
       d3: "~7.6.1",
-      "editor-layer-index": "github:osmlab/editor-layer-index#gh-pages",
+      "ohm-editor-layer-index": "github:openhistoricalmap/ohm-editor-layer-index#dist",
       esbuild: "^0.15.7",
       "esbuild-visualizer": "^0.3.1",
       eslint: "^8.8.0",
@@ -38365,9 +38337,7 @@ ${content}</tr>
         "amenity/truck_rental",
         "amenity/vehicle_rental",
         "shop/kiosk",
-        "shop/plant_hire",
-        "shop/rental",
-        "shop/tool_hire"
+        "shop/rental"
       ],
       school: [
         "amenity/childcare",
@@ -38394,11 +38364,6 @@ ${content}</tr>
         "shop/grocery",
         "shop/supermarket",
         "shop/wholesale"
-      ],
-      thrift: [
-        "shop/charity",
-        "shop/clothes",
-        "shop/second_hand"
       ],
       variety_store: [
         "shop/variety_store",
@@ -46075,14 +46040,6 @@ ${content}</tr>
   function getColor(node, output) {
     return get3(node, "color", (elem) => fixColor(nodeVal(elem), output));
   }
-  function extractIconHref(node) {
-    return get3(node, "Icon", (icon2, properties) => {
-      val1(icon2, "href", (href) => {
-        properties.icon = href;
-      });
-      return properties;
-    });
-  }
   function extractIcon(node) {
     return get3(node, "IconStyle", (iconStyle) => {
       return Object.assign(getColor(iconStyle, "icon"), numericProperty(iconStyle, "scale", "icon-scale"), numericProperty(iconStyle, "heading", "icon-heading"), get3(iconStyle, "hotSpot", (hotspot) => {
@@ -46096,7 +46053,12 @@ ${content}</tr>
             "icon-offset-units": [xunits, yunits]
           };
         return {};
-      }), extractIconHref(iconStyle));
+      }), get3(iconStyle, "Icon", (icon2, properties) => {
+        val1(icon2, "href", (href) => {
+          properties.icon = href;
+        });
+        return properties;
+      }));
     });
   }
   function extractLabel(node) {
@@ -46122,68 +46084,6 @@ ${content}</tr>
   }
   function extractStyle(node) {
     return Object.assign({}, extractPoly(node), extractLine(node), extractLabel(node), extractIcon(node));
-  }
-  var toNumber2 = (x) => Number(x);
-  var typeConverters = {
-    string: (x) => x,
-    int: toNumber2,
-    uint: toNumber2,
-    short: toNumber2,
-    ushort: toNumber2,
-    float: toNumber2,
-    double: toNumber2,
-    bool: (x) => Boolean(x)
-  };
-  function extractExtendedData(node, schema) {
-    return get3(node, "ExtendedData", (extendedData, properties) => {
-      for (const data of $(extendedData, "Data")) {
-        properties[data.getAttribute("name") || ""] = nodeVal(get1(data, "value"));
-      }
-      for (const simpleData of $(extendedData, "SimpleData")) {
-        const name = simpleData.getAttribute("name") || "";
-        const typeConverter = schema[name] || typeConverters.string;
-        properties[name] = typeConverter(nodeVal(simpleData));
-      }
-      return properties;
-    });
-  }
-  function getMaybeHTMLDescription(node) {
-    const descriptionNode = get1(node, "description");
-    for (const c of Array.from(descriptionNode?.childNodes || [])) {
-      if (c.nodeType === 4) {
-        return {
-          description: {
-            "@type": "html",
-            value: nodeVal(c)
-          }
-        };
-      }
-    }
-    return {};
-  }
-  function extractTimeSpan(node) {
-    return get3(node, "TimeSpan", (timeSpan) => {
-      return {
-        timespan: {
-          begin: nodeVal(get1(timeSpan, "begin")),
-          end: nodeVal(get1(timeSpan, "end"))
-        }
-      };
-    });
-  }
-  function extractTimeStamp(node) {
-    return get3(node, "TimeStamp", (timeStamp) => {
-      return { timestamp: nodeVal(get1(timeStamp, "when")) };
-    });
-  }
-  function extractCascadedStyle(node, styleMap) {
-    return val1(node, "styleUrl", (styleUrl) => {
-      styleUrl = normalizeId(styleUrl);
-      if (styleMap[styleUrl]) {
-        return Object.assign({ styleUrl }, styleMap[styleUrl]);
-      }
-      return { styleUrl };
-    });
   }
   var removeSpace = /\s*/g;
   var trimSpace = /^\s*|\s*$/g;
@@ -46235,26 +46135,30 @@ ${content}</tr>
     }
     return ring;
   }
+  var GEO_TYPES = [
+    "Polygon",
+    "LineString",
+    "Point",
+    "Track",
+    "gx:Track"
+  ];
   function getCoordinates(node) {
     return nodeVal(get1(node, "coordinates"));
   }
   function getGeometry(node) {
-    let geometries = [];
-    let coordTimes = [];
-    for (let i2 = 0; i2 < node.childNodes.length; i2++) {
-      const child = node.childNodes.item(i2);
-      if (isElement(child)) {
-        switch (child.tagName) {
-          case "MultiGeometry":
-          case "MultiTrack":
-          case "gx:MultiTrack": {
-            const childGeometries = getGeometry(child);
-            geometries = geometries.concat(childGeometries.geometries);
-            coordTimes = coordTimes.concat(childGeometries.coordTimes);
-            break;
-          }
+    const geometries = [];
+    const coordTimes = [];
+    for (const t of ["MultiGeometry", "MultiTrack", "gx:MultiTrack"]) {
+      const elem = get1(node, t);
+      if (elem) {
+        return getGeometry(elem);
+      }
+    }
+    for (const geoType of GEO_TYPES) {
+      for (const geomNode of $(node, geoType)) {
+        switch (geoType) {
           case "Point": {
-            const coordinates = coord1(getCoordinates(child));
+            const coordinates = coord1(getCoordinates(geomNode));
             if (coordinates.length >= 2) {
               geometries.push({
                 type: "Point",
@@ -46264,7 +46168,7 @@ ${content}</tr>
             break;
           }
           case "LineString": {
-            const coordinates = coord(getCoordinates(child));
+            const coordinates = coord(getCoordinates(geomNode));
             if (coordinates.length >= 2) {
               geometries.push({
                 type: "LineString",
@@ -46275,7 +46179,7 @@ ${content}</tr>
           }
           case "Polygon": {
             const coords = [];
-            for (const linearRing of $(child, "LinearRing")) {
+            for (const linearRing of $(geomNode, "LinearRing")) {
               const ring = fixRing(coord(getCoordinates(linearRing)));
               if (ring.length >= 4) {
                 coords.push(ring);
@@ -46291,7 +46195,7 @@ ${content}</tr>
           }
           case "Track":
           case "gx:Track": {
-            const gx = gxCoords(child);
+            const gx = gxCoords(geomNode);
             if (!gx)
               break;
             const { times, geometry } = gx;
@@ -46308,13 +46212,62 @@ ${content}</tr>
       coordTimes
     };
   }
+  function extractExtendedData(node) {
+    return get3(node, "ExtendedData", (extendedData, properties) => {
+      for (const data of $(extendedData, "Data")) {
+        properties[data.getAttribute("name") || ""] = nodeVal(get1(data, "value"));
+      }
+      for (const simpleData of $(extendedData, "SimpleData")) {
+        properties[simpleData.getAttribute("name") || ""] = nodeVal(simpleData);
+      }
+      return properties;
+    });
+  }
   function geometryListToGeometry(geometries) {
     return geometries.length === 0 ? null : geometries.length === 1 ? geometries[0] : {
       type: "GeometryCollection",
       geometries
     };
   }
-  function getPlacemark(node, styleMap, schema) {
+  function extractTimeSpan(node) {
+    return get3(node, "TimeSpan", (timeSpan) => {
+      return {
+        timespan: {
+          begin: nodeVal(get1(timeSpan, "begin")),
+          end: nodeVal(get1(timeSpan, "end"))
+        }
+      };
+    });
+  }
+  function extractTimeStamp(node) {
+    return get3(node, "TimeStamp", (timeStamp) => {
+      return { timestamp: nodeVal(get1(timeStamp, "when")) };
+    });
+  }
+  function extractCascadedStyle(node, styleMap) {
+    return val1(node, "styleUrl", (styleUrl) => {
+      styleUrl = normalizeId(styleUrl);
+      if (styleMap[styleUrl]) {
+        return Object.assign({ styleUrl }, styleMap[styleUrl]);
+      }
+      return { styleUrl };
+    });
+  }
+  function getMaybeHTMLDescription(node) {
+    const descriptionNode = get1(node, "description");
+    for (const c of Array.from(descriptionNode?.childNodes || [])) {
+      if (c.nodeType === 4) {
+        return {
+          description: {
+            "@type": "html",
+            value: nodeVal(c)
+          }
+        };
+      }
+    }
+    return {};
+  }
+  function getPlacemark(node, styleMap) {
     const { coordTimes, geometries } = getGeometry(node);
     const feature3 = {
       type: "Feature",
@@ -46326,100 +46279,11 @@ ${content}</tr>
         "open",
         "phoneNumber",
         "description"
-      ]), getMaybeHTMLDescription(node), extractCascadedStyle(node, styleMap), extractStyle(node), extractExtendedData(node, schema), extractTimeSpan(node), extractTimeStamp(node), coordTimes.length ? {
+      ]), getMaybeHTMLDescription(node), extractCascadedStyle(node, styleMap), extractStyle(node), extractExtendedData(node), extractTimeSpan(node), extractTimeStamp(node), coordTimes.length ? {
         coordinateProperties: {
           times: coordTimes.length === 1 ? coordTimes[0] : coordTimes
         }
       } : {})
-    };
-    if (feature3.properties?.visibility !== void 0) {
-      feature3.properties.visibility = feature3.properties.visibility !== "0";
-    }
-    const id2 = node.getAttribute("id");
-    if (id2 !== null && id2 !== "")
-      feature3.id = id2;
-    return feature3;
-  }
-  function getGroundOverlayBox(node) {
-    const latLonQuad = get1(node, "gx:LatLonQuad");
-    if (latLonQuad) {
-      const ring = fixRing(coord(getCoordinates(node)));
-      return {
-        type: "Polygon",
-        coordinates: [ring]
-      };
-    }
-    return getLatLonBox(node);
-  }
-  var DEGREES_TO_RADIANS = Math.PI / 180;
-  function rotateBox(bbox, coordinates, rotation) {
-    const center = [(bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2];
-    return [
-      coordinates[0].map((coordinate) => {
-        const dy = coordinate[1] - center[1];
-        const dx = coordinate[0] - center[0];
-        const distance = Math.sqrt(Math.pow(dy, 2) + Math.pow(dx, 2));
-        const angle2 = Math.atan2(dy, dx) - rotation * DEGREES_TO_RADIANS;
-        return [
-          center[0] + Math.cos(angle2) * distance,
-          center[1] + Math.sin(angle2) * distance
-        ];
-      })
-    ];
-  }
-  function getLatLonBox(node) {
-    const latLonBox = get1(node, "LatLonBox");
-    if (latLonBox) {
-      const north = num1(latLonBox, "north");
-      const west = num1(latLonBox, "west");
-      const east = num1(latLonBox, "east");
-      const south = num1(latLonBox, "south");
-      const rotation = num1(latLonBox, "rotation");
-      if (typeof north === "number" && typeof south === "number" && typeof west === "number" && typeof east === "number") {
-        const bbox = [west, south, east, north];
-        let coordinates = [
-          [
-            [west, north],
-            [east, north],
-            [east, south],
-            [west, south],
-            [west, north]
-          ]
-        ];
-        if (typeof rotation === "number") {
-          coordinates = rotateBox(bbox, coordinates, rotation);
-        }
-        return {
-          type: "Polygon",
-          coordinates
-        };
-      }
-    }
-    return null;
-  }
-  function getGroundOverlay(node, styleMap, schema) {
-    const geometry = getGroundOverlayBox(node);
-    const feature3 = {
-      type: "Feature",
-      geometry,
-      properties: Object.assign(
-        { "@geometry-type": "groundoverlay" },
-        getMulti(node, [
-          "name",
-          "address",
-          "visibility",
-          "open",
-          "phoneNumber",
-          "description"
-        ]),
-        getMaybeHTMLDescription(node),
-        extractCascadedStyle(node, styleMap),
-        extractStyle(node),
-        extractIconHref(node),
-        extractExtendedData(node, schema),
-        extractTimeSpan(node),
-        extractTimeStamp(node)
-      )
     };
     if (feature3.properties?.visibility !== void 0) {
       feature3.properties.visibility = feature3.properties.visibility !== "0";
@@ -46453,23 +46317,10 @@ ${content}</tr>
     }
     return styleMap;
   }
-  function buildSchema(node) {
-    const schema = {};
-    for (const field of $(node, "SimpleField")) {
-      schema[field.getAttribute("name") || ""] = typeConverters[field.getAttribute("type") || ""] || typeConverters["string"];
-    }
-    return schema;
-  }
   function* kmlGen(node) {
     const styleMap = buildStyleMap(node);
-    const schema = buildSchema(node);
     for (const placemark of $(node, "Placemark")) {
-      const feature3 = getPlacemark(placemark, styleMap, schema);
-      if (feature3)
-        yield feature3;
-    }
-    for (const groundOverlay of $(node, "GroundOverlay")) {
-      const feature3 = getGroundOverlay(groundOverlay, styleMap, schema);
+      const feature3 = getPlacemark(placemark, styleMap);
       if (feature3)
         yield feature3;
     }
