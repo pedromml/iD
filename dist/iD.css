@@ -670,20 +670,14 @@
 .ideditor path.stroke.tag-amenity-fountain,
 .ideditor path.stroke.tag-leisure-swimming_pool,
 .ideditor path.stroke.tag-natural-bay,
-<<<<<<< HEAD
 .ideditor path.stroke.tag-natural-strait,
-=======
->>>>>>> staging
 .ideditor path.stroke.tag-natural-water {
     stroke: rgb(119, 211, 222);
 }
 .ideditor path.fill.tag-amenity-fountain,
 .ideditor path.fill.tag-leisure-swimming_pool,
 .ideditor path.fill.tag-natural-bay,
-<<<<<<< HEAD
 .ideditor path.fill.tag-natural-strait,
-=======
->>>>>>> staging
 .ideditor path.fill.tag-natural-water {
     stroke: rgba(119, 211, 222, 0.3);
     fill: rgba(119, 211, 222, 0.3);
@@ -3466,21 +3460,13 @@
 .ideditor input[type="radio"] {
     width: 14px;
     height: 14px;
-<<<<<<< HEAD
     margin-right: 6px;
-=======
-    margin-right: 5px;
->>>>>>> staging
     cursor: pointer;
     vertical-align: middle;
 }
 .ideditor[dir='rtl'] input[type="checkbox"],
 .ideditor[dir='rtl'] input[type="radio"] {
-<<<<<<< HEAD
     margin-left: 6px;
-=======
-    margin-left: 5px;
->>>>>>> staging
     margin-right: 0;
 }
 
@@ -4994,17 +4980,10 @@
 }
 
 
-<<<<<<< HEAD
 /* Field - Access, DirectionalCombo
 ------------------------------------------------------- */
 .ideditor .form-field-input-access,
 .ideditor .form-field-input-directionalcombo {
-=======
-/* Field - Access, Cycleway
-------------------------------------------------------- */
-.ideditor .form-field-input-access,
-.ideditor .form-field-input-cycleway {
->>>>>>> staging
     -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
@@ -5196,11 +5175,7 @@
 
 .ideditor .form-field-input-multicombo .input-wrap {
     border: 1px solid #ddd;
-<<<<<<< HEAD
     width: 180px;
-=======
-    width: 100px;
->>>>>>> staging
 }
 .ideditor .form-field-input-multicombo input {
     border: none;
@@ -5218,7 +5193,6 @@
     width: auto;
 }
 
-<<<<<<< HEAD
 .ideditor .form-field-input-combo .tag-value-icon {
     display: inline-block;
     position: relative;
@@ -5253,8 +5227,6 @@
     width: 18px;
 }
 
-=======
->>>>>>> staging
 
 /* Field - Text / Numeric
 ------------------------------------------------------- */
@@ -5333,10 +5305,6 @@
     -webkit-box-flex: 0;
         -ms-flex: 0 1 auto;
             flex: 0 1 auto;
-<<<<<<< HEAD
-=======
-    width: 20px;
->>>>>>> staging
     margin-top: 0;
 }
 .ideditor .form-field-input-check > span {
@@ -5451,10 +5419,6 @@
     -webkit-box-flex: 0;
         -ms-flex: 0 1 auto;
             flex: 0 1 auto;
-<<<<<<< HEAD
-=======
-    width: 20px;
->>>>>>> staging
 }
 .ideditor .form-field-input-radio > label > span {
     -webkit-box-flex: 1;
@@ -5894,7 +5858,6 @@
     color: #333;
 }
 
-<<<<<<< HEAD
 .ideditor .form-field-input-wrap {
     position: relative;
 }
@@ -5931,8 +5894,6 @@
 .ideditor .tooltip.max-length-warning {
     z-index: 10;
 }
-=======
->>>>>>> staging
 
 /* Field Help
 ------------------------------------------------------- */
@@ -9100,23 +9061,16 @@
     display: none;
 }
 
-<<<<<<< HEAD
-=======
-.ideditor .field-warning,
->>>>>>> staging
 .ideditor .changeset-info,
 .ideditor .request-review,
 .ideditor .commit-info {
     margin-bottom: 10px;
 }
 
-<<<<<<< HEAD
 .ideditor .field-warning {
     margin-top: 10px;
 }
 
-=======
->>>>>>> staging
 .ideditor .request-review label {
     cursor: pointer;
 }
