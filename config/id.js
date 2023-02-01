@@ -7,7 +7,7 @@ const nsiCdnUrl = 'https://cdn.jsdelivr.net/npm/name-suggestion-index@{version}/
 // api urls and settings
 const osmApiConnections = [
   { // "live" db
-    url: 'https://www.openstreetmap.org',
+    url: 'https://www.openhistoricalmap.org',
     client_id: '0tmNTmd0Jo1dQp4AUmMBLtGiD9YpMuXzHefitcuVStc',
     client_secret: 'BTlNrNxIPitHdL4sP2clHw5KLoee9aKkA7dQbc0Bj7Q'
   }, { // "dev" db
