@@ -20,12 +20,8 @@ on the iD project, and then create this file with contents like
 #### Update `develop` branch
 ```bash
 $  git checkout develop
-<<<<<<< HEAD
 $  rm package-lock.json
 $  rm -rf node_modules/editor-layer-index/
-=======
-$  rm -rf node_modules/ohm-editor-layer-index/
->>>>>>> staging
 $  npm install
 $  npm run imagery
 $  npm run all
