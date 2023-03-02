@@ -29,6 +29,11 @@ export function uiSectionDateRange(context) {
     function renderDisclosureContent(selection) {
         const container = selection.selectAll('.date_ranges-container').data([0]);
 
+        // for some reason this one uiSection keeps adding content every time it's expanded,
+        // so there are 2 inputs, then 4, then 6, ...
+        const alreadyhasinputs = container.enter().selectAll('input').size();
+        if (alreadyhasinputs) return;
+
         // start date label & input
         const mindate_label = container.enter()
             .append('label')
