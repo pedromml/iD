@@ -60,6 +60,9 @@ export var osmAreaKeysExceptions = {
         turntable: true,
         wash: true
     },
+    traffic_calming: {
+        island: true
+    },
     waterway: {
         dam: true
     }
@@ -83,6 +86,11 @@ export function osmTagSuggestingArea(tags) {
         }
     }
     return null;
+}
+
+export var osmLineTags = {};
+export function osmSetLineTags(value) {
+    osmLineTags = value;
 }
 
 // Tags that indicate a node can be a standalone point

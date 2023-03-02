@@ -5,8 +5,9 @@ import { json as d3_json } from 'd3-fetch';
 import { utilObjectOmit, utilQsString } from '../util';
 import { localizer } from '../core/localizer';
 
+import { taginfoApiUrl } from '../../config/id.js';
 
-var apibase = 'https://taginfo.openstreetmap.org/api/4/';
+var apibase = taginfoApiUrl;
 var _inflight = {};
 var _popularKeys = {};
 var _taginfoCache = {};
@@ -70,7 +71,7 @@ function clean(params) {
 function filterKeys(type) {
     var count_type = type ? 'count_' + type : 'count_all';
     return function(d) {
-        return parseFloat(d[count_type]) > 2500 || d.in_wiki;
+        return Number(d[count_type]) > 2500 || d.in_wiki;
     };
 }
 
@@ -78,7 +79,7 @@ function filterKeys(type) {
 function filterMultikeys(prefix) {
     return function(d) {
         // d.key begins with prefix, and d.key contains no additional ':'s
-        var re = new RegExp('^' + prefix + '(.*)$');
+        var re = new RegExp('^' + prefix + '(.*)$', 'i');
         var matches = d.key.match(re) || [];
         return (matches.length === 2 && matches[1].indexOf(':') === -1);
     };
@@ -98,7 +99,7 @@ function filterRoles(geometry) {
     return function(d) {
         if (d.role === '') return false; // exclude empty role
         if (d.role.match(/[A-Z*;,]/) !== null) return false;  // exclude uppercase letters and some punctuation
-        return parseFloat(d[tag_members_fractions[geometry]]) > 0.0;
+        return Number(d[tag_members_fractions[geometry]]) > 0.0;
     };
 }
 

@@ -9,13 +9,15 @@ import { t, localizer } from '../../core/localizer';
 import { utilGetSetValue, utilNoAuto, utilRebind, utilTotalExtent } from '../../util';
 import { svgIcon } from '../../svg/icon';
 import { cardinal } from '../../osm/node';
+import { uiLengthIndicator } from '..';
 
 export {
-    uiFieldText as uiFieldUrl,
+    uiFieldText as uiFieldColour,
+    uiFieldText as uiFieldEmail,
     uiFieldText as uiFieldIdentifier,
     uiFieldText as uiFieldNumber,
     uiFieldText as uiFieldTel,
-    uiFieldText as uiFieldEmail
+    uiFieldText as uiFieldUrl
 };
 
 
@@ -24,9 +26,11 @@ export function uiFieldText(field, context) {
     var input = d3_select(null);
     var outlinkButton = d3_select(null);
     var wrap = d3_select(null);
+    var _lengthIndicator = uiLengthIndicator(context.maxCharsForTagValue());
     var _entityIDs = [];
     var _tags;
     var _phoneFormats = {};
+    const isDirectionField = field.key.split(':').some(keyPart => keyPart === 'direction');
 
     if (field.type === 'tel') {
         fileFetcher.get('phone_formats')
@@ -91,6 +95,7 @@ export function uiFieldText(field, context) {
             .on('blur', change())
             .on('change', change());
 
+        wrap.call(_lengthIndicator);
 
         if (field.type === 'tel') {
             updatePhonePlaceholder();
@@ -111,23 +116,43 @@ export function uiFieldText(field, context) {
                     var which = (d > 0 ? 'increment' : 'decrement');
                     return 'form-field-button ' + which;
                 })
-                .attr('title', function(d){
+                .attr('title', function(d) {
                     var which = (d > 0 ? 'increment' : 'decrement');
                     return t(`inspector.${which}`);
                 })
                 .merge(buttons)
                 .on('click', function(d3_event, d) {
                     d3_event.preventDefault();
+
+                    // do nothing if this is a multi-selection with mixed values
+                    var isMixed = Array.isArray(_tags[field.key]);
+                    if (isMixed) return;
+
                     var raw_vals = input.node().value || '0';
                     var vals = raw_vals.split(';');
                     vals = vals.map(function(v) {
-                        var num = parseFloat(v.trim(), 10);
-                        if (isFinite(num)) return clamped(num + d);
+                        var num = Number(v);
+                        if (isDirectionField) {
+                            const compassDir = cardinal[v.trim().toLowerCase()];
+                            if (compassDir !== undefined) {
+                                num = compassDir;
+                            }
+                        }
 
-                        const compassDir = cardinal[v.trim().toLowerCase()];
-                        if (compassDir !== undefined) return clamped(compassDir + d);
+                        if (!isFinite(num)) {
+                            // do nothing if the value is neither a number, nor a cardinal direction
+                            return v.trim();
+                        }
 
-                        return v.trim(); // do nothing if the value is neither a number, nor a cardinal direction
+                        num += d;
+                        // clamp to 0..359 degree range if it's a direction field
+                        // https://github.com/openstreetmap/iD/issues/9386
+                        if (isDirectionField) {
+                            num = ((num % 360) + 360) % 360;
+                        }
+                        // make sure no extra decimals are introduced
+                        const numDecimals = v.includes('.') ? v.split('.')[1].length : 0;
+                        return clamped(num).toFixed(numDecimals);
                     });
                     input.node().value = vals.join(';');
                     change()();
@@ -179,7 +204,7 @@ export function uiFieldText(field, context) {
                     if (value) window.open(value, '_blank');
                 })
                 .merge(outlinkButton);
-        } else if (field.key.split(':').includes('colour')) {
+        } else if (field.type === 'colour') {
             input.attr('type', 'text');
 
             updateColourPreview();
@@ -293,7 +318,7 @@ export function uiFieldText(field, context) {
                 if (field.type === 'number' && val) {
                     var vals = val.split(';');
                     vals = vals.map(function(v) {
-                        var num = parseFloat(v.trim(), 10);
+                        var num = Number(v);
                         return isFinite(num) ? clamped(num) : v.trim();
                     });
                     val = vals.join(';');
@@ -323,11 +348,29 @@ export function uiFieldText(field, context) {
             .attr('placeholder', isMixed ? t('inspector.multiple_values') : (field.placeholder() || t('inspector.unknown')))
             .classed('mixed', isMixed);
 
+        if (field.type === 'number') {
+            const buttons = wrap.selectAll('.increment, .decrement');
+            if (isMixed) {
+                buttons.attr('disabled', 'disabled').classed('disabled', true);
+            } else {
+                var raw_vals = tags[field.key] || '0';
+                const canIncDec = raw_vals.split(';').some(val => isFinite(Number(val))
+                        || isDirectionField && cardinal[val.trim().toLowerCase()]);
+                buttons.attr('disabled', canIncDec ? null : 'disabled').classed('disabled', !canIncDec);
+            }
+        }
+
+        if (field.type === 'tel') updatePhonePlaceholder();
+
         if (field.key.split(':').includes('colour')) updateColourPreview();
 
         if (outlinkButton && !outlinkButton.empty()) {
             var disabled = !validIdentifierValueForLink();
             outlinkButton.classed('disabled', disabled);
+        }
+
+        if (!isMixed) {
+            _lengthIndicator.update(tags[field.key]);
         }
     };
 

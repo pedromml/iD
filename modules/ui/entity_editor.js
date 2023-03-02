@@ -47,7 +47,7 @@ export function uiEntityEditor(context) {
         headerEnter
             .append('button')
             .attr('class', 'preset-reset preset-choose')
-            .attr('title', t(`icons.${direction}`))
+            .attr('title', t('inspector.back_tooltip'))
             .call(svgIcon(`#iD-icon-${direction}`));
 
         headerEnter
@@ -163,14 +163,19 @@ export function uiEntityEditor(context) {
 
             var tags = Object.assign({}, entity.tags);   // shallow copy
 
-            for (var k in changed) {
-                if (!k) continue;
-                var v = changed[k];
-                if (typeof v === 'object') {
-                    // a "key only" tag change
-                    tags[k] = tags[v.oldKey];
-                } else if (v !== undefined || tags.hasOwnProperty(k)) {
-                    tags[k] = v;
+            if (typeof changed === 'function') {
+                // a complex callback tag change
+                tags = changed(tags);
+            } else {
+                for (var k in changed) {
+                    if (!k) continue;
+                    var v = changed[k];
+                    if (typeof v === 'object') {
+                        // a "key only" tag change
+                        tags[k] = tags[v.oldKey];
+                    } else if (v !== undefined || tags.hasOwnProperty(k)) {
+                        tags[k] = v;
+                    }
                 }
             }
 

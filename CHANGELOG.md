@@ -27,9 +27,6 @@ _Breaking developer changes, which may affect downstream projects or sites that 
 #### :hourglass: Performance
 #### :mortar_board: Walkthrough / Help
 #### :rocket: Presets
-###### New Presets
-###### Changed Presets
-###### New and Changed Fields
 #### :hammer: Development
 * ([#])
 
@@ -38,7 +35,124 @@ _Breaking developer changes, which may affect downstream projects or sites that 
 [@xxxx]: https://github.com/xxxx
 -->
 
+# 2.24.1
+##### 2023-Jan-25
+
+* Rotate Mapbox Satellite imagery access token
+
+
+# 2.24.0
+##### 2023-Jan-19
+
+#### :tada: New Features
+* Show a _remaining input length_ indicator and a warning if the maximum for OSM tags (typically, 255 characters) is exceeded ([#9390], [#9392] thanks [@alanb43], [#7943], [#9374])
+#### :white_check_mark: Validation
+* Add support value `uncontrolled` when using _connect features_ validation fix on crossings with `crossing=uncontrolled` ([#9443], thanks [@arch0345])
+#### :bug: Bugfixes
+* Fix bug which made it impossible to change an object's preset from a sub-preset to the respective parents preset (e.g. from Driveway to Service Road) ([#9372])
+* Fix corruption of (directional) `cycleway` tags when editing a multi-selection ([#9423])
+* Fix unintended splitting of tag values in `semiCombo` fields into two values when the description contains a comma ([#9471])
+* Fix rendering of imagery tile vintage when it is unknown ([#9458], thanks [@furkanmutlu-tomtom)
+#### :hourglass: Performance
+* Speed up "outdated tags" validation by optimizing order of operations ([#9434], thanks [@Zaczero])
+#### :rocket: Presets
+* Clamp degree values in `direction` fields between 0 and 359 degrees ([#9386])
+* Disable increment/decrement buttons on number fields if the input value is not numeric or when there is a multi-selection with conflicting values
+* Filter out misspelled taginfo suggestions in combo field ([#9397])
+* Add `highway=busway` to 'Traffic Roads' group of map features ([#9413], thanks [@Rewinteer])
+* Rename `cycleway` field type to `directionalCombo` and make it reusable for arbitrary directional tags ([#9423])
+#### :earth_asia: Localization
+* Specify address format for Bulgaria ([#9446], thanks [@Dimitar5555])
+#### :hammer: Development
+* Upgrade to Transifex API v3 ([#9375])
+* Upgrade dependencies: `d3` to v7.8, `@ideditor/country-coder` to v5.1, `@ideditor/location-conflation` to v1.1, `esbuild` to v0.17, `osm-community-index` to `v5.5`
+
+[#7943]: https://github.com/openstreetmap/iD/issues/7943
+[#9372]: https://github.com/openstreetmap/iD/issues/9372
+[#9374]: https://github.com/openstreetmap/iD/issues/9374
+[#9375]: https://github.com/openstreetmap/iD/pull/9375
+[#9386]: https://github.com/openstreetmap/iD/issues/9386
+[#9390]: https://github.com/openstreetmap/iD/pull/9390
+[#9392]: https://github.com/openstreetmap/iD/pull/9392
+[#9397]: https://github.com/openstreetmap/iD/issues/9397
+[#9413]: https://github.com/openstreetmap/iD/pull/9413
+[#9423]: https://github.com/openstreetmap/iD/pull/9423
+[#9434]: https://github.com/openstreetmap/iD/pull/9434
+[#9443]: https://github.com/openstreetmap/iD/pull/9443
+[#9446]: https://github.com/openstreetmap/iD/pull/9446
+[#9471]: https://github.com/openstreetmap/iD/issues/9471
+[#9458]: https://github.com/openstreetmap/iD/pull/9458
+[@alanb43]: https://github.com/alanb43
+[@Rewinteer]: https://github.com/Rewinteer
+[@Zaczero]: https://github.com/Zaczero
+[@Dimitar5555]: https://github.com/Dimitar5555
+[@furkanmutlu-tomtom]: https://github.com/furkanmutlu-tomtom
+
+
+# 2.23.2
+##### 2022-Nov-12
+
+#### :bug: Bugfixes
+* Fix crash when performing a multiselection of objects with differing tags values in a combo field ([#9369])
+
+[#9369]: https://github.com/openstreetmap/iD/issues/9369
+
+
+# 2.23.1
+##### 2022-Nov-10
+
+#### :bug: Bugfixes
+* Fix missing imagery data update in 2.23.0 release bundle
+
+
+# 2.23.0
+##### 2022-Nov-10
+
+#### :mega: Release Highlights
+* Significantly quicker startup due to faster loading of presets ([#9347], thanks [@bhousel])!
+* Add support for updated tagging presets schema version 5 ([#9320])
+#### :sparkles: Usability & Accessibility
+* Trigger context menu by long-presses of non-mouse inputs (touch or stylus) ([#8105])
+* Improve comboboxes ([#9344]):
+  * (raw) tag values can be also entered (and are autocompleted) when localized strings are available for the respective options
+  * autocomplete now also works when taginfo service is slow or unavailable
+#### :bug: Bugfixes
+* Fix selection of best background source when starting on a zoomed-out view ([#9325])
+* Fix leaking of localized strings in combo fields when taginfo service is unavailable ([#9342])
+* Keep tags when changing presets if the new preset has a field for it ([#9341], [#9104])
+* Skip unsupported or invalid turn restriction relations instead of assuming they are a `no_*` restriction ([#9337])
+* Fix crash when conflict resolver is opened ([#9345])
+* Fix phone number placeholder text now always using the correct localization ([#8380], thanks [@k-yle])
+* Don't don't suggest to "connect the ends" if a feature with area tags also matches a line preset ([#6525])
+#### :hourglass: Performance
+* Speed up start-up by not pre-resolving complex locationSets ([#9347], thanks [@bhousel])
+#### :rocket: Presets
+* Support tagging schema v5 ([#9320]):
+  * Add new field type `colour` ([schema-builder#38], [#8782])
+  * Add ability to reference strings of other presets/fields
+* Render `natural=strait` features in blue color ([#9294])
+* Show icons depicting the different values of the `crossing:markings` field
+#### :hammer: Development
+* Synchronize fetching of released presets files
+* Make settings like CDN and API urls configurable in a central config file (`/config/is.js`)
+* Upgrade dependencies: `temaki` to v5.2, `marked` to v4.2
+
+[#8105]: https://github.com/openstreetmap/iD/issues/8105
+[#8380]: https://github.com/openstreetmap/iD/issues/8380
+[#9104]: https://github.com/openstreetmap/iD/issues/9104
+[#9294]: https://github.com/openstreetmap/iD/issues/9294
+[#9320]: https://github.com/openstreetmap/iD/pull/9320
+[#9325]: https://github.com/openstreetmap/iD/issues/9325
+[#9337]: https://github.com/openstreetmap/iD/issues/9337
+[#9341]: https://github.com/openstreetmap/iD/issues/9341
+[#9342]: https://github.com/openstreetmap/iD/issues/9342
+[#9344]: https://github.com/openstreetmap/iD/pull/9344
+[#9345]: https://github.com/openstreetmap/iD/issues/9345
+[#9347]: https://github.com/openstreetmap/iD/pull/9347
+[schema-builder#38]: https://github.com/ideditor/schema-builder/pull/38
+
 # 2.22.0
+##### 2022-Sep-27
 #### :tada: New Features
 * Consider lifecycle prefixes when deciding whether features should be rendered as a line or an area ([#8881], thanks [@k-yle])
 * Render side-markers on all coastlines (new: also coastlines of small islands mapped as an area) ([#9293])
@@ -98,6 +212,7 @@ _Breaking developer changes, which may affect downstream projects or sites that 
 [#9169]: https://github.com/openstreetmap/iD/issues/9169
 [#9171]: https://github.com/openstreetmap/iD/pull/9171
 [#9172]: https://github.com/openstreetmap/iD/pull/9172
+[#9176]: https://github.com/openstreetmap/iD/pull/9176
 [#9208]: https://github.com/openstreetmap/iD/issues/9208
 [#9227]: https://github.com/openstreetmap/iD/issues/9227
 [#9293]: https://github.com/openstreetmap/iD/issues/9293
@@ -110,7 +225,8 @@ _Breaking developer changes, which may affect downstream projects or sites that 
 [@paulklie]: https://github.com/paulklie
 [@renancleyson-dev]: https://github.com/renancleyson-dev
 [@bvercelli99]: https://github.com/bvercelli99
-[@faebebin]:_https://github.com/faebebin
+[@faebebin]: https://github.com/faebebin
+[@bgo-eiu]: https://github.com/bgo-eiu
 
 
 # 2.21.1
@@ -3999,7 +4115,7 @@ _When mapping around Detroit, try out the special Detroit vector tile layers on 
 _Activate the OpenStreetMap notes layer by opening the Map Data pane (shortcut <kbd>F</kbd>)_
 * :wrench: We've added a new Detach Node operation to remove a tagged node from a way. Thanks [@Psigio]!<br/>
 _With a node selected, use the right-click edit menu to find the Detach command (shortcut <kbd>E</kbd>)_
-* :arrow_upper_right: The photo viewer (Mapillary, OpenStreetCam, and Bing Streetside) is now resizeable by dragging any of its edges.  Thanks [@kratico]!<br/>
+* :arrow_upper_right: The photo viewer (Mapillary, OpenStreetCam, and Bing Streetside) is now resizable by dragging any of its edges.  Thanks [@kratico]!<br/>
 _Try activating one of the streetlevel photo layers (shortcut <kbd>F</kbd>) and resizing the viewer._
 
 [@thomas-hervey]: https://github.com/thomas-hervey
@@ -5867,7 +5983,7 @@ _Map traffic signals, stop signs, benches, crossings, street lamps, fountains, t
 [#3975]: https://github.com/openstreetmap/iD/issues/3975
 
 #### :mortar_board: Walkthrough / Help - major updates! ([#3921])
-* Add training for modifiying geometry, moving nodes, reshaping ways ([#2381])
+* Add training for modifying geometry, moving nodes, reshaping ways ([#2381])
 * Add training for new right-click context menu
 * Allow user to freeform play and explore ([#3067])
 * Refresh walkthrough data with POIs, Buildings, Addresses ([#3068])

@@ -151,7 +151,7 @@ export function validationCrossingWays(context) {
                         return {};
                     }
                     var pathFeature = entity1IsPath ? entity1 : entity2;
-                    if (['marked', 'unmarked', 'traffic_signals'].indexOf(pathFeature.tags.crossing) !== -1) {
+                    if (['marked', 'unmarked', 'traffic_signals', 'uncontrolled'].indexOf(pathFeature.tags.crossing) !== -1) {
                         // if the path is a crossing, match the crossing type
                         return bothLines ? { highway: 'crossing', crossing: pathFeature.tags.crossing } : {};
                     }
@@ -534,7 +534,7 @@ export function validationCrossingWays(context) {
 
                     var crossedWay = graph.hasEntity(crossedWayID);
                     // use the explicit width of the crossed feature as the structure length, if available
-                    var structLengthMeters = crossedWay && crossedWay.tags.width && parseFloat(crossedWay.tags.width);
+                    var structLengthMeters = crossedWay && isFinite(crossedWay.tags.width) && Number(crossedWay.tags.width);
                     if (!structLengthMeters) {
                         // if no explicit width is set, approximate the width based on the tags
                         structLengthMeters = crossedWay && crossedWay.impliedLineWidthMeters();
