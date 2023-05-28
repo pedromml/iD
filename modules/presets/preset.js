@@ -1,4 +1,4 @@
-import { t } from '../core/localizer';
+import { localizer, t } from '../core/localizer';
 import { osmAreaKeys, osmAreaKeysExceptions } from '../osm/tags';
 import { utilArrayUniq, utilObjectOmit } from '../util';
 import { utilSafeClassName } from '../util/util';
@@ -92,12 +92,14 @@ export function presetPreset(presetID, preset, addable, allFields, allPresets) {
 
 
   _this.t = (scope, options) => {
-    const textID = `_tagging.presets.presets.${presetID}.${scope}`;
+    const textID = localizer.coalesceStringIds([`custom_presets.presets.${presetID}.${scope}`,
+                                                `_tagging.presets.presets.${presetID}.${scope}`]);
     return t(textID, options);
   };
 
   _this.t.append = (scope, options) => {
-    const textID = `_tagging.presets.presets.${presetID}.${scope}`;
+    const textID = localizer.coalesceStringIds([`custom_presets.presets.${presetID}.${scope}`,
+                                                `_tagging.presets.presets.${presetID}.${scope}`]);
     return t.append(textID, options);
   };
 
@@ -127,7 +129,8 @@ export function presetPreset(presetID, preset, addable, allFields, allPresets) {
       if (_this.suggestion) {
         let path = presetID.split('/');
         path.pop();  // remove brand name
-        return t('_tagging.presets.presets.' + path.join('/') + '.name');
+        return t(localizer.coalesceStringIds([`custom_presets.presets.${path.join('/')}.name`,
+                                              `_tagging.presets.presets.${path.join('/')}.name`]));
       }
       return null;
   };
@@ -136,7 +139,8 @@ export function presetPreset(presetID, preset, addable, allFields, allPresets) {
       if (_this.suggestion) {
         let path = presetID.split('/');
         path.pop();  // remove brand name
-        return t.append('_tagging.presets.presets.' + path.join('/') + '.name');
+        return t.append(`custom_presets.presets.${path.join('/')}.name`,
+                        `_tagging.presets.presets.${path.join('/')}.name`);
       }
       return null;
   };
