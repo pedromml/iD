@@ -97,9 +97,15 @@ export default {
     },
 
 
-    toSitelink: function(key, value) {
-        var result = value ? ('Tag:' + key + '=' + value) : 'Key:' + key;
-        return result.replace(/_/g, ' ').trim();
+    toSitelink: function(key, value, isHistorical) {
+        var type = value ? 'Tag' : 'Key';
+        var prefix = '';
+        if (isHistorical) {
+            prefix = `Open Historical Map/Tags/${type}/`;
+        } else {
+            prefix = type + ':';
+        }
+        return prefix + (value ? `${key}=${value}` : key).replace(/_/g, ' ').trim();
     },
 
 
@@ -117,8 +123,11 @@ export default {
         var titles = [];
         var result = {};
         var rtypeSitelink = (params.key === 'type' && params.value) ? ('Relation:' + params.value).replace(/_/g, ' ').trim() : false;
+        var rtypeSitelinkHistorical = (params.key === 'type' && params.value) ? ('Open Historical Map/Tags/Relation/' + params.value.replace(/_/g, ' ').trim()) : false;
         var keySitelink = params.key ? this.toSitelink(params.key) : false;
+        var keySitelinkHistorical = params.key ? this.toSitelink(params.key, null, true) : false;
         var tagSitelink = (params.key && params.value) ? this.toSitelink(params.key, params.value) : false;
+        var tagSitelinkHistorical = (params.key && params.value) ? this.toSitelink(params.key, params.value, true) : false;
         var localeSitelink;
 
         if (params.langCodes) {
@@ -134,26 +143,32 @@ export default {
         }
 
         if (rtypeSitelink) {
-            if (_wikibaseCache[rtypeSitelink]) {
+            if (_wikibaseCache[rtypeSitelinkHistorical]) {
+                result.rtype = _wikibaseCache[rtypeSitelinkHistorical];
+            } else if (_wikibaseCache[rtypeSitelink]) {
                 result.rtype = _wikibaseCache[rtypeSitelink];
             } else {
-                titles.push(rtypeSitelink);
+                titles.push(rtypeSitelinkHistorical, rtypeSitelink);
             }
         }
 
         if (keySitelink) {
-            if (_wikibaseCache[keySitelink]) {
+            if (_wikibaseCache[keySitelinkHistorical]) {
+                result.key = _wikibaseCache[keySitelinkHistorical];
+            } else if (_wikibaseCache[keySitelink]) {
                 result.key = _wikibaseCache[keySitelink];
             } else {
-                titles.push(keySitelink);
+                titles.push(keySitelinkHistorical, keySitelink);
             }
         }
 
         if (tagSitelink) {
-            if (_wikibaseCache[tagSitelink]) {
+            if (_wikibaseCache[tagSitelinkHistorical]) {
+                result.tag = _wikibaseCache[tagSitelinkHistorical];
+            } else if (_wikibaseCache[tagSitelink]) {
                 result.tag = _wikibaseCache[tagSitelink];
             } else {
-                titles.push(tagSitelink);
+                titles.push(tagSitelinkHistorical, tagSitelink);
             }
         }
 
@@ -195,11 +210,20 @@ export default {
                         if (title === rtypeSitelink) {
                             _wikibaseCache[rtypeSitelink] = res;
                             result.rtype = res;
+                        } else if (title === rtypeSitelinkHistorical) {
+                            _wikibaseCache[rtypeSitelinkHistorical] = res;
+                            result.rtype = res;
                         } else if (title === keySitelink) {
                             _wikibaseCache[keySitelink] = res;
                             result.key = res;
+                        } else if (title === keySitelinkHistorical) {
+                            _wikibaseCache[keySitelinkHistorical] = res;
+                            result.key = res;
                         } else if (title === tagSitelink) {
                             _wikibaseCache[tagSitelink] = res;
+                            result.tag = res;
+                        } else if (title === tagSitelinkHistorical) {
+                            _wikibaseCache[tagSitelinkHistorical] = res;
                             result.tag = res;
                         } else if (title === localeSitelink) {
                             localeID = res.id;
