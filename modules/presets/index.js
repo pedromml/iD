@@ -20,6 +20,21 @@ let _mainPresetIndex = presetIndex(); // singleton
 export { _mainPresetIndex as presetManager };
 
 /**
+ * Adds presets specific to OpenHistoricalMap.
+ */
+function addHistoricalPresets(presets) {
+  // https://wiki.openstreetmap.org/wiki/Open_Historical_Map/Tags/Relation/chronology
+  presets['type/chronology'] = {
+    icon: 'temaki-clock',
+    fields: ['name'],
+    geometry: ['relation'],
+    tags: {
+      type: 'chronology'
+    }
+  };
+}
+
+/**
  * Adds fields specific to OpenHistoricalMap.
  */
 function addHistoricalFields(fields) {
@@ -87,6 +102,7 @@ export function presetIndex() {
         fileFetcher.get('preset_fields')
       ])
       .then(vals => {
+        addHistoricalPresets(vals[2]);
         addHistoricalFields(vals[3]);
         _this.merge({
           categories: vals[0],

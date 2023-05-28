@@ -2458,3 +2458,7 @@ en:
         label: License
         placeholder: CC0
         terms: copyleft, copyright
+    presets:
+      type/chronology:
+        name: Chronology
+        terms: history, timeline, movement, evolution, change
