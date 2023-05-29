@@ -148,7 +148,7 @@ export default {
             } else if (_wikibaseCache[rtypeSitelink]) {
                 result.rtype = _wikibaseCache[rtypeSitelink];
             } else {
-                titles.push(rtypeSitelinkHistorical, rtypeSitelink);
+                titles.push(rtypeSitelink, rtypeSitelinkHistorical);
             }
         }
 
@@ -158,7 +158,7 @@ export default {
             } else if (_wikibaseCache[keySitelink]) {
                 result.key = _wikibaseCache[keySitelink];
             } else {
-                titles.push(keySitelinkHistorical, keySitelink);
+                titles.push(keySitelink, keySitelinkHistorical);
             }
         }
 
@@ -168,7 +168,7 @@ export default {
             } else if (_wikibaseCache[tagSitelink]) {
                 result.tag = _wikibaseCache[tagSitelink];
             } else {
-                titles.push(tagSitelinkHistorical, tagSitelink);
+                titles.push(tagSitelink, tagSitelinkHistorical);
             }
         }
 
@@ -207,23 +207,23 @@ export default {
                     if (res.missing !== '') {
 
                         var title = res.sitelinks.wiki.title;
-                        if (title === rtypeSitelink) {
-                            _wikibaseCache[rtypeSitelink] = res;
-                            result.rtype = res;
-                        } else if (title === rtypeSitelinkHistorical) {
+                        if (title === rtypeSitelinkHistorical) {
                             _wikibaseCache[rtypeSitelinkHistorical] = res;
                             result.rtype = res;
-                        } else if (title === keySitelink) {
-                            _wikibaseCache[keySitelink] = res;
-                            result.key = res;
+                        } else if (title === rtypeSitelink) {
+                            _wikibaseCache[rtypeSitelink] = res;
+                            result.rtype = res;
                         } else if (title === keySitelinkHistorical) {
                             _wikibaseCache[keySitelinkHistorical] = res;
                             result.key = res;
-                        } else if (title === tagSitelink) {
-                            _wikibaseCache[tagSitelink] = res;
-                            result.tag = res;
+                        } else if (title === keySitelink) {
+                            _wikibaseCache[keySitelink] = res;
+                            result.key = res;
                         } else if (title === tagSitelinkHistorical) {
                             _wikibaseCache[tagSitelinkHistorical] = res;
+                            result.tag = res;
+                        } else if (title === tagSitelink) {
+                            _wikibaseCache[tagSitelink] = res;
                             result.tag = res;
                         } else if (title === localeSitelink) {
                             localeID = res.id;
