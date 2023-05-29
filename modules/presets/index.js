@@ -20,6 +20,13 @@ let _mainPresetIndex = presetIndex(); // singleton
 export { _mainPresetIndex as presetManager };
 
 /**
+ * Sets preset defaults specific to OpenHistoricalMap.
+ */
+function setHistoricalDefaults(defaults) {
+  defaults.relation.unshift('type/chronology');
+}
+
+/**
  * Adds presets specific to OpenHistoricalMap.
  */
 function addHistoricalPresets(presets) {
@@ -102,6 +109,7 @@ export function presetIndex() {
         fileFetcher.get('preset_fields')
       ])
       .then(vals => {
+        setHistoricalDefaults(vals[1]);
         addHistoricalPresets(vals[2]);
         addHistoricalFields(vals[3]);
         _this.merge({
