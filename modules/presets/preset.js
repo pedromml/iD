@@ -139,8 +139,8 @@ export function presetPreset(presetID, preset, addable, allFields, allPresets) {
       if (_this.suggestion) {
         let path = presetID.split('/');
         path.pop();  // remove brand name
-        return t.append(`custom_presets.presets.${path.join('/')}.name`,
-                        `_tagging.presets.presets.${path.join('/')}.name`);
+        return t.append(localizer.coalesceStringIds([`custom_presets.presets.${path.join('/')}.name`,
+                                                     `_tagging.presets.presets.${path.join('/')}.name`]));
       }
       return null;
   };
