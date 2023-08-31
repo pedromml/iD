@@ -26739,10 +26739,10 @@
       if (_this.suggestion) {
         let path = presetID.split("/");
         path.pop();
-        return _t.append(
+        return _t.append(_mainLocalizer.coalesceStringIds([
           `custom_presets.presets.${path.join("/")}.name`,
           `_tagging.presets.presets.${path.join("/")}.name`
-        );
+        ]));
       }
       return null;
     };
