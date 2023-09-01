@@ -101,7 +101,7 @@ export default {
         var type = value ? 'Tag' : 'Key';
         var prefix = '';
         if (isHistorical) {
-            prefix = `Open Historical Map/Tags/${type}/`;
+            prefix = `OpenHistoricalMap/Tags/${type}/`;
         } else {
             prefix = type + ':';
         }
@@ -123,7 +123,7 @@ export default {
         var titles = [];
         var result = {};
         var rtypeSitelink = (params.key === 'type' && params.value) ? ('Relation:' + params.value).replace(/_/g, ' ').trim() : false;
-        var rtypeSitelinkHistorical = (params.key === 'type' && params.value) ? ('Open Historical Map/Tags/Relation/' + params.value.replace(/_/g, ' ').trim()) : false;
+        var rtypeSitelinkHistorical = (params.key === 'type' && params.value) ? ('OpenHistoricalMap/Tags/Relation/' + params.value.replace(/_/g, ' ').trim()) : false;
         var keySitelink = params.key ? this.toSitelink(params.key) : false;
         var keySitelinkHistorical = params.key ? this.toSitelink(params.key, null, true) : false;
         var tagSitelink = (params.key && params.value) ? this.toSitelink(params.key, params.value) : false;
