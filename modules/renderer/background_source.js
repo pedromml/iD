@@ -452,7 +452,11 @@ rendererBackgroundSource.Esri = function(data) {
 
 
     esri.getMetadata = function(center, tileCoord, callback) {
-        if (esri.id !== 'EsriWorldImagery') {
+        let mapServerUrl = esri.metadata;
+        if (esri.id === 'EsriWorldImagery') {
+            mapServerUrl = 'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer';
+        }
+        if (!mapServerUrl) {
             // rest endpoint is not available for ESRI's "clarity" imagery
             return callback(null, {});
         }
@@ -466,7 +470,7 @@ rendererBackgroundSource.Esri = function(data) {
         if (inflight[tileID]) return;
 
         // build up query using the layer appropriate to the current zoom
-        var url = 'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/4/query';
+        var url = mapServerUrl + '/4/query';
         url += '?returnGeometry=false&geometry=' + centerPoint + '&inSR=4326&geometryType=esriGeometryPoint&outFields=*&f=json';
 
         if (!cache[tileID]) {
