@@ -37,6 +37,7 @@ export function rendererBackground(context) {
         // Extracts the layer's date from the title.
         let extractDateFromTitle = title => {
           const dateComponents = title.match(/\(Wayback (\d{4})-(\d\d)-(\d\d)\)/);
+          if (!dateComponents) return;
           return new Date(Date.UTC(parseInt(dateComponents[1], 10),
                                    parseInt(dateComponents[2], 10) - 1,
                                    parseInt(dateComponents[3], 10)));
@@ -48,7 +49,7 @@ export function rendererBackground(context) {
             .filter(item => item.type === 'Map Service')
             .map(item => {
               // Extract the layer's date from the title to avoid having to hit each MapServer right away.
-              const date = extractDateFromTitle(item.title);
+              const date = extractDateFromTitle(item.title) || new Date(item.created);
               const dateString = date.toISOString().split('T')[0];
               return [dateString, item.url];
             }));
@@ -56,8 +57,8 @@ export function rendererBackground(context) {
           _waybackIndex = groups.items
             .filter(item => item.type === 'WMTS')
             .map(item => {
-              const date = extractDateFromTitle(item.title);
-              const dateString = date.toISOString().split('T')[0];
+              const date = extractDateFromTitle(item.title) || new Date(item.created);
+              const dateString = date && date.toISOString().split('T')[0];
 
               // Convert the bounding box to a polygon.
               const bbox = {
