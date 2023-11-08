@@ -102,11 +102,16 @@ export function rendererBackground(context) {
         }
         return fileFetcher.get('imagery');
       })
+      .catch(() => {
+        return fileFetcher.get('imagery');
+      })
       .then(sources => {
         if (_imageryIndex) return _imageryIndex;
 
         // Append Esri World Imagery Wayback sources.
-        sources.push(..._waybackIndex);
+        if (_waybackIndex) {
+          sources.push(..._waybackIndex);
+        }
 
         _imageryIndex = {
           imagery: sources,
