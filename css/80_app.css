@@ -1952,8 +1952,10 @@ a.hide-toggle {
 }
 
 
-/* Field - roadheight and roadspeed
+/* Field - date, roadheight, and roadspeed
 ------------------------------------------------------- */
+.form-field-input-date input.date-year,
+.form-field-input-date input.date-month,
 .form-field-input-roadheight input.roadheight-number,
 .form-field-input-roadheight input.roadheight-secondary-number,
 .form-field-input-roadspeed input.roadspeed-number {
@@ -1964,23 +1966,29 @@ a.hide-toggle {
     flex: 0 1 auto;
     width: 60px;
 }
+.form-field-input-date input.date-era,
+.form-field-input-date input.date-day,
 .form-field-input-roadspeed input.roadspeed-unit {
     flex: 0 1 auto;
     width: 80px;
 }
+.ideditor[dir='ltr'] .form-field-input-date > input:first-of-type,
 .ideditor[dir='ltr'] .form-field-input-roadheight > input:first-of-type,
 .ideditor[dir='ltr'] .form-field-input-roadspeed > input:first-of-type {
     border-radius: 0 0 0 4px;
 }
+.ideditor[dir='rtl'] .form-field-input-date > input:first-of-type,
 .ideditor[dir='rtl'] .form-field-input-roadheight > input:first-of-type,
 .ideditor[dir='rtl'] .form-field-input-roadspeed > input:first-of-type {
     border-radius: 0 0 4px 0;
 }
+.ideditor[dir='ltr'] .form-field-input-date > input:last-of-type,
 .ideditor[dir='ltr'] .form-field-input-roadheight > input:last-of-type,
 .ideditor[dir='ltr'] .form-field-input-roadspeed > input:last-of-type {
     border-left: 0;
     border-radius: 0 0 4px 0;
 }
+.ideditor[dir='rtl'] .form-field-input-date > input:last-of-type,
 .ideditor[dir='rtl'] .form-field-input-roadheight > input:last-of-type,
 .ideditor[dir='rtl'] .form-field-input-roadspeed > input:last-of-type {
     border-right: 0;
@@ -2045,6 +2053,14 @@ a.hide-toggle {
     border-top-width: 0;
     border-radius: 0 0 4px 4px;
     width: 100%;
+}
+
+
+/* Field - Date
+------------------------------------------------------- */
+.ideditor .form-field-input-date > input.date-main + input.date-main,
+.ideditor .form-field-input-date > .combobox-caret + input.date-main {
+    border-left: 0;
 }
 
 
