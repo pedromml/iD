@@ -760,6 +760,10 @@ en:
     lock:
       suggestion: 'The "{label}" field is locked because there is a Wikidata tag. You can delete it or edit the tags in the "Tags" section.'
     display_name:
+      # format for the label of a feature that has a name and date range
+      dated: "{name} [{dateRange}]"
+      # compact format for expressing a range of years
+      date_range: "{start}–{end}"
       direction: "{direction}"
       network: "{network}"
       from_to: "from {from} to {to}"

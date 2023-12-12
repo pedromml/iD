@@ -180,9 +180,43 @@ export function utilGetAllNodes(ids, graph) {
 
 
 export function utilDisplayName(entity) {
+    let dateRange;
+    if (entity.tags.start_date || entity.tags.end_date) {
+        // Parse the start and end dates, discarding unnecessary precision, since the display name must be fairly succinct.
+        let start = entity.tags.start_date && utilNormalizeDateString(entity.tags.start_date);
+        if (start) {
+            delete start.localeOptions.month;
+            delete start.localeOptions.day;
+        }
+        let end = entity.tags.end_date && utilNormalizeDateString(entity.tags.end_date);
+        if (end) {
+            delete end.localeOptions.month;
+            delete end.localeOptions.day;
+
+            if (start) {
+                // If the start date has an explicit era, then so must the end date.
+                end.localeOptions.era = start.localeOptions.era;
+            }
+        }
+
+        let dates = [
+            start ? new Intl.DateTimeFormat(localizer.languageCode(), start.localeOptions).format(start.date) : '',
+            end ? new Intl.DateTimeFormat(localizer.languageCode(), end.localeOptions).format(end.date) : '',
+        ];
+
+        // Omit a redundant date.
+        if (dates[0] === dates[1]) {
+            dateRange = dates[0];
+        } else {
+            dateRange = t('inspector.display_name.date_range', {start: dates[0], end: dates[1]});
+        }
+    }
+
     var localizedNameKey = 'name:' + localizer.languageCode().toLowerCase();
     var name = entity.tags[localizedNameKey] || entity.tags.name || '';
-    if (name) return name;
+    if (name) {
+        return dateRange ? t('inspector.display_name.dated', {dateRange: dateRange, name: name}) : name;
+    }
 
     var tags = {
         direction: entity.tags.direction,
@@ -218,7 +252,7 @@ export function utilDisplayName(entity) {
         name = t('inspector.display_name.' + keyComponents.join('_'), tags);
     }
 
-    return name;
+    return name && dateRange ? t('inspector.display_name.dated', {dateRange: dateRange, name: name}) : name;
 }
 
 

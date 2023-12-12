@@ -283,6 +283,16 @@ describe('iD.util', function() {
             // BART Yellow Line: Antioch => Pittsburg/Bay Point => SFO Airport => Millbrae
             expect(iD.utilDisplayName({tags: {network: 'BART', ref: 'Yellow', from: 'Antioch', to: 'Millbrae', via: 'Pittsburg/Bay Point;San Francisco International Airport', route: 'subway'}})).to.eql('BART Yellow from Antioch to Millbrae via Pittsburg/Bay Point;San Francisco International Airport');
         });
+        it('appends a date range', function() {
+            expect(iD.utilDisplayName({tags: {name: 'Arbre Perdu', 'name:en': 'Lost Tree'}})).to.eql('Lost Tree');
+            expect(iD.utilDisplayName({tags: {name: 'Arbre du Ténéré', 'name:en': 'Tree of Ténéré', start_date: '1673', end_date: '1973'}})).to.eql('Tree of Ténéré [1673–1973]');
+            expect(iD.utilDisplayName({tags: {name: 'Charter Oak', start_date: '1614', end_date: '1856-08-21'}})).to.eql('Charter Oak [1614–1856]');
+            expect(iD.utilDisplayName({tags: {name: 'Prometheus', start_date: '-2899', end_date: '1964-08'}})).to.eql('Prometheus [2900 BC–1964 AD]');
+            expect(iD.utilDisplayName({tags: {name: 'ජය ශ්‍රී මහා බෝධිය', 'name:en': 'Jaya Sri Maha Bodhi', start_date: '-287'}})).to.eql('Jaya Sri Maha Bodhi [288 BC–]');
+            expect(iD.utilDisplayName({tags: {name: 'Son of the Tree That Owns Itself', start_date: '1946-12-04'}})).to.eql('Son of the Tree That Owns Itself [1946–]');
+            expect(iD.utilDisplayName({tags: {name: 'Great Elm', end_date: '1876-02-15'}})).to.eql('Great Elm [–1876]');
+            expect(iD.utilDisplayName({tags: {name: 'Capitol Christmas Tree', start_date: '2021-11-19', end_date: '2021-12-25'}})).to.eql('Capitol Christmas Tree [2021]');
+        });
     });
 
     describe('utilOldestID', function() {
