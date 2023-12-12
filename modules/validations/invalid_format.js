@@ -15,7 +15,7 @@ export function validationFormatting() {
                 .enter()
                 .append('div')
                 .attr('class', 'issue-reference')
-                .text(t.append('issues.invalid_format.date.reference'));
+                .call(t.append('issues.invalid_format.date.reference'));
         }
 
         function validateDate(key, msgKey) {
@@ -47,7 +47,7 @@ export function validationFormatting() {
                                     var newTags = Object.assign({}, entityInGraph.tags);
                                     newTags[key] = normalized.value;
                                     return actionChangeTags(entityInGraph.id, newTags)(graph);
-                                }, t.append('issues.fix.reformat_date.annotation'));
+                                }, t('issues.fix.reformat_date.annotation'));
                             }
                         }));
                     }
@@ -61,7 +61,7 @@ export function validationFormatting() {
                                 var newTags = Object.assign({}, entityInGraph.tags);
                                 delete newTags[key];
                                 return actionChangeTags(entityInGraph.id, newTags)(graph);
-                            }, t.append('issues.fix.remove_tag.annotation'));
+                            }, t('issues.fix.remove_tag.annotation'));
                         }
                     }));
                     return fixes;
