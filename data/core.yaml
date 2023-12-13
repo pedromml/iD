@@ -2464,3 +2464,9 @@ en:
       type/chronology:
         name: Chronology
         terms: history, timeline, movement, evolution, change
+  custom_community:
+    _communities:
+      openhistoricalmap: OpenHistoricalMap
+    forum:
+      name: OpenHistoricalMap Forum
+      description: A shared place for conversations about OpenHistoricalMap

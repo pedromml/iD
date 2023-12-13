@@ -37,8 +37,38 @@ export function uiSuccess(context) {
           locationManager.mergeCustomGeoJSON(vals[0]);
         }
 
-        let ociResources = Object.values(vals[1].resources);
+        // Delete or OHMify OSM-specific resources.
+        let ociResourcesById = vals[1].resources;
+        delete ociResourcesById['OSM-Facebook'];
+        delete ociResourcesById['OSM-Twitter'];
+        delete ociResourcesById['OSM-Mastodon'];
+        delete ociResourcesById['OSM-help'];
+        if (ociResourcesById['OSM-IRC']) {
+          ociResourcesById['OSM-IRC'].account = 'ohm';
+          ociResourcesById['OSM-IRC'].strings.community = 'OpenHistoricalMap';
+          ociResourcesById['OSM-IRC'].strings.communityID = 'openhistoricalmap';
+        }
+
+        let ociResources = Object.values(ociResourcesById);
         if (ociResources.length) {
+          // Delete some OSM-specific resources that are redundant.
+          ociResources = ociResources.filter(res => res.type !== 'discourse');
+
+          // Insert OHM-specific resources.
+          ociResources.push({
+            id: 'forum',
+            type: 'discourse',
+            locationSet: {
+              include: ['001'],
+            },
+            order: 7,
+            strings: {
+              name: 'OpenHistoricalMap Forum',
+              description: 'A shared place for conversations about OpenHistoricalMap',
+              url: 'https://forum.openhistoricalmap.org/',
+            },
+          });
+
           // Resolve all locationSet features.
           return locationManager.mergeLocationSets(ociResources)
             .then(() => {
@@ -168,9 +198,14 @@ export function uiSuccess(context) {
           let area = validHere[resource.locationSetID];
           if (!area) return;
 
+          // It's a small world, after all.
+          if (resource.id === 'forum') {
+            area = 0;
+          }
+
           // Resolve strings
-          const localizer = (stringID) => t.html(`community.${stringID}`);
-          resource.resolved = resolveStrings(resource, oci.defaults, localizer);
+          const ociLocalizer = (stringID) => t.html(localizer.coalesceStringIds([`custom_community.${stringID}`, `community.${stringID}`]));
+          resource.resolved = resolveStrings(resource, oci.defaults, ociLocalizer);
 
           communities.push({
             area: area,
