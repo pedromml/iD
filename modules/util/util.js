@@ -182,40 +182,43 @@ export function utilGetAllNodes(ids, graph) {
 export function utilDisplayName(entity) {
     let dateRange;
     if (entity.tags.start_date || entity.tags.end_date) {
-        // Parse the start and end dates, discarding unnecessary precision, since the display name must be fairly succinct.
         let start = entity.tags.start_date && utilNormalizeDateString(entity.tags.start_date);
-        if (start) {
-            delete start.localeOptions.month;
-            delete start.localeOptions.day;
-        }
         let end = entity.tags.end_date && utilNormalizeDateString(entity.tags.end_date);
+
+        // Keep the date range suffix succinct by only including the year and era.
+        let options = {timeZone: 'UTC'};
         if (end) {
-            delete end.localeOptions.month;
-            delete end.localeOptions.day;
-
-            if (start) {
-                // If the start date has an explicit era, then so must the end date.
-                end.localeOptions.era = start.localeOptions.era;
-            }
+            options.year = end.localeOptions.year;
+            options.era = end.localeOptions.era;
+        }
+        if (start) {
+            // Override any settings from the end of the range.
+            options.year = start.localeOptions.year;
+            options.era = start.localeOptions.era;
         }
 
-        let dates = [
-            start ? new Intl.DateTimeFormat(localizer.languageCode(), start.localeOptions).format(start.date) : '',
-            end ? new Intl.DateTimeFormat(localizer.languageCode(), end.localeOptions).format(end.date) : '',
-        ];
-
-        // Omit a redundant date.
-        if (dates[0] === dates[1]) {
-            dateRange = dates[0];
-        } else {
-            dateRange = t('inspector.display_name.date_range', {start: dates[0], end: dates[1]});
+        // Get the date range format in structured form, then filter out anything untagged.
+        let format = new Intl.DateTimeFormat(localizer.languageCode(), options);
+        let lateDate = new Date(Date.UTC(9999));
+        let parts = format.formatRangeToParts(start ? start.date : lateDate, end ? end.date : lateDate);
+        if (!start) {
+            parts = parts.filter(p => p.source !== 'startRange');
         }
+        if (!end) {
+            parts = parts.filter(p => p.source !== 'endRange');
+        }
+        dateRange = parts.map(p => p.value).join('');
     }
 
     var localizedNameKey = 'name:' + localizer.languageCode().toLowerCase();
     var name = entity.tags[localizedNameKey] || entity.tags.name || '';
     if (name) {
-        return dateRange ? t('inspector.display_name.dated', {dateRange: dateRange, name: name}) : name;
+        /* eslint-disable-next-line no-warning-comments */
+        // FIXME: Make this localizable again once we're set up for translation.
+        // https://github.com/OpenHistoricalMap/issues/issues/652
+        // https://github.com/OpenHistoricalMap/issues/issues/470
+        //return dateRange ? t('inspector.display_name.dated', {dateRange: dateRange, name: name}) : name;
+        return dateRange ? `${name} [${dateRange}]` : name;
     }
 
     var tags = {
@@ -252,7 +255,12 @@ export function utilDisplayName(entity) {
         name = t('inspector.display_name.' + keyComponents.join('_'), tags);
     }
 
-    return name && dateRange ? t('inspector.display_name.dated', {dateRange: dateRange, name: name}) : name;
+    /* eslint-disable-next-line no-warning-comments */
+    // FIXME: Make this localizable again once we're set up for translation.
+    // https://github.com/OpenHistoricalMap/issues/issues/652
+    // https://github.com/OpenHistoricalMap/issues/issues/470
+    //return name && dateRange ? t('inspector.display_name.dated', {dateRange: dateRange, name: name}) : name;
+    return dateRange ? `${name} [${dateRange}]` : name;
 }
 
 
