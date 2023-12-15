@@ -2465,6 +2465,14 @@ en:
         label: End Date
         placeholder: YYYY-MM-DD
         terms: abandoned, destruction, destroyed, demolition, demolished, closed, closure
+      start_date/edtf:
+        label: Start Date (EDTF)
+        placeholder: 1849~, 1804?, 189X, 1906/1908, 1814-23, 1960-05-01T13:00...
+        terms: edtf, extended, uncertain, approximate, season, time
+      end_date/edtf:
+        label: End Date (EDTF)
+        placeholder: 1871~, 1804?, 196X, 1840/1845, 1940-24, 2011-10-04T05:00...
+        terms: edtf, extended, uncertain, approximate, season, time
       license:
         label: License
         placeholder: CC0
