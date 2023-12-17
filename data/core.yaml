@@ -1847,6 +1847,10 @@ en:
         message_start: '{feature} has an invalid start date'
         message_end: '{feature} has an invalid end date'
         reference: 'A date must be formatted as YYYY-MM-DD, YYYY-MM, or YYYY.'
+      edtf:
+        message_start: '{feature} has an invalid EDTF start date'
+        message_end: '{feature} has an invalid EDTF end date'
+        reference: 'There is an unexpected "{token}" at character {position}.'
     line_as_area:
       message: '{feature} should be a line, not an area'
     line_as_point:

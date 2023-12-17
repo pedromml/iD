@@ -3,6 +3,8 @@ import { localizer, t } from '../core/localizer';
 import { utilDisplayLabel, utilNormalizeDateString } from '../util';
 import { validationIssue, validationIssueFix } from '../core/validation';
 
+import * as edtf from 'edtf';
+
 export function validationFormatting() {
     var type = 'invalid_format';
 
@@ -70,6 +72,75 @@ export function validationFormatting() {
         }
         validateDate('start_date', 'start');
         validateDate('end_date', 'end');
+
+        function showReferenceEDTF(selection, parserError) {
+            let message;
+            if (parserError.offset && parserError.token) {
+                message = t.append('issues.invalid_format.edtf.reference', {
+                    token: parserError.token.value,
+                    position: (parserError.offset + 1).toLocaleString(localizer.languageCode()),
+                });
+            } else if (parserError.message) {
+                message = selection => selection.append('span')
+                    .attr('class', 'localized-text')
+                    .attr('lang', 'en')
+                    .text(parserError.message.replace(/^edtf: /, ''));
+            }
+            if (!message) {
+                return;
+            }
+
+            selection.selectAll('.issue-reference')
+                .data([0])
+                .enter()
+                .append('div')
+                .attr('class', 'issue-reference')
+                .call(message);
+        }
+
+        function validateEDTF(key, msgKey) {
+            key += ':edtf';
+            if (!entity.tags[key]) return;
+            let parserError;
+            try {
+                edtf.parse(entity.tags[key]);
+                return;
+            } catch (e) {
+                parserError = e;
+            }
+            issues.push(new validationIssue({
+                type: type,
+                subtype: 'date',
+                severity: 'warning',
+                message: function(context) {
+                    var entity = context.hasEntity(this.entityIds[0]);
+                    return entity ? t.append('issues.invalid_format.edtf.message_' + msgKey,
+                        { feature: utilDisplayLabel(entity, context.graph()) }) : '';
+                },
+                reference: selection => showReferenceEDTF(selection, parserError),
+                entityIds: [entity.id],
+                hash: key + entity.tags[key],
+                dynamicFixes: function() {
+                    var fixes = [];
+                    fixes.push(new validationIssueFix({
+                        icon: 'iD-operation-delete',
+                        title: t.append('issues.fix.remove_tag.title'),
+                        onClick: function(context) {
+                            context.perform(function(graph) {
+                                var entityInGraph = graph.hasEntity(entity.id);
+                                if (!entityInGraph) return graph;
+                                var newTags = Object.assign({}, entityInGraph.tags);
+                                delete newTags[key];
+                                return actionChangeTags(entityInGraph.id, newTags)(graph);
+                            }, t('issues.fix.remove_tag.annotation'));
+                        }
+                    }));
+                    return fixes;
+                }
+            }));
+        }
+        validateEDTF('start_date', 'start');
+        validateEDTF('end_date', 'end');
 
         function isValidEmail(email) {
             // Emails in OSM are going to be official so they should be pretty simple
