@@ -1,6 +1,6 @@
 import { actionChangeTags } from '../actions/change_tags';
 import { localizer, t } from '../core/localizer';
-import { utilDisplayLabel, utilNormalizeDateString } from '../util';
+import { utilDisplayLabel, utilNormalizeDateString, utilEDTFFromOSMDateString } from '../util';
 import { validationIssue, validationIssueFix } from '../core/validation';
 
 import * as edtf from 'edtf';
@@ -38,21 +38,47 @@ export function validationFormatting() {
                 hash: key + entity.tags[key],
                 dynamicFixes: function() {
                     var fixes = [];
+
+                    let alternatives = [];
                     if (normalized !== null) {
-                        var localeDateString = normalized.date.toLocaleDateString(localizer.languageCode(), normalized.localeOptions);
-                        fixes.push(new validationIssueFix({
-                            title: t.append('issues.fix.reformat_date.title', { date: localeDateString }),
-                            onClick: function(context) {
-                                context.perform(function(graph) {
-                                    var entityInGraph = graph.hasEntity(entity.id);
-                                    if (!entityInGraph) return graph;
-                                    var newTags = Object.assign({}, entityInGraph.tags);
-                                    newTags[key] = normalized.value;
-                                    return actionChangeTags(entityInGraph.id, newTags)(graph);
-                                }, t('issues.fix.reformat_date.annotation'));
-                            }
-                        }));
+                        let label = normalized.date.toLocaleDateString(localizer.languageCode(), normalized.localeOptions);
+                        alternatives.push({
+                            date: normalized.value,
+                            label: label || normalized.value,
+                        });
                     }
+                    let edtfFromOSM = utilEDTFFromOSMDateString(entity.tags[key]);
+                    if (edtfFromOSM) {
+                        let label;
+                        try {
+                            label = edtf.default(edtfFromOSM).format(localizer.languageCode());
+                        } catch (e) {
+                            label = edtfFromOSM;
+                        }
+                        alternatives.push({
+                            edtf: edtfFromOSM,
+                            label: label,
+                        });
+                    }
+
+                    fixes.push(...alternatives.map(alt => new validationIssueFix({
+                        title: t.append('issues.fix.reformat_date.title', { date: alt.label }),
+                        onClick: function(context) {
+                            context.perform(function(graph) {
+                                var entityInGraph = graph.hasEntity(entity.id);
+                                if (!entityInGraph) return graph;
+                                var newTags = Object.assign({}, entityInGraph.tags);
+                                if (alt.date) {
+                                    newTags[key] = alt.date;
+                                } else {
+                                    delete newTags[key];
+                                }
+                                newTags[key + ':edtf'] = alt.edtf;
+                                return actionChangeTags(entityInGraph.id, newTags)(graph);
+                            }, t('issues.fix.reformat_date.annotation'));
+                        }
+                    })));
+
                     fixes.push(new validationIssueFix({
                         icon: 'iD-operation-delete',
                         title: t.append('issues.fix.remove_tag.title'),
@@ -66,6 +92,7 @@ export function validationFormatting() {
                             }, t('issues.fix.remove_tag.annotation'));
                         }
                     }));
+
                     return fixes;
                 }
             }));
