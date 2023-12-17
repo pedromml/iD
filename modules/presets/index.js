@@ -51,24 +51,6 @@ function addHistoricalFields(fields) {
     key: 'end_date'
   };
 
-  fields['start_date/edtf'] = {
-    key: 'start_date/edtf',
-    type: 'combo',
-    universal: true,
-    snake_case: false,
-    caseSensitive: true,
-    prerequisiteTag: {
-      key: 'start_date',
-    },
-  };
-  fields['end_date/edtf'] = {
-    ...fields['start_date/edtf'],
-    key: 'end_date/edtf',
-    prerequisiteTag: {
-      key: 'end_date',
-    },
-  };
-
   // A combo box would encourage mappers to choose one of the suggestions, but we want mappers to be as detailed as possible.
   fields.source.type = 'text';
 

@@ -64,7 +64,7 @@ export function uiSectionPresetFields(context) {
             _fieldsArr = [];
 
             // Ideally, everything in OpenHistoricalMap is dated and sourced.
-            let coreKeys = ['start_date', 'start_date/edtf', 'end_date', 'end_date/edtf', 'source'];
+            let coreKeys = ['start_date', 'end_date', 'source'];
             coreKeys.forEach(key => {
                 let field = presetsManager.field(key);
                 if (field) {
