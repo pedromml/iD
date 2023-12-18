@@ -1855,6 +1855,13 @@ en:
       message: '{feature} should be a line, not an area'
     line_as_point:
       message: '{feature} should be a line, not a point'
+    mismatched_dates:
+      title: Mismatched Dates
+      tip: Find dates that are contradictory or anachronistic
+      edtf:
+        message_start: '{feature} has a start date that falls outside of the EDTF start date'
+        message_end: '{feature} has an end date that falls outside of the EDTF end date'
+        reference: 'The basic date value should overlap with the range of possible dates described by the EDTF date.'
     mismatched_geometry:
       title: Mismatched Geometry
       tip: "Find features with conflicting tags and geometry"
