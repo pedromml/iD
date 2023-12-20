@@ -50,4 +50,14 @@ describe('iD.validations.invalid_format', function () {
         expect(issue.entityIds).to.have.lengthOf(1);
         expect(issue.entityIds[0]).to.eql('n-1');
     });
+
+    it('flags way with OSM-style date tag', function() {
+        createNode({ natural: 'tree', name: 'The Tree That Owns Itself', 'start_date': 'before C20', end_date: '1942' });
+        var issues = validate();
+        expect(issues).to.have.lengthOf(1);
+        var issue = issues[0];
+        expect(issue.type).to.eql('invalid_format');
+        expect(issue.entityIds).to.have.lengthOf(1);
+        expect(issue.entityIds[0]).to.eql('n-1');
+    });
 });
