@@ -1,10 +1,11 @@
 import { dispatch as d3_dispatch } from 'd3-dispatch';
 import { select as d3_select } from 'd3-selection';
-import * as countryCoder from '@ideditor/country-coder';
 
+import { svgIcon } from '../../svg';
+import { uiTooltip } from '../tooltip';
 import { uiCombobox } from '../combobox';
 import { t, localizer } from '../../core/localizer';
-import { utilGetSetValue, utilNoAuto, utilRebind, utilTotalExtent } from '../../util';
+import { utilGetSetValue, utilNoAuto, utilRebind, utilUniqueDomId } from '../../util';
 
 
 export function uiFieldDate(field, context) {
@@ -13,8 +14,13 @@ export function uiFieldDate(field, context) {
     let eraInput = d3_select(null);
     let monthInput = d3_select(null);
     let dayInput = d3_select(null);
+    let edtfInput = d3_select(null);
     let _entityIDs = [];
     let _tags;
+    let _selection = d3_select(null);
+    let _edtfValue;
+
+    let edtfKey = field.key + ':edtf';
 
     let dateTimeFormat = new Intl.DateTimeFormat(localizer.languageCode(), {
         year: 'numeric',
@@ -100,9 +106,27 @@ export function uiFieldDate(field, context) {
             };
         }));
 
-    function date(selection) {
+    let buttonTip = uiTooltip()
+        .title(() => t.append('inspector.date.edtf'))
+        .placement('left');
 
-        var wrap = selection.selectAll('.form-field-input-wrap')
+
+    // update _edtfValue
+    function calcEDTFValue(tags) {
+        if (_edtfValue && !tags[edtfKey]) {
+            // Don't unset the variable based on deleted tags, since this makes the UI
+            // disappear unexpectedly when clearing values - #8164
+            _edtfValue = '';
+        } else {
+            _edtfValue = tags[edtfKey];
+        }
+    }
+
+
+    function date(selection) {
+        _selection = selection;
+
+        let wrap = selection.selectAll('.form-field-input-wrap')
             .data([0]);
 
         wrap = wrap.enter()
@@ -169,6 +193,47 @@ export function uiFieldDate(field, context) {
         dayInput
             .on('change', change)
             .on('blur', change);
+
+        if (_tags && _edtfValue === undefined) {
+            calcEDTFValue(_tags);
+        }
+
+        let edtfButton = wrap.selectAll('.date-add')
+            .data([0]);
+
+        edtfButton = edtfButton.enter()
+            .append('button')
+            .attr('class', 'date-add form-field-button')
+            .attr('aria-label', t('icons.plus'))
+            .call(svgIcon('#iD-icon-plus'))
+            .merge(edtfButton);
+
+        edtfButton
+            .classed('disabled', typeof _edtfValue === 'string' || Array.isArray(_edtfValue))
+            .call(buttonTip)
+            .on('click', addEDTF);
+
+        edtfInput = selection.selectAll('.date-edtf')
+            .data([0]);
+
+        edtfInput = edtfInput.enter()
+            .append('div')
+            .attr('class', 'date-edtf')
+            .merge(edtfInput);
+
+        edtfInput
+            .call(renderEDTF);
+    }
+
+
+    function addEDTF(d3_event) {
+        d3_event.preventDefault();
+
+        if (typeof _edtfValue !== 'string' && !Array.isArray(_edtfValue)) {
+            _edtfValue = '';
+
+            edtfInput.call(renderEDTF);
+        }
     }
 
 
@@ -207,6 +272,125 @@ export function uiFieldDate(field, context) {
         }
 
         dispatch.call('change', this, tag);
+    }
+
+
+    function changeEDTFValue(d3_event, d) {
+        let value = context.cleanTagValue(utilGetSetValue(d3_select(this))) || undefined;
+
+        // don't override multiple values with blank string
+        if (!value && Array.isArray(d.value)) return;
+
+        let t = {};
+        t[edtfKey] = value;
+        d.value = value;
+        dispatch.call('change', this, t);
+    }
+
+
+    function renderEDTF(selection) {
+        let entries = selection.selectAll('div.entry')
+            .data((typeof _edtfValue === 'string' || Array.isArray(_edtfValue)) ? [_edtfValue] : []);
+
+        entries.exit()
+            .style('top', '0')
+            .style('max-height', '240px')
+            .transition()
+            .duration(200)
+            .style('opacity', '0')
+            .style('max-height', '0px')
+            .remove();
+
+        let entriesEnter = entries.enter()
+            .append('div')
+            .attr('class', 'entry')
+            .each(function() {
+                var wrap = d3_select(this);
+
+                let domId = utilUniqueDomId('edtf');
+                let label = wrap
+                    .append('label')
+                    .attr('class', 'field-label')
+                    .attr('for', domId);
+
+                let text = label
+                    .append('span')
+                    .attr('class', 'label-text');
+
+                text
+                    .append('span')
+                    .attr('class', 'label-textvalue')
+                    .call(t.append('inspector.date.edtf_label'));
+
+                text
+                    .append('span')
+                    .attr('class', 'label-textannotation');
+
+                label
+                    .append('button')
+                    .attr('class', 'remove-icon-edtf')
+                    .attr('title', t('icons.remove'))
+                    .on('click', function(d3_event) {
+                        d3_event.preventDefault();
+
+                        // remove the UI item manually
+                        _edtfValue = undefined;
+
+                        if (edtfKey && edtfKey in _tags) {
+                            delete _tags[edtfKey];
+                            // remove from entity tags
+                            let t = {};
+                            t[edtfKey] = undefined;
+                            dispatch.call('change', this, t);
+                            return;
+                        }
+
+                        renderEDTF(selection);
+                    })
+                    .call(svgIcon('#iD-operation-delete'));
+
+                wrap
+                    .append('input')
+                    .attr('type', 'text')
+                    .attr('class', 'date-value')
+                    .on('blur', changeEDTFValue)
+                    .on('change', changeEDTFValue);
+            });
+
+        entriesEnter
+            .style('margin-top', '0px')
+            .style('max-height', '0px')
+            .style('opacity', '0')
+            .transition()
+            .duration(200)
+            .style('margin-top', '10px')
+            .style('max-height', '240px')
+            .style('opacity', '1')
+            .on('end', function() {
+                d3_select(this)
+                    .style('max-height', '')
+                    .style('overflow', 'visible');
+            });
+
+        entries = entries.merge(entriesEnter);
+
+        entries.order();
+
+        // allow removing the entry UIs even if there isn't a tag to remove
+        entries.classed('present', true);
+
+        utilGetSetValue(entries.select('.date-value'), function(d) {
+                return typeof d === 'string' ? d : '';
+            })
+            .attr('title', function(d) {
+                return Array.isArray(d) ? d.filter(Boolean).join('\n') : null;
+            })
+            .attr('placeholder', function(d) {
+                return Array.isArray(d) ? t('inspector.multiple_values') : t('inspector.date.edtf_placeholder');
+            })
+            .classed('mixed', function(d) {
+                return Array.isArray(d);
+            });
     }
 
 
@@ -250,6 +434,10 @@ export function uiFieldDate(field, context) {
             .attr('placeholder', t('inspector.date.month'));
         utilGetSetValue(dayInput, typeof dayValue === 'number' ? dayValue : '')
             .attr('placeholder', t('inspector.date.day'));
+
+        calcEDTFValue(tags);
+
+        _selection.call(date);
     };
 
 
@@ -260,7 +448,10 @@ export function uiFieldDate(field, context) {
 
 
     date.entityIDs = function(val) {
+        if (!arguments.length) return _entityIDs;
         _entityIDs = val;
+        _edtfValue = undefined;
+        return date;
     };
 
 

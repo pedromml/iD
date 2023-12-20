@@ -1996,7 +1996,7 @@ a.hide-toggle {
 }
 
 
-/* Field - Localized Name
+/* Field - Localized Name, Date
 ------------------------------------------------------- */
 .form-field-input-localized > input.localized-main {
     border-radius: 0 0 0 4px;
@@ -2004,10 +2004,12 @@ a.hide-toggle {
 .ideditor[dir='rtl'] .form-field-input-localized > input.localized-main {
     border-radius: 0 0 4px 0;
 }
-.form-field-input-localized > button.localized-add {
+.form-field-input-localized > button.localized-add,
+.form-field-input-date > button.date-add {
     border-radius: 0 0 4px 0;
 }
-.ideditor[dir='rtl'] .form-field-input-localized > button.localized-add {
+.ideditor[dir='rtl'] .form-field-input-localized > button.localized-add,
+.ideditor[dir='rtl'] .form-field-input-date > button.date-add {
     border-radius: 0 0 0 4px;
 }
 
@@ -2020,18 +2022,21 @@ a.hide-toggle {
     cursor: not-allowed;
 }
 
-/* nested subfields for name in different languages */
-.localized-multilingual {
+/* nested subfields for name in different languages or date in different formats */
+.localized-multilingual,
+.date-edtf {
     padding: 0 10px;
     flex-basis: 100%;
 }
-.localized-multilingual .entry {
+.localized-multilingual .entry,
+.date-edtf .entry {
     position: relative;
     overflow: hidden;
 }
 
 /* draws a little line connecting the multilingual field up to the name field */
-.localized-multilingual .entry::before {
+.localized-multilingual .entry::before,
+.date-edtf .entry::before {
     content: "";
     display: block;
     position: absolute;
@@ -2049,7 +2054,8 @@ a.hide-toggle {
     border-top-width: 0;
     width: 100%;
 }
-.localized-multilingual .entry .localized-value {
+.localized-multilingual .entry .localized-value,
+.date-edtf .entry .date-value {
     border-top-width: 0;
     border-radius: 0 0 4px 4px;
     width: 100%;
@@ -2061,6 +2067,9 @@ a.hide-toggle {
 .ideditor .form-field-input-date > input.date-main + input.date-main,
 .ideditor .form-field-input-date > .combobox-caret + input.date-main {
     border-left: 0;
+}
+.ideditor .form-field-input-date > input.date-main:last-of-type {
+    border-radius: 0;
 }
 
 

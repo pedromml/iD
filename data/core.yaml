@@ -792,6 +792,9 @@ en:
       month: Month
       # placeholder for day of the month
       day: Day
+      edtf: Add EDTF date
+      edtf_label: Extended Date/Time Format
+      edtf_placeholder: 1849~, 1804?, 189X, 1906/1908, 1814-23, 1960-05-01T13:00...
     max_length_reached: "This string is longer than the maximum length of {maxChars} characters. Anything exceeding that length will be truncated."
   background:
     title: Background
@@ -1842,10 +1845,21 @@ en:
         message_start: '{feature} has an invalid start date'
         message_end: '{feature} has an invalid end date'
         reference: 'A date must be formatted as YYYY-MM-DD, YYYY-MM, or YYYY.'
+      edtf:
+        message_start: '{feature} has an invalid EDTF start date'
+        message_end: '{feature} has an invalid EDTF end date'
+        reference: 'There is an unexpected "{token}" at character {position}.'
     line_as_area:
       message: '{feature} should be a line, not an area'
     line_as_point:
       message: '{feature} should be a line, not a point'
+    mismatched_dates:
+      title: Mismatched Dates
+      tip: Find dates that are contradictory or anachronistic
+      edtf:
+        message_start: '{feature} has a start date that falls outside of the EDTF start date'
+        message_end: '{feature} has an end date that falls outside of the EDTF end date'
+        reference: 'The basic date value should overlap with the range of possible dates described by the EDTF date.'
     mismatched_geometry:
       title: Mismatched Geometry
       tip: "Find features with conflicting tags and geometry"
