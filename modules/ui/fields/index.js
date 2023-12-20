@@ -3,6 +3,7 @@ export * from './combo';
 export * from './input';
 export * from './access';
 export * from './address';
+export * from './date';
 export * from './directional_combo';
 export * from './lanes';
 export * from './localized';
@@ -46,6 +47,7 @@ import {
 
 import { uiFieldAccess } from './access';
 import { uiFieldAddress } from './address';
+import { uiFieldDate } from './date';
 import { uiFieldDirectionalCombo } from './directional_combo';
 import { uiFieldLanes } from './lanes';
 import { uiFieldLocalized } from './localized';
@@ -63,6 +65,7 @@ export var uiFields = {
     colour: uiFieldColour,
     combo: uiFieldCombo,
     cycleway: uiFieldDirectionalCombo,
+    date: uiFieldDate,
     defaultCheck: uiFieldDefaultCheck,
     directionalCombo: uiFieldDirectionalCombo,
     email: uiFieldEmail,

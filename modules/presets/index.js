@@ -45,6 +45,7 @@ function addHistoricalPresets(presets) {
  * Adds fields specific to OpenHistoricalMap.
  */
 function addHistoricalFields(fields) {
+  fields.start_date.type = 'date';
   fields.end_date = {
     ...fields.start_date,
     key: 'end_date'
