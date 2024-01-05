@@ -66,7 +66,7 @@ export function validationMismatchedDates() {
                     sortedDates.sort();
                     fixes.push(...sortedDates.map(value => {
                         let normalized = utilNormalizeDateString(value);
-                        let localeDateString = normalized.date.toLocaleDateString(localizer.languageCode(), normalized.localeOptions);
+                        let localeDateString = normalized.date.toLocaleDateString(localizer.localeCodes(), normalized.localeOptions);
                         return new validationIssueFix({
                             title: t.append('issues.fix.reformat_date.title', { date: localeDateString }),
                             onClick: function(context) {

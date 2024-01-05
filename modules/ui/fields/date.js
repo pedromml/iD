@@ -22,7 +22,7 @@ export function uiFieldDate(field, context) {
 
     let edtfKey = field.key + ':edtf';
 
-    let dateTimeFormat = new Intl.DateTimeFormat(localizer.languageCode(), {
+    let dateTimeFormat = new Intl.DateTimeFormat(localizer.localeCodes(), {
         year: 'numeric',
         era: 'short',
         month: 'long',
@@ -37,7 +37,7 @@ export function uiFieldDate(field, context) {
      * @param year A representative year within the era.
      */
     function getEraName(year, format) {
-        let longFormat = new Intl.DateTimeFormat(localizer.languageCode(), {
+        let longFormat = new Intl.DateTimeFormat(localizer.localeCodes(), {
             year: 'numeric',
             era: format,
             timeZone: 'UTC',
@@ -76,7 +76,7 @@ export function uiFieldDate(field, context) {
 
     /// Returns the localized name of a month in the given format.
     function getMonthName(month, format) {
-        let longFormat = new Intl.DateTimeFormat(localizer.languageCode(), {
+        let longFormat = new Intl.DateTimeFormat(localizer.localeCodes(), {
             month: format,
             timeZone: 'UTC',
         });

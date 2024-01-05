@@ -41,7 +41,7 @@ export function validationFormatting() {
 
                     let alternatives = [];
                     if (normalized !== null) {
-                        let label = normalized.date.toLocaleDateString(localizer.languageCode(), normalized.localeOptions);
+                        let label = normalized.date.toLocaleDateString(localizer.localeCodes(), normalized.localeOptions);
                         alternatives.push({
                             date: normalized.value,
                             label: label || normalized.value,
@@ -51,7 +51,7 @@ export function validationFormatting() {
                     if (edtfFromOSM) {
                         let label;
                         try {
-                            label = edtf.default(edtfFromOSM).format(localizer.languageCode());
+                            label = edtf.default(edtfFromOSM).format(localizer.localeCode());
                         } catch (e) {
                             label = edtfFromOSM;
                         }
@@ -105,7 +105,7 @@ export function validationFormatting() {
             if (parserError.offset && parserError.token) {
                 message = t.append('issues.invalid_format.edtf.reference', {
                     token: parserError.token.value,
-                    position: (parserError.offset + 1).toLocaleString(localizer.languageCode()),
+                    position: (parserError.offset + 1).toLocaleString(localizer.localeCodes()),
                 });
             } else if (parserError.message) {
                 message = selection => selection.append('span')
