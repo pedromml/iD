@@ -94,8 +94,9 @@ export function validationMismatchedDates() {
 
         function validateEDTF(key, msgKey) {
             if (!entity.tags[key] || !entity.tags[key + ':edtf']) return;
+            let basic = parseEDTF(entity.tags[key]);
             let parsed = parseEDTF(entity.tags[key + ':edtf']);
-            if (!parsed || parsed.covers(edtf.default(entity.tags[key]))) return;
+            if (!basic || !parsed || parsed.covers(basic)) return;
 
             issues.push(new validationIssue({
                 type: type,
