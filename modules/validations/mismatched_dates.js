@@ -20,19 +20,21 @@ export function validationMismatchedDates() {
     function getReplacementDates(parsed) {
         let likelyDates = new Set();
 
-        let valueFromDate = date => {
-            date.precision = (parsed.lower || parsed.first || parsed).precision;
+        let valueFromDate = (date, precision) => {
+            date.precision = precision;
             return date.edtf.split('T')[0];
         };
 
         if (Number.isFinite(parsed.min)) {
             let min = edtf.default(parsed.min);
-            likelyDates.add(valueFromDate(min));
+            let precision = (parsed.lower || parsed.first || parsed).precision;
+            likelyDates.add(valueFromDate(min, precision));
         }
 
         if (Number.isFinite(parsed.max)) {
             let max = edtf.default(parsed.max);
-            likelyDates.add(valueFromDate(max));
+            let precision = (parsed.upper || parsed.last || parsed).precision;
+            likelyDates.add(valueFromDate(max, precision));
         }
 
         let sortedDates = [...likelyDates];

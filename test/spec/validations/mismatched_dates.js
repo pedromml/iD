@@ -53,6 +53,11 @@ describe('iD.validations.mismatched_dates', function () {
 
     it('suggests replacing date with bounds of EDTF range', function() {
         let validator = iD.validationMismatchedDates(context);
+        expect(validator.getReplacementDates(validator.parseEDTF('1234/..'))).to.deep.equal(['1234']);
+        expect(validator.getReplacementDates(validator.parseEDTF('../5678'))).to.deep.equal(['5678']);
         expect(validator.getReplacementDates(validator.parseEDTF('1234/5678'))).to.deep.equal(['1234', '5678']);
+        expect(validator.getReplacementDates(validator.parseEDTF('1234-10/5678'))).to.deep.equal(['1234-10', '5678']);
+        expect(validator.getReplacementDates(validator.parseEDTF('1234/5678-10-11'))).to.deep.equal(['1234', '5678-10-11']);
+        expect(validator.getReplacementDates(validator.parseEDTF('1234/5678-10-11T12:13:14'))).to.deep.equal(['1234', '5678-10-11']);
     });
 });
