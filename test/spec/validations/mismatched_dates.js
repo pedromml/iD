@@ -50,4 +50,9 @@ describe('iD.validations.mismatched_dates', function () {
         expect(issue.entityIds).to.have.lengthOf(1);
         expect(issue.entityIds[0]).to.eql('n-1');
     });
+
+    it('suggests replacing date with bounds of EDTF range', function() {
+        let validator = iD.validationMismatchedDates(context);
+        expect(validator.getReplacementDates(validator.parseEDTF('1234/5678'))).to.deep.equal(['1234', '5678']);
+    });
 });
