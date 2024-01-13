@@ -51,6 +51,13 @@ describe('iD.validations.mismatched_dates', function () {
         expect(issue.entityIds[0]).to.eql('n-1');
     });
 
+    it('equates unknown date with unspecified date in EDTF extended interval', function() {
+        let validator = iD.validationMismatchedDates(context);
+        expect(validator.parseEDTF('/1234').toString()).to.equal(validator.parseEDTF('../1234').toString());
+        expect(validator.parseEDTF('5678/').toString()).to.equal(validator.parseEDTF('5678/..').toString());
+        expect(validator.parseEDTF('/').toString()).to.equal(validator.parseEDTF('../..').toString());
+    });
+
     it('suggests replacing date with bounds of EDTF range', function() {
         let validator = iD.validationMismatchedDates(context);
         expect(validator.getReplacementDates(validator.parseEDTF('1234/..'))).to.deep.equal(['1234']);

@@ -10,7 +10,18 @@ export function validationMismatchedDates() {
 
     function parseEDTF(value) {
         try {
-            return edtf.default(value);
+            let parsed = edtf.default(value);
+
+            // According to edtf.js, an extended interval with an unknown start or end covers no date.
+            // This isn't useful for the purpose of testing whether the basic date matches, so treat it as an unspecified start or end.
+            if (parsed.lower === null) {
+                parsed.lower = Infinity;
+            }
+            if (parsed.upper === null) {
+                parsed.upper = Infinity;
+            }
+
+            return parsed;
         } catch (e) {
             // Already handled by invalid_format rule.
             return;
