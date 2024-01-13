@@ -292,6 +292,7 @@ describe('iD.util', function() {
             expect(iD.utilDisplayName({tags: {name: 'Son of the Tree That Owns Itself', start_date: '1946-12-04'}})).to.eql('Son of the Tree That Owns Itself [1946 – ]');
             expect(iD.utilDisplayName({tags: {name: 'Great Elm', end_date: '1876-02-15'}})).to.eql('Great Elm [ – 1876]');
             expect(iD.utilDisplayName({tags: {name: 'Capitol Christmas Tree', start_date: '2021-11-19', end_date: '2021-12-25'}})).to.eql('Capitol Christmas Tree [2021]');
+            expect(iD.utilDisplayName({tags: {name: 'Binary Search Tree', start_date: '0b0110', end_date: '0b0110'}})).to.eql('Binary Search Tree');
         });
     });
 
