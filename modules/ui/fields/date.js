@@ -249,24 +249,26 @@ export function uiFieldDate(field, context) {
 
         if (!yearValue) {
             tag[field.key] = undefined;
-        } else if (isNaN(yearValue)) {
-            tag[field.key] = context.cleanTagValue(yearValue);
         } else {
             let value = '';
             let year = parseInt(context.cleanTagValue(yearValue), 10);
-            if (eraValue === bceName) {
-                value += '-' + String(year - 1).padStart(4, '0');
-            } else {
-                value += String(year).padStart(4, '0');
-            }
-            let month = context.cleanTagValue(monthValue);
-            if (monthNames.includes(month)) {
-                month = monthNames.indexOf(month) + 1;
-                value += '-' + String(month).padStart(2, '0');
-                let day = parseInt(context.cleanTagValue(dayValue), 10);
-                if (!isNaN(day)) {
-                    value += '-' + String(day).padStart(2, '0');
+            if (isNaN(year)) {
+                if (eraValue === bceName) {
+                    value += '-' + String(year - 1).padStart(4, '0');
+                } else {
+                    value += String(year).padStart(4, '0');
                 }
+                let month = context.cleanTagValue(monthValue);
+                if (monthNames.includes(month)) {
+                    month = monthNames.indexOf(month) + 1;
+                    value += '-' + String(month).padStart(2, '0');
+                    let day = parseInt(context.cleanTagValue(dayValue), 10);
+                    if (!isNaN(day)) {
+                        value += '-' + String(day).padStart(2, '0');
+                    }
+                }
+            } else {
+                value = context.cleanTagValue(yearValue);
             }
             tag[field.key] = value;
         }
@@ -424,7 +426,7 @@ export function uiFieldDate(field, context) {
             }
         }
 
-        utilGetSetValue(yearInput, typeof yearValue === 'number' ? yearValue : '')
+        utilGetSetValue(yearInput, (typeof yearValue === 'number' || typeof yearValue === 'string') ? yearValue : '')
             .attr('title', isMixed ? yearValue.filter(Boolean).join('\n') : null)
             .attr('placeholder', isMixed ? t('inspector.multiple_values') : t('inspector.date.year'))
             .classed('mixed', isMixed);

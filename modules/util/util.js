@@ -186,29 +186,31 @@ export function utilDisplayName(entity) {
         let start = entity.tags.start_date && utilNormalizeDateString(entity.tags.start_date);
         let end = entity.tags.end_date && utilNormalizeDateString(entity.tags.end_date);
 
-        // Keep the date range suffix succinct by only including the year and era.
-        let options = {timeZone: 'UTC'};
-        if (end) {
-            options.year = end.localeOptions.year;
-            options.era = end.localeOptions.era;
-        }
-        if (start) {
-            // Override any settings from the end of the range.
-            options.year = start.localeOptions.year;
-            options.era = start.localeOptions.era;
-        }
+        if (start || end) {
+            // Keep the date range suffix succinct by only including the year and era.
+            let options = {timeZone: 'UTC'};
+            if (end) {
+                options.year = end.localeOptions.year;
+                options.era = end.localeOptions.era;
+            }
+            if (start) {
+                // Override any settings from the end of the range.
+                options.year = start.localeOptions.year;
+                options.era = start.localeOptions.era;
+            }
 
-        // Get the date range format in structured form, then filter out anything untagged.
-        let format = new Intl.DateTimeFormat(localizer.languageCode(), options);
-        let lateDate = new Date(Date.UTC(9999));
-        let parts = format.formatRangeToParts(start ? start.date : lateDate, end ? end.date : lateDate);
-        if (!start) {
-            parts = parts.filter(p => p.source !== 'startRange');
+            // Get the date range format in structured form, then filter out anything untagged.
+            let format = new Intl.DateTimeFormat(localizer.languageCode(), options);
+            let lateDate = new Date(Date.UTC(9999));
+            let parts = format.formatRangeToParts(start ? start.date : lateDate, end ? end.date : lateDate);
+            if (!start) {
+                parts = parts.filter(p => p.source !== 'startRange');
+            }
+            if (!end) {
+                parts = parts.filter(p => p.source !== 'endRange');
+            }
+            dateRange = parts.map(p => p.value).join('');
         }
-        if (!end) {
-            parts = parts.filter(p => p.source !== 'endRange');
-        }
-        dateRange = parts.map(p => p.value).join('');
     }
 
     var localizedNameKey = 'name:' + localizer.languageCode().toLowerCase();
