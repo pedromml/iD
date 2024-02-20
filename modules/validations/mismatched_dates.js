@@ -121,64 +121,7 @@ export function validationMismatchedDates() {
                 reference: showReferenceEDTF,
                 entityIds: [entity.id],
                 hash: key + entity.tags[key + ':edtf'],
-
-                dynamicFixes: function() {
-                    let fixes = [];
-                    let likelyDates = new Set();
-
-                    let valueFromDate = date => {
-                        date.precision = (parsed.lower || parsed.first || parsed).precision;
-                        return date.edtf.split('T')[0];
-                    };
-
-                    if (Number.isFinite(parsed.min)) {
-                        let min = edtf.default(parsed.min);
-                        likelyDates.add(valueFromDate(min));
-                    }
-
-                    if (Number.isFinite(parsed.max)) {
-                        let max = edtf.default(parsed.max);
-                        likelyDates.add(valueFromDate(max));
-                    }
-
-                    let sortedDates = [...likelyDates];
-                    sortedDates.sort();
-                    fixes.push(...sortedDates.map(value => {
-                        let normalized = utilNormalizeDateString(value);
-                        let localeDateString = normalized.date.toLocaleDateString(localizer.localeCodes(), normalized.localeOptions);
-                        return new validationIssueFix({
-                            title: t.append('issues.fix.reformat_date.title', { date: localeDateString }),
-                            onClick: function(context) {
-                                context.perform(function(graph) {
-                                    var entityInGraph = graph.hasEntity(entity.id);
-                                    if (!entityInGraph) return graph;
-                                    var newTags = Object.assign({}, entityInGraph.tags);
-                                    newTags[key] = normalized.value;
-                                    return actionChangeTags(entityInGraph.id, newTags)(graph);
-                                }, t('issues.fix.reformat_date.annotation'));
-                            }
-                        });
-                    }));
-
-                    fixes.push(new validationIssueFix({
-                        icon: 'iD-operation-delete',
-                        title: t.append('issues.fix.remove_tag.title'),
-                        onClick: function(context) {
-                            context.perform(function(graph) {
-                                var entityInGraph = graph.hasEntity(entity.id);
-                                if (!entityInGraph) return graph;
-                                var newTags = Object.assign({}, entityInGraph.tags);
-                                delete newTags[key];
-                                return actionChangeTags(entityInGraph.id, newTags)(graph);
-                            }, t('issues.fix.remove_tag.annotation'));
-                        }
-                    }));
-
-                    return fixes;
-                }
-
                 dynamicFixes: () => getDynamicFixes(key, parsed),
-      
             }));
         }
         validateEDTF('start_date', 'start');
