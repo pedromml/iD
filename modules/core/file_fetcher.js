@@ -39,6 +39,7 @@ export function coreFileFetcher() {
     'preset_defaults': presetsCdnUrl + 'dist/preset_defaults.min.json',
     'preset_fields': presetsCdnUrl + 'dist/fields.min.json',
     'preset_presets': presetsCdnUrl + 'dist/presets.min.json',
+    'wayback': 'https://www.arcgis.com/sharing/rest/content/groups/0f3189e1d1414edfad860b697b7d8311?f=json',
     'wmf_sitematrix': wmfSitematrixCdnUrl.replace('{version}', '0.1') + 'wikipedia.min.json'
   };
 
