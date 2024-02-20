@@ -587,7 +587,7 @@ rendererBackgroundSource.Custom = function(template) {
             var parts = cleaned.split('?', 2);
             var qs = utilStringQs(parts[1]);
 
-            ['access_token', 'connectId', 'token'].forEach(function(param) {
+            ['access_token', 'connectId', 'token', 'Signature'].forEach(function(param) {
                 if (qs[param]) {
                     qs[param] = '{apikey}';
                 }
