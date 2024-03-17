@@ -1836,6 +1836,10 @@ en:
           one: "{highway} is disconnected from other roads and paths"
           other: "{count} routable features are connected only to each other"
         reference: "All roads, paths, and ferry routes should connect to form a single routing network. This feature (or small collection of features) is either disconnected from the routing network or only connected to it via a feature that few applications consider routable."
+    empty_start_date:
+      title: Empty start date
+      feature:
+        message: "Start date shouldn't be left empty"
     fixme_tag:
       message: '{feature} has a "Fix Me" request'
       reference: 'A "fixme" tag indicates that a mapper has requested help with a feature.'
@@ -1977,6 +1981,8 @@ en:
       add_a_tunnel:
         title: Add a tunnel
         annotation: Added a tunnel.
+      add_start_date:
+        title: Add a start date
       address_the_concern:
         title: Address the concern
       change_date_range:
