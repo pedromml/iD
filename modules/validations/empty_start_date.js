@@ -7,14 +7,14 @@ export function validationEmptyStartDate() {
 
   const validation = function checkEmptyStartDate(entity) {
     // If start_date is not empty, return nothing
-    if (entity.tags && (entity.tags.start_date || entity.tags["start_date:edtf"])) return [];
+    if (entity.tags && (entity.tags.start_date || entity.tags['start_date:edtf'])) return [];
     // If entity has no tags, return nothing
     if (Object.keys(entity.tags).length === 0) return [];
     // Rule should be ignored for natural entities and waterways
-    if (entity.tags && (entity.tags.natural || entity.tags.waterway || entity.tags.water)) return 0;
+    if (entity.tags && (entity.tags.natural || entity.tags.waterway || entity.tags.water)) return [];
 
     const entityID = entity.id;
-    
+
     function showReferenceDate(selection) {
         selection.selectAll('.issue-reference')
             .data([0])
@@ -40,10 +40,10 @@ export function validationEmptyStartDate() {
           new validationIssueFix({ title: t.append('issues.fix.add_start_date.title') })
         ];
       }
-    })]
+    })];
   };
 
   validation.type = type;
-  
+
   return validation;
 }

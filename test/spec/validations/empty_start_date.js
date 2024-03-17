@@ -30,7 +30,7 @@ describe('iD.validations.empty_start_date', function () {
         return issues;
     }
 
-    it('has no errors on init', function() {
+    it('has only missing tag errors on init', function() {
         var issues = validate();
         expect(issues).to.have.lengthOf(0);
     });
