@@ -15,13 +15,13 @@ export function validationEmptyStartDate() {
 
     const entityID = entity.id;
 
-    function showReferenceDate(selection) {
+    function showReference(selection) {
         selection.selectAll('.issue-reference')
             .data([0])
             .enter()
             .append('div')
             .attr('class', 'issue-reference')
-            .call(t.append('issues.invalid_format.date.reference'));
+            .call(t.append('issues.empty_start_date.reference'));
     }
 
     return [new validationIssue({
@@ -33,7 +33,7 @@ export function validationEmptyStartDate() {
           feature: utilDisplayLabel(entity, context.graph())
         }) : '';
       },
-      reference: showReferenceDate,
+      reference: showReference,
       entityIds: [entityID],
       dynamicFixes: () => {
         return [

@@ -1839,7 +1839,8 @@ en:
     empty_start_date:
       title: Empty start date
       feature:
-        message: "Start date shouldn't be left empty"
+        message: "Start date shouldn't be empty"
+      reference: "Features should have a start date"
     fixme_tag:
       message: '{feature} has a "Fix Me" request'
       reference: 'A "fixme" tag indicates that a mapper has requested help with a feature.'
