@@ -11,6 +11,8 @@ import { localizer, t } from '../../core/localizer';
 import { utilArrayDifference, utilArrayIdentical } from '../../util/array';
 import { utilGetSetValue, utilNoAuto, utilRebind, utilTagDiff } from '../../util';
 import { uiTooltip } from '..';
+import { allowUpperCaseTagValues } from '../../osm/tags';
+import { fileFetcher } from '../../core';
 
 
 export function uiSectionRawTagEditor(id, context) {
@@ -30,6 +32,11 @@ export function uiSectionRawTagEditor(id, context) {
         { id: 'list', icon: '#fas-th-list' },
         { id: 'text', icon: '#fas-i-cursor' }
     ];
+
+    let _discardTags = {};
+    fileFetcher.get('discarded')
+        .then((d) => { _discardTags = d; })
+        .catch(() => { /* ignore */ });
 
     var _tagView = (prefs('raw-tag-editor-view') || 'list');   // 'list, 'text'
     var _readOnlyTags = [];
@@ -285,7 +292,11 @@ export function uiSectionRawTagEditor(id, context) {
             });
 
         items.selectAll('button.remove')
-            .on(('PointerEvent' in window ? 'pointer' : 'mouse') + 'down', removeTag);  // 'click' fires too late - #5878
+            .on(('PointerEvent' in window ? 'pointer' : 'mouse') + 'down', // 'click' fires too late - #5878
+                (d3_event, d) => {
+                    if (d3_event.button !== 0) return;
+                    removeTag(d3_event, d);
+                });
 
     }
 
@@ -400,7 +411,16 @@ export function uiSectionRawTagEditor(id, context) {
                 .fetcher(function(value, callback) {
                     var keyString = utilGetSetValue(key);
                     if (!_tags[keyString]) return;
-                    var data = _tags[keyString].filter(Boolean).map(function(tagValue) {
+                    var data = _tags[keyString].map(function(tagValue) {
+                        if (!tagValue) {
+                            return {
+                                value: ' ',
+                                title: t('inspector.empty'),
+                                display: selection => selection.text('')
+                                    .classed('virtual-option', true)
+                                    .call(t.append('inspector.empty'))
+                            };
+                        }
                         return {
                             value: tagValue,
                             title: tagValue
@@ -421,7 +441,11 @@ export function uiSectionRawTagEditor(id, context) {
                     query: value
                 }, function(err, data) {
                     if (!err) {
-                        var filtered = data.filter(function(d) { return _tags[d.value] === undefined; });
+                        const filtered = data
+                            .filter(d => _tags[d.value] === undefined) // already used tag
+                            .filter(d => !(d.value in _discardTags)) // do not suggest discardable tags (see #9817)
+                            .filter(d => !/_\d$/.test(d)) // tag like name_1 (see #9422)
+                            .filter(d => d.value.toLowerCase().includes(value.toLowerCase())); // tag does not match user input
                         callback(sort(value, filtered));
                     }
                 });
@@ -435,9 +459,13 @@ export function uiSectionRawTagEditor(id, context) {
                     geometry: geometry,
                     query: value
                 }, function(err, data) {
-                    if (!err) callback(sort(value, data));
+                    if (!err) {
+                        const filtered = data.filter(d => d.value.toLowerCase().includes(value.toLowerCase()));
+                        callback(sort(value, filtered));
+                    }
                 });
-            }));
+            })
+            .caseSensitive(allowUpperCaseTagValues.test(utilGetSetValue(key))));
 
 
         function sort(value, data) {
@@ -529,6 +557,9 @@ export function uiSectionRawTagEditor(id, context) {
 
         // exit if this is a multiselection and no value was entered
         if (typeof d.value !== 'string' && !this.value) return;
+
+        // remove tag if it is now empty
+        if (!this.value.trim()) return removeTag(d3_event, d);
 
         // exit if we are currently about to delete this row anyway - #6366
         if (_pendingChange && _pendingChange.hasOwnProperty(d.key) && _pendingChange[d.key] === undefined) return;

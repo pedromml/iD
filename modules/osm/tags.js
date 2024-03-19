@@ -60,9 +60,6 @@ export var osmAreaKeysExceptions = {
         turntable: true,
         wash: true
     },
-    traffic_calming: {
-        island: true
-    },
     waterway: {
         dam: true
     }
@@ -76,11 +73,11 @@ export function osmTagSuggestingArea(tags) {
     var returnTags = {};
     for (var realKey in tags) {
         const key = osmRemoveLifecyclePrefix(realKey);
-        if (key in osmAreaKeys && !(tags[key] in osmAreaKeys[key])) {
+        if (key in osmAreaKeys && !(tags[realKey] in osmAreaKeys[key])) {
             returnTags[realKey] = tags[realKey];
             return returnTags;
         }
-        if (key in osmAreaKeysExceptions && tags[key] in osmAreaKeysExceptions[key]) {
+        if (key in osmAreaKeysExceptions && tags[realKey] in osmAreaKeysExceptions[key]) {
             returnTags[realKey] = tags[realKey];
             return returnTags;
         }
@@ -152,6 +149,8 @@ export var osmOneWayTags = {
         'yes': true
     },
     'seamark:type': {
+        'two-way_route': true,
+        'recommended_traffic_lane': true,
         'separation_lane': true,
         'separation_roundabout': true
     },
@@ -160,7 +159,9 @@ export var osmOneWayTags = {
         'ditch': true,
         'drain': true,
         'fish_pass': true,
+        'pressurised': true,
         'river': true,
+        'spillway': true,
         'stream': true,
         'tidal_channel': true
     }
@@ -197,7 +198,7 @@ export var osmSemipavedTags = {
 export var osmRightSideIsInsideTags = {
     'natural': {
         'cliff': true,
-        'coastline': 'coastline',
+        'coastline': 'coastline'
     },
     'barrier': {
         'retaining_wall': true,
@@ -206,7 +207,8 @@ export var osmRightSideIsInsideTags = {
         'city_wall': true,
     },
     'man_made': {
-        'embankment': true
+        'embankment': true,
+        'quay': true
     },
     'waterway': {
         'weir': true
@@ -218,7 +220,7 @@ export var osmRightSideIsInsideTags = {
 export var osmRoutableHighwayTagValues = {
     motorway: true, trunk: true, primary: true, secondary: true, tertiary: true, residential: true,
     motorway_link: true, trunk_link: true, primary_link: true, secondary_link: true, tertiary_link: true,
-    unclassified: true, road: true, service: true, track: true, living_street: true, bus_guideway: true,
+    unclassified: true, road: true, service: true, track: true, living_street: true, bus_guideway: true, busway: true,
     path: true, footway: true, cycleway: true, bridleway: true, pedestrian: true, corridor: true, steps: true
 };
 // "highway" tag values that generally do not allow motor vehicles
@@ -237,3 +239,19 @@ export var osmRailwayTrackTagValues = {
 export var osmFlowingWaterwayTagValues = {
     canal: true, ditch: true, drain: true, fish_pass: true, river: true, stream: true, tidal_channel: true
 };
+
+// Tags which values should be considered case sensitive when offering tag suggestions
+export const allowUpperCaseTagValues = /network|taxon|genus|species|brand|grape_variety|royal_cypher|listed_status|booth|rating|stars|:output|_hours|_times|_ref|manufacturer|country|target|brewery|cai_scale|traffic_sign/;
+
+// Returns whether a `colour` tag value looks like a valid color we can display
+export function isColourValid(value) {
+    if (!value.match(/^(#([0-9a-fA-F]{3}){1,2}|\w+)$/)) {
+        // OSM only supports hex or named colors
+        return false;
+    }
+    if (!CSS.supports('color', value) || ['unset', 'inherit', 'initial', 'revert'].includes(value)) {
+        // see https://stackoverflow.com/a/68217760/1627467
+        return false;
+    }
+    return true;
+}
