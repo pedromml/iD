@@ -48792,6 +48792,11 @@
         return [];
       const entityID = entity.id;
       return entitySources.map((source) => {
+        try {
+          const sourceURL = new URL(source);
+          source = sourceURL.hostname;
+        } catch (e3) {
+        }
         const matchRule = incompatibleRules.find((rule) => {
           if (!rule.regex.test(source))
             return false;
