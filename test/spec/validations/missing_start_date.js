@@ -1,4 +1,4 @@
-describe('iD.validations.empty_start_date', function () {
+describe('iD.validations.missing_start_date', function () {
     var context;
 
     beforeEach(function() {
@@ -20,7 +20,7 @@ describe('iD.validations.empty_start_date', function () {
     }
 
     function validate() {
-        var validator = iD.validationEmptyStartDate(context);
+        var validator = iD.validationMissingStartDate(context);
         var changes = context.history().changes();
         var entities = changes.modified.concat(changes.created);
         var issues = [];

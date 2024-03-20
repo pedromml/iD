@@ -1836,11 +1836,6 @@ en:
           one: "{highway} is disconnected from other roads and paths"
           other: "{count} routable features are connected only to each other"
         reference: "All roads, paths, and ferry routes should connect to form a single routing network. This feature (or small collection of features) is either disconnected from the routing network or only connected to it via a feature that few applications consider routable."
-    empty_start_date:
-      title: Empty start date
-      feature:
-        message: "Start date shouldn't be empty"
-      reference: "Features should have a start date"
     fixme_tag:
       message: '{feature} has a "Fix Me" request'
       reference: 'A "fixme" tag indicates that a mapper has requested help with a feature.'
@@ -1899,6 +1894,11 @@ en:
       tip: "Find relations with missing or incorrect member roles"
       multipolygon:
         reference: "Multipolygon members must have an inner or outer role."
+    missing_start_date:
+      title: Empty start date
+      feature:
+        message: "Start date shouldn't be empty"
+      reference: "Every feature should have a start date to prevent it from appearing since the beginning of time. If you are not sure about the start date, you can add an approximate using the EDTF date field."
     missing_tag:
       title: Missing Tags
       tip: "Find features that are missing descriptive tags"
