@@ -39,5 +39,6 @@ export {
     osmRemoveLifecyclePrefix,
     osmRoutableHighwayTagValues,
     osmFlowingWaterwayTagValues,
-    osmRailwayTrackTagValues
+    osmRailwayTrackTagValues,
+    osmTimelessFeatureTagValues
 } from './tags';

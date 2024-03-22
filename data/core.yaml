@@ -1894,6 +1894,11 @@ en:
       tip: "Find relations with missing or incorrect member roles"
       multipolygon:
         reference: "Multipolygon members must have an inner or outer role."
+    missing_start_date:
+      title: Missing Start Dates
+      feature:
+        message: "Find features that are missing a start date"
+      reference: "Every feature should have a start date to prevent it from appearing since the beginning of time. If you are not sure about the start date, you can add an approximate date or a date range using the EDTF date field."
     missing_tag:
       title: Missing Tags
       tip: "Find features that are missing descriptive tags"
@@ -1977,6 +1982,8 @@ en:
       add_a_tunnel:
         title: Add a tunnel
         annotation: Added a tunnel.
+      add_start_date:
+        title: Add a start date
       address_the_concern:
         title: Address the concern
       change_date_range:
