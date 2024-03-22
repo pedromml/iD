@@ -258,5 +258,5 @@ export function isColourValid(value) {
 
 export var osmTimelessFeatureTagValues = {
     wood: true, wetland: true, beach: true, cave_entrance: true, peak: true, cliff: true, coastline: true, tree_row: true,
-    water: true, scrub: true, grassland: true, heath: true, bare_rock: true, glacier: true, stream: true, river: true, pond: true, basin: true, lake: true, reservoir: true
+    water: true, scrub: true, grassland: true, heath: true, bare_rock: true, glacier: true, stream: true, river: true, pond: true, basin: true, lake: true
 };
