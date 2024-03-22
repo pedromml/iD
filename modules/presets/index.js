@@ -23,7 +23,9 @@ export { _mainPresetIndex as presetManager };
  * Sets preset defaults specific to OpenHistoricalMap.
  */
 function setHistoricalDefaults(defaults) {
-  defaults.relation.unshift('type/chronology');
+  if (defaults.relation) {
+    defaults.relation.unshift('type/chronology');
+  }
 }
 
 /**
@@ -45,14 +47,18 @@ function addHistoricalPresets(presets) {
  * Adds fields specific to OpenHistoricalMap.
  */
 function addHistoricalFields(fields) {
-  fields.start_date.type = 'date';
-  fields.end_date = {
-    ...fields.start_date,
-    key: 'end_date'
-  };
+  if (fields.start_date) {
+    fields.start_date.type = 'date';
+    fields.end_date = {
+      ...fields.start_date,
+      key: 'end_date'
+    };
+  }
 
   // A combo box would encourage mappers to choose one of the suggestions, but we want mappers to be as detailed as possible.
-  fields.source.type = 'text';
+  if (fields.source) {
+    fields.source.type = 'text';
+  }
 
   fields.license = {
     key: 'license',
