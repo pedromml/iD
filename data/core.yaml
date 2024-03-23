@@ -1896,9 +1896,9 @@ en:
         reference: "Multipolygon members must have an inner or outer role."
     missing_start_date:
       title: Missing Start Dates
-      feature:
-        message: "Find features that are missing a start date"
-      reference: "Every feature should have a start date to prevent it from appearing since the beginning of time. If you are not sure about the start date, you can add an approximate date or a date range using the EDTF date field."
+      tip: "Find features that are missing a start date"
+      message: "{feature} has no start date"
+      reference: "Every feature should have a start date to prevent it from appearing since the beginning of time. If you are unsure of the start date, you can add an approximate date or a date range using the EDTF date field."
     missing_tag:
       title: Missing Tags
       tip: "Find features that are missing descriptive tags"
