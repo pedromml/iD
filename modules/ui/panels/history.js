@@ -70,6 +70,13 @@ export function uiPanelHistory(context) {
                 .attr('target', '_blank')
                 .call(t.append('info_panels.history.changeset_link'));
         }
+
+        links
+          .append('a')
+          .attr('class', 'changeset-osmcha-link')
+          .attr('href', 'https://osmcha.openhistoricalmap.org/changesets/' + changeset)
+          .attr('target', '_blank')
+          .text('OSMCha');
     }
 
 

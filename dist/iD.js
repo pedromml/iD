@@ -62550,6 +62550,7 @@
       if (osm) {
         links.append("a").attr("class", "changeset-osm-link").attr("href", osm.changesetURL(changeset)).attr("target", "_blank").call(_t.append("info_panels.history.changeset_link"));
       }
+      links.append("a").attr("class", "changeset-osmcha-link").attr("href", "https://osmcha.openhistoricalmap.org/changesets/" + changeset).attr("target", "_blank").text("OSMCha");
     }
     function redraw(selection2) {
       var selectedNoteID = context.selectedNoteID();
