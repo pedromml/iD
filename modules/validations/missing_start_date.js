@@ -44,7 +44,7 @@ export function validationMissingStartDate(context) {
       severity: 'warning',
       message: (context) => {
         const entity = context.hasEntity(entityID);
-        return entity ? t.append('issues.missing_start_date.feature.message', {
+        return entity ? t.append('issues.missing_start_date.message', {
           feature: utilDisplayLabel(entity, context.graph())
         }) : '';
       },
