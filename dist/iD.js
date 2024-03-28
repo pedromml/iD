@@ -48397,7 +48397,7 @@
         severity: "warning",
         message: (context2) => {
           const entity2 = context2.hasEntity(entityID);
-          return entity2 ? _t.append("issues.missing_start_date.feature.message", {
+          return entity2 ? _t.append("issues.missing_start_date.message", {
             feature: utilDisplayLabel(entity2, context2.graph())
           }) : "";
         },
