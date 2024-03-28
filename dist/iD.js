@@ -3039,8 +3039,8 @@
   // node_modules/which-polygon/node_modules/quickselect/quickselect.js
   var require_quickselect = __commonJS({
     "node_modules/which-polygon/node_modules/quickselect/quickselect.js"(exports2, module2) {
-      (function(global3, factory) {
-        typeof exports2 === "object" && typeof module2 !== "undefined" ? module2.exports = factory() : typeof define === "function" && define.amd ? define(factory) : global3.quickselect = factory();
+      (function(global2, factory) {
+        typeof exports2 === "object" && typeof module2 !== "undefined" ? module2.exports = factory() : typeof define === "function" && define.amd ? define(factory) : global2.quickselect = factory();
       })(exports2, function() {
         "use strict";
         function quickselect2(arr, k, left, right, compare) {
@@ -3969,31 +3969,100 @@
   // node_modules/polygon-clipping/dist/polygon-clipping.umd.js
   var require_polygon_clipping_umd = __commonJS({
     "node_modules/polygon-clipping/dist/polygon-clipping.umd.js"(exports2, module2) {
-      (function(global3, factory) {
-        typeof exports2 === "object" && typeof module2 !== "undefined" ? module2.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global3 = typeof globalThis !== "undefined" ? globalThis : global3 || self, global3.polygonClipping = factory());
+      (function(global2, factory) {
+        typeof exports2 === "object" && typeof module2 !== "undefined" ? module2.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global2 = typeof globalThis !== "undefined" ? globalThis : global2 || self, global2.polygonClipping = factory());
       })(exports2, function() {
         "use strict";
-        function _classCallCheck(instance, Constructor) {
-          if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
+        function __generator(thisArg, body) {
+          var _ = {
+            label: 0,
+            sent: function() {
+              if (t[0] & 1)
+                throw t[1];
+              return t[1];
+            },
+            trys: [],
+            ops: []
+          }, f2, y, t, g2;
+          return g2 = {
+            next: verb(0),
+            "throw": verb(1),
+            "return": verb(2)
+          }, typeof Symbol === "function" && (g2[Symbol.iterator] = function() {
+            return this;
+          }), g2;
+          function verb(n2) {
+            return function(v) {
+              return step([n2, v]);
+            };
           }
-        }
-        function _defineProperties(target, props) {
-          for (var i2 = 0; i2 < props.length; i2++) {
-            var descriptor2 = props[i2];
-            descriptor2.enumerable = descriptor2.enumerable || false;
-            descriptor2.configurable = true;
-            if ("value" in descriptor2)
-              descriptor2.writable = true;
-            Object.defineProperty(target, descriptor2.key, descriptor2);
+          function step(op) {
+            if (f2)
+              throw new TypeError("Generator is already executing.");
+            while (_)
+              try {
+                if (f2 = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done)
+                  return t;
+                if (y = 0, t)
+                  op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                  case 0:
+                  case 1:
+                    t = op;
+                    break;
+                  case 4:
+                    _.label++;
+                    return {
+                      value: op[1],
+                      done: false
+                    };
+                  case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [0];
+                    continue;
+                  case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                  default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                      _ = 0;
+                      continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                      _.label = op[1];
+                      break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                      _.label = t[1];
+                      t = op;
+                      break;
+                    }
+                    if (t && _.label < t[2]) {
+                      _.label = t[2];
+                      _.ops.push(op);
+                      break;
+                    }
+                    if (t[2])
+                      _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                }
+                op = body.call(thisArg, _);
+              } catch (e) {
+                op = [6, e];
+                y = 0;
+              } finally {
+                f2 = t = 0;
+              }
+            if (op[0] & 5)
+              throw op[1];
+            return {
+              value: op[0] ? op[1] : void 0,
+              done: true
+            };
           }
-        }
-        function _createClass(Constructor, protoProps, staticProps) {
-          if (protoProps)
-            _defineProperties(Constructor.prototype, protoProps);
-          if (staticProps)
-            _defineProperties(Constructor, staticProps);
-          return Constructor;
         }
         var Node = (
           /** @class */
@@ -4182,9 +4251,8 @@
             Tree2.prototype.pop = function() {
               var node = this._root;
               if (node) {
-                while (node.left) {
+                while (node.left)
                   node = node.left;
-                }
                 this._root = splay(node.key, this._root, this._comparator);
                 this._root = this._remove(node.key, this._root, this._comparator);
                 return {
@@ -4303,9 +4371,8 @@
                 t = this._root;
               }
               if (t)
-                while (t.left) {
+                while (t.left)
                   t = t.left;
-                }
               return t;
             };
             Tree2.prototype.maxNode = function(t) {
@@ -4313,9 +4380,8 @@
                 t = this._root;
               }
               if (t)
-                while (t.right) {
+                while (t.right)
                   t = t.right;
-                }
               return t;
             };
             Tree2.prototype.at = function(index2) {
@@ -4345,9 +4411,8 @@
               var successor = null;
               if (d.right) {
                 successor = d.right;
-                while (successor.left) {
+                while (successor.left)
                   successor = successor.left;
-                }
                 return successor;
               }
               var comparator = this._comparator;
@@ -4368,9 +4433,8 @@
               var predecessor = null;
               if (d.left !== null) {
                 predecessor = d.left;
-                while (predecessor.right) {
+                while (predecessor.right)
                   predecessor = predecessor.right;
-                }
                 return predecessor;
               }
               var comparator = this._comparator;
@@ -4422,14 +4486,14 @@
               return this._root === null;
             };
             Object.defineProperty(Tree2.prototype, "size", {
-              get: function get4() {
+              get: function() {
                 return this._size;
               },
               enumerable: true,
               configurable: true
             });
             Object.defineProperty(Tree2.prototype, "root", {
-              get: function get4() {
+              get: function() {
                 return this._root;
               },
               enumerable: true,
@@ -4437,7 +4501,7 @@
             });
             Tree2.prototype.toString = function(printNode) {
               if (printNode === void 0) {
-                printNode = function printNode2(n2) {
+                printNode = function(n2) {
                   return String(n2.key);
                 };
               }
@@ -4459,6 +4523,45 @@
             };
             Tree2.prototype.split = function(key) {
               return split(key, this._root, this._comparator);
+            };
+            Tree2.prototype[Symbol.iterator] = function() {
+              var current, Q, done;
+              return __generator(this, function(_a) {
+                switch (_a.label) {
+                  case 0:
+                    current = this._root;
+                    Q = [];
+                    done = false;
+                    _a.label = 1;
+                  case 1:
+                    if (!!done)
+                      return [3, 6];
+                    if (!(current !== null))
+                      return [3, 2];
+                    Q.push(current);
+                    current = current.left;
+                    return [3, 5];
+                  case 2:
+                    if (!(Q.length !== 0))
+                      return [3, 4];
+                    current = Q.pop();
+                    return [4, current];
+                  case 3:
+                    _a.sent();
+                    current = current.right;
+                    return [3, 5];
+                  case 4:
+                    done = true;
+                    _a.label = 5;
+                  case 5:
+                    return [3, 1];
+                  case 6:
+                    return [
+                      2
+                      /*return*/
+                    ];
+                }
+              });
             };
             return Tree2;
           }()
@@ -4548,12 +4651,12 @@
           var i2 = left - 1;
           var j2 = right + 1;
           while (true) {
-            do {
+            do
               i2++;
-            } while (compare(keys2[i2], pivot) < 0);
-            do {
+            while (compare(keys2[i2], pivot) < 0);
+            do
               j2--;
-            } while (compare(keys2[j2], pivot) > 0);
+            while (compare(keys2[j2], pivot) > 0);
             if (i2 >= j2)
               break;
             var tmp = keys2[i2];
@@ -4566,16 +4669,16 @@
           sort(keys2, values, left, j2, compare);
           sort(keys2, values, j2 + 1, right, compare);
         }
-        var isInBbox = function isInBbox2(bbox2, point2) {
+        const isInBbox = (bbox2, point2) => {
           return bbox2.ll.x <= point2.x && point2.x <= bbox2.ur.x && bbox2.ll.y <= point2.y && point2.y <= bbox2.ur.y;
         };
-        var getBboxOverlap = function getBboxOverlap2(b1, b2) {
+        const getBboxOverlap = (b1, b2) => {
           if (b2.ur.x < b1.ll.x || b1.ur.x < b2.ll.x || b2.ur.y < b1.ll.y || b1.ur.y < b2.ll.y)
             return null;
-          var lowerX = b1.ll.x < b2.ll.x ? b2.ll.x : b1.ll.x;
-          var upperX = b1.ur.x < b2.ur.x ? b1.ur.x : b2.ur.x;
-          var lowerY = b1.ll.y < b2.ll.y ? b2.ll.y : b1.ll.y;
-          var upperY = b1.ur.y < b2.ur.y ? b1.ur.y : b2.ur.y;
+          const lowerX = b1.ll.x < b2.ll.x ? b2.ll.x : b1.ll.x;
+          const upperX = b1.ur.x < b2.ur.x ? b1.ur.x : b2.ur.x;
+          const lowerY = b1.ll.y < b2.ll.y ? b2.ll.y : b1.ll.y;
+          const upperY = b1.ur.y < b2.ur.y ? b1.ur.y : b2.ur.y;
           return {
             ll: {
               x: lowerX,
@@ -4587,114 +4690,347 @@
             }
           };
         };
-        var epsilon3 = Number.EPSILON;
-        if (epsilon3 === void 0)
-          epsilon3 = Math.pow(2, -52);
-        var EPSILON_SQ = epsilon3 * epsilon3;
-        var cmp = function cmp2(a, b) {
-          if (-epsilon3 < a && a < epsilon3) {
-            if (-epsilon3 < b && b < epsilon3) {
+        let epsilon$1 = Number.EPSILON;
+        if (epsilon$1 === void 0)
+          epsilon$1 = Math.pow(2, -52);
+        const EPSILON_SQ = epsilon$1 * epsilon$1;
+        const cmp = (a, b) => {
+          if (-epsilon$1 < a && a < epsilon$1) {
+            if (-epsilon$1 < b && b < epsilon$1) {
               return 0;
             }
           }
-          var ab = a - b;
+          const ab = a - b;
           if (ab * ab < EPSILON_SQ * a * b) {
             return 0;
           }
           return a < b ? -1 : 1;
         };
-        var PtRounder = /* @__PURE__ */ function() {
-          function PtRounder2() {
-            _classCallCheck(this, PtRounder2);
+        class PtRounder {
+          constructor() {
             this.reset();
           }
-          _createClass(PtRounder2, [{
-            key: "reset",
-            value: function reset() {
-              this.xRounder = new CoordRounder();
-              this.yRounder = new CoordRounder();
-            }
-          }, {
-            key: "round",
-            value: function round(x, y) {
-              return {
-                x: this.xRounder.round(x),
-                y: this.yRounder.round(y)
-              };
-            }
-          }]);
-          return PtRounder2;
-        }();
-        var CoordRounder = /* @__PURE__ */ function() {
-          function CoordRounder2() {
-            _classCallCheck(this, CoordRounder2);
+          reset() {
+            this.xRounder = new CoordRounder();
+            this.yRounder = new CoordRounder();
+          }
+          round(x, y) {
+            return {
+              x: this.xRounder.round(x),
+              y: this.yRounder.round(y)
+            };
+          }
+        }
+        class CoordRounder {
+          constructor() {
             this.tree = new Tree();
             this.round(0);
           }
-          _createClass(CoordRounder2, [{
-            key: "round",
-            value: function round(coord2) {
-              var node = this.tree.add(coord2);
-              var prevNode = this.tree.prev(node);
-              if (prevNode !== null && cmp(node.key, prevNode.key) === 0) {
-                this.tree.remove(coord2);
-                return prevNode.key;
-              }
-              var nextNode = this.tree.next(node);
-              if (nextNode !== null && cmp(node.key, nextNode.key) === 0) {
-                this.tree.remove(coord2);
-                return nextNode.key;
-              }
-              return coord2;
+          // Note: this can rounds input values backwards or forwards.
+          //       You might ask, why not restrict this to just rounding
+          //       forwards? Wouldn't that allow left endpoints to always
+          //       remain left endpoints during splitting (never change to
+          //       right). No - it wouldn't, because we snap intersections
+          //       to endpoints (to establish independence from the segment
+          //       angle for t-intersections).
+          round(coord2) {
+            const node = this.tree.add(coord2);
+            const prevNode = this.tree.prev(node);
+            if (prevNode !== null && cmp(node.key, prevNode.key) === 0) {
+              this.tree.remove(coord2);
+              return prevNode.key;
             }
-          }]);
-          return CoordRounder2;
-        }();
-        var rounder = new PtRounder();
-        var crossProduct = function crossProduct2(a, b) {
-          return a.x * b.y - a.y * b.x;
+            const nextNode = this.tree.next(node);
+            if (nextNode !== null && cmp(node.key, nextNode.key) === 0) {
+              this.tree.remove(coord2);
+              return nextNode.key;
+            }
+            return coord2;
+          }
+        }
+        const rounder = new PtRounder();
+        const epsilon3 = 11102230246251565e-32;
+        const splitter = 134217729;
+        const resulterrbound = (3 + 8 * epsilon3) * epsilon3;
+        function sum(elen, e, flen, f2, h) {
+          let Q, Qnew, hh, bvirt;
+          let enow = e[0];
+          let fnow = f2[0];
+          let eindex = 0;
+          let findex = 0;
+          if (fnow > enow === fnow > -enow) {
+            Q = enow;
+            enow = e[++eindex];
+          } else {
+            Q = fnow;
+            fnow = f2[++findex];
+          }
+          let hindex = 0;
+          if (eindex < elen && findex < flen) {
+            if (fnow > enow === fnow > -enow) {
+              Qnew = enow + Q;
+              hh = Q - (Qnew - enow);
+              enow = e[++eindex];
+            } else {
+              Qnew = fnow + Q;
+              hh = Q - (Qnew - fnow);
+              fnow = f2[++findex];
+            }
+            Q = Qnew;
+            if (hh !== 0) {
+              h[hindex++] = hh;
+            }
+            while (eindex < elen && findex < flen) {
+              if (fnow > enow === fnow > -enow) {
+                Qnew = Q + enow;
+                bvirt = Qnew - Q;
+                hh = Q - (Qnew - bvirt) + (enow - bvirt);
+                enow = e[++eindex];
+              } else {
+                Qnew = Q + fnow;
+                bvirt = Qnew - Q;
+                hh = Q - (Qnew - bvirt) + (fnow - bvirt);
+                fnow = f2[++findex];
+              }
+              Q = Qnew;
+              if (hh !== 0) {
+                h[hindex++] = hh;
+              }
+            }
+          }
+          while (eindex < elen) {
+            Qnew = Q + enow;
+            bvirt = Qnew - Q;
+            hh = Q - (Qnew - bvirt) + (enow - bvirt);
+            enow = e[++eindex];
+            Q = Qnew;
+            if (hh !== 0) {
+              h[hindex++] = hh;
+            }
+          }
+          while (findex < flen) {
+            Qnew = Q + fnow;
+            bvirt = Qnew - Q;
+            hh = Q - (Qnew - bvirt) + (fnow - bvirt);
+            fnow = f2[++findex];
+            Q = Qnew;
+            if (hh !== 0) {
+              h[hindex++] = hh;
+            }
+          }
+          if (Q !== 0 || hindex === 0) {
+            h[hindex++] = Q;
+          }
+          return hindex;
+        }
+        function estimate(elen, e) {
+          let Q = e[0];
+          for (let i2 = 1; i2 < elen; i2++)
+            Q += e[i2];
+          return Q;
+        }
+        function vec(n2) {
+          return new Float64Array(n2);
+        }
+        const ccwerrboundA = (3 + 16 * epsilon3) * epsilon3;
+        const ccwerrboundB = (2 + 12 * epsilon3) * epsilon3;
+        const ccwerrboundC = (9 + 64 * epsilon3) * epsilon3 * epsilon3;
+        const B = vec(4);
+        const C1 = vec(8);
+        const C2 = vec(12);
+        const D = vec(16);
+        const u = vec(4);
+        function orient2dadapt(ax, ay, bx, by, cx, cy, detsum) {
+          let acxtail, acytail, bcxtail, bcytail;
+          let bvirt, c, ahi, alo, bhi, blo, _i, _j, _0, s1, s0, t1, t0, u3;
+          const acx = ax - cx;
+          const bcx = bx - cx;
+          const acy = ay - cy;
+          const bcy = by - cy;
+          s1 = acx * bcy;
+          c = splitter * acx;
+          ahi = c - (c - acx);
+          alo = acx - ahi;
+          c = splitter * bcy;
+          bhi = c - (c - bcy);
+          blo = bcy - bhi;
+          s0 = alo * blo - (s1 - ahi * bhi - alo * bhi - ahi * blo);
+          t1 = acy * bcx;
+          c = splitter * acy;
+          ahi = c - (c - acy);
+          alo = acy - ahi;
+          c = splitter * bcx;
+          bhi = c - (c - bcx);
+          blo = bcx - bhi;
+          t0 = alo * blo - (t1 - ahi * bhi - alo * bhi - ahi * blo);
+          _i = s0 - t0;
+          bvirt = s0 - _i;
+          B[0] = s0 - (_i + bvirt) + (bvirt - t0);
+          _j = s1 + _i;
+          bvirt = _j - s1;
+          _0 = s1 - (_j - bvirt) + (_i - bvirt);
+          _i = _0 - t1;
+          bvirt = _0 - _i;
+          B[1] = _0 - (_i + bvirt) + (bvirt - t1);
+          u3 = _j + _i;
+          bvirt = u3 - _j;
+          B[2] = _j - (u3 - bvirt) + (_i - bvirt);
+          B[3] = u3;
+          let det = estimate(4, B);
+          let errbound = ccwerrboundB * detsum;
+          if (det >= errbound || -det >= errbound) {
+            return det;
+          }
+          bvirt = ax - acx;
+          acxtail = ax - (acx + bvirt) + (bvirt - cx);
+          bvirt = bx - bcx;
+          bcxtail = bx - (bcx + bvirt) + (bvirt - cx);
+          bvirt = ay - acy;
+          acytail = ay - (acy + bvirt) + (bvirt - cy);
+          bvirt = by - bcy;
+          bcytail = by - (bcy + bvirt) + (bvirt - cy);
+          if (acxtail === 0 && acytail === 0 && bcxtail === 0 && bcytail === 0) {
+            return det;
+          }
+          errbound = ccwerrboundC * detsum + resulterrbound * Math.abs(det);
+          det += acx * bcytail + bcy * acxtail - (acy * bcxtail + bcx * acytail);
+          if (det >= errbound || -det >= errbound)
+            return det;
+          s1 = acxtail * bcy;
+          c = splitter * acxtail;
+          ahi = c - (c - acxtail);
+          alo = acxtail - ahi;
+          c = splitter * bcy;
+          bhi = c - (c - bcy);
+          blo = bcy - bhi;
+          s0 = alo * blo - (s1 - ahi * bhi - alo * bhi - ahi * blo);
+          t1 = acytail * bcx;
+          c = splitter * acytail;
+          ahi = c - (c - acytail);
+          alo = acytail - ahi;
+          c = splitter * bcx;
+          bhi = c - (c - bcx);
+          blo = bcx - bhi;
+          t0 = alo * blo - (t1 - ahi * bhi - alo * bhi - ahi * blo);
+          _i = s0 - t0;
+          bvirt = s0 - _i;
+          u[0] = s0 - (_i + bvirt) + (bvirt - t0);
+          _j = s1 + _i;
+          bvirt = _j - s1;
+          _0 = s1 - (_j - bvirt) + (_i - bvirt);
+          _i = _0 - t1;
+          bvirt = _0 - _i;
+          u[1] = _0 - (_i + bvirt) + (bvirt - t1);
+          u3 = _j + _i;
+          bvirt = u3 - _j;
+          u[2] = _j - (u3 - bvirt) + (_i - bvirt);
+          u[3] = u3;
+          const C1len = sum(4, B, 4, u, C1);
+          s1 = acx * bcytail;
+          c = splitter * acx;
+          ahi = c - (c - acx);
+          alo = acx - ahi;
+          c = splitter * bcytail;
+          bhi = c - (c - bcytail);
+          blo = bcytail - bhi;
+          s0 = alo * blo - (s1 - ahi * bhi - alo * bhi - ahi * blo);
+          t1 = acy * bcxtail;
+          c = splitter * acy;
+          ahi = c - (c - acy);
+          alo = acy - ahi;
+          c = splitter * bcxtail;
+          bhi = c - (c - bcxtail);
+          blo = bcxtail - bhi;
+          t0 = alo * blo - (t1 - ahi * bhi - alo * bhi - ahi * blo);
+          _i = s0 - t0;
+          bvirt = s0 - _i;
+          u[0] = s0 - (_i + bvirt) + (bvirt - t0);
+          _j = s1 + _i;
+          bvirt = _j - s1;
+          _0 = s1 - (_j - bvirt) + (_i - bvirt);
+          _i = _0 - t1;
+          bvirt = _0 - _i;
+          u[1] = _0 - (_i + bvirt) + (bvirt - t1);
+          u3 = _j + _i;
+          bvirt = u3 - _j;
+          u[2] = _j - (u3 - bvirt) + (_i - bvirt);
+          u[3] = u3;
+          const C2len = sum(C1len, C1, 4, u, C2);
+          s1 = acxtail * bcytail;
+          c = splitter * acxtail;
+          ahi = c - (c - acxtail);
+          alo = acxtail - ahi;
+          c = splitter * bcytail;
+          bhi = c - (c - bcytail);
+          blo = bcytail - bhi;
+          s0 = alo * blo - (s1 - ahi * bhi - alo * bhi - ahi * blo);
+          t1 = acytail * bcxtail;
+          c = splitter * acytail;
+          ahi = c - (c - acytail);
+          alo = acytail - ahi;
+          c = splitter * bcxtail;
+          bhi = c - (c - bcxtail);
+          blo = bcxtail - bhi;
+          t0 = alo * blo - (t1 - ahi * bhi - alo * bhi - ahi * blo);
+          _i = s0 - t0;
+          bvirt = s0 - _i;
+          u[0] = s0 - (_i + bvirt) + (bvirt - t0);
+          _j = s1 + _i;
+          bvirt = _j - s1;
+          _0 = s1 - (_j - bvirt) + (_i - bvirt);
+          _i = _0 - t1;
+          bvirt = _0 - _i;
+          u[1] = _0 - (_i + bvirt) + (bvirt - t1);
+          u3 = _j + _i;
+          bvirt = u3 - _j;
+          u[2] = _j - (u3 - bvirt) + (_i - bvirt);
+          u[3] = u3;
+          const Dlen = sum(C2len, C2, 4, u, D);
+          return D[Dlen - 1];
+        }
+        function orient2d(ax, ay, bx, by, cx, cy) {
+          const detleft = (ay - cy) * (bx - cx);
+          const detright = (ax - cx) * (by - cy);
+          const det = detleft - detright;
+          const detsum = Math.abs(detleft + detright);
+          if (Math.abs(det) >= ccwerrboundA * detsum)
+            return det;
+          return -orient2dadapt(ax, ay, bx, by, cx, cy, detsum);
+        }
+        const crossProduct = (a, b) => a.x * b.y - a.y * b.x;
+        const dotProduct = (a, b) => a.x * b.x + a.y * b.y;
+        const compareVectorAngles = (basePt, endPt1, endPt2) => {
+          const res = orient2d(basePt.x, basePt.y, endPt1.x, endPt1.y, endPt2.x, endPt2.y);
+          if (res > 0)
+            return -1;
+          if (res < 0)
+            return 1;
+          return 0;
         };
-        var dotProduct = function dotProduct2(a, b) {
-          return a.x * b.x + a.y * b.y;
-        };
-        var compareVectorAngles = function compareVectorAngles2(basePt, endPt1, endPt2) {
-          var v1 = {
-            x: endPt1.x - basePt.x,
-            y: endPt1.y - basePt.y
-          };
-          var v2 = {
-            x: endPt2.x - basePt.x,
-            y: endPt2.y - basePt.y
-          };
-          var kross = crossProduct(v1, v2);
-          return cmp(kross, 0);
-        };
-        var length = function length2(v) {
-          return Math.sqrt(dotProduct(v, v));
-        };
-        var sineOfAngle = function sineOfAngle2(pShared, pBase, pAngle) {
-          var vBase = {
+        const length = (v) => Math.sqrt(dotProduct(v, v));
+        const sineOfAngle = (pShared, pBase, pAngle) => {
+          const vBase = {
             x: pBase.x - pShared.x,
             y: pBase.y - pShared.y
           };
-          var vAngle = {
+          const vAngle = {
             x: pAngle.x - pShared.x,
             y: pAngle.y - pShared.y
           };
           return crossProduct(vAngle, vBase) / length(vAngle) / length(vBase);
         };
-        var cosineOfAngle = function cosineOfAngle2(pShared, pBase, pAngle) {
-          var vBase = {
+        const cosineOfAngle = (pShared, pBase, pAngle) => {
+          const vBase = {
             x: pBase.x - pShared.x,
             y: pBase.y - pShared.y
           };
-          var vAngle = {
+          const vAngle = {
             x: pAngle.x - pShared.x,
             y: pAngle.y - pShared.y
           };
           return dotProduct(vAngle, vBase) / length(vAngle) / length(vBase);
         };
-        var horizontalIntersection = function horizontalIntersection2(pt, v, y) {
+        const horizontalIntersection = (pt, v, y) => {
           if (v.y === 0)
             return null;
           return {
@@ -4702,7 +5038,7 @@
             y
           };
         };
-        var verticalIntersection = function verticalIntersection2(pt, v, x) {
+        const verticalIntersection = (pt, v, x) => {
           if (v.x === 0)
             return null;
           return {
@@ -4710,7 +5046,7 @@
             y: pt.y + v.y / v.x * (x - pt.x)
           };
         };
-        var intersection = function intersection2(pt1, v1, pt2, v2) {
+        const intersection$1 = (pt1, v1, pt2, v2) => {
           if (v1.x === 0)
             return verticalIntersection(pt2, v2, pt1.x);
           if (v2.x === 0)
@@ -4719,56 +5055,50 @@
             return horizontalIntersection(pt2, v2, pt1.y);
           if (v2.y === 0)
             return horizontalIntersection(pt1, v1, pt2.y);
-          var kross = crossProduct(v1, v2);
+          const kross = crossProduct(v1, v2);
           if (kross == 0)
             return null;
-          var ve = {
+          const ve = {
             x: pt2.x - pt1.x,
             y: pt2.y - pt1.y
           };
-          var d1 = crossProduct(ve, v1) / kross;
-          var d2 = crossProduct(ve, v2) / kross;
-          var x12 = pt1.x + d2 * v1.x, x2 = pt2.x + d1 * v2.x;
-          var y12 = pt1.y + d2 * v1.y, y2 = pt2.y + d1 * v2.y;
-          var x = (x12 + x2) / 2;
-          var y = (y12 + y2) / 2;
+          const d1 = crossProduct(ve, v1) / kross;
+          const d2 = crossProduct(ve, v2) / kross;
+          const x12 = pt1.x + d2 * v1.x, x2 = pt2.x + d1 * v2.x;
+          const y12 = pt1.y + d2 * v1.y, y2 = pt2.y + d1 * v2.y;
+          const x = (x12 + x2) / 2;
+          const y = (y12 + y2) / 2;
           return {
             x,
             y
           };
         };
-        var SweepEvent = /* @__PURE__ */ function() {
-          _createClass(SweepEvent2, null, [{
-            key: "compare",
-            // for ordering sweep events in the sweep event queue
-            value: function compare(a, b) {
-              var ptCmp = SweepEvent2.comparePoints(a.point, b.point);
-              if (ptCmp !== 0)
-                return ptCmp;
-              if (a.point !== b.point)
-                a.link(b);
-              if (a.isLeft !== b.isLeft)
-                return a.isLeft ? 1 : -1;
-              return Segment.compare(a.segment, b.segment);
-            }
-            // for ordering points in sweep line order
-          }, {
-            key: "comparePoints",
-            value: function comparePoints(aPt, bPt) {
-              if (aPt.x < bPt.x)
-                return -1;
-              if (aPt.x > bPt.x)
-                return 1;
-              if (aPt.y < bPt.y)
-                return -1;
-              if (aPt.y > bPt.y)
-                return 1;
-              return 0;
-            }
-            // Warning: 'point' input will be modified and re-used (for performance)
-          }]);
-          function SweepEvent2(point2, isLeft) {
-            _classCallCheck(this, SweepEvent2);
+        class SweepEvent {
+          // for ordering sweep events in the sweep event queue
+          static compare(a, b) {
+            const ptCmp = SweepEvent.comparePoints(a.point, b.point);
+            if (ptCmp !== 0)
+              return ptCmp;
+            if (a.point !== b.point)
+              a.link(b);
+            if (a.isLeft !== b.isLeft)
+              return a.isLeft ? 1 : -1;
+            return Segment.compare(a.segment, b.segment);
+          }
+          // for ordering points in sweep line order
+          static comparePoints(aPt, bPt) {
+            if (aPt.x < bPt.x)
+              return -1;
+            if (aPt.x > bPt.x)
+              return 1;
+            if (aPt.y < bPt.y)
+              return -1;
+            if (aPt.y > bPt.y)
+              return 1;
+            return 0;
+          }
+          // Warning: 'point' input will be modified and re-used (for performance)
+          constructor(point2, isLeft) {
             if (point2.events === void 0)
               point2.events = [this];
             else
@@ -4776,210 +5106,201 @@
             this.point = point2;
             this.isLeft = isLeft;
           }
-          _createClass(SweepEvent2, [{
-            key: "link",
-            value: function link2(other) {
-              if (other.point === this.point) {
-                throw new Error("Tried to link already linked events");
-              }
-              var otherEvents = other.point.events;
-              for (var i2 = 0, iMax = otherEvents.length; i2 < iMax; i2++) {
-                var evt = otherEvents[i2];
-                this.point.events.push(evt);
-                evt.point = this.point;
-              }
-              this.checkForConsuming();
+          link(other) {
+            if (other.point === this.point) {
+              throw new Error("Tried to link already linked events");
             }
-            /* Do a pass over our linked events and check to see if any pair
-             * of segments match, and should be consumed. */
-          }, {
-            key: "checkForConsuming",
-            value: function checkForConsuming() {
-              var numEvents = this.point.events.length;
-              for (var i2 = 0; i2 < numEvents; i2++) {
-                var evt1 = this.point.events[i2];
-                if (evt1.segment.consumedBy !== void 0)
+            const otherEvents = other.point.events;
+            for (let i2 = 0, iMax = otherEvents.length; i2 < iMax; i2++) {
+              const evt = otherEvents[i2];
+              this.point.events.push(evt);
+              evt.point = this.point;
+            }
+            this.checkForConsuming();
+          }
+          /* Do a pass over our linked events and check to see if any pair
+           * of segments match, and should be consumed. */
+          checkForConsuming() {
+            const numEvents = this.point.events.length;
+            for (let i2 = 0; i2 < numEvents; i2++) {
+              const evt1 = this.point.events[i2];
+              if (evt1.segment.consumedBy !== void 0)
+                continue;
+              for (let j2 = i2 + 1; j2 < numEvents; j2++) {
+                const evt2 = this.point.events[j2];
+                if (evt2.consumedBy !== void 0)
                   continue;
-                for (var j2 = i2 + 1; j2 < numEvents; j2++) {
-                  var evt2 = this.point.events[j2];
-                  if (evt2.consumedBy !== void 0)
-                    continue;
-                  if (evt1.otherSE.point.events !== evt2.otherSE.point.events)
-                    continue;
-                  evt1.segment.consume(evt2.segment);
-                }
+                if (evt1.otherSE.point.events !== evt2.otherSE.point.events)
+                  continue;
+                evt1.segment.consume(evt2.segment);
               }
             }
-          }, {
-            key: "getAvailableLinkedEvents",
-            value: function getAvailableLinkedEvents() {
-              var events = [];
-              for (var i2 = 0, iMax = this.point.events.length; i2 < iMax; i2++) {
-                var evt = this.point.events[i2];
-                if (evt !== this && !evt.segment.ringOut && evt.segment.isInResult()) {
-                  events.push(evt);
-                }
+          }
+          getAvailableLinkedEvents() {
+            const events = [];
+            for (let i2 = 0, iMax = this.point.events.length; i2 < iMax; i2++) {
+              const evt = this.point.events[i2];
+              if (evt !== this && !evt.segment.ringOut && evt.segment.isInResult()) {
+                events.push(evt);
               }
-              return events;
             }
-            /**
-             * Returns a comparator function for sorting linked events that will
-             * favor the event that will give us the smallest left-side angle.
-             * All ring construction starts as low as possible heading to the right,
-             * so by always turning left as sharp as possible we'll get polygons
-             * without uncessary loops & holes.
-             *
-             * The comparator function has a compute cache such that it avoids
-             * re-computing already-computed values.
-             */
-          }, {
-            key: "getLeftmostComparator",
-            value: function getLeftmostComparator(baseEvent) {
-              var _this = this;
-              var cache = /* @__PURE__ */ new Map();
-              var fillCache = function fillCache2(linkedEvent) {
-                var nextEvent = linkedEvent.otherSE;
-                cache.set(linkedEvent, {
-                  sine: sineOfAngle(_this.point, baseEvent.point, nextEvent.point),
-                  cosine: cosineOfAngle(_this.point, baseEvent.point, nextEvent.point)
-                });
-              };
-              return function(a, b) {
-                if (!cache.has(a))
-                  fillCache(a);
-                if (!cache.has(b))
-                  fillCache(b);
-                var _cache$get = cache.get(a), asine = _cache$get.sine, acosine = _cache$get.cosine;
-                var _cache$get2 = cache.get(b), bsine = _cache$get2.sine, bcosine = _cache$get2.cosine;
-                if (asine >= 0 && bsine >= 0) {
-                  if (acosine < bcosine)
-                    return 1;
-                  if (acosine > bcosine)
-                    return -1;
-                  return 0;
-                }
-                if (asine < 0 && bsine < 0) {
-                  if (acosine < bcosine)
-                    return -1;
-                  if (acosine > bcosine)
-                    return 1;
-                  return 0;
-                }
-                if (bsine < asine)
+            return events;
+          }
+          /**
+           * Returns a comparator function for sorting linked events that will
+           * favor the event that will give us the smallest left-side angle.
+           * All ring construction starts as low as possible heading to the right,
+           * so by always turning left as sharp as possible we'll get polygons
+           * without uncessary loops & holes.
+           *
+           * The comparator function has a compute cache such that it avoids
+           * re-computing already-computed values.
+           */
+          getLeftmostComparator(baseEvent) {
+            const cache = /* @__PURE__ */ new Map();
+            const fillCache = (linkedEvent) => {
+              const nextEvent = linkedEvent.otherSE;
+              cache.set(linkedEvent, {
+                sine: sineOfAngle(this.point, baseEvent.point, nextEvent.point),
+                cosine: cosineOfAngle(this.point, baseEvent.point, nextEvent.point)
+              });
+            };
+            return (a, b) => {
+              if (!cache.has(a))
+                fillCache(a);
+              if (!cache.has(b))
+                fillCache(b);
+              const {
+                sine: asine,
+                cosine: acosine
+              } = cache.get(a);
+              const {
+                sine: bsine,
+                cosine: bcosine
+              } = cache.get(b);
+              if (asine >= 0 && bsine >= 0) {
+                if (acosine < bcosine)
+                  return 1;
+                if (acosine > bcosine)
                   return -1;
-                if (bsine > asine)
+                return 0;
+              }
+              if (asine < 0 && bsine < 0) {
+                if (acosine < bcosine)
+                  return -1;
+                if (acosine > bcosine)
                   return 1;
                 return 0;
-              };
-            }
-          }]);
-          return SweepEvent2;
-        }();
-        var segmentId = 0;
-        var Segment = /* @__PURE__ */ function() {
-          _createClass(Segment2, null, [{
-            key: "compare",
-            /* This compare() function is for ordering segments in the sweep
-             * line tree, and does so according to the following criteria:
-             *
-             * Consider the vertical line that lies an infinestimal step to the
-             * right of the right-more of the two left endpoints of the input
-             * segments. Imagine slowly moving a point up from negative infinity
-             * in the increasing y direction. Which of the two segments will that
-             * point intersect first? That segment comes 'before' the other one.
-             *
-             * If neither segment would be intersected by such a line, (if one
-             * or more of the segments are vertical) then the line to be considered
-             * is directly on the right-more of the two left inputs.
-             */
-            value: function compare(a, b) {
-              var alx = a.leftSE.point.x;
-              var blx = b.leftSE.point.x;
-              var arx = a.rightSE.point.x;
-              var brx = b.rightSE.point.x;
-              if (brx < alx)
-                return 1;
-              if (arx < blx)
-                return -1;
-              var aly = a.leftSE.point.y;
-              var bly = b.leftSE.point.y;
-              var ary = a.rightSE.point.y;
-              var bry = b.rightSE.point.y;
-              if (alx < blx) {
-                if (bly < aly && bly < ary)
-                  return 1;
-                if (bly > aly && bly > ary)
-                  return -1;
-                var aCmpBLeft = a.comparePoint(b.leftSE.point);
-                if (aCmpBLeft < 0)
-                  return 1;
-                if (aCmpBLeft > 0)
-                  return -1;
-                var bCmpARight = b.comparePoint(a.rightSE.point);
-                if (bCmpARight !== 0)
-                  return bCmpARight;
-                return -1;
               }
-              if (alx > blx) {
-                if (aly < bly && aly < bry)
-                  return -1;
-                if (aly > bly && aly > bry)
-                  return 1;
-                var bCmpALeft = b.comparePoint(a.leftSE.point);
-                if (bCmpALeft !== 0)
-                  return bCmpALeft;
-                var aCmpBRight = a.comparePoint(b.rightSE.point);
-                if (aCmpBRight < 0)
-                  return 1;
-                if (aCmpBRight > 0)
-                  return -1;
-                return 1;
-              }
-              if (aly < bly)
+              if (bsine < asine)
                 return -1;
-              if (aly > bly)
-                return 1;
-              if (arx < brx) {
-                var _bCmpARight = b.comparePoint(a.rightSE.point);
-                if (_bCmpARight !== 0)
-                  return _bCmpARight;
-              }
-              if (arx > brx) {
-                var _aCmpBRight = a.comparePoint(b.rightSE.point);
-                if (_aCmpBRight < 0)
-                  return 1;
-                if (_aCmpBRight > 0)
-                  return -1;
-              }
-              if (arx !== brx) {
-                var ay = ary - aly;
-                var ax = arx - alx;
-                var by = bry - bly;
-                var bx = brx - blx;
-                if (ay > ax && by < bx)
-                  return 1;
-                if (ay < ax && by > bx)
-                  return -1;
-              }
-              if (arx > brx)
-                return 1;
-              if (arx < brx)
-                return -1;
-              if (ary < bry)
-                return -1;
-              if (ary > bry)
-                return 1;
-              if (a.id < b.id)
-                return -1;
-              if (a.id > b.id)
+              if (bsine > asine)
                 return 1;
               return 0;
+            };
+          }
+        }
+        let segmentId = 0;
+        class Segment {
+          /* This compare() function is for ordering segments in the sweep
+           * line tree, and does so according to the following criteria:
+           *
+           * Consider the vertical line that lies an infinestimal step to the
+           * right of the right-more of the two left endpoints of the input
+           * segments. Imagine slowly moving a point up from negative infinity
+           * in the increasing y direction. Which of the two segments will that
+           * point intersect first? That segment comes 'before' the other one.
+           *
+           * If neither segment would be intersected by such a line, (if one
+           * or more of the segments are vertical) then the line to be considered
+           * is directly on the right-more of the two left inputs.
+           */
+          static compare(a, b) {
+            const alx = a.leftSE.point.x;
+            const blx = b.leftSE.point.x;
+            const arx = a.rightSE.point.x;
+            const brx = b.rightSE.point.x;
+            if (brx < alx)
+              return 1;
+            if (arx < blx)
+              return -1;
+            const aly = a.leftSE.point.y;
+            const bly = b.leftSE.point.y;
+            const ary = a.rightSE.point.y;
+            const bry = b.rightSE.point.y;
+            if (alx < blx) {
+              if (bly < aly && bly < ary)
+                return 1;
+              if (bly > aly && bly > ary)
+                return -1;
+              const aCmpBLeft = a.comparePoint(b.leftSE.point);
+              if (aCmpBLeft < 0)
+                return 1;
+              if (aCmpBLeft > 0)
+                return -1;
+              const bCmpARight = b.comparePoint(a.rightSE.point);
+              if (bCmpARight !== 0)
+                return bCmpARight;
+              return -1;
             }
-            /* Warning: a reference to ringWindings input will be stored,
-             *  and possibly will be later modified */
-          }]);
-          function Segment2(leftSE, rightSE, rings, windings) {
-            _classCallCheck(this, Segment2);
+            if (alx > blx) {
+              if (aly < bly && aly < bry)
+                return -1;
+              if (aly > bly && aly > bry)
+                return 1;
+              const bCmpALeft = b.comparePoint(a.leftSE.point);
+              if (bCmpALeft !== 0)
+                return bCmpALeft;
+              const aCmpBRight = a.comparePoint(b.rightSE.point);
+              if (aCmpBRight < 0)
+                return 1;
+              if (aCmpBRight > 0)
+                return -1;
+              return 1;
+            }
+            if (aly < bly)
+              return -1;
+            if (aly > bly)
+              return 1;
+            if (arx < brx) {
+              const bCmpARight = b.comparePoint(a.rightSE.point);
+              if (bCmpARight !== 0)
+                return bCmpARight;
+            }
+            if (arx > brx) {
+              const aCmpBRight = a.comparePoint(b.rightSE.point);
+              if (aCmpBRight < 0)
+                return 1;
+              if (aCmpBRight > 0)
+                return -1;
+            }
+            if (arx !== brx) {
+              const ay = ary - aly;
+              const ax = arx - alx;
+              const by = bry - bly;
+              const bx = brx - blx;
+              if (ay > ax && by < bx)
+                return 1;
+              if (ay < ax && by > bx)
+                return -1;
+            }
+            if (arx > brx)
+              return 1;
+            if (arx < brx)
+              return -1;
+            if (ary < bry)
+              return -1;
+            if (ary > bry)
+              return 1;
+            if (a.id < b.id)
+              return -1;
+            if (a.id > b.id)
+              return 1;
+            return 0;
+          }
+          /* Warning: a reference to ringWindings input will be stored,
+           *  and possibly will be later modified */
+          constructor(leftSE, rightSE, rings, windings) {
             this.id = ++segmentId;
             this.leftSE = leftSE;
             leftSE.segment = this;
@@ -4990,390 +5311,355 @@
             this.rings = rings;
             this.windings = windings;
           }
-          _createClass(Segment2, [{
-            key: "replaceRightSE",
-            /* When a segment is split, the rightSE is replaced with a new sweep event */
-            value: function replaceRightSE(newRightSE) {
-              this.rightSE = newRightSE;
-              this.rightSE.segment = this;
-              this.rightSE.otherSE = this.leftSE;
-              this.leftSE.otherSE = this.rightSE;
-            }
-          }, {
-            key: "bbox",
-            value: function bbox2() {
-              var y12 = this.leftSE.point.y;
-              var y2 = this.rightSE.point.y;
-              return {
-                ll: {
-                  x: this.leftSE.point.x,
-                  y: y12 < y2 ? y12 : y2
-                },
-                ur: {
-                  x: this.rightSE.point.x,
-                  y: y12 > y2 ? y12 : y2
-                }
-              };
-            }
-            /* A vector from the left point to the right */
-          }, {
-            key: "vector",
-            value: function vector() {
-              return {
-                x: this.rightSE.point.x - this.leftSE.point.x,
-                y: this.rightSE.point.y - this.leftSE.point.y
-              };
-            }
-          }, {
-            key: "isAnEndpoint",
-            value: function isAnEndpoint(pt) {
-              return pt.x === this.leftSE.point.x && pt.y === this.leftSE.point.y || pt.x === this.rightSE.point.x && pt.y === this.rightSE.point.y;
-            }
-            /* Compare this segment with a point.
-             *
-             * A point P is considered to be colinear to a segment if there
-             * exists a distance D such that if we travel along the segment
-             * from one * endpoint towards the other a distance D, we find
-             * ourselves at point P.
-             *
-             * Return value indicates:
-             *
-             *   1: point lies above the segment (to the left of vertical)
-             *   0: point is colinear to segment
-             *  -1: point lies below the segment (to the right of vertical)
-             */
-          }, {
-            key: "comparePoint",
-            value: function comparePoint(point2) {
-              if (this.isAnEndpoint(point2))
+          static fromRing(pt1, pt2, ring) {
+            let leftPt, rightPt, winding;
+            const cmpPts = SweepEvent.comparePoints(pt1, pt2);
+            if (cmpPts < 0) {
+              leftPt = pt1;
+              rightPt = pt2;
+              winding = 1;
+            } else if (cmpPts > 0) {
+              leftPt = pt2;
+              rightPt = pt1;
+              winding = -1;
+            } else
+              throw new Error(`Tried to create degenerate segment at [${pt1.x}, ${pt1.y}]`);
+            const leftSE = new SweepEvent(leftPt, true);
+            const rightSE = new SweepEvent(rightPt, false);
+            return new Segment(leftSE, rightSE, [ring], [winding]);
+          }
+          /* When a segment is split, the rightSE is replaced with a new sweep event */
+          replaceRightSE(newRightSE) {
+            this.rightSE = newRightSE;
+            this.rightSE.segment = this;
+            this.rightSE.otherSE = this.leftSE;
+            this.leftSE.otherSE = this.rightSE;
+          }
+          bbox() {
+            const y12 = this.leftSE.point.y;
+            const y2 = this.rightSE.point.y;
+            return {
+              ll: {
+                x: this.leftSE.point.x,
+                y: y12 < y2 ? y12 : y2
+              },
+              ur: {
+                x: this.rightSE.point.x,
+                y: y12 > y2 ? y12 : y2
+              }
+            };
+          }
+          /* A vector from the left point to the right */
+          vector() {
+            return {
+              x: this.rightSE.point.x - this.leftSE.point.x,
+              y: this.rightSE.point.y - this.leftSE.point.y
+            };
+          }
+          isAnEndpoint(pt) {
+            return pt.x === this.leftSE.point.x && pt.y === this.leftSE.point.y || pt.x === this.rightSE.point.x && pt.y === this.rightSE.point.y;
+          }
+          /* Compare this segment with a point.
+           *
+           * A point P is considered to be colinear to a segment if there
+           * exists a distance D such that if we travel along the segment
+           * from one * endpoint towards the other a distance D, we find
+           * ourselves at point P.
+           *
+           * Return value indicates:
+           *
+           *   1: point lies above the segment (to the left of vertical)
+           *   0: point is colinear to segment
+           *  -1: point lies below the segment (to the right of vertical)
+           */
+          comparePoint(point2) {
+            if (this.isAnEndpoint(point2))
+              return 0;
+            const lPt = this.leftSE.point;
+            const rPt = this.rightSE.point;
+            const v = this.vector();
+            if (lPt.x === rPt.x) {
+              if (point2.x === lPt.x)
                 return 0;
-              var lPt = this.leftSE.point;
-              var rPt = this.rightSE.point;
-              var v = this.vector();
-              if (lPt.x === rPt.x) {
-                if (point2.x === lPt.x)
-                  return 0;
-                return point2.x < lPt.x ? 1 : -1;
-              }
-              var yDist = (point2.y - lPt.y) / v.y;
-              var xFromYDist = lPt.x + yDist * v.x;
-              if (point2.x === xFromYDist)
-                return 0;
-              var xDist = (point2.x - lPt.x) / v.x;
-              var yFromXDist = lPt.y + xDist * v.y;
-              if (point2.y === yFromXDist)
-                return 0;
-              return point2.y < yFromXDist ? -1 : 1;
+              return point2.x < lPt.x ? 1 : -1;
             }
-            /**
-             * Given another segment, returns the first non-trivial intersection
-             * between the two segments (in terms of sweep line ordering), if it exists.
-             *
-             * A 'non-trivial' intersection is one that will cause one or both of the
-             * segments to be split(). As such, 'trivial' vs. 'non-trivial' intersection:
-             *
-             *   * endpoint of segA with endpoint of segB --> trivial
-             *   * endpoint of segA with point along segB --> non-trivial
-             *   * endpoint of segB with point along segA --> non-trivial
-             *   * point along segA with point along segB --> non-trivial
-             *
-             * If no non-trivial intersection exists, return null
-             * Else, return null.
-             */
-          }, {
-            key: "getIntersection",
-            value: function getIntersection(other) {
-              var tBbox = this.bbox();
-              var oBbox = other.bbox();
-              var bboxOverlap = getBboxOverlap(tBbox, oBbox);
-              if (bboxOverlap === null)
-                return null;
-              var tlp = this.leftSE.point;
-              var trp = this.rightSE.point;
-              var olp = other.leftSE.point;
-              var orp = other.rightSE.point;
-              var touchesOtherLSE = isInBbox(tBbox, olp) && this.comparePoint(olp) === 0;
-              var touchesThisLSE = isInBbox(oBbox, tlp) && other.comparePoint(tlp) === 0;
-              var touchesOtherRSE = isInBbox(tBbox, orp) && this.comparePoint(orp) === 0;
-              var touchesThisRSE = isInBbox(oBbox, trp) && other.comparePoint(trp) === 0;
-              if (touchesThisLSE && touchesOtherLSE) {
-                if (touchesThisRSE && !touchesOtherRSE)
-                  return trp;
-                if (!touchesThisRSE && touchesOtherRSE)
-                  return orp;
-                return null;
-              }
-              if (touchesThisLSE) {
-                if (touchesOtherRSE) {
-                  if (tlp.x === orp.x && tlp.y === orp.y)
-                    return null;
-                }
-                return tlp;
-              }
-              if (touchesOtherLSE) {
-                if (touchesThisRSE) {
-                  if (trp.x === olp.x && trp.y === olp.y)
-                    return null;
-                }
-                return olp;
-              }
-              if (touchesThisRSE && touchesOtherRSE)
-                return null;
-              if (touchesThisRSE)
+            const yDist = (point2.y - lPt.y) / v.y;
+            const xFromYDist = lPt.x + yDist * v.x;
+            if (point2.x === xFromYDist)
+              return 0;
+            const xDist = (point2.x - lPt.x) / v.x;
+            const yFromXDist = lPt.y + xDist * v.y;
+            if (point2.y === yFromXDist)
+              return 0;
+            return point2.y < yFromXDist ? -1 : 1;
+          }
+          /**
+           * Given another segment, returns the first non-trivial intersection
+           * between the two segments (in terms of sweep line ordering), if it exists.
+           *
+           * A 'non-trivial' intersection is one that will cause one or both of the
+           * segments to be split(). As such, 'trivial' vs. 'non-trivial' intersection:
+           *
+           *   * endpoint of segA with endpoint of segB --> trivial
+           *   * endpoint of segA with point along segB --> non-trivial
+           *   * endpoint of segB with point along segA --> non-trivial
+           *   * point along segA with point along segB --> non-trivial
+           *
+           * If no non-trivial intersection exists, return null
+           * Else, return null.
+           */
+          getIntersection(other) {
+            const tBbox = this.bbox();
+            const oBbox = other.bbox();
+            const bboxOverlap = getBboxOverlap(tBbox, oBbox);
+            if (bboxOverlap === null)
+              return null;
+            const tlp = this.leftSE.point;
+            const trp = this.rightSE.point;
+            const olp = other.leftSE.point;
+            const orp = other.rightSE.point;
+            const touchesOtherLSE = isInBbox(tBbox, olp) && this.comparePoint(olp) === 0;
+            const touchesThisLSE = isInBbox(oBbox, tlp) && other.comparePoint(tlp) === 0;
+            const touchesOtherRSE = isInBbox(tBbox, orp) && this.comparePoint(orp) === 0;
+            const touchesThisRSE = isInBbox(oBbox, trp) && other.comparePoint(trp) === 0;
+            if (touchesThisLSE && touchesOtherLSE) {
+              if (touchesThisRSE && !touchesOtherRSE)
                 return trp;
-              if (touchesOtherRSE)
+              if (!touchesThisRSE && touchesOtherRSE)
                 return orp;
-              var pt = intersection(tlp, this.vector(), olp, other.vector());
-              if (pt === null)
-                return null;
-              if (!isInBbox(bboxOverlap, pt))
-                return null;
-              return rounder.round(pt.x, pt.y);
+              return null;
             }
-            /**
-             * Split the given segment into multiple segments on the given points.
-             *  * Each existing segment will retain its leftSE and a new rightSE will be
-             *    generated for it.
-             *  * A new segment will be generated which will adopt the original segment's
-             *    rightSE, and a new leftSE will be generated for it.
-             *  * If there are more than two points given to split on, new segments
-             *    in the middle will be generated with new leftSE and rightSE's.
-             *  * An array of the newly generated SweepEvents will be returned.
-             *
-             * Warning: input array of points is modified
-             */
-          }, {
-            key: "split",
-            value: function split2(point2) {
-              var newEvents = [];
-              var alreadyLinked = point2.events !== void 0;
-              var newLeftSE = new SweepEvent(point2, true);
-              var newRightSE = new SweepEvent(point2, false);
-              var oldRightSE = this.rightSE;
-              this.replaceRightSE(newRightSE);
-              newEvents.push(newRightSE);
-              newEvents.push(newLeftSE);
-              var newSeg = new Segment2(newLeftSE, oldRightSE, this.rings.slice(), this.windings.slice());
-              if (SweepEvent.comparePoints(newSeg.leftSE.point, newSeg.rightSE.point) > 0) {
-                newSeg.swapEvents();
+            if (touchesThisLSE) {
+              if (touchesOtherRSE) {
+                if (tlp.x === orp.x && tlp.y === orp.y)
+                  return null;
               }
-              if (SweepEvent.comparePoints(this.leftSE.point, this.rightSE.point) > 0) {
-                this.swapEvents();
-              }
-              if (alreadyLinked) {
-                newLeftSE.checkForConsuming();
-                newRightSE.checkForConsuming();
-              }
-              return newEvents;
+              return tlp;
             }
-            /* Swap which event is left and right */
-          }, {
-            key: "swapEvents",
-            value: function swapEvents() {
-              var tmpEvt = this.rightSE;
-              this.rightSE = this.leftSE;
-              this.leftSE = tmpEvt;
-              this.leftSE.isLeft = true;
-              this.rightSE.isLeft = false;
-              for (var i2 = 0, iMax = this.windings.length; i2 < iMax; i2++) {
-                this.windings[i2] *= -1;
+            if (touchesOtherLSE) {
+              if (touchesThisRSE) {
+                if (trp.x === olp.x && trp.y === olp.y)
+                  return null;
               }
+              return olp;
             }
-            /* Consume another segment. We take their rings under our wing
-             * and mark them as consumed. Use for perfectly overlapping segments */
-          }, {
-            key: "consume",
-            value: function consume(other) {
-              var consumer = this;
-              var consumee = other;
-              while (consumer.consumedBy) {
-                consumer = consumer.consumedBy;
-              }
-              while (consumee.consumedBy) {
-                consumee = consumee.consumedBy;
-              }
-              var cmp2 = Segment2.compare(consumer, consumee);
-              if (cmp2 === 0)
-                return;
-              if (cmp2 > 0) {
-                var tmp = consumer;
-                consumer = consumee;
-                consumee = tmp;
-              }
-              if (consumer.prev === consumee) {
-                var _tmp = consumer;
-                consumer = consumee;
-                consumee = _tmp;
-              }
-              for (var i2 = 0, iMax = consumee.rings.length; i2 < iMax; i2++) {
-                var ring = consumee.rings[i2];
-                var winding = consumee.windings[i2];
-                var index2 = consumer.rings.indexOf(ring);
-                if (index2 === -1) {
-                  consumer.rings.push(ring);
-                  consumer.windings.push(winding);
-                } else
-                  consumer.windings[index2] += winding;
-              }
-              consumee.rings = null;
-              consumee.windings = null;
-              consumee.consumedBy = consumer;
-              consumee.leftSE.consumedBy = consumer.leftSE;
-              consumee.rightSE.consumedBy = consumer.rightSE;
+            if (touchesThisRSE && touchesOtherRSE)
+              return null;
+            if (touchesThisRSE)
+              return trp;
+            if (touchesOtherRSE)
+              return orp;
+            const pt = intersection$1(tlp, this.vector(), olp, other.vector());
+            if (pt === null)
+              return null;
+            if (!isInBbox(bboxOverlap, pt))
+              return null;
+            return rounder.round(pt.x, pt.y);
+          }
+          /**
+           * Split the given segment into multiple segments on the given points.
+           *  * Each existing segment will retain its leftSE and a new rightSE will be
+           *    generated for it.
+           *  * A new segment will be generated which will adopt the original segment's
+           *    rightSE, and a new leftSE will be generated for it.
+           *  * If there are more than two points given to split on, new segments
+           *    in the middle will be generated with new leftSE and rightSE's.
+           *  * An array of the newly generated SweepEvents will be returned.
+           *
+           * Warning: input array of points is modified
+           */
+          split(point2) {
+            const newEvents = [];
+            const alreadyLinked = point2.events !== void 0;
+            const newLeftSE = new SweepEvent(point2, true);
+            const newRightSE = new SweepEvent(point2, false);
+            const oldRightSE = this.rightSE;
+            this.replaceRightSE(newRightSE);
+            newEvents.push(newRightSE);
+            newEvents.push(newLeftSE);
+            const newSeg = new Segment(newLeftSE, oldRightSE, this.rings.slice(), this.windings.slice());
+            if (SweepEvent.comparePoints(newSeg.leftSE.point, newSeg.rightSE.point) > 0) {
+              newSeg.swapEvents();
             }
-            /* The first segment previous segment chain that is in the result */
-          }, {
-            key: "prevInResult",
-            value: function prevInResult() {
-              if (this._prevInResult !== void 0)
-                return this._prevInResult;
-              if (!this.prev)
-                this._prevInResult = null;
-              else if (this.prev.isInResult())
-                this._prevInResult = this.prev;
-              else
-                this._prevInResult = this.prev.prevInResult();
+            if (SweepEvent.comparePoints(this.leftSE.point, this.rightSE.point) > 0) {
+              this.swapEvents();
+            }
+            if (alreadyLinked) {
+              newLeftSE.checkForConsuming();
+              newRightSE.checkForConsuming();
+            }
+            return newEvents;
+          }
+          /* Swap which event is left and right */
+          swapEvents() {
+            const tmpEvt = this.rightSE;
+            this.rightSE = this.leftSE;
+            this.leftSE = tmpEvt;
+            this.leftSE.isLeft = true;
+            this.rightSE.isLeft = false;
+            for (let i2 = 0, iMax = this.windings.length; i2 < iMax; i2++) {
+              this.windings[i2] *= -1;
+            }
+          }
+          /* Consume another segment. We take their rings under our wing
+           * and mark them as consumed. Use for perfectly overlapping segments */
+          consume(other) {
+            let consumer = this;
+            let consumee = other;
+            while (consumer.consumedBy)
+              consumer = consumer.consumedBy;
+            while (consumee.consumedBy)
+              consumee = consumee.consumedBy;
+            const cmp2 = Segment.compare(consumer, consumee);
+            if (cmp2 === 0)
+              return;
+            if (cmp2 > 0) {
+              const tmp = consumer;
+              consumer = consumee;
+              consumee = tmp;
+            }
+            if (consumer.prev === consumee) {
+              const tmp = consumer;
+              consumer = consumee;
+              consumee = tmp;
+            }
+            for (let i2 = 0, iMax = consumee.rings.length; i2 < iMax; i2++) {
+              const ring = consumee.rings[i2];
+              const winding = consumee.windings[i2];
+              const index2 = consumer.rings.indexOf(ring);
+              if (index2 === -1) {
+                consumer.rings.push(ring);
+                consumer.windings.push(winding);
+              } else
+                consumer.windings[index2] += winding;
+            }
+            consumee.rings = null;
+            consumee.windings = null;
+            consumee.consumedBy = consumer;
+            consumee.leftSE.consumedBy = consumer.leftSE;
+            consumee.rightSE.consumedBy = consumer.rightSE;
+          }
+          /* The first segment previous segment chain that is in the result */
+          prevInResult() {
+            if (this._prevInResult !== void 0)
               return this._prevInResult;
-            }
-          }, {
-            key: "beforeState",
-            value: function beforeState() {
-              if (this._beforeState !== void 0)
-                return this._beforeState;
-              if (!this.prev)
-                this._beforeState = {
-                  rings: [],
-                  windings: [],
-                  multiPolys: []
-                };
-              else {
-                var seg = this.prev.consumedBy || this.prev;
-                this._beforeState = seg.afterState();
-              }
+            if (!this.prev)
+              this._prevInResult = null;
+            else if (this.prev.isInResult())
+              this._prevInResult = this.prev;
+            else
+              this._prevInResult = this.prev.prevInResult();
+            return this._prevInResult;
+          }
+          beforeState() {
+            if (this._beforeState !== void 0)
               return this._beforeState;
-            }
-          }, {
-            key: "afterState",
-            value: function afterState() {
-              if (this._afterState !== void 0)
-                return this._afterState;
-              var beforeState = this.beforeState();
-              this._afterState = {
-                rings: beforeState.rings.slice(0),
-                windings: beforeState.windings.slice(0),
+            if (!this.prev)
+              this._beforeState = {
+                rings: [],
+                windings: [],
                 multiPolys: []
               };
-              var ringsAfter = this._afterState.rings;
-              var windingsAfter = this._afterState.windings;
-              var mpsAfter = this._afterState.multiPolys;
-              for (var i2 = 0, iMax = this.rings.length; i2 < iMax; i2++) {
-                var ring = this.rings[i2];
-                var winding = this.windings[i2];
-                var index2 = ringsAfter.indexOf(ring);
-                if (index2 === -1) {
-                  ringsAfter.push(ring);
-                  windingsAfter.push(winding);
-                } else
-                  windingsAfter[index2] += winding;
-              }
-              var polysAfter = [];
-              var polysExclude = [];
-              for (var _i = 0, _iMax = ringsAfter.length; _i < _iMax; _i++) {
-                if (windingsAfter[_i] === 0)
-                  continue;
-                var _ring = ringsAfter[_i];
-                var poly = _ring.poly;
-                if (polysExclude.indexOf(poly) !== -1)
-                  continue;
-                if (_ring.isExterior)
-                  polysAfter.push(poly);
-                else {
-                  if (polysExclude.indexOf(poly) === -1)
-                    polysExclude.push(poly);
-                  var _index = polysAfter.indexOf(_ring.poly);
-                  if (_index !== -1)
-                    polysAfter.splice(_index, 1);
-                }
-              }
-              for (var _i2 = 0, _iMax2 = polysAfter.length; _i2 < _iMax2; _i2++) {
-                var mp = polysAfter[_i2].multiPoly;
-                if (mpsAfter.indexOf(mp) === -1)
-                  mpsAfter.push(mp);
-              }
+            else {
+              const seg = this.prev.consumedBy || this.prev;
+              this._beforeState = seg.afterState();
+            }
+            return this._beforeState;
+          }
+          afterState() {
+            if (this._afterState !== void 0)
               return this._afterState;
-            }
-            /* Is this segment part of the final result? */
-          }, {
-            key: "isInResult",
-            value: function isInResult() {
-              if (this.consumedBy)
-                return false;
-              if (this._isInResult !== void 0)
-                return this._isInResult;
-              var mpsBefore = this.beforeState().multiPolys;
-              var mpsAfter = this.afterState().multiPolys;
-              switch (operation.type) {
-                case "union": {
-                  var noBefores = mpsBefore.length === 0;
-                  var noAfters = mpsAfter.length === 0;
-                  this._isInResult = noBefores !== noAfters;
-                  break;
-                }
-                case "intersection": {
-                  var least;
-                  var most;
-                  if (mpsBefore.length < mpsAfter.length) {
-                    least = mpsBefore.length;
-                    most = mpsAfter.length;
-                  } else {
-                    least = mpsAfter.length;
-                    most = mpsBefore.length;
-                  }
-                  this._isInResult = most === operation.numMultiPolys && least < most;
-                  break;
-                }
-                case "xor": {
-                  var diff = Math.abs(mpsBefore.length - mpsAfter.length);
-                  this._isInResult = diff % 2 === 1;
-                  break;
-                }
-                case "difference": {
-                  var isJustSubject = function isJustSubject2(mps) {
-                    return mps.length === 1 && mps[0].isSubject;
-                  };
-                  this._isInResult = isJustSubject(mpsBefore) !== isJustSubject(mpsAfter);
-                  break;
-                }
-                default:
-                  throw new Error("Unrecognized operation type found ".concat(operation.type));
-              }
-              return this._isInResult;
-            }
-          }], [{
-            key: "fromRing",
-            value: function fromRing(pt1, pt2, ring) {
-              var leftPt, rightPt, winding;
-              var cmpPts = SweepEvent.comparePoints(pt1, pt2);
-              if (cmpPts < 0) {
-                leftPt = pt1;
-                rightPt = pt2;
-                winding = 1;
-              } else if (cmpPts > 0) {
-                leftPt = pt2;
-                rightPt = pt1;
-                winding = -1;
+            const beforeState = this.beforeState();
+            this._afterState = {
+              rings: beforeState.rings.slice(0),
+              windings: beforeState.windings.slice(0),
+              multiPolys: []
+            };
+            const ringsAfter = this._afterState.rings;
+            const windingsAfter = this._afterState.windings;
+            const mpsAfter = this._afterState.multiPolys;
+            for (let i2 = 0, iMax = this.rings.length; i2 < iMax; i2++) {
+              const ring = this.rings[i2];
+              const winding = this.windings[i2];
+              const index2 = ringsAfter.indexOf(ring);
+              if (index2 === -1) {
+                ringsAfter.push(ring);
+                windingsAfter.push(winding);
               } else
-                throw new Error("Tried to create degenerate segment at [".concat(pt1.x, ", ").concat(pt1.y, "]"));
-              var leftSE = new SweepEvent(leftPt, true);
-              var rightSE = new SweepEvent(rightPt, false);
-              return new Segment2(leftSE, rightSE, [ring], [winding]);
+                windingsAfter[index2] += winding;
             }
-          }]);
-          return Segment2;
-        }();
-        var RingIn = /* @__PURE__ */ function() {
-          function RingIn2(geomRing, poly, isExterior) {
-            _classCallCheck(this, RingIn2);
+            const polysAfter = [];
+            const polysExclude = [];
+            for (let i2 = 0, iMax = ringsAfter.length; i2 < iMax; i2++) {
+              if (windingsAfter[i2] === 0)
+                continue;
+              const ring = ringsAfter[i2];
+              const poly = ring.poly;
+              if (polysExclude.indexOf(poly) !== -1)
+                continue;
+              if (ring.isExterior)
+                polysAfter.push(poly);
+              else {
+                if (polysExclude.indexOf(poly) === -1)
+                  polysExclude.push(poly);
+                const index2 = polysAfter.indexOf(ring.poly);
+                if (index2 !== -1)
+                  polysAfter.splice(index2, 1);
+              }
+            }
+            for (let i2 = 0, iMax = polysAfter.length; i2 < iMax; i2++) {
+              const mp = polysAfter[i2].multiPoly;
+              if (mpsAfter.indexOf(mp) === -1)
+                mpsAfter.push(mp);
+            }
+            return this._afterState;
+          }
+          /* Is this segment part of the final result? */
+          isInResult() {
+            if (this.consumedBy)
+              return false;
+            if (this._isInResult !== void 0)
+              return this._isInResult;
+            const mpsBefore = this.beforeState().multiPolys;
+            const mpsAfter = this.afterState().multiPolys;
+            switch (operation.type) {
+              case "union": {
+                const noBefores = mpsBefore.length === 0;
+                const noAfters = mpsAfter.length === 0;
+                this._isInResult = noBefores !== noAfters;
+                break;
+              }
+              case "intersection": {
+                let least;
+                let most;
+                if (mpsBefore.length < mpsAfter.length) {
+                  least = mpsBefore.length;
+                  most = mpsAfter.length;
+                } else {
+                  least = mpsAfter.length;
+                  most = mpsBefore.length;
+                }
+                this._isInResult = most === operation.numMultiPolys && least < most;
+                break;
+              }
+              case "xor": {
+                const diff = Math.abs(mpsBefore.length - mpsAfter.length);
+                this._isInResult = diff % 2 === 1;
+                break;
+              }
+              case "difference": {
+                const isJustSubject = (mps) => mps.length === 1 && mps[0].isSubject;
+                this._isInResult = isJustSubject(mpsBefore) !== isJustSubject(mpsAfter);
+                break;
+              }
+              default:
+                throw new Error(`Unrecognized operation type found ${operation.type}`);
+            }
+            return this._isInResult;
+          }
+        }
+        class RingIn {
+          constructor(geomRing, poly, isExterior) {
             if (!Array.isArray(geomRing) || geomRing.length === 0) {
               throw new Error("Input geometry is not a valid Polygon or MultiPolygon");
             }
@@ -5383,7 +5669,7 @@
             if (typeof geomRing[0][0] !== "number" || typeof geomRing[0][1] !== "number") {
               throw new Error("Input geometry is not a valid Polygon or MultiPolygon");
             }
-            var firstPoint = rounder.round(geomRing[0][0], geomRing[0][1]);
+            const firstPoint = rounder.round(geomRing[0][0], geomRing[0][1]);
             this.bbox = {
               ll: {
                 x: firstPoint.x,
@@ -5394,12 +5680,12 @@
                 y: firstPoint.y
               }
             };
-            var prevPoint = firstPoint;
-            for (var i2 = 1, iMax = geomRing.length; i2 < iMax; i2++) {
+            let prevPoint = firstPoint;
+            for (let i2 = 1, iMax = geomRing.length; i2 < iMax; i2++) {
               if (typeof geomRing[i2][0] !== "number" || typeof geomRing[i2][1] !== "number") {
                 throw new Error("Input geometry is not a valid Polygon or MultiPolygon");
               }
-              var point2 = rounder.round(geomRing[i2][0], geomRing[i2][1]);
+              let point2 = rounder.round(geomRing[i2][0], geomRing[i2][1]);
               if (point2.x === prevPoint.x && point2.y === prevPoint.y)
                 continue;
               this.segments.push(Segment.fromRing(prevPoint, point2, this));
@@ -5417,23 +5703,18 @@
               this.segments.push(Segment.fromRing(prevPoint, firstPoint, this));
             }
           }
-          _createClass(RingIn2, [{
-            key: "getSweepEvents",
-            value: function getSweepEvents() {
-              var sweepEvents = [];
-              for (var i2 = 0, iMax = this.segments.length; i2 < iMax; i2++) {
-                var segment = this.segments[i2];
-                sweepEvents.push(segment.leftSE);
-                sweepEvents.push(segment.rightSE);
-              }
-              return sweepEvents;
+          getSweepEvents() {
+            const sweepEvents = [];
+            for (let i2 = 0, iMax = this.segments.length; i2 < iMax; i2++) {
+              const segment = this.segments[i2];
+              sweepEvents.push(segment.leftSE);
+              sweepEvents.push(segment.rightSE);
             }
-          }]);
-          return RingIn2;
-        }();
-        var PolyIn = /* @__PURE__ */ function() {
-          function PolyIn2(geomPoly, multiPoly) {
-            _classCallCheck(this, PolyIn2);
+            return sweepEvents;
+          }
+        }
+        class PolyIn {
+          constructor(geomPoly, multiPoly) {
             if (!Array.isArray(geomPoly)) {
               throw new Error("Input geometry is not a valid Polygon or MultiPolygon");
             }
@@ -5449,8 +5730,8 @@
               }
             };
             this.interiorRings = [];
-            for (var i2 = 1, iMax = geomPoly.length; i2 < iMax; i2++) {
-              var ring = new RingIn(geomPoly[i2], this, false);
+            for (let i2 = 1, iMax = geomPoly.length; i2 < iMax; i2++) {
+              const ring = new RingIn(geomPoly[i2], this, false);
               if (ring.bbox.ll.x < this.bbox.ll.x)
                 this.bbox.ll.x = ring.bbox.ll.x;
               if (ring.bbox.ll.y < this.bbox.ll.y)
@@ -5463,24 +5744,19 @@
             }
             this.multiPoly = multiPoly;
           }
-          _createClass(PolyIn2, [{
-            key: "getSweepEvents",
-            value: function getSweepEvents() {
-              var sweepEvents = this.exteriorRing.getSweepEvents();
-              for (var i2 = 0, iMax = this.interiorRings.length; i2 < iMax; i2++) {
-                var ringSweepEvents = this.interiorRings[i2].getSweepEvents();
-                for (var j2 = 0, jMax = ringSweepEvents.length; j2 < jMax; j2++) {
-                  sweepEvents.push(ringSweepEvents[j2]);
-                }
+          getSweepEvents() {
+            const sweepEvents = this.exteriorRing.getSweepEvents();
+            for (let i2 = 0, iMax = this.interiorRings.length; i2 < iMax; i2++) {
+              const ringSweepEvents = this.interiorRings[i2].getSweepEvents();
+              for (let j2 = 0, jMax = ringSweepEvents.length; j2 < jMax; j2++) {
+                sweepEvents.push(ringSweepEvents[j2]);
               }
-              return sweepEvents;
             }
-          }]);
-          return PolyIn2;
-        }();
-        var MultiPolyIn = /* @__PURE__ */ function() {
-          function MultiPolyIn2(geom, isSubject) {
-            _classCallCheck(this, MultiPolyIn2);
+            return sweepEvents;
+          }
+        }
+        class MultiPolyIn {
+          constructor(geom, isSubject) {
             if (!Array.isArray(geom)) {
               throw new Error("Input geometry is not a valid Polygon or MultiPolygon");
             }
@@ -5500,8 +5776,8 @@
                 y: Number.NEGATIVE_INFINITY
               }
             };
-            for (var i2 = 0, iMax = geom.length; i2 < iMax; i2++) {
-              var poly = new PolyIn(geom[i2], this);
+            for (let i2 = 0, iMax = geom.length; i2 < iMax; i2++) {
+              const poly = new PolyIn(geom[i2], this);
               if (poly.bbox.ll.x < this.bbox.ll.x)
                 this.bbox.ll.x = poly.bbox.ll.x;
               if (poly.bbox.ll.y < this.bbox.ll.y)
@@ -5514,467 +5790,420 @@
             }
             this.isSubject = isSubject;
           }
-          _createClass(MultiPolyIn2, [{
-            key: "getSweepEvents",
-            value: function getSweepEvents() {
-              var sweepEvents = [];
-              for (var i2 = 0, iMax = this.polys.length; i2 < iMax; i2++) {
-                var polySweepEvents = this.polys[i2].getSweepEvents();
-                for (var j2 = 0, jMax = polySweepEvents.length; j2 < jMax; j2++) {
-                  sweepEvents.push(polySweepEvents[j2]);
-                }
+          getSweepEvents() {
+            const sweepEvents = [];
+            for (let i2 = 0, iMax = this.polys.length; i2 < iMax; i2++) {
+              const polySweepEvents = this.polys[i2].getSweepEvents();
+              for (let j2 = 0, jMax = polySweepEvents.length; j2 < jMax; j2++) {
+                sweepEvents.push(polySweepEvents[j2]);
               }
-              return sweepEvents;
             }
-          }]);
-          return MultiPolyIn2;
-        }();
-        var RingOut = /* @__PURE__ */ function() {
-          _createClass(RingOut2, null, [{
-            key: "factory",
-            /* Given the segments from the sweep line pass, compute & return a series
-             * of closed rings from all the segments marked to be part of the result */
-            value: function factory(allSegments) {
-              var ringsOut = [];
-              for (var i2 = 0, iMax = allSegments.length; i2 < iMax; i2++) {
-                var segment = allSegments[i2];
-                if (!segment.isInResult() || segment.ringOut)
-                  continue;
-                var prevEvent = null;
-                var event = segment.leftSE;
-                var nextEvent = segment.rightSE;
-                var events = [event];
-                var startingPoint = event.point;
-                var intersectionLEs = [];
+            return sweepEvents;
+          }
+        }
+        class RingOut {
+          /* Given the segments from the sweep line pass, compute & return a series
+           * of closed rings from all the segments marked to be part of the result */
+          static factory(allSegments) {
+            const ringsOut = [];
+            for (let i2 = 0, iMax = allSegments.length; i2 < iMax; i2++) {
+              const segment = allSegments[i2];
+              if (!segment.isInResult() || segment.ringOut)
+                continue;
+              let prevEvent = null;
+              let event = segment.leftSE;
+              let nextEvent = segment.rightSE;
+              const events = [event];
+              const startingPoint = event.point;
+              const intersectionLEs = [];
+              while (true) {
+                prevEvent = event;
+                event = nextEvent;
+                events.push(event);
+                if (event.point === startingPoint)
+                  break;
                 while (true) {
-                  prevEvent = event;
-                  event = nextEvent;
-                  events.push(event);
-                  if (event.point === startingPoint)
-                    break;
-                  while (true) {
-                    var availableLEs = event.getAvailableLinkedEvents();
-                    if (availableLEs.length === 0) {
-                      var firstPt = events[0].point;
-                      var lastPt = events[events.length - 1].point;
-                      throw new Error("Unable to complete output ring starting at [".concat(firstPt.x, ",") + " ".concat(firstPt.y, "]. Last matching segment found ends at") + " [".concat(lastPt.x, ", ").concat(lastPt.y, "]."));
-                    }
-                    if (availableLEs.length === 1) {
-                      nextEvent = availableLEs[0].otherSE;
-                      break;
-                    }
-                    var indexLE = null;
-                    for (var j2 = 0, jMax = intersectionLEs.length; j2 < jMax; j2++) {
-                      if (intersectionLEs[j2].point === event.point) {
-                        indexLE = j2;
-                        break;
-                      }
-                    }
-                    if (indexLE !== null) {
-                      var intersectionLE = intersectionLEs.splice(indexLE)[0];
-                      var ringEvents = events.splice(intersectionLE.index);
-                      ringEvents.unshift(ringEvents[0].otherSE);
-                      ringsOut.push(new RingOut2(ringEvents.reverse()));
-                      continue;
-                    }
-                    intersectionLEs.push({
-                      index: events.length,
-                      point: event.point
-                    });
-                    var comparator = event.getLeftmostComparator(prevEvent);
-                    nextEvent = availableLEs.sort(comparator)[0].otherSE;
+                  const availableLEs = event.getAvailableLinkedEvents();
+                  if (availableLEs.length === 0) {
+                    const firstPt = events[0].point;
+                    const lastPt = events[events.length - 1].point;
+                    throw new Error(`Unable to complete output ring starting at [${firstPt.x}, ${firstPt.y}]. Last matching segment found ends at [${lastPt.x}, ${lastPt.y}].`);
+                  }
+                  if (availableLEs.length === 1) {
+                    nextEvent = availableLEs[0].otherSE;
                     break;
                   }
+                  let indexLE = null;
+                  for (let j2 = 0, jMax = intersectionLEs.length; j2 < jMax; j2++) {
+                    if (intersectionLEs[j2].point === event.point) {
+                      indexLE = j2;
+                      break;
+                    }
+                  }
+                  if (indexLE !== null) {
+                    const intersectionLE = intersectionLEs.splice(indexLE)[0];
+                    const ringEvents = events.splice(intersectionLE.index);
+                    ringEvents.unshift(ringEvents[0].otherSE);
+                    ringsOut.push(new RingOut(ringEvents.reverse()));
+                    continue;
+                  }
+                  intersectionLEs.push({
+                    index: events.length,
+                    point: event.point
+                  });
+                  const comparator = event.getLeftmostComparator(prevEvent);
+                  nextEvent = availableLEs.sort(comparator)[0].otherSE;
+                  break;
                 }
-                ringsOut.push(new RingOut2(events));
               }
-              return ringsOut;
+              ringsOut.push(new RingOut(events));
             }
-          }]);
-          function RingOut2(events) {
-            _classCallCheck(this, RingOut2);
+            return ringsOut;
+          }
+          constructor(events) {
             this.events = events;
-            for (var i2 = 0, iMax = events.length; i2 < iMax; i2++) {
+            for (let i2 = 0, iMax = events.length; i2 < iMax; i2++) {
               events[i2].segment.ringOut = this;
             }
             this.poly = null;
           }
-          _createClass(RingOut2, [{
-            key: "getGeom",
-            value: function getGeom2() {
-              var prevPt = this.events[0].point;
-              var points = [prevPt];
-              for (var i2 = 1, iMax = this.events.length - 1; i2 < iMax; i2++) {
-                var _pt = this.events[i2].point;
-                var _nextPt = this.events[i2 + 1].point;
-                if (compareVectorAngles(_pt, prevPt, _nextPt) === 0)
-                  continue;
-                points.push(_pt);
-                prevPt = _pt;
-              }
-              if (points.length === 1)
+          getGeom() {
+            let prevPt = this.events[0].point;
+            const points = [prevPt];
+            for (let i2 = 1, iMax = this.events.length - 1; i2 < iMax; i2++) {
+              const pt2 = this.events[i2].point;
+              const nextPt2 = this.events[i2 + 1].point;
+              if (compareVectorAngles(pt2, prevPt, nextPt2) === 0)
+                continue;
+              points.push(pt2);
+              prevPt = pt2;
+            }
+            if (points.length === 1)
+              return null;
+            const pt = points[0];
+            const nextPt = points[1];
+            if (compareVectorAngles(pt, prevPt, nextPt) === 0)
+              points.shift();
+            points.push(points[0]);
+            const step = this.isExteriorRing() ? 1 : -1;
+            const iStart = this.isExteriorRing() ? 0 : points.length - 1;
+            const iEnd = this.isExteriorRing() ? points.length : -1;
+            const orderedPoints = [];
+            for (let i2 = iStart; i2 != iEnd; i2 += step)
+              orderedPoints.push([points[i2].x, points[i2].y]);
+            return orderedPoints;
+          }
+          isExteriorRing() {
+            if (this._isExteriorRing === void 0) {
+              const enclosing = this.enclosingRing();
+              this._isExteriorRing = enclosing ? !enclosing.isExteriorRing() : true;
+            }
+            return this._isExteriorRing;
+          }
+          enclosingRing() {
+            if (this._enclosingRing === void 0) {
+              this._enclosingRing = this._calcEnclosingRing();
+            }
+            return this._enclosingRing;
+          }
+          /* Returns the ring that encloses this one, if any */
+          _calcEnclosingRing() {
+            let leftMostEvt = this.events[0];
+            for (let i2 = 1, iMax = this.events.length; i2 < iMax; i2++) {
+              const evt = this.events[i2];
+              if (SweepEvent.compare(leftMostEvt, evt) > 0)
+                leftMostEvt = evt;
+            }
+            let prevSeg = leftMostEvt.segment.prevInResult();
+            let prevPrevSeg = prevSeg ? prevSeg.prevInResult() : null;
+            while (true) {
+              if (!prevSeg)
                 return null;
-              var pt = points[0];
-              var nextPt = points[1];
-              if (compareVectorAngles(pt, prevPt, nextPt) === 0)
-                points.shift();
-              points.push(points[0]);
-              var step = this.isExteriorRing() ? 1 : -1;
-              var iStart = this.isExteriorRing() ? 0 : points.length - 1;
-              var iEnd = this.isExteriorRing() ? points.length : -1;
-              var orderedPoints = [];
-              for (var _i = iStart; _i != iEnd; _i += step) {
-                orderedPoints.push([points[_i].x, points[_i].y]);
-              }
-              return orderedPoints;
-            }
-          }, {
-            key: "isExteriorRing",
-            value: function isExteriorRing() {
-              if (this._isExteriorRing === void 0) {
-                var enclosing = this.enclosingRing();
-                this._isExteriorRing = enclosing ? !enclosing.isExteriorRing() : true;
-              }
-              return this._isExteriorRing;
-            }
-          }, {
-            key: "enclosingRing",
-            value: function enclosingRing() {
-              if (this._enclosingRing === void 0) {
-                this._enclosingRing = this._calcEnclosingRing();
-              }
-              return this._enclosingRing;
-            }
-            /* Returns the ring that encloses this one, if any */
-          }, {
-            key: "_calcEnclosingRing",
-            value: function _calcEnclosingRing() {
-              var leftMostEvt = this.events[0];
-              for (var i2 = 1, iMax = this.events.length; i2 < iMax; i2++) {
-                var evt = this.events[i2];
-                if (SweepEvent.compare(leftMostEvt, evt) > 0)
-                  leftMostEvt = evt;
-              }
-              var prevSeg = leftMostEvt.segment.prevInResult();
-              var prevPrevSeg = prevSeg ? prevSeg.prevInResult() : null;
-              while (true) {
-                if (!prevSeg)
-                  return null;
-                if (!prevPrevSeg)
+              if (!prevPrevSeg)
+                return prevSeg.ringOut;
+              if (prevPrevSeg.ringOut !== prevSeg.ringOut) {
+                if (prevPrevSeg.ringOut.enclosingRing() !== prevSeg.ringOut) {
                   return prevSeg.ringOut;
-                if (prevPrevSeg.ringOut !== prevSeg.ringOut) {
-                  if (prevPrevSeg.ringOut.enclosingRing() !== prevSeg.ringOut) {
-                    return prevSeg.ringOut;
-                  } else
-                    return prevSeg.ringOut.enclosingRing();
-                }
-                prevSeg = prevPrevSeg.prevInResult();
-                prevPrevSeg = prevSeg ? prevSeg.prevInResult() : null;
+                } else
+                  return prevSeg.ringOut.enclosingRing();
               }
+              prevSeg = prevPrevSeg.prevInResult();
+              prevPrevSeg = prevSeg ? prevSeg.prevInResult() : null;
             }
-          }]);
-          return RingOut2;
-        }();
-        var PolyOut = /* @__PURE__ */ function() {
-          function PolyOut2(exteriorRing) {
-            _classCallCheck(this, PolyOut2);
+          }
+        }
+        class PolyOut {
+          constructor(exteriorRing) {
             this.exteriorRing = exteriorRing;
             exteriorRing.poly = this;
             this.interiorRings = [];
           }
-          _createClass(PolyOut2, [{
-            key: "addInterior",
-            value: function addInterior(ring) {
-              this.interiorRings.push(ring);
-              ring.poly = this;
+          addInterior(ring) {
+            this.interiorRings.push(ring);
+            ring.poly = this;
+          }
+          getGeom() {
+            const geom = [this.exteriorRing.getGeom()];
+            if (geom[0] === null)
+              return null;
+            for (let i2 = 0, iMax = this.interiorRings.length; i2 < iMax; i2++) {
+              const ringGeom = this.interiorRings[i2].getGeom();
+              if (ringGeom === null)
+                continue;
+              geom.push(ringGeom);
             }
-          }, {
-            key: "getGeom",
-            value: function getGeom2() {
-              var geom = [this.exteriorRing.getGeom()];
-              if (geom[0] === null)
-                return null;
-              for (var i2 = 0, iMax = this.interiorRings.length; i2 < iMax; i2++) {
-                var ringGeom = this.interiorRings[i2].getGeom();
-                if (ringGeom === null)
-                  continue;
-                geom.push(ringGeom);
-              }
-              return geom;
-            }
-          }]);
-          return PolyOut2;
-        }();
-        var MultiPolyOut = /* @__PURE__ */ function() {
-          function MultiPolyOut2(rings) {
-            _classCallCheck(this, MultiPolyOut2);
+            return geom;
+          }
+        }
+        class MultiPolyOut {
+          constructor(rings) {
             this.rings = rings;
             this.polys = this._composePolys(rings);
           }
-          _createClass(MultiPolyOut2, [{
-            key: "getGeom",
-            value: function getGeom2() {
-              var geom = [];
-              for (var i2 = 0, iMax = this.polys.length; i2 < iMax; i2++) {
-                var polyGeom = this.polys[i2].getGeom();
-                if (polyGeom === null)
-                  continue;
-                geom.push(polyGeom);
-              }
-              return geom;
+          getGeom() {
+            const geom = [];
+            for (let i2 = 0, iMax = this.polys.length; i2 < iMax; i2++) {
+              const polyGeom = this.polys[i2].getGeom();
+              if (polyGeom === null)
+                continue;
+              geom.push(polyGeom);
             }
-          }, {
-            key: "_composePolys",
-            value: function _composePolys(rings) {
-              var polys = [];
-              for (var i2 = 0, iMax = rings.length; i2 < iMax; i2++) {
-                var ring = rings[i2];
-                if (ring.poly)
-                  continue;
-                if (ring.isExteriorRing())
-                  polys.push(new PolyOut(ring));
-                else {
-                  var enclosingRing = ring.enclosingRing();
-                  if (!enclosingRing.poly)
-                    polys.push(new PolyOut(enclosingRing));
-                  enclosingRing.poly.addInterior(ring);
-                }
+            return geom;
+          }
+          _composePolys(rings) {
+            const polys = [];
+            for (let i2 = 0, iMax = rings.length; i2 < iMax; i2++) {
+              const ring = rings[i2];
+              if (ring.poly)
+                continue;
+              if (ring.isExteriorRing())
+                polys.push(new PolyOut(ring));
+              else {
+                const enclosingRing = ring.enclosingRing();
+                if (!enclosingRing.poly)
+                  polys.push(new PolyOut(enclosingRing));
+                enclosingRing.poly.addInterior(ring);
               }
-              return polys;
             }
-          }]);
-          return MultiPolyOut2;
-        }();
-        var SweepLine = /* @__PURE__ */ function() {
-          function SweepLine2(queue) {
-            var comparator = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : Segment.compare;
-            _classCallCheck(this, SweepLine2);
+            return polys;
+          }
+        }
+        class SweepLine {
+          constructor(queue) {
+            let comparator = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : Segment.compare;
             this.queue = queue;
             this.tree = new Tree(comparator);
             this.segments = [];
           }
-          _createClass(SweepLine2, [{
-            key: "process",
-            value: function process2(event) {
-              var segment = event.segment;
-              var newEvents = [];
-              if (event.consumedBy) {
-                if (event.isLeft)
-                  this.queue.remove(event.otherSE);
-                else
-                  this.tree.remove(segment);
-                return newEvents;
-              }
-              var node = event.isLeft ? this.tree.insert(segment) : this.tree.find(segment);
-              if (!node)
-                throw new Error("Unable to find segment #".concat(segment.id, " ") + "[".concat(segment.leftSE.point.x, ", ").concat(segment.leftSE.point.y, "] -> ") + "[".concat(segment.rightSE.point.x, ", ").concat(segment.rightSE.point.y, "] ") + "in SweepLine tree. Please submit a bug report.");
-              var prevNode = node;
-              var nextNode = node;
-              var prevSeg = void 0;
-              var nextSeg = void 0;
-              while (prevSeg === void 0) {
-                prevNode = this.tree.prev(prevNode);
-                if (prevNode === null)
-                  prevSeg = null;
-                else if (prevNode.key.consumedBy === void 0)
-                  prevSeg = prevNode.key;
-              }
-              while (nextSeg === void 0) {
-                nextNode = this.tree.next(nextNode);
-                if (nextNode === null)
-                  nextSeg = null;
-                else if (nextNode.key.consumedBy === void 0)
-                  nextSeg = nextNode.key;
-              }
-              if (event.isLeft) {
-                var prevMySplitter = null;
-                if (prevSeg) {
-                  var prevInter = prevSeg.getIntersection(segment);
-                  if (prevInter !== null) {
-                    if (!segment.isAnEndpoint(prevInter))
-                      prevMySplitter = prevInter;
-                    if (!prevSeg.isAnEndpoint(prevInter)) {
-                      var newEventsFromSplit = this._splitSafely(prevSeg, prevInter);
-                      for (var i2 = 0, iMax = newEventsFromSplit.length; i2 < iMax; i2++) {
-                        newEvents.push(newEventsFromSplit[i2]);
-                      }
-                    }
-                  }
-                }
-                var nextMySplitter = null;
-                if (nextSeg) {
-                  var nextInter = nextSeg.getIntersection(segment);
-                  if (nextInter !== null) {
-                    if (!segment.isAnEndpoint(nextInter))
-                      nextMySplitter = nextInter;
-                    if (!nextSeg.isAnEndpoint(nextInter)) {
-                      var _newEventsFromSplit = this._splitSafely(nextSeg, nextInter);
-                      for (var _i = 0, _iMax = _newEventsFromSplit.length; _i < _iMax; _i++) {
-                        newEvents.push(_newEventsFromSplit[_i]);
-                      }
-                    }
-                  }
-                }
-                if (prevMySplitter !== null || nextMySplitter !== null) {
-                  var mySplitter = null;
-                  if (prevMySplitter === null)
-                    mySplitter = nextMySplitter;
-                  else if (nextMySplitter === null)
-                    mySplitter = prevMySplitter;
-                  else {
-                    var cmpSplitters = SweepEvent.comparePoints(prevMySplitter, nextMySplitter);
-                    mySplitter = cmpSplitters <= 0 ? prevMySplitter : nextMySplitter;
-                  }
-                  this.queue.remove(segment.rightSE);
-                  newEvents.push(segment.rightSE);
-                  var _newEventsFromSplit2 = segment.split(mySplitter);
-                  for (var _i2 = 0, _iMax2 = _newEventsFromSplit2.length; _i2 < _iMax2; _i2++) {
-                    newEvents.push(_newEventsFromSplit2[_i2]);
-                  }
-                }
-                if (newEvents.length > 0) {
-                  this.tree.remove(segment);
-                  newEvents.push(event);
-                } else {
-                  this.segments.push(segment);
-                  segment.prev = prevSeg;
-                }
-              } else {
-                if (prevSeg && nextSeg) {
-                  var inter = prevSeg.getIntersection(nextSeg);
-                  if (inter !== null) {
-                    if (!prevSeg.isAnEndpoint(inter)) {
-                      var _newEventsFromSplit3 = this._splitSafely(prevSeg, inter);
-                      for (var _i3 = 0, _iMax3 = _newEventsFromSplit3.length; _i3 < _iMax3; _i3++) {
-                        newEvents.push(_newEventsFromSplit3[_i3]);
-                      }
-                    }
-                    if (!nextSeg.isAnEndpoint(inter)) {
-                      var _newEventsFromSplit4 = this._splitSafely(nextSeg, inter);
-                      for (var _i4 = 0, _iMax4 = _newEventsFromSplit4.length; _i4 < _iMax4; _i4++) {
-                        newEvents.push(_newEventsFromSplit4[_i4]);
-                      }
-                    }
-                  }
-                }
+          process(event) {
+            const segment = event.segment;
+            const newEvents = [];
+            if (event.consumedBy) {
+              if (event.isLeft)
+                this.queue.remove(event.otherSE);
+              else
                 this.tree.remove(segment);
+              return newEvents;
+            }
+            const node = event.isLeft ? this.tree.add(segment) : this.tree.find(segment);
+            if (!node)
+              throw new Error(`Unable to find segment #${segment.id} [${segment.leftSE.point.x}, ${segment.leftSE.point.y}] -> [${segment.rightSE.point.x}, ${segment.rightSE.point.y}] in SweepLine tree.`);
+            let prevNode = node;
+            let nextNode = node;
+            let prevSeg = void 0;
+            let nextSeg = void 0;
+            while (prevSeg === void 0) {
+              prevNode = this.tree.prev(prevNode);
+              if (prevNode === null)
+                prevSeg = null;
+              else if (prevNode.key.consumedBy === void 0)
+                prevSeg = prevNode.key;
+            }
+            while (nextSeg === void 0) {
+              nextNode = this.tree.next(nextNode);
+              if (nextNode === null)
+                nextSeg = null;
+              else if (nextNode.key.consumedBy === void 0)
+                nextSeg = nextNode.key;
+            }
+            if (event.isLeft) {
+              let prevMySplitter = null;
+              if (prevSeg) {
+                const prevInter = prevSeg.getIntersection(segment);
+                if (prevInter !== null) {
+                  if (!segment.isAnEndpoint(prevInter))
+                    prevMySplitter = prevInter;
+                  if (!prevSeg.isAnEndpoint(prevInter)) {
+                    const newEventsFromSplit = this._splitSafely(prevSeg, prevInter);
+                    for (let i2 = 0, iMax = newEventsFromSplit.length; i2 < iMax; i2++) {
+                      newEvents.push(newEventsFromSplit[i2]);
+                    }
+                  }
+                }
               }
-              return newEvents;
+              let nextMySplitter = null;
+              if (nextSeg) {
+                const nextInter = nextSeg.getIntersection(segment);
+                if (nextInter !== null) {
+                  if (!segment.isAnEndpoint(nextInter))
+                    nextMySplitter = nextInter;
+                  if (!nextSeg.isAnEndpoint(nextInter)) {
+                    const newEventsFromSplit = this._splitSafely(nextSeg, nextInter);
+                    for (let i2 = 0, iMax = newEventsFromSplit.length; i2 < iMax; i2++) {
+                      newEvents.push(newEventsFromSplit[i2]);
+                    }
+                  }
+                }
+              }
+              if (prevMySplitter !== null || nextMySplitter !== null) {
+                let mySplitter = null;
+                if (prevMySplitter === null)
+                  mySplitter = nextMySplitter;
+                else if (nextMySplitter === null)
+                  mySplitter = prevMySplitter;
+                else {
+                  const cmpSplitters = SweepEvent.comparePoints(prevMySplitter, nextMySplitter);
+                  mySplitter = cmpSplitters <= 0 ? prevMySplitter : nextMySplitter;
+                }
+                this.queue.remove(segment.rightSE);
+                newEvents.push(segment.rightSE);
+                const newEventsFromSplit = segment.split(mySplitter);
+                for (let i2 = 0, iMax = newEventsFromSplit.length; i2 < iMax; i2++) {
+                  newEvents.push(newEventsFromSplit[i2]);
+                }
+              }
+              if (newEvents.length > 0) {
+                this.tree.remove(segment);
+                newEvents.push(event);
+              } else {
+                this.segments.push(segment);
+                segment.prev = prevSeg;
+              }
+            } else {
+              if (prevSeg && nextSeg) {
+                const inter = prevSeg.getIntersection(nextSeg);
+                if (inter !== null) {
+                  if (!prevSeg.isAnEndpoint(inter)) {
+                    const newEventsFromSplit = this._splitSafely(prevSeg, inter);
+                    for (let i2 = 0, iMax = newEventsFromSplit.length; i2 < iMax; i2++) {
+                      newEvents.push(newEventsFromSplit[i2]);
+                    }
+                  }
+                  if (!nextSeg.isAnEndpoint(inter)) {
+                    const newEventsFromSplit = this._splitSafely(nextSeg, inter);
+                    for (let i2 = 0, iMax = newEventsFromSplit.length; i2 < iMax; i2++) {
+                      newEvents.push(newEventsFromSplit[i2]);
+                    }
+                  }
+                }
+              }
+              this.tree.remove(segment);
             }
-            /* Safely split a segment that is currently in the datastructures
-             * IE - a segment other than the one that is currently being processed. */
-          }, {
-            key: "_splitSafely",
-            value: function _splitSafely(seg, pt) {
-              this.tree.remove(seg);
-              var rightSE = seg.rightSE;
-              this.queue.remove(rightSE);
-              var newEvents = seg.split(pt);
-              newEvents.push(rightSE);
-              if (seg.consumedBy === void 0)
-                this.tree.insert(seg);
-              return newEvents;
-            }
-          }]);
-          return SweepLine2;
-        }();
-        var POLYGON_CLIPPING_MAX_QUEUE_SIZE = typeof process !== "undefined" && process.env.POLYGON_CLIPPING_MAX_QUEUE_SIZE || 1e6;
-        var POLYGON_CLIPPING_MAX_SWEEPLINE_SEGMENTS = typeof process !== "undefined" && process.env.POLYGON_CLIPPING_MAX_SWEEPLINE_SEGMENTS || 1e6;
-        var Operation = /* @__PURE__ */ function() {
-          function Operation2() {
-            _classCallCheck(this, Operation2);
+            return newEvents;
           }
-          _createClass(Operation2, [{
-            key: "run",
-            value: function run(type2, geom, moreGeoms) {
-              operation.type = type2;
-              rounder.reset();
-              var multipolys = [new MultiPolyIn(geom, true)];
-              for (var i2 = 0, iMax = moreGeoms.length; i2 < iMax; i2++) {
-                multipolys.push(new MultiPolyIn(moreGeoms[i2], false));
-              }
-              operation.numMultiPolys = multipolys.length;
-              if (operation.type === "difference") {
-                var subject = multipolys[0];
-                var _i = 1;
-                while (_i < multipolys.length) {
-                  if (getBboxOverlap(multipolys[_i].bbox, subject.bbox) !== null)
-                    _i++;
-                  else
-                    multipolys.splice(_i, 1);
-                }
-              }
-              if (operation.type === "intersection") {
-                for (var _i2 = 0, _iMax = multipolys.length; _i2 < _iMax; _i2++) {
-                  var mpA = multipolys[_i2];
-                  for (var j2 = _i2 + 1, jMax = multipolys.length; j2 < jMax; j2++) {
-                    if (getBboxOverlap(mpA.bbox, multipolys[j2].bbox) === null)
-                      return [];
-                  }
-                }
-              }
-              var queue = new Tree(SweepEvent.compare);
-              for (var _i3 = 0, _iMax2 = multipolys.length; _i3 < _iMax2; _i3++) {
-                var sweepEvents = multipolys[_i3].getSweepEvents();
-                for (var _j = 0, _jMax = sweepEvents.length; _j < _jMax; _j++) {
-                  queue.insert(sweepEvents[_j]);
-                  if (queue.size > POLYGON_CLIPPING_MAX_QUEUE_SIZE) {
-                    throw new Error("Infinite loop when putting segment endpoints in a priority queue (queue size too big). Please file a bug report.");
-                  }
-                }
-              }
-              var sweepLine = new SweepLine(queue);
-              var prevQueueSize = queue.size;
-              var node = queue.pop();
-              while (node) {
-                var evt = node.key;
-                if (queue.size === prevQueueSize) {
-                  var seg = evt.segment;
-                  throw new Error("Unable to pop() ".concat(evt.isLeft ? "left" : "right", " SweepEvent ") + "[".concat(evt.point.x, ", ").concat(evt.point.y, "] from segment #").concat(seg.id, " ") + "[".concat(seg.leftSE.point.x, ", ").concat(seg.leftSE.point.y, "] -> ") + "[".concat(seg.rightSE.point.x, ", ").concat(seg.rightSE.point.y, "] from queue. ") + "Please file a bug report.");
-                }
-                if (queue.size > POLYGON_CLIPPING_MAX_QUEUE_SIZE) {
-                  throw new Error("Infinite loop when passing sweep line over endpoints (queue size too big). Please file a bug report.");
-                }
-                if (sweepLine.segments.length > POLYGON_CLIPPING_MAX_SWEEPLINE_SEGMENTS) {
-                  throw new Error("Infinite loop when passing sweep line over endpoints (too many sweep line segments). Please file a bug report.");
-                }
-                var newEvents = sweepLine.process(evt);
-                for (var _i4 = 0, _iMax3 = newEvents.length; _i4 < _iMax3; _i4++) {
-                  var _evt = newEvents[_i4];
-                  if (_evt.consumedBy === void 0)
-                    queue.insert(_evt);
-                }
-                prevQueueSize = queue.size;
-                node = queue.pop();
-              }
-              rounder.reset();
-              var ringsOut = RingOut.factory(sweepLine.segments);
-              var result = new MultiPolyOut(ringsOut);
-              return result.getGeom();
+          /* Safely split a segment that is currently in the datastructures
+           * IE - a segment other than the one that is currently being processed. */
+          _splitSafely(seg, pt) {
+            this.tree.remove(seg);
+            const rightSE = seg.rightSE;
+            this.queue.remove(rightSE);
+            const newEvents = seg.split(pt);
+            newEvents.push(rightSE);
+            if (seg.consumedBy === void 0)
+              this.tree.add(seg);
+            return newEvents;
+          }
+        }
+        const POLYGON_CLIPPING_MAX_QUEUE_SIZE = typeof process !== "undefined" && process.env.POLYGON_CLIPPING_MAX_QUEUE_SIZE || 1e6;
+        const POLYGON_CLIPPING_MAX_SWEEPLINE_SEGMENTS = typeof process !== "undefined" && process.env.POLYGON_CLIPPING_MAX_SWEEPLINE_SEGMENTS || 1e6;
+        class Operation {
+          run(type2, geom, moreGeoms) {
+            operation.type = type2;
+            rounder.reset();
+            const multipolys = [new MultiPolyIn(geom, true)];
+            for (let i2 = 0, iMax = moreGeoms.length; i2 < iMax; i2++) {
+              multipolys.push(new MultiPolyIn(moreGeoms[i2], false));
             }
-          }]);
-          return Operation2;
-        }();
-        var operation = new Operation();
-        var union = function union2(geom) {
+            operation.numMultiPolys = multipolys.length;
+            if (operation.type === "difference") {
+              const subject = multipolys[0];
+              let i2 = 1;
+              while (i2 < multipolys.length) {
+                if (getBboxOverlap(multipolys[i2].bbox, subject.bbox) !== null)
+                  i2++;
+                else
+                  multipolys.splice(i2, 1);
+              }
+            }
+            if (operation.type === "intersection") {
+              for (let i2 = 0, iMax = multipolys.length; i2 < iMax; i2++) {
+                const mpA = multipolys[i2];
+                for (let j2 = i2 + 1, jMax = multipolys.length; j2 < jMax; j2++) {
+                  if (getBboxOverlap(mpA.bbox, multipolys[j2].bbox) === null)
+                    return [];
+                }
+              }
+            }
+            const queue = new Tree(SweepEvent.compare);
+            for (let i2 = 0, iMax = multipolys.length; i2 < iMax; i2++) {
+              const sweepEvents = multipolys[i2].getSweepEvents();
+              for (let j2 = 0, jMax = sweepEvents.length; j2 < jMax; j2++) {
+                queue.insert(sweepEvents[j2]);
+                if (queue.size > POLYGON_CLIPPING_MAX_QUEUE_SIZE) {
+                  throw new Error("Infinite loop when putting segment endpoints in a priority queue (queue size too big).");
+                }
+              }
+            }
+            const sweepLine = new SweepLine(queue);
+            let prevQueueSize = queue.size;
+            let node = queue.pop();
+            while (node) {
+              const evt = node.key;
+              if (queue.size === prevQueueSize) {
+                const seg = evt.segment;
+                throw new Error(`Unable to pop() ${evt.isLeft ? "left" : "right"} SweepEvent [${evt.point.x}, ${evt.point.y}] from segment #${seg.id} [${seg.leftSE.point.x}, ${seg.leftSE.point.y}] -> [${seg.rightSE.point.x}, ${seg.rightSE.point.y}] from queue.`);
+              }
+              if (queue.size > POLYGON_CLIPPING_MAX_QUEUE_SIZE) {
+                throw new Error("Infinite loop when passing sweep line over endpoints (queue size too big).");
+              }
+              if (sweepLine.segments.length > POLYGON_CLIPPING_MAX_SWEEPLINE_SEGMENTS) {
+                throw new Error("Infinite loop when passing sweep line over endpoints (too many sweep line segments).");
+              }
+              const newEvents = sweepLine.process(evt);
+              for (let i2 = 0, iMax = newEvents.length; i2 < iMax; i2++) {
+                const evt2 = newEvents[i2];
+                if (evt2.consumedBy === void 0)
+                  queue.insert(evt2);
+              }
+              prevQueueSize = queue.size;
+              node = queue.pop();
+            }
+            rounder.reset();
+            const ringsOut = RingOut.factory(sweepLine.segments);
+            const result = new MultiPolyOut(ringsOut);
+            return result.getGeom();
+          }
+        }
+        const operation = new Operation();
+        const union = function(geom) {
           for (var _len = arguments.length, moreGeoms = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
             moreGeoms[_key - 1] = arguments[_key];
           }
           return operation.run("union", geom, moreGeoms);
         };
-        var intersection$1 = function intersection2(geom) {
+        const intersection = function(geom) {
           for (var _len2 = arguments.length, moreGeoms = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
             moreGeoms[_key2 - 1] = arguments[_key2];
           }
           return operation.run("intersection", geom, moreGeoms);
         };
-        var xor = function xor2(geom) {
+        const xor = function(geom) {
           for (var _len3 = arguments.length, moreGeoms = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
             moreGeoms[_key3 - 1] = arguments[_key3];
           }
           return operation.run("xor", geom, moreGeoms);
         };
-        var difference = function difference2(subjectGeom) {
+        const difference = function(subjectGeom) {
           for (var _len4 = arguments.length, clippingGeoms = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
             clippingGeoms[_key4 - 1] = arguments[_key4];
           }
@@ -5982,7 +6211,7 @@
         };
         var index = {
           union,
-          intersection: intersection$1,
+          intersection,
           xor,
           difference
         };
@@ -6048,9 +6277,9 @@
             f2.features = f2.features.map(feature3);
             return f2;
           }
-          function geometryCollection(g) {
-            g.geometries = g.geometries.map(geometry);
-            return g;
+          function geometryCollection(g2) {
+            g2.geometries = g2.geometries.map(geometry);
+            return g2;
           }
           if (!t) {
             return t;
@@ -6904,9 +7133,9 @@
           var rules = rules.map(function(r) {
             return new Rule(r.name, r.symbols, r.postprocess);
           });
-          var g = new Grammar(rules, start2);
-          g.lexer = lexer2;
-          return g;
+          var g2 = new Grammar(rules, start2);
+          g2.lexer = lexer2;
+          return g2;
         };
         function StreamLexer() {
           this.reset("");
@@ -14379,568 +14608,6 @@
     }
   });
 
-  // node_modules/name-suggestion-index/node_modules/quickselect/quickselect.js
-  var require_quickselect2 = __commonJS({
-    "node_modules/name-suggestion-index/node_modules/quickselect/quickselect.js"(exports2, module2) {
-      (function(global3, factory) {
-        typeof exports2 === "object" && typeof module2 !== "undefined" ? module2.exports = factory() : typeof define === "function" && define.amd ? define(factory) : global3.quickselect = factory();
-      })(exports2, function() {
-        "use strict";
-        function quickselect2(arr, k, left, right, compare) {
-          quickselectStep(arr, k, left || 0, right || arr.length - 1, compare || defaultCompare);
-        }
-        function quickselectStep(arr, k, left, right, compare) {
-          while (right > left) {
-            if (right - left > 600) {
-              var n2 = right - left + 1;
-              var m = k - left + 1;
-              var z = Math.log(n2);
-              var s = 0.5 * Math.exp(2 * z / 3);
-              var sd = 0.5 * Math.sqrt(z * s * (n2 - s) / n2) * (m - n2 / 2 < 0 ? -1 : 1);
-              var newLeft = Math.max(left, Math.floor(k - m * s / n2 + sd));
-              var newRight = Math.min(right, Math.floor(k + (n2 - m) * s / n2 + sd));
-              quickselectStep(arr, k, newLeft, newRight, compare);
-            }
-            var t = arr[k];
-            var i2 = left;
-            var j2 = right;
-            swap2(arr, left, k);
-            if (compare(arr[right], t) > 0)
-              swap2(arr, left, right);
-            while (i2 < j2) {
-              swap2(arr, i2, j2);
-              i2++;
-              j2--;
-              while (compare(arr[i2], t) < 0)
-                i2++;
-              while (compare(arr[j2], t) > 0)
-                j2--;
-            }
-            if (compare(arr[left], t) === 0)
-              swap2(arr, left, j2);
-            else {
-              j2++;
-              swap2(arr, j2, right);
-            }
-            if (j2 <= k)
-              left = j2 + 1;
-            if (k <= j2)
-              right = j2 - 1;
-          }
-        }
-        function swap2(arr, i2, j2) {
-          var tmp = arr[i2];
-          arr[i2] = arr[j2];
-          arr[j2] = tmp;
-        }
-        function defaultCompare(a, b) {
-          return a < b ? -1 : a > b ? 1 : 0;
-        }
-        return quickselect2;
-      });
-    }
-  });
-
-  // node_modules/name-suggestion-index/node_modules/rbush/index.js
-  var require_rbush2 = __commonJS({
-    "node_modules/name-suggestion-index/node_modules/rbush/index.js"(exports2, module2) {
-      "use strict";
-      module2.exports = rbush;
-      module2.exports.default = rbush;
-      var quickselect2 = require_quickselect2();
-      function rbush(maxEntries, format3) {
-        if (!(this instanceof rbush))
-          return new rbush(maxEntries, format3);
-        this._maxEntries = Math.max(4, maxEntries || 9);
-        this._minEntries = Math.max(2, Math.ceil(this._maxEntries * 0.4));
-        if (format3) {
-          this._initFormat(format3);
-        }
-        this.clear();
-      }
-      rbush.prototype = {
-        all: function() {
-          return this._all(this.data, []);
-        },
-        search: function(bbox2) {
-          var node = this.data, result = [], toBBox = this.toBBox;
-          if (!intersects(bbox2, node))
-            return result;
-          var nodesToSearch = [], i2, len, child, childBBox;
-          while (node) {
-            for (i2 = 0, len = node.children.length; i2 < len; i2++) {
-              child = node.children[i2];
-              childBBox = node.leaf ? toBBox(child) : child;
-              if (intersects(bbox2, childBBox)) {
-                if (node.leaf)
-                  result.push(child);
-                else if (contains(bbox2, childBBox))
-                  this._all(child, result);
-                else
-                  nodesToSearch.push(child);
-              }
-            }
-            node = nodesToSearch.pop();
-          }
-          return result;
-        },
-        collides: function(bbox2) {
-          var node = this.data, toBBox = this.toBBox;
-          if (!intersects(bbox2, node))
-            return false;
-          var nodesToSearch = [], i2, len, child, childBBox;
-          while (node) {
-            for (i2 = 0, len = node.children.length; i2 < len; i2++) {
-              child = node.children[i2];
-              childBBox = node.leaf ? toBBox(child) : child;
-              if (intersects(bbox2, childBBox)) {
-                if (node.leaf || contains(bbox2, childBBox))
-                  return true;
-                nodesToSearch.push(child);
-              }
-            }
-            node = nodesToSearch.pop();
-          }
-          return false;
-        },
-        load: function(data) {
-          if (!(data && data.length))
-            return this;
-          if (data.length < this._minEntries) {
-            for (var i2 = 0, len = data.length; i2 < len; i2++) {
-              this.insert(data[i2]);
-            }
-            return this;
-          }
-          var node = this._build(data.slice(), 0, data.length - 1, 0);
-          if (!this.data.children.length) {
-            this.data = node;
-          } else if (this.data.height === node.height) {
-            this._splitRoot(this.data, node);
-          } else {
-            if (this.data.height < node.height) {
-              var tmpNode = this.data;
-              this.data = node;
-              node = tmpNode;
-            }
-            this._insert(node, this.data.height - node.height - 1, true);
-          }
-          return this;
-        },
-        insert: function(item) {
-          if (item)
-            this._insert(item, this.data.height - 1);
-          return this;
-        },
-        clear: function() {
-          this.data = createNode([]);
-          return this;
-        },
-        remove: function(item, equalsFn) {
-          if (!item)
-            return this;
-          var node = this.data, bbox2 = this.toBBox(item), path = [], indexes = [], i2, parent, index, goingUp;
-          while (node || path.length) {
-            if (!node) {
-              node = path.pop();
-              parent = path[path.length - 1];
-              i2 = indexes.pop();
-              goingUp = true;
-            }
-            if (node.leaf) {
-              index = findItem(item, node.children, equalsFn);
-              if (index !== -1) {
-                node.children.splice(index, 1);
-                path.push(node);
-                this._condense(path);
-                return this;
-              }
-            }
-            if (!goingUp && !node.leaf && contains(node, bbox2)) {
-              path.push(node);
-              indexes.push(i2);
-              i2 = 0;
-              parent = node;
-              node = node.children[0];
-            } else if (parent) {
-              i2++;
-              node = parent.children[i2];
-              goingUp = false;
-            } else
-              node = null;
-          }
-          return this;
-        },
-        toBBox: function(item) {
-          return item;
-        },
-        compareMinX: compareNodeMinX,
-        compareMinY: compareNodeMinY,
-        toJSON: function() {
-          return this.data;
-        },
-        fromJSON: function(data) {
-          this.data = data;
-          return this;
-        },
-        _all: function(node, result) {
-          var nodesToSearch = [];
-          while (node) {
-            if (node.leaf)
-              result.push.apply(result, node.children);
-            else
-              nodesToSearch.push.apply(nodesToSearch, node.children);
-            node = nodesToSearch.pop();
-          }
-          return result;
-        },
-        _build: function(items, left, right, height) {
-          var N = right - left + 1, M = this._maxEntries, node;
-          if (N <= M) {
-            node = createNode(items.slice(left, right + 1));
-            calcBBox(node, this.toBBox);
-            return node;
-          }
-          if (!height) {
-            height = Math.ceil(Math.log(N) / Math.log(M));
-            M = Math.ceil(N / Math.pow(M, height - 1));
-          }
-          node = createNode([]);
-          node.leaf = false;
-          node.height = height;
-          var N2 = Math.ceil(N / M), N1 = N2 * Math.ceil(Math.sqrt(M)), i2, j2, right2, right3;
-          multiSelect(items, left, right, N1, this.compareMinX);
-          for (i2 = left; i2 <= right; i2 += N1) {
-            right2 = Math.min(i2 + N1 - 1, right);
-            multiSelect(items, i2, right2, N2, this.compareMinY);
-            for (j2 = i2; j2 <= right2; j2 += N2) {
-              right3 = Math.min(j2 + N2 - 1, right2);
-              node.children.push(this._build(items, j2, right3, height - 1));
-            }
-          }
-          calcBBox(node, this.toBBox);
-          return node;
-        },
-        _chooseSubtree: function(bbox2, node, level, path) {
-          var i2, len, child, targetNode, area, enlargement, minArea, minEnlargement;
-          while (true) {
-            path.push(node);
-            if (node.leaf || path.length - 1 === level)
-              break;
-            minArea = minEnlargement = Infinity;
-            for (i2 = 0, len = node.children.length; i2 < len; i2++) {
-              child = node.children[i2];
-              area = bboxArea(child);
-              enlargement = enlargedArea(bbox2, child) - area;
-              if (enlargement < minEnlargement) {
-                minEnlargement = enlargement;
-                minArea = area < minArea ? area : minArea;
-                targetNode = child;
-              } else if (enlargement === minEnlargement) {
-                if (area < minArea) {
-                  minArea = area;
-                  targetNode = child;
-                }
-              }
-            }
-            node = targetNode || node.children[0];
-          }
-          return node;
-        },
-        _insert: function(item, level, isNode) {
-          var toBBox = this.toBBox, bbox2 = isNode ? item : toBBox(item), insertPath = [];
-          var node = this._chooseSubtree(bbox2, this.data, level, insertPath);
-          node.children.push(item);
-          extend2(node, bbox2);
-          while (level >= 0) {
-            if (insertPath[level].children.length > this._maxEntries) {
-              this._split(insertPath, level);
-              level--;
-            } else
-              break;
-          }
-          this._adjustParentBBoxes(bbox2, insertPath, level);
-        },
-        // split overflowed node into two
-        _split: function(insertPath, level) {
-          var node = insertPath[level], M = node.children.length, m = this._minEntries;
-          this._chooseSplitAxis(node, m, M);
-          var splitIndex = this._chooseSplitIndex(node, m, M);
-          var newNode = createNode(node.children.splice(splitIndex, node.children.length - splitIndex));
-          newNode.height = node.height;
-          newNode.leaf = node.leaf;
-          calcBBox(node, this.toBBox);
-          calcBBox(newNode, this.toBBox);
-          if (level)
-            insertPath[level - 1].children.push(newNode);
-          else
-            this._splitRoot(node, newNode);
-        },
-        _splitRoot: function(node, newNode) {
-          this.data = createNode([node, newNode]);
-          this.data.height = node.height + 1;
-          this.data.leaf = false;
-          calcBBox(this.data, this.toBBox);
-        },
-        _chooseSplitIndex: function(node, m, M) {
-          var i2, bbox1, bbox2, overlap, area, minOverlap, minArea, index;
-          minOverlap = minArea = Infinity;
-          for (i2 = m; i2 <= M - m; i2++) {
-            bbox1 = distBBox(node, 0, i2, this.toBBox);
-            bbox2 = distBBox(node, i2, M, this.toBBox);
-            overlap = intersectionArea(bbox1, bbox2);
-            area = bboxArea(bbox1) + bboxArea(bbox2);
-            if (overlap < minOverlap) {
-              minOverlap = overlap;
-              index = i2;
-              minArea = area < minArea ? area : minArea;
-            } else if (overlap === minOverlap) {
-              if (area < minArea) {
-                minArea = area;
-                index = i2;
-              }
-            }
-          }
-          return index;
-        },
-        // sorts node children by the best axis for split
-        _chooseSplitAxis: function(node, m, M) {
-          var compareMinX = node.leaf ? this.compareMinX : compareNodeMinX, compareMinY = node.leaf ? this.compareMinY : compareNodeMinY, xMargin = this._allDistMargin(node, m, M, compareMinX), yMargin = this._allDistMargin(node, m, M, compareMinY);
-          if (xMargin < yMargin)
-            node.children.sort(compareMinX);
-        },
-        // total margin of all possible split distributions where each node is at least m full
-        _allDistMargin: function(node, m, M, compare) {
-          node.children.sort(compare);
-          var toBBox = this.toBBox, leftBBox = distBBox(node, 0, m, toBBox), rightBBox = distBBox(node, M - m, M, toBBox), margin = bboxMargin(leftBBox) + bboxMargin(rightBBox), i2, child;
-          for (i2 = m; i2 < M - m; i2++) {
-            child = node.children[i2];
-            extend2(leftBBox, node.leaf ? toBBox(child) : child);
-            margin += bboxMargin(leftBBox);
-          }
-          for (i2 = M - m - 1; i2 >= m; i2--) {
-            child = node.children[i2];
-            extend2(rightBBox, node.leaf ? toBBox(child) : child);
-            margin += bboxMargin(rightBBox);
-          }
-          return margin;
-        },
-        _adjustParentBBoxes: function(bbox2, path, level) {
-          for (var i2 = level; i2 >= 0; i2--) {
-            extend2(path[i2], bbox2);
-          }
-        },
-        _condense: function(path) {
-          for (var i2 = path.length - 1, siblings; i2 >= 0; i2--) {
-            if (path[i2].children.length === 0) {
-              if (i2 > 0) {
-                siblings = path[i2 - 1].children;
-                siblings.splice(siblings.indexOf(path[i2]), 1);
-              } else
-                this.clear();
-            } else
-              calcBBox(path[i2], this.toBBox);
-          }
-        },
-        _initFormat: function(format3) {
-          var compareArr = ["return a", " - b", ";"];
-          this.compareMinX = new Function("a", "b", compareArr.join(format3[0]));
-          this.compareMinY = new Function("a", "b", compareArr.join(format3[1]));
-          this.toBBox = new Function(
-            "a",
-            "return {minX: a" + format3[0] + ", minY: a" + format3[1] + ", maxX: a" + format3[2] + ", maxY: a" + format3[3] + "};"
-          );
-        }
-      };
-      function findItem(item, items, equalsFn) {
-        if (!equalsFn)
-          return items.indexOf(item);
-        for (var i2 = 0; i2 < items.length; i2++) {
-          if (equalsFn(item, items[i2]))
-            return i2;
-        }
-        return -1;
-      }
-      function calcBBox(node, toBBox) {
-        distBBox(node, 0, node.children.length, toBBox, node);
-      }
-      function distBBox(node, k, p, toBBox, destNode) {
-        if (!destNode)
-          destNode = createNode(null);
-        destNode.minX = Infinity;
-        destNode.minY = Infinity;
-        destNode.maxX = -Infinity;
-        destNode.maxY = -Infinity;
-        for (var i2 = k, child; i2 < p; i2++) {
-          child = node.children[i2];
-          extend2(destNode, node.leaf ? toBBox(child) : child);
-        }
-        return destNode;
-      }
-      function extend2(a, b) {
-        a.minX = Math.min(a.minX, b.minX);
-        a.minY = Math.min(a.minY, b.minY);
-        a.maxX = Math.max(a.maxX, b.maxX);
-        a.maxY = Math.max(a.maxY, b.maxY);
-        return a;
-      }
-      function compareNodeMinX(a, b) {
-        return a.minX - b.minX;
-      }
-      function compareNodeMinY(a, b) {
-        return a.minY - b.minY;
-      }
-      function bboxArea(a) {
-        return (a.maxX - a.minX) * (a.maxY - a.minY);
-      }
-      function bboxMargin(a) {
-        return a.maxX - a.minX + (a.maxY - a.minY);
-      }
-      function enlargedArea(a, b) {
-        return (Math.max(b.maxX, a.maxX) - Math.min(b.minX, a.minX)) * (Math.max(b.maxY, a.maxY) - Math.min(b.minY, a.minY));
-      }
-      function intersectionArea(a, b) {
-        var minX = Math.max(a.minX, b.minX), minY = Math.max(a.minY, b.minY), maxX = Math.min(a.maxX, b.maxX), maxY = Math.min(a.maxY, b.maxY);
-        return Math.max(0, maxX - minX) * Math.max(0, maxY - minY);
-      }
-      function contains(a, b) {
-        return a.minX <= b.minX && a.minY <= b.minY && b.maxX <= a.maxX && b.maxY <= a.maxY;
-      }
-      function intersects(a, b) {
-        return b.minX <= a.maxX && b.minY <= a.maxY && b.maxX >= a.minX && b.maxY >= a.minY;
-      }
-      function createNode(children2) {
-        return {
-          children: children2,
-          height: 1,
-          leaf: true,
-          minX: Infinity,
-          minY: Infinity,
-          maxX: -Infinity,
-          maxY: -Infinity
-        };
-      }
-      function multiSelect(arr, left, right, n2, compare) {
-        var stack = [left, right], mid;
-        while (stack.length) {
-          right = stack.pop();
-          left = stack.pop();
-          if (right - left <= n2)
-            continue;
-          mid = left + Math.ceil((right - left) / n2 / 2) * n2;
-          quickselect2(arr, mid, left, right, compare);
-          stack.push(left, mid, mid, right);
-        }
-      }
-    }
-  });
-
-  // node_modules/name-suggestion-index/node_modules/which-polygon/index.js
-  var require_which_polygon2 = __commonJS({
-    "node_modules/name-suggestion-index/node_modules/which-polygon/index.js"(exports2, module2) {
-      "use strict";
-      var rbush = require_rbush2();
-      var lineclip2 = require_lineclip();
-      module2.exports = whichPolygon5;
-      function whichPolygon5(data) {
-        var bboxes = [];
-        for (var i2 = 0; i2 < data.features.length; i2++) {
-          var feature3 = data.features[i2];
-          if (!feature3.geometry)
-            continue;
-          var coords = feature3.geometry.coordinates;
-          if (feature3.geometry.type === "Polygon") {
-            bboxes.push(treeItem(coords, feature3.properties));
-          } else if (feature3.geometry.type === "MultiPolygon") {
-            for (var j2 = 0; j2 < coords.length; j2++) {
-              bboxes.push(treeItem(coords[j2], feature3.properties));
-            }
-          }
-        }
-        var tree = rbush().load(bboxes);
-        function query(p, multi) {
-          var output = [], result = tree.search({
-            minX: p[0],
-            minY: p[1],
-            maxX: p[0],
-            maxY: p[1]
-          });
-          for (var i3 = 0; i3 < result.length; i3++) {
-            if (insidePolygon(result[i3].coords, p)) {
-              if (multi)
-                output.push(result[i3].props);
-              else
-                return result[i3].props;
-            }
-          }
-          return multi && output.length ? output : null;
-        }
-        query.tree = tree;
-        query.bbox = function queryBBox(bbox2) {
-          var output = [];
-          var result = tree.search({
-            minX: bbox2[0],
-            minY: bbox2[1],
-            maxX: bbox2[2],
-            maxY: bbox2[3]
-          });
-          for (var i3 = 0; i3 < result.length; i3++) {
-            if (polygonIntersectsBBox(result[i3].coords, bbox2)) {
-              output.push(result[i3].props);
-            }
-          }
-          return output;
-        };
-        return query;
-      }
-      function polygonIntersectsBBox(polygon2, bbox2) {
-        var bboxCenter = [
-          (bbox2[0] + bbox2[2]) / 2,
-          (bbox2[1] + bbox2[3]) / 2
-        ];
-        if (insidePolygon(polygon2, bboxCenter))
-          return true;
-        for (var i2 = 0; i2 < polygon2.length; i2++) {
-          if (lineclip2(polygon2[i2], bbox2).length > 0)
-            return true;
-        }
-        return false;
-      }
-      function insidePolygon(rings, p) {
-        var inside = false;
-        for (var i2 = 0, len = rings.length; i2 < len; i2++) {
-          var ring = rings[i2];
-          for (var j2 = 0, len2 = ring.length, k = len2 - 1; j2 < len2; k = j2++) {
-            if (rayIntersect(p, ring[j2], ring[k]))
-              inside = !inside;
-          }
-        }
-        return inside;
-      }
-      function rayIntersect(p, p1, p2) {
-        return p1[1] > p[1] !== p2[1] > p[1] && p[0] < (p2[0] - p1[0]) * (p[1] - p1[1]) / (p2[1] - p1[1]) + p1[0];
-      }
-      function treeItem(coords, props) {
-        var item = {
-          minX: Infinity,
-          minY: Infinity,
-          maxX: -Infinity,
-          maxY: -Infinity,
-          coords,
-          props
-        };
-        for (var i2 = 0; i2 < coords[0].length; i2++) {
-          var p = coords[0][i2];
-          item.minX = Math.min(item.minX, p[0]);
-          item.minY = Math.min(item.minY, p[1]);
-          item.maxX = Math.max(item.maxX, p[0]);
-          item.maxY = Math.max(item.maxY, p[1]);
-        }
-        return item;
-      }
-    }
-  });
-
   // node_modules/fast-json-stable-stringify/index.js
   var require_fast_json_stable_stringify = __commonJS({
     "node_modules/fast-json-stable-stringify/index.js"(exports2, module2) {
@@ -15927,11 +15594,12 @@
   });
 
   // node_modules/whatwg-fetch/fetch.js
-  var global2 = typeof globalThis !== "undefined" && globalThis || typeof self !== "undefined" && self || typeof global2 !== "undefined" && global2;
+  var g = typeof globalThis !== "undefined" && globalThis || typeof self !== "undefined" && self || // eslint-disable-next-line no-undef
+  typeof global !== "undefined" && global || {};
   var support = {
-    searchParams: "URLSearchParams" in global2,
-    iterable: "Symbol" in global2 && "iterator" in Symbol,
-    blob: "FileReader" in global2 && "Blob" in global2 && function() {
+    searchParams: "URLSearchParams" in g,
+    iterable: "Symbol" in g && "iterator" in Symbol,
+    blob: "FileReader" in g && "Blob" in g && function() {
       try {
         new Blob();
         return true;
@@ -15939,8 +15607,8 @@
         return false;
       }
     }(),
-    formData: "FormData" in global2,
-    arrayBuffer: "ArrayBuffer" in global2
+    formData: "FormData" in g,
+    arrayBuffer: "ArrayBuffer" in g
   };
   function isDataView(obj) {
     return obj && DataView.prototype.isPrototypeOf(obj);
@@ -16000,6 +15668,9 @@
       }, this);
     } else if (Array.isArray(headers)) {
       headers.forEach(function(header) {
+        if (header.length != 2) {
+          throw new TypeError("Headers constructor: expected name/value pair to be length 2, found" + header.length);
+        }
         this.append(header[0], header[1]);
       }, this);
     } else if (headers) {
@@ -16059,6 +15730,8 @@
     Headers.prototype[Symbol.iterator] = Headers.prototype.entries;
   }
   function consumed(body) {
+    if (body._noBody)
+      return;
     if (body.bodyUsed) {
       return Promise.reject(new TypeError("Already read"));
     }
@@ -16083,7 +15756,9 @@
   function readBlobAsText(blob) {
     var reader = new FileReader();
     var promise = fileReaderReady(reader);
-    reader.readAsText(blob);
+    var match = /charset=([A-Za-z0-9_-]+)/.exec(blob.type);
+    var encoding = match ? match[1] : "utf-8";
+    reader.readAsText(blob, encoding);
     return promise;
   }
   function readArrayBufferAsText(buf) {
@@ -16109,6 +15784,7 @@
       this.bodyUsed = this.bodyUsed;
       this._bodyInit = body;
       if (!body) {
+        this._noBody = true;
         this._bodyText = "";
       } else if (typeof body === "string") {
         this._bodyText = body;
@@ -16152,27 +15828,28 @@
           return Promise.resolve(new Blob([this._bodyText]));
         }
       };
-      this.arrayBuffer = function() {
-        if (this._bodyArrayBuffer) {
-          var isConsumed = consumed(this);
-          if (isConsumed) {
-            return isConsumed;
-          }
-          if (ArrayBuffer.isView(this._bodyArrayBuffer)) {
-            return Promise.resolve(
-              this._bodyArrayBuffer.buffer.slice(
-                this._bodyArrayBuffer.byteOffset,
-                this._bodyArrayBuffer.byteOffset + this._bodyArrayBuffer.byteLength
-              )
-            );
-          } else {
-            return Promise.resolve(this._bodyArrayBuffer);
-          }
-        } else {
-          return this.blob().then(readBlobAsArrayBuffer);
-        }
-      };
     }
+    this.arrayBuffer = function() {
+      if (this._bodyArrayBuffer) {
+        var isConsumed = consumed(this);
+        if (isConsumed) {
+          return isConsumed;
+        } else if (ArrayBuffer.isView(this._bodyArrayBuffer)) {
+          return Promise.resolve(
+            this._bodyArrayBuffer.buffer.slice(
+              this._bodyArrayBuffer.byteOffset,
+              this._bodyArrayBuffer.byteOffset + this._bodyArrayBuffer.byteLength
+            )
+          );
+        } else {
+          return Promise.resolve(this._bodyArrayBuffer);
+        }
+      } else if (support.blob) {
+        return this.blob().then(readBlobAsArrayBuffer);
+      } else {
+        throw new Error("could not read as ArrayBuffer");
+      }
+    };
     this.text = function() {
       var rejected = consumed(this);
       if (rejected) {
@@ -16198,7 +15875,7 @@
     };
     return this;
   }
-  var methods = ["DELETE", "GET", "HEAD", "OPTIONS", "POST", "PUT"];
+  var methods = ["CONNECT", "DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT", "TRACE"];
   function normalizeMethod(method) {
     var upcased = method.toUpperCase();
     return methods.indexOf(upcased) > -1 ? upcased : method;
@@ -16234,7 +15911,12 @@
     }
     this.method = normalizeMethod(options2.method || this.method || "GET");
     this.mode = options2.mode || this.mode || null;
-    this.signal = options2.signal || this.signal;
+    this.signal = options2.signal || this.signal || function() {
+      if ("AbortController" in g) {
+        var ctrl = new AbortController();
+        return ctrl.signal;
+      }
+    }();
     this.referrer = null;
     if ((this.method === "GET" || this.method === "HEAD") && body) {
       throw new TypeError("Body not allowed for GET or HEAD requests");
@@ -16277,7 +15959,11 @@
       var key = parts.shift().trim();
       if (key) {
         var value = parts.join(":").trim();
-        headers.append(key, value);
+        try {
+          headers.append(key, value);
+        } catch (error) {
+          console.warn("Response " + error.message);
+        }
       }
     });
     return headers;
@@ -16292,6 +15978,9 @@
     }
     this.type = "default";
     this.status = options2.status === void 0 ? 200 : options2.status;
+    if (this.status < 200 || this.status > 599) {
+      throw new RangeError("Failed to construct 'Response': The status provided (0) is outside the range [200, 599].");
+    }
     this.ok = this.status >= 200 && this.status < 300;
     this.statusText = options2.statusText === void 0 ? "" : "" + options2.statusText;
     this.headers = new Headers(options2.headers);
@@ -16308,7 +15997,9 @@
     });
   };
   Response.error = function() {
-    var response = new Response(null, { status: 0, statusText: "" });
+    var response = new Response(null, { status: 200, statusText: "" });
+    response.ok = false;
+    response.status = 0;
     response.type = "error";
     return response;
   };
@@ -16319,7 +16010,7 @@
     }
     return new Response(null, { status, headers: { location: url } });
   };
-  var DOMException2 = global2.DOMException;
+  var DOMException2 = g.DOMException;
   try {
     new DOMException2();
   } catch (err) {
@@ -16344,10 +16035,14 @@
       }
       xhr.onload = function() {
         var options2 = {
-          status: xhr.status,
           statusText: xhr.statusText,
           headers: parseHeaders(xhr.getAllResponseHeaders() || "")
         };
+        if (request3.url.indexOf("file://") === 0 && (xhr.status < 200 || xhr.status > 599)) {
+          options2.status = 200;
+        } else {
+          options2.status = xhr.status;
+        }
         options2.url = "responseURL" in xhr ? xhr.responseURL : options2.headers.get("X-Request-URL");
         var body = "response" in xhr ? xhr.response : xhr.responseText;
         setTimeout(function() {
@@ -16361,7 +16056,7 @@
       };
       xhr.ontimeout = function() {
         setTimeout(function() {
-          reject(new TypeError("Network request failed"));
+          reject(new TypeError("Network request timed out"));
         }, 0);
       };
       xhr.onabort = function() {
@@ -16371,7 +16066,7 @@
       };
       function fixUrl(url) {
         try {
-          return url === "" && global2.location.href ? global2.location.href : url;
+          return url === "" && g.location.href ? g.location.href : url;
         } catch (e) {
           return url;
         }
@@ -16385,13 +16080,20 @@
       if ("responseType" in xhr) {
         if (support.blob) {
           xhr.responseType = "blob";
-        } else if (support.arrayBuffer && request3.headers.get("Content-Type") && request3.headers.get("Content-Type").indexOf("application/octet-stream") !== -1) {
+        } else if (support.arrayBuffer) {
           xhr.responseType = "arraybuffer";
         }
       }
-      if (init2 && typeof init2.headers === "object" && !(init2.headers instanceof Headers)) {
+      if (init2 && typeof init2.headers === "object" && !(init2.headers instanceof Headers || g.Headers && init2.headers instanceof g.Headers)) {
+        var names = [];
         Object.getOwnPropertyNames(init2.headers).forEach(function(name) {
+          names.push(normalizeName(name));
           xhr.setRequestHeader(name, normalizeValue(init2.headers[name]));
+        });
+        request3.headers.forEach(function(value, name) {
+          if (names.indexOf(name) === -1) {
+            xhr.setRequestHeader(name, value);
+          }
         });
       } else {
         request3.headers.forEach(function(value, name) {
@@ -16410,11 +16112,11 @@
     });
   }
   fetch2.polyfill = true;
-  if (!global2.fetch) {
-    global2.fetch = fetch2;
-    global2.Headers = Headers;
-    global2.Request = Request;
-    global2.Response = Response;
+  if (!g.fetch) {
+    g.fetch = fetch2;
+    g.Headers = Headers;
+    g.Request = Request;
+    g.Response = Response;
   }
 
   // node_modules/abortcontroller-polyfill/dist/polyfill-patch-fetch.js
@@ -17816,66 +17518,52 @@
   var e10 = Math.sqrt(50);
   var e5 = Math.sqrt(10);
   var e2 = Math.sqrt(2);
-  function tickSpec(start2, stop, count) {
-    const step = (stop - start2) / Math.max(0, count), power = Math.floor(Math.log10(step)), error = step / Math.pow(10, power), factor = error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1;
-    let i1, i2, inc2;
-    if (power < 0) {
-      inc2 = Math.pow(10, -power) / factor;
-      i1 = Math.round(start2 * inc2);
-      i2 = Math.round(stop * inc2);
-      if (i1 / inc2 < start2)
-        ++i1;
-      if (i2 / inc2 > stop)
-        --i2;
-      inc2 = -inc2;
-    } else {
-      inc2 = Math.pow(10, power) * factor;
-      i1 = Math.round(start2 / inc2);
-      i2 = Math.round(stop / inc2);
-      if (i1 * inc2 < start2)
-        ++i1;
-      if (i2 * inc2 > stop)
-        --i2;
-    }
-    if (i2 < i1 && 0.5 <= count && count < 2)
-      return tickSpec(start2, stop, count * 2);
-    return [i1, i2, inc2];
-  }
   function ticks(start2, stop, count) {
+    var reverse, i2 = -1, n2, ticks2, step;
     stop = +stop, start2 = +start2, count = +count;
-    if (!(count > 0))
-      return [];
-    if (start2 === stop)
+    if (start2 === stop && count > 0)
       return [start2];
-    const reverse = stop < start2, [i1, i2, inc2] = reverse ? tickSpec(stop, start2, count) : tickSpec(start2, stop, count);
-    if (!(i2 >= i1))
+    if (reverse = stop < start2)
+      n2 = start2, start2 = stop, stop = n2;
+    if ((step = tickIncrement(start2, stop, count)) === 0 || !isFinite(step))
       return [];
-    const n2 = i2 - i1 + 1, ticks2 = new Array(n2);
-    if (reverse) {
-      if (inc2 < 0)
-        for (let i3 = 0; i3 < n2; ++i3)
-          ticks2[i3] = (i2 - i3) / -inc2;
-      else
-        for (let i3 = 0; i3 < n2; ++i3)
-          ticks2[i3] = (i2 - i3) * inc2;
+    if (step > 0) {
+      let r0 = Math.round(start2 / step), r1 = Math.round(stop / step);
+      if (r0 * step < start2)
+        ++r0;
+      if (r1 * step > stop)
+        --r1;
+      ticks2 = new Array(n2 = r1 - r0 + 1);
+      while (++i2 < n2)
+        ticks2[i2] = (r0 + i2) * step;
     } else {
-      if (inc2 < 0)
-        for (let i3 = 0; i3 < n2; ++i3)
-          ticks2[i3] = (i1 + i3) / -inc2;
-      else
-        for (let i3 = 0; i3 < n2; ++i3)
-          ticks2[i3] = (i1 + i3) * inc2;
+      step = -step;
+      let r0 = Math.round(start2 * step), r1 = Math.round(stop * step);
+      if (r0 / step < start2)
+        ++r0;
+      if (r1 / step > stop)
+        --r1;
+      ticks2 = new Array(n2 = r1 - r0 + 1);
+      while (++i2 < n2)
+        ticks2[i2] = (r0 + i2) / step;
     }
+    if (reverse)
+      ticks2.reverse();
     return ticks2;
   }
   function tickIncrement(start2, stop, count) {
-    stop = +stop, start2 = +start2, count = +count;
-    return tickSpec(start2, stop, count)[2];
+    var step = (stop - start2) / Math.max(0, count), power = Math.floor(Math.log(step) / Math.LN10), error = step / Math.pow(10, power);
+    return power >= 0 ? (error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1) * Math.pow(10, power) : -Math.pow(10, -power) / (error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1);
   }
   function tickStep(start2, stop, count) {
-    stop = +stop, start2 = +start2, count = +count;
-    const reverse = stop < start2, inc2 = reverse ? tickIncrement(stop, start2, count) : tickIncrement(start2, stop, count);
-    return (reverse ? -1 : 1) * (inc2 < 0 ? 1 / -inc2 : inc2);
+    var step0 = Math.abs(stop - start2) / Math.max(0, count), step1 = Math.pow(10, Math.floor(Math.log(step0) / Math.LN10)), error = step0 / step1;
+    if (error >= e10)
+      step1 *= 10;
+    else if (error >= e5)
+      step1 *= 5;
+    else if (error >= e2)
+      step1 *= 2;
+    return stop < start2 ? -step1 : step1;
   }
 
   // node_modules/d3-array/src/max.js
@@ -17919,12 +17607,7 @@
   }
 
   // node_modules/d3-array/src/quickselect.js
-  function quickselect(array2, k, left = 0, right = Infinity, compare) {
-    k = Math.floor(k);
-    left = Math.floor(Math.max(0, left));
-    right = Math.floor(Math.min(array2.length - 1, right));
-    if (!(left <= k && k <= right))
-      return array2;
+  function quickselect(array2, k, left = 0, right = array2.length - 1, compare) {
     compare = compare === void 0 ? ascendingDefined : compareDefined(compare);
     while (right > left) {
       if (right - left > 600) {
@@ -17970,9 +17653,9 @@
   // node_modules/d3-array/src/quantile.js
   function quantile(values, p, valueof) {
     values = Float64Array.from(numbers(values, valueof));
-    if (!(n2 = values.length) || isNaN(p = +p))
+    if (!(n2 = values.length))
       return;
-    if (p <= 0 || n2 < 2)
+    if ((p = +p) <= 0 || n2 < 2)
       return min(values);
     if (p >= 1)
       return max(values);
@@ -18367,9 +18050,7 @@
 
   // node_modules/d3-geo/src/rotation.js
   function rotationIdentity(lambda, phi) {
-    if (abs(lambda) > pi)
-      lambda -= Math.round(lambda / tau) * tau;
-    return [lambda, phi];
+    return [abs(lambda) > pi ? lambda + Math.round(-lambda / tau) * tau : lambda, phi];
   }
   rotationIdentity.invert = rotationIdentity;
   function rotateRadians(deltaLambda, deltaPhi, deltaGamma) {
@@ -18377,10 +18058,7 @@
   }
   function forwardRotationLambda(deltaLambda) {
     return function(lambda, phi) {
-      lambda += deltaLambda;
-      if (abs(lambda) > pi)
-        lambda -= Math.round(lambda / tau) * tau;
-      return [lambda, phi];
+      return lambda += deltaLambda, [lambda > pi ? lambda - tau : lambda < -pi ? lambda + tau : lambda, phi];
     };
   }
   function rotationLambda(deltaLambda) {
@@ -19363,98 +19041,67 @@
   var measure_default = lengthStream2;
 
   // node_modules/d3-geo/src/path/string.js
-  var cacheDigits;
-  var cacheAppend;
-  var cacheRadius;
-  var cacheCircle;
-  var PathString = class {
-    constructor(digits) {
-      this._append = digits == null ? append : appendRound(digits);
-      this._radius = 4.5;
-      this._ = "";
-    }
-    pointRadius(_) {
-      this._radius = +_;
+  function PathString() {
+    this._string = [];
+  }
+  PathString.prototype = {
+    _radius: 4.5,
+    _circle: circle(4.5),
+    pointRadius: function(_) {
+      if ((_ = +_) !== this._radius)
+        this._radius = _, this._circle = null;
       return this;
-    }
-    polygonStart() {
+    },
+    polygonStart: function() {
       this._line = 0;
-    }
-    polygonEnd() {
+    },
+    polygonEnd: function() {
       this._line = NaN;
-    }
-    lineStart() {
+    },
+    lineStart: function() {
       this._point = 0;
-    }
-    lineEnd() {
+    },
+    lineEnd: function() {
       if (this._line === 0)
-        this._ += "Z";
+        this._string.push("Z");
       this._point = NaN;
-    }
-    point(x, y) {
+    },
+    point: function(x, y) {
       switch (this._point) {
         case 0: {
-          this._append`M${x},${y}`;
+          this._string.push("M", x, ",", y);
           this._point = 1;
           break;
         }
         case 1: {
-          this._append`L${x},${y}`;
+          this._string.push("L", x, ",", y);
           break;
         }
         default: {
-          this._append`M${x},${y}`;
-          if (this._radius !== cacheRadius || this._append !== cacheAppend) {
-            const r = this._radius;
-            const s = this._;
-            this._ = "";
-            this._append`m0,${r}a${r},${r} 0 1,1 0,${-2 * r}a${r},${r} 0 1,1 0,${2 * r}z`;
-            cacheRadius = r;
-            cacheAppend = this._append;
-            cacheCircle = this._;
-            this._ = s;
-          }
-          this._ += cacheCircle;
+          if (this._circle == null)
+            this._circle = circle(this._radius);
+          this._string.push("M", x, ",", y, this._circle);
           break;
         }
       }
-    }
-    result() {
-      const result = this._;
-      this._ = "";
-      return result.length ? result : null;
+    },
+    result: function() {
+      if (this._string.length) {
+        var result = this._string.join("");
+        this._string = [];
+        return result;
+      } else {
+        return null;
+      }
     }
   };
-  function append(strings) {
-    let i2 = 1;
-    this._ += strings[0];
-    for (const j2 = strings.length; i2 < j2; ++i2) {
-      this._ += arguments[i2] + strings[i2];
-    }
-  }
-  function appendRound(digits) {
-    const d = Math.floor(digits);
-    if (!(d >= 0))
-      throw new RangeError(`invalid digits: ${digits}`);
-    if (d > 15)
-      return append;
-    if (d !== cacheDigits) {
-      const k = 10 ** d;
-      cacheDigits = d;
-      cacheAppend = function append2(strings) {
-        let i2 = 1;
-        this._ += strings[0];
-        for (const j2 = strings.length; i2 < j2; ++i2) {
-          this._ += Math.round(arguments[i2] * k) / k + strings[i2];
-        }
-      };
-    }
-    return cacheAppend;
+  function circle(radius) {
+    return "m0," + radius + "a" + radius + "," + radius + " 0 1,1 0," + -2 * radius + "a" + radius + "," + radius + " 0 1,1 0," + 2 * radius + "z";
   }
 
   // node_modules/d3-geo/src/path/index.js
   function path_default(projection2, context) {
-    let digits = 3, pointRadius = 4.5, projectionStream, contextStream;
+    var pointRadius = 4.5, projectionStream, contextStream;
     function path(object) {
       if (object) {
         if (typeof pointRadius === "function")
@@ -19480,15 +19127,12 @@
       return centroid_default.result();
     };
     path.projection = function(_) {
-      if (!arguments.length)
-        return projection2;
-      projectionStream = _ == null ? (projection2 = null, identity_default) : (projection2 = _).stream;
-      return path;
+      return arguments.length ? (projectionStream = _ == null ? (projection2 = null, identity_default) : (projection2 = _).stream, path) : projection2;
     };
     path.context = function(_) {
       if (!arguments.length)
         return context;
-      contextStream = _ == null ? (context = null, new PathString(digits)) : new PathContext(context = _);
+      contextStream = _ == null ? (context = null, new PathString()) : new PathContext(context = _);
       if (typeof pointRadius !== "function")
         contextStream.pointRadius(pointRadius);
       return path;
@@ -19499,22 +19143,7 @@
       pointRadius = typeof _ === "function" ? _ : (contextStream.pointRadius(+_), +_);
       return path;
     };
-    path.digits = function(_) {
-      if (!arguments.length)
-        return digits;
-      if (_ == null)
-        digits = null;
-      else {
-        const d = Math.floor(_);
-        if (!(d >= 0))
-          throw new RangeError(`invalid digits: ${_}`);
-        digits = d;
-      }
-      if (context === null)
-        contextStream = new PathString(digits);
-      return path;
-    };
-    return path.projection(projection2).digits(digits).context(context);
+    return path.projection(projection2).context(context);
   }
 
   // node_modules/d3-geo/src/transform.js
@@ -21846,10 +21475,10 @@
   function rgbn(n2) {
     return new Rgb(n2 >> 16 & 255, n2 >> 8 & 255, n2 & 255, 1);
   }
-  function rgba(r, g, b, a) {
+  function rgba(r, g2, b, a) {
     if (a <= 0)
-      r = g = b = NaN;
-    return new Rgb(r, g, b, a);
+      r = g2 = b = NaN;
+    return new Rgb(r, g2, b, a);
   }
   function rgbConvert(o) {
     if (!(o instanceof Color))
@@ -21859,12 +21488,12 @@
     o = o.rgb();
     return new Rgb(o.r, o.g, o.b, o.opacity);
   }
-  function rgb(r, g, b, opacity) {
-    return arguments.length === 1 ? rgbConvert(r) : new Rgb(r, g, b, opacity == null ? 1 : opacity);
+  function rgb(r, g2, b, opacity) {
+    return arguments.length === 1 ? rgbConvert(r) : new Rgb(r, g2, b, opacity == null ? 1 : opacity);
   }
-  function Rgb(r, g, b, opacity) {
+  function Rgb(r, g2, b, opacity) {
     this.r = +r;
-    this.g = +g;
+    this.g = +g2;
     this.b = +b;
     this.opacity = +opacity;
   }
@@ -21932,14 +21561,14 @@
     if (o instanceof Hsl)
       return o;
     o = o.rgb();
-    var r = o.r / 255, g = o.g / 255, b = o.b / 255, min4 = Math.min(r, g, b), max4 = Math.max(r, g, b), h = NaN, s = max4 - min4, l = (max4 + min4) / 2;
+    var r = o.r / 255, g2 = o.g / 255, b = o.b / 255, min4 = Math.min(r, g2, b), max4 = Math.max(r, g2, b), h = NaN, s = max4 - min4, l = (max4 + min4) / 2;
     if (s) {
       if (r === max4)
-        h = (g - b) / s + (g < b) * 6;
-      else if (g === max4)
+        h = (g2 - b) / s + (g2 < b) * 6;
+      else if (g2 === max4)
         h = (b - r) / s + 2;
       else
-        h = (r - g) / s + 4;
+        h = (r - g2) / s + 4;
       s /= l < 0.5 ? max4 + min4 : 2 - max4 - min4;
       h *= 60;
     } else {
@@ -22046,10 +21675,10 @@
   var rgb_default = function rgbGamma(y) {
     var color2 = gamma(y);
     function rgb2(start2, end) {
-      var r = color2((start2 = rgb(start2)).r, (end = rgb(end)).r), g = color2(start2.g, end.g), b = color2(start2.b, end.b), opacity = nogamma(start2.opacity, end.opacity);
+      var r = color2((start2 = rgb(start2)).r, (end = rgb(end)).r), g2 = color2(start2.g, end.g), b = color2(start2.b, end.b), opacity = nogamma(start2.opacity, end.opacity);
       return function(t) {
         start2.r = r(t);
-        start2.g = g(t);
+        start2.g = g2(t);
         start2.b = b(t);
         start2.opacity = opacity(t);
         return start2 + "";
@@ -22060,20 +21689,20 @@
   }(1);
   function rgbSpline(spline) {
     return function(colors) {
-      var n2 = colors.length, r = new Array(n2), g = new Array(n2), b = new Array(n2), i2, color2;
+      var n2 = colors.length, r = new Array(n2), g2 = new Array(n2), b = new Array(n2), i2, color2;
       for (i2 = 0; i2 < n2; ++i2) {
         color2 = rgb(colors[i2]);
         r[i2] = color2.r || 0;
-        g[i2] = color2.g || 0;
+        g2[i2] = color2.g || 0;
         b[i2] = color2.b || 0;
       }
       r = spline(r);
-      g = spline(g);
+      g2 = spline(g2);
       b = spline(b);
       color2.opacity = 1;
       return function(t) {
         color2.r = r(t);
-        color2.g = g(t);
+        color2.g = g2(t);
         color2.b = b(t);
         return color2 + "";
       };
@@ -23406,7 +23035,7 @@
       }).on("interrupt.zoom end.zoom", function() {
         gesture(this, arguments).event(event).end();
       }).tween("zoom", function() {
-        var that = this, args = arguments, g = gesture(that, args).event(event), e = extent.apply(that, args), p = point2 == null ? centroid(e) : typeof point2 === "function" ? point2.apply(that, args) : point2, w = Math.max(e[1][0] - e[0][0], e[1][1] - e[0][1]), a = that.__zoom, b = typeof transform2 === "function" ? transform2.apply(that, args) : transform2, i2 = interpolate(a.invert(p).concat(w / a.k), b.invert(p).concat(w / b.k));
+        var that = this, args = arguments, g2 = gesture(that, args).event(event), e = extent.apply(that, args), p = point2 == null ? centroid(e) : typeof point2 === "function" ? point2.apply(that, args) : point2, w = Math.max(e[1][0] - e[0][0], e[1][1] - e[0][1]), a = that.__zoom, b = typeof transform2 === "function" ? transform2.apply(that, args) : transform2, i2 = interpolate(a.invert(p).concat(w / a.k), b.invert(p).concat(w / b.k));
         return function(t) {
           if (t === 1)
             t = b;
@@ -23414,7 +23043,7 @@
             var l = i2(t), k = w / l[2];
             t = new Transform(k, p[0] - l[0] * k, p[1] - l[1] * k);
           }
-          g.zoom(null, t);
+          g2.zoom(null, t);
         };
       });
     }
@@ -23479,49 +23108,49 @@
     function wheeled(event, ...args) {
       if (!filter2.apply(this, arguments))
         return;
-      var g = gesture(this, args).event(event), t = this.__zoom, k = Math.max(scaleExtent[0], Math.min(scaleExtent[1], t.k * Math.pow(2, wheelDelta.apply(this, arguments)))), p = pointer_default(event);
-      if (g.wheel) {
-        if (g.mouse[0][0] !== p[0] || g.mouse[0][1] !== p[1]) {
-          g.mouse[1] = t.invert(g.mouse[0] = p);
+      var g2 = gesture(this, args).event(event), t = this.__zoom, k = Math.max(scaleExtent[0], Math.min(scaleExtent[1], t.k * Math.pow(2, wheelDelta.apply(this, arguments)))), p = pointer_default(event);
+      if (g2.wheel) {
+        if (g2.mouse[0][0] !== p[0] || g2.mouse[0][1] !== p[1]) {
+          g2.mouse[1] = t.invert(g2.mouse[0] = p);
         }
-        clearTimeout(g.wheel);
+        clearTimeout(g2.wheel);
       } else if (t.k === k)
         return;
       else {
-        g.mouse = [p, t.invert(p)];
+        g2.mouse = [p, t.invert(p)];
         interrupt_default(this);
-        g.start();
+        g2.start();
       }
       noevent_default2(event);
-      g.wheel = setTimeout(wheelidled, wheelDelay);
-      g.zoom("mouse", constrain(translate(scale(t, k), g.mouse[0], g.mouse[1]), g.extent, translateExtent));
+      g2.wheel = setTimeout(wheelidled, wheelDelay);
+      g2.zoom("mouse", constrain(translate(scale(t, k), g2.mouse[0], g2.mouse[1]), g2.extent, translateExtent));
       function wheelidled() {
-        g.wheel = null;
-        g.end();
+        g2.wheel = null;
+        g2.end();
       }
     }
     function mousedowned(event, ...args) {
       if (touchending || !filter2.apply(this, arguments))
         return;
-      var currentTarget = event.currentTarget, g = gesture(this, args, true).event(event), v = select_default2(event.view).on("mousemove.zoom", mousemoved, true).on("mouseup.zoom", mouseupped, true), p = pointer_default(event, currentTarget), x05 = event.clientX, y05 = event.clientY;
+      var currentTarget = event.currentTarget, g2 = gesture(this, args, true).event(event), v = select_default2(event.view).on("mousemove.zoom", mousemoved, true).on("mouseup.zoom", mouseupped, true), p = pointer_default(event, currentTarget), x05 = event.clientX, y05 = event.clientY;
       nodrag_default(event.view);
       nopropagation2(event);
-      g.mouse = [p, this.__zoom.invert(p)];
+      g2.mouse = [p, this.__zoom.invert(p)];
       interrupt_default(this);
-      g.start();
+      g2.start();
       function mousemoved(event2) {
         noevent_default2(event2);
-        if (!g.moved) {
+        if (!g2.moved) {
           var dx = event2.clientX - x05, dy = event2.clientY - y05;
-          g.moved = dx * dx + dy * dy > clickDistance2;
+          g2.moved = dx * dx + dy * dy > clickDistance2;
         }
-        g.event(event2).zoom("mouse", constrain(translate(g.that.__zoom, g.mouse[0] = pointer_default(event2, currentTarget), g.mouse[1]), g.extent, translateExtent));
+        g2.event(event2).zoom("mouse", constrain(translate(g2.that.__zoom, g2.mouse[0] = pointer_default(event2, currentTarget), g2.mouse[1]), g2.extent, translateExtent));
       }
       function mouseupped(event2) {
         v.on("mousemove.zoom mouseup.zoom", null);
-        yesdrag(event2.view, g.moved);
+        yesdrag(event2.view, g2.moved);
         noevent_default2(event2);
-        g.event(event2).end();
+        g2.event(event2).end();
       }
     }
     function dblclicked(event, ...args) {
@@ -23537,55 +23166,55 @@
     function touchstarted(event, ...args) {
       if (!filter2.apply(this, arguments))
         return;
-      var touches = event.touches, n2 = touches.length, g = gesture(this, args, event.changedTouches.length === n2).event(event), started, i2, t, p;
+      var touches = event.touches, n2 = touches.length, g2 = gesture(this, args, event.changedTouches.length === n2).event(event), started, i2, t, p;
       nopropagation2(event);
       for (i2 = 0; i2 < n2; ++i2) {
         t = touches[i2], p = pointer_default(t, this);
         p = [p, this.__zoom.invert(p), t.identifier];
-        if (!g.touch0)
-          g.touch0 = p, started = true, g.taps = 1 + !!touchstarting;
-        else if (!g.touch1 && g.touch0[2] !== p[2])
-          g.touch1 = p, g.taps = 0;
+        if (!g2.touch0)
+          g2.touch0 = p, started = true, g2.taps = 1 + !!touchstarting;
+        else if (!g2.touch1 && g2.touch0[2] !== p[2])
+          g2.touch1 = p, g2.taps = 0;
       }
       if (touchstarting)
         touchstarting = clearTimeout(touchstarting);
       if (started) {
-        if (g.taps < 2)
+        if (g2.taps < 2)
           touchfirst = p[0], touchstarting = setTimeout(function() {
             touchstarting = null;
           }, touchDelay);
         interrupt_default(this);
-        g.start();
+        g2.start();
       }
     }
     function touchmoved(event, ...args) {
       if (!this.__zooming)
         return;
-      var g = gesture(this, args).event(event), touches = event.changedTouches, n2 = touches.length, i2, t, p, l;
+      var g2 = gesture(this, args).event(event), touches = event.changedTouches, n2 = touches.length, i2, t, p, l;
       noevent_default2(event);
       for (i2 = 0; i2 < n2; ++i2) {
         t = touches[i2], p = pointer_default(t, this);
-        if (g.touch0 && g.touch0[2] === t.identifier)
-          g.touch0[0] = p;
-        else if (g.touch1 && g.touch1[2] === t.identifier)
-          g.touch1[0] = p;
+        if (g2.touch0 && g2.touch0[2] === t.identifier)
+          g2.touch0[0] = p;
+        else if (g2.touch1 && g2.touch1[2] === t.identifier)
+          g2.touch1[0] = p;
       }
-      t = g.that.__zoom;
-      if (g.touch1) {
-        var p02 = g.touch0[0], l0 = g.touch0[1], p1 = g.touch1[0], l1 = g.touch1[1], dp = (dp = p1[0] - p02[0]) * dp + (dp = p1[1] - p02[1]) * dp, dl = (dl = l1[0] - l0[0]) * dl + (dl = l1[1] - l0[1]) * dl;
+      t = g2.that.__zoom;
+      if (g2.touch1) {
+        var p02 = g2.touch0[0], l0 = g2.touch0[1], p1 = g2.touch1[0], l1 = g2.touch1[1], dp = (dp = p1[0] - p02[0]) * dp + (dp = p1[1] - p02[1]) * dp, dl = (dl = l1[0] - l0[0]) * dl + (dl = l1[1] - l0[1]) * dl;
         t = scale(t, Math.sqrt(dp / dl));
         p = [(p02[0] + p1[0]) / 2, (p02[1] + p1[1]) / 2];
         l = [(l0[0] + l1[0]) / 2, (l0[1] + l1[1]) / 2];
-      } else if (g.touch0)
-        p = g.touch0[0], l = g.touch0[1];
+      } else if (g2.touch0)
+        p = g2.touch0[0], l = g2.touch0[1];
       else
         return;
-      g.zoom("touch", constrain(translate(t, p, l), g.extent, translateExtent));
+      g2.zoom("touch", constrain(translate(t, p, l), g2.extent, translateExtent));
     }
     function touchended(event, ...args) {
       if (!this.__zooming)
         return;
-      var g = gesture(this, args).event(event), touches = event.changedTouches, n2 = touches.length, i2, t;
+      var g2 = gesture(this, args).event(event), touches = event.changedTouches, n2 = touches.length, i2, t;
       nopropagation2(event);
       if (touchending)
         clearTimeout(touchending);
@@ -23594,18 +23223,18 @@
       }, touchDelay);
       for (i2 = 0; i2 < n2; ++i2) {
         t = touches[i2];
-        if (g.touch0 && g.touch0[2] === t.identifier)
-          delete g.touch0;
-        else if (g.touch1 && g.touch1[2] === t.identifier)
-          delete g.touch1;
+        if (g2.touch0 && g2.touch0[2] === t.identifier)
+          delete g2.touch0;
+        else if (g2.touch1 && g2.touch1[2] === t.identifier)
+          delete g2.touch1;
       }
-      if (g.touch1 && !g.touch0)
-        g.touch0 = g.touch1, delete g.touch1;
-      if (g.touch0)
-        g.touch0[1] = this.__zoom.invert(g.touch0[0]);
+      if (g2.touch1 && !g2.touch0)
+        g2.touch0 = g2.touch1, delete g2.touch1;
+      if (g2.touch0)
+        g2.touch0[1] = this.__zoom.invert(g2.touch0[0]);
       else {
-        g.end();
-        if (g.taps === 2) {
+        g2.end();
+        if (g2.taps === 2) {
           t = pointer_default(t, this);
           if (Math.hypot(touchfirst[0] - t[0], touchfirst[1] - t[1]) < tapDistance) {
             var p = select_default2(this).on("dblclick.zoom");
@@ -24119,6 +23748,7 @@
       "preset_defaults": presetsCdnUrl + "dist/preset_defaults.min.json",
       "preset_fields": presetsCdnUrl + "dist/fields.min.json",
       "preset_presets": presetsCdnUrl + "dist/presets.min.json",
+      "wayback": "https://www.arcgis.com/sharing/rest/content/groups/0f3189e1d1414edfad860b697b7d8311?f=json",
       "wmf_sitematrix": wmfSitematrixCdnUrl.replace("{version}", "0.1") + "wikipedia.min.json"
     };
     let _cachedData = {};
@@ -26500,7 +26130,7 @@
     { "name": "minutes", "symbols": ["d00_59"], "postprocess": num },
     { "name": "seconds", "symbols": ["d00_59"], "postprocess": num },
     { "name": "milliseconds", "symbols": [] },
-    { "name": "milliseconds", "symbols": [{ "literal": "." }, "d3"], "postprocess": (data) => num(data.slice(1)) },
+    { "name": "milliseconds", "symbols": [{ "literal": "." }, "d3s"], "postprocess": (data) => num(data.slice(1)) },
     { "name": "timezone", "symbols": [{ "literal": "Z" }], "postprocess": zero3 },
     { "name": "timezone$subexpression$1", "symbols": [{ "literal": "-" }] },
     { "name": "timezone$subexpression$1", "symbols": [{ "literal": "\u2212" }] },
@@ -26836,6 +26466,10 @@
     { "name": "d4", "symbols": ["d2", "d2"], "postprocess": join },
     { "name": "d3", "symbols": ["d2", "digit"], "postprocess": join },
     { "name": "d2", "symbols": ["digit", "digit"], "postprocess": join },
+    { "name": "d3s", "symbols": ["digit"], "postprocess": id2 },
+    { "name": "d3s", "symbols": ["d2"], "postprocess": id2 },
+    { "name": "d3s", "symbols": ["d3"], "postprocess": id2 },
+    { "name": "d3s", "symbols": ["d3", "digits"], "postprocess": pick(0) },
     { "name": "d5+", "symbols": ["positive_digit", "d3", "digits"], "postprocess": num },
     { "name": "d1x", "symbols": [/[1-9X]/], "postprocess": id2 },
     { "name": "dx", "symbols": ["d1x"], "postprocess": id2 },
@@ -29699,7 +29333,9 @@
   // modules/presets/index.js
   var _mainPresetIndex = presetIndex();
   function setHistoricalDefaults(defaults3) {
-    defaults3.relation.unshift("type/chronology");
+    if (defaults3.relation) {
+      defaults3.relation.unshift("type/chronology");
+    }
   }
   function addHistoricalPresets(presets) {
     presets["type/chronology"] = {
@@ -29712,12 +29348,16 @@
     };
   }
   function addHistoricalFields(fields) {
-    fields.start_date.type = "date";
-    fields.end_date = {
-      ...fields.start_date,
-      key: "end_date"
-    };
-    fields.source.type = "text";
+    if (fields.start_date) {
+      fields.start_date.type = "date";
+      fields.end_date = {
+        ...fields.start_date,
+        key: "end_date"
+      };
+    }
+    if (fields.source) {
+      fields.source.type = "text";
+    }
     fields.license = {
       key: "license",
       type: "combo",
@@ -29837,11 +29477,11 @@
       _geometryIndex = { point: {}, vertex: {}, line: {}, area: {}, relation: {} };
       _this.collection.forEach((preset) => {
         (preset.geometry || []).forEach((geometry) => {
-          let g = _geometryIndex[geometry];
+          let g2 = _geometryIndex[geometry];
           for (let key in preset.tags) {
-            g[key] = g[key] || {};
+            g2[key] = g2[key] || {};
             let value = preset.tags[key];
-            (g[key][value] = g[key][value] || []).push(preset);
+            (g2[key][value] = g2[key][value] || []).push(preset);
           }
         });
       });
@@ -30374,25 +30014,27 @@
     if (entity.tags.start_date || entity.tags.end_date) {
       let start2 = entity.tags.start_date && utilNormalizeDateString(entity.tags.start_date);
       let end = entity.tags.end_date && utilNormalizeDateString(entity.tags.end_date);
-      let options2 = { timeZone: "UTC" };
-      if (end) {
-        options2.year = end.localeOptions.year;
-        options2.era = end.localeOptions.era;
+      if (start2 || end) {
+        let options2 = { timeZone: "UTC" };
+        if (end) {
+          options2.year = end.localeOptions.year;
+          options2.era = end.localeOptions.era;
+        }
+        if (start2) {
+          options2.year = start2.localeOptions.year;
+          options2.era = start2.localeOptions.era;
+        }
+        let format3 = new Intl.DateTimeFormat(_mainLocalizer.languageCode(), options2);
+        let lateDate = new Date(Date.UTC(9999));
+        let parts = format3.formatRangeToParts(start2 ? start2.date : lateDate, end ? end.date : lateDate);
+        if (!start2) {
+          parts = parts.filter((p) => p.source !== "startRange");
+        }
+        if (!end) {
+          parts = parts.filter((p) => p.source !== "endRange");
+        }
+        dateRange = parts.map((p) => p.value).join("");
       }
-      if (start2) {
-        options2.year = start2.localeOptions.year;
-        options2.era = start2.localeOptions.era;
-      }
-      let format3 = new Intl.DateTimeFormat(_mainLocalizer.languageCode(), options2);
-      let lateDate = new Date(Date.UTC(9999));
-      let parts = format3.formatRangeToParts(start2 ? start2.date : lateDate, end ? end.date : lateDate);
-      if (!start2) {
-        parts = parts.filter((p) => p.source !== "startRange");
-      }
-      if (!end) {
-        parts = parts.filter((p) => p.source !== "endRange");
-      }
-      dateRange = parts.map((p) => p.value).join("");
     }
     var localizedNameKey = "name:" + _mainLocalizer.languageCode().toLowerCase();
     var name = entity.tags[localizedNameKey] || entity.tags.name || "";
@@ -32943,8 +32585,8 @@
       });
       var sequences = osmJoinWays(ways, graph);
       var joined = sequences[0];
-      graph = sequences.actions.reduce(function(g, action2) {
-        return action2(g);
+      graph = sequences.actions.reduce(function(g2, action2) {
+        return action2(g2);
       }, graph);
       var survivor = graph.entity(survivorID);
       survivor = survivor.update({ nodes: joined.nodes.map(function(n2) {
@@ -36603,14 +36245,14 @@
   // node_modules/d3-format/src/formatGroup.js
   function formatGroup_default(grouping, thousands) {
     return function(value, width) {
-      var i2 = value.length, t = [], j2 = 0, g = grouping[0], length = 0;
-      while (i2 > 0 && g > 0) {
-        if (length + g + 1 > width)
-          g = Math.max(1, width - length);
-        t.push(value.substring(i2 -= g, i2 + g));
-        if ((length += g + 1) > width)
+      var i2 = value.length, t = [], j2 = 0, g2 = grouping[0], length = 0;
+      while (i2 > 0 && g2 > 0) {
+        if (length + g2 + 1 > width)
+          g2 = Math.max(1, width - length);
+        t.push(value.substring(i2 -= g2, i2 + g2));
+        if ((length += g2 + 1) > width)
           break;
-        g = grouping[j2 = (j2 + 1) % grouping.length];
+        g2 = grouping[j2 = (j2 + 1) % grouping.length];
       }
       return t.reverse().join(thousands);
     };
@@ -42584,7 +42226,7 @@ ${content}</tr>
   };
 
   // node_modules/name-suggestion-index/lib/matcher.js
-  var import_which_polygon3 = __toESM(require_which_polygon2(), 1);
+  var import_which_polygon3 = __toESM(require_which_polygon(), 1);
 
   // node_modules/name-suggestion-index/lib/simplify.js
   var import_diacritics2 = __toESM(require_diacritics(), 1);
@@ -42603,11 +42245,6 @@ ${content}</tr>
         "amenity/casino",
         "amenity/gambling",
         "leisure/adult_gaming_centre"
-      ],
-      bar: [
-        "amenity/bar",
-        "amenity/pub",
-        "amenity/restaurant"
       ],
       beauty: [
         "shop/beauty",
@@ -42704,9 +42341,11 @@ ${content}</tr>
         "leisure/sports_center"
       ],
       food: [
+        "amenity/bar",
         "amenity/cafe",
         "amenity/fast_food",
         "amenity/ice_cream",
+        "amenity/pub",
         "amenity/restaurant",
         "shop/bakery",
         "shop/candy",
@@ -42818,9 +42457,7 @@ ${content}</tr>
         "amenity/truck_rental",
         "amenity/vehicle_rental",
         "shop/kiosk",
-        "shop/plant_hire",
-        "shop/rental",
-        "shop/tool_hire"
+        "shop/rental"
       ],
       school: [
         "amenity/childcare",
@@ -42847,11 +42484,6 @@ ${content}</tr>
         "shop/grocery",
         "shop/supermarket",
         "shop/wholesale"
-      ],
-      thrift: [
-        "shop/charity",
-        "shop/clothes",
-        "shop/second_hand"
       ],
       variety_store: [
         "shop/variety_store",
@@ -45981,7 +45613,7 @@ ${content}</tr>
             var fixes = [];
             let alternatives = [];
             if (normalized !== null) {
-              let label = normalized.date.toLocaleDateString(_mainLocalizer.languageCode(), normalized.localeOptions);
+              let label = normalized.date.toLocaleDateString(_mainLocalizer.localeCodes(), normalized.localeOptions);
               alternatives.push({
                 date: normalized.value,
                 label: label || normalized.value
@@ -45991,7 +45623,7 @@ ${content}</tr>
             if (edtfFromOSM) {
               let label;
               try {
-                label = edtf(edtfFromOSM).format(_mainLocalizer.languageCode());
+                label = edtf(edtfFromOSM).format(_mainLocalizer.localeCode());
               } catch (e) {
                 label = edtfFromOSM;
               }
@@ -46043,7 +45675,7 @@ ${content}</tr>
         if (parserError.offset && parserError.token) {
           message = _t.append("issues.invalid_format.edtf.reference", {
             token: parserError.token.value,
-            position: (parserError.offset + 1).toLocaleString(_mainLocalizer.languageCode())
+            position: (parserError.offset + 1).toLocaleString(_mainLocalizer.localeCodes())
           });
         } else if (parserError.message) {
           message = (selection3) => selection3.append("span").attr("class", "localized-text").attr("lang", "en").text(parserError.message.replace(/^edtf: /, ""));
@@ -46464,21 +46096,87 @@ ${content}</tr>
   // modules/validations/mismatched_dates.js
   function validationMismatchedDates() {
     let type2 = "mismatched_dates";
+    function parseEDTF(value) {
+      try {
+        let parsed = edtf(value);
+        if (parsed.lower === null) {
+          parsed.lower = Infinity;
+        }
+        if (parsed.upper === null) {
+          parsed.upper = Infinity;
+        }
+        return parsed;
+      } catch (e) {
+        return;
+      }
+    }
+    function getReplacementDates(parsed) {
+      let likelyDates = /* @__PURE__ */ new Set();
+      let valueFromDate = (date2, precision2) => {
+        date2.precision = precision2;
+        return date2.edtf.split("T")[0];
+      };
+      if (Number.isFinite(parsed.min)) {
+        let min4 = edtf(parsed.min);
+        let precision2 = (parsed.lower || parsed.first || parsed).precision;
+        likelyDates.add(valueFromDate(min4, precision2));
+      }
+      if (Number.isFinite(parsed.max)) {
+        let max4 = edtf(parsed.max);
+        let precision2 = (parsed.upper || parsed.last || parsed).precision;
+        likelyDates.add(valueFromDate(max4, precision2));
+      }
+      let sortedDates = [...likelyDates];
+      sortedDates.sort();
+      return sortedDates;
+    }
     let validation = function(entity) {
       let issues = [];
       function showReferenceEDTF(selection2) {
         selection2.selectAll(".issue-reference").data([0]).enter().append("div").attr("class", "issue-reference").call(_t.append("issues.mismatched_dates.edtf.reference"));
       }
+      function getDynamicFixes(key, parsed) {
+        let fixes = [];
+        let replacementDates = getReplacementDates(parsed);
+        fixes.push(...replacementDates.map((value) => {
+          let normalized = utilNormalizeDateString(value);
+          let localeDateString2 = normalized.date.toLocaleDateString(_mainLocalizer.languageCode(), normalized.localeOptions);
+          return new validationIssueFix({
+            title: _t.append("issues.fix.reformat_date.title", { date: localeDateString2 }),
+            onClick: function(context) {
+              context.perform(function(graph) {
+                var entityInGraph = graph.hasEntity(entity.id);
+                if (!entityInGraph)
+                  return graph;
+                var newTags = Object.assign({}, entityInGraph.tags);
+                newTags[key] = normalized.value;
+                return actionChangeTags(entityInGraph.id, newTags)(graph);
+              }, _t("issues.fix.reformat_date.annotation"));
+            }
+          });
+        }));
+        fixes.push(new validationIssueFix({
+          icon: "iD-operation-delete",
+          title: _t.append("issues.fix.remove_tag.title"),
+          onClick: function(context) {
+            context.perform(function(graph) {
+              var entityInGraph = graph.hasEntity(entity.id);
+              if (!entityInGraph)
+                return graph;
+              var newTags = Object.assign({}, entityInGraph.tags);
+              delete newTags[key];
+              return actionChangeTags(entityInGraph.id, newTags)(graph);
+            }, _t("issues.fix.remove_tag.annotation"));
+          }
+        }));
+        return fixes;
+      }
       function validateEDTF(key, msgKey) {
         if (!entity.tags[key] || !entity.tags[key + ":edtf"])
           return;
-        let parsed;
-        try {
-          parsed = edtf(entity.tags[key + ":edtf"]);
-        } catch (e) {
-          return;
-        }
-        if (parsed.covers(edtf(entity.tags[key])))
+        let basic = parseEDTF(entity.tags[key]);
+        let parsed = parseEDTF(entity.tags[key + ":edtf"]);
+        if (!basic || !parsed || parsed.covers(basic))
           return;
         issues.push(new validationIssue({
           type: type2,
@@ -46494,56 +46192,7 @@ ${content}</tr>
           reference: showReferenceEDTF,
           entityIds: [entity.id],
           hash: key + entity.tags[key + ":edtf"],
-          dynamicFixes: function() {
-            let fixes = [];
-            let likelyDates = /* @__PURE__ */ new Set();
-            let valueFromDate = (date2) => {
-              date2.precision = (parsed.lower || parsed.first || parsed).precision;
-              return date2.edtf.split("T")[0];
-            };
-            if (Number.isFinite(parsed.min)) {
-              let min4 = edtf(parsed.min);
-              likelyDates.add(valueFromDate(min4));
-            }
-            if (Number.isFinite(parsed.max)) {
-              let max4 = edtf(parsed.max);
-              likelyDates.add(valueFromDate(max4));
-            }
-            let sortedDates = [...likelyDates];
-            sortedDates.sort();
-            fixes.push(...sortedDates.map((value) => {
-              let normalized = utilNormalizeDateString(value);
-              let localeDateString2 = normalized.date.toLocaleDateString(_mainLocalizer.languageCode(), normalized.localeOptions);
-              return new validationIssueFix({
-                title: _t.append("issues.fix.reformat_date.title", { date: localeDateString2 }),
-                onClick: function(context) {
-                  context.perform(function(graph) {
-                    var entityInGraph = graph.hasEntity(entity.id);
-                    if (!entityInGraph)
-                      return graph;
-                    var newTags = Object.assign({}, entityInGraph.tags);
-                    newTags[key] = normalized.value;
-                    return actionChangeTags(entityInGraph.id, newTags)(graph);
-                  }, _t("issues.fix.reformat_date.annotation"));
-                }
-              });
-            }));
-            fixes.push(new validationIssueFix({
-              icon: "iD-operation-delete",
-              title: _t.append("issues.fix.remove_tag.title"),
-              onClick: function(context) {
-                context.perform(function(graph) {
-                  var entityInGraph = graph.hasEntity(entity.id);
-                  if (!entityInGraph)
-                    return graph;
-                  var newTags = Object.assign({}, entityInGraph.tags);
-                  delete newTags[key];
-                  return actionChangeTags(entityInGraph.id, newTags)(graph);
-                }, _t("issues.fix.remove_tag.annotation"));
-              }
-            }));
-            return fixes;
-          }
+          dynamicFixes: () => getDynamicFixes(key, parsed)
         }));
       }
       validateEDTF("start_date", "start");
@@ -46551,6 +46200,8 @@ ${content}</tr>
       return issues;
     };
     validation.type = type2;
+    validation.parseEDTF = parseEDTF;
+    validation.getReplacementDates = getReplacementDates;
     return validation;
   }
 
@@ -48845,7 +48496,11 @@ ${content}</tr>
       });
     };
     esri.getMetadata = function(center, tileCoord, callback) {
-      if (esri.id !== "EsriWorldImagery") {
+      let mapServerUrl = esri.metadata;
+      if (esri.id === "EsriWorldImagery") {
+        mapServerUrl = "https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer";
+      }
+      if (!mapServerUrl) {
         return callback(null, {});
       }
       var tileID = tileCoord.slice(0, 3).join("/");
@@ -48856,7 +48511,7 @@ ${content}</tr>
       var metadata = {};
       if (inflight[tileID])
         return;
-      var url = "https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/4/query";
+      var url = mapServerUrl + "/4/query";
       url += "?returnGeometry=false&geometry=" + centerPoint + "&inSR=4326&geometryType=esriGeometryPoint&outFields=*&f=json";
       if (!cache[tileID]) {
         cache[tileID] = {};
@@ -49521,6 +49176,7 @@ ${content}</tr>
 
   // modules/renderer/background.js
   var _imageryIndex = null;
+  var _waybackIndex = null;
   function rendererBackground(context) {
     const dispatch10 = dispatch_default("change");
     const baseLayer = rendererTileLayer(context).projection(context.projection);
@@ -49532,9 +49188,68 @@ ${content}</tr>
     let _saturation = 1;
     let _sharpness = 1;
     function ensureImageryIndex() {
-      return _mainFileFetcher.get("imagery").then((sources) => {
+      return _mainFileFetcher.get("wayback").then((groups) => {
+        let extractDateFromTitle = (title) => {
+          const dateComponents = title.match(/\(Wayback (\d{4})-(\d\d)-(\d\d)\)/);
+          if (!dateComponents)
+            return;
+          return new Date(Date.UTC(
+            parseInt(dateComponents[1], 10),
+            parseInt(dateComponents[2], 10) - 1,
+            parseInt(dateComponents[3], 10)
+          ));
+        };
+        if (!_waybackIndex) {
+          let metadataMapServersByDate = Object.fromEntries(groups.items.filter((item) => item.type === "Map Service").map((item) => {
+            const date2 = extractDateFromTitle(item.title) || new Date(item.created);
+            const dateString = date2.toISOString().split("T")[0];
+            return [dateString, item.url];
+          }));
+          _waybackIndex = groups.items.filter((item) => item.type === "WMTS").map((item) => {
+            const date2 = extractDateFromTitle(item.title) || new Date(item.created);
+            const dateString = date2 && date2.toISOString().split("T")[0];
+            const bbox2 = {
+              min_lon: item.extent[0][0],
+              min_lat: item.extent[0][1],
+              max_lon: item.extent[1][0],
+              max_lat: item.extent[1][1]
+            };
+            const polygon2 = [[
+              [bbox2.min_lon, bbox2.min_lat],
+              [bbox2.min_lon, bbox2.max_lat],
+              [bbox2.max_lon, bbox2.max_lat],
+              [bbox2.max_lon, bbox2.min_lat],
+              [bbox2.min_lon, bbox2.min_lat]
+            ]];
+            const template = item.url.replaceAll("{level}", "{zoom}").replaceAll("{row}", "{y}").replaceAll("{col}", "{x}");
+            return {
+              id: "EsriWorldImagery_" + dateString,
+              name: item.title,
+              type: "tms",
+              template,
+              metadata: metadataMapServersByDate[dateString],
+              startDate: date2.toISOString(),
+              endDate: date2.toISOString(),
+              polygon: polygon2,
+              terms_text: item.accessInformation,
+              description: item.snippet,
+              // Match Esri World Imagery layer
+              "default": true,
+              zoomExtent: [0, 22],
+              terms_url: "https://wiki.openstreetmap.org/wiki/Esri",
+              icon: "https://osmlab.github.io/editor-layer-index/sources/world/EsriImageryClarity.png"
+            };
+          });
+        }
+        return _mainFileFetcher.get("imagery");
+      }).catch(() => {
+        return _mainFileFetcher.get("imagery");
+      }).then((sources) => {
         if (_imageryIndex)
           return _imageryIndex;
+        if (_waybackIndex) {
+          sources.push(..._waybackIndex);
+        }
         _imageryIndex = {
           imagery: sources,
           features: {}
@@ -51077,7 +50792,7 @@ ${content}</tr>
     const val = parseFloat(nodeVal(get1(node, tagName)));
     if (isNaN(val))
       return void 0;
-    if (val && callback)
+    if (callback)
       callback(val);
     return val;
   }
@@ -51563,11 +51278,15 @@ ${content}</tr>
       geometries
     };
   }
-  function getPlacemark(node, styleMap, schema) {
+  function getPlacemark(node, styleMap, schema, options2) {
     const { coordTimes, geometries } = getGeometry(node);
+    const geometry = geometryListToGeometry(geometries);
+    if (!geometry && options2.skipNullGeometry) {
+      return null;
+    }
     const feature3 = {
       type: "Feature",
-      geometry: geometryListToGeometry(geometries),
+      geometry,
       properties: Object.assign(getMulti(node, [
         "name",
         "address",
@@ -51594,8 +51313,10 @@ ${content}</tr>
     if (latLonQuad) {
       const ring = fixRing(coord(getCoordinates(node)));
       return {
-        type: "Polygon",
-        coordinates: [ring]
+        geometry: {
+          type: "Polygon",
+          coordinates: [ring]
+        }
       };
     }
     return getLatLonBox(node);
@@ -51608,7 +51329,7 @@ ${content}</tr>
         const dy = coordinate[1] - center[1];
         const dx = coordinate[0] - center[0];
         const distance = Math.sqrt(Math.pow(dy, 2) + Math.pow(dx, 2));
-        const angle2 = Math.atan2(dy, dx) - rotation * DEGREES_TO_RADIANS;
+        const angle2 = Math.atan2(dy, dx) + rotation * DEGREES_TO_RADIANS;
         return [
           center[0] + Math.cos(angle2) * distance,
           center[1] + Math.sin(angle2) * distance
@@ -51640,15 +51361,22 @@ ${content}</tr>
           coordinates = rotateBox(bbox2, coordinates, rotation);
         }
         return {
-          type: "Polygon",
-          coordinates
+          bbox: bbox2,
+          geometry: {
+            type: "Polygon",
+            coordinates
+          }
         };
       }
     }
     return null;
   }
-  function getGroundOverlay(node, styleMap, schema) {
-    const geometry = getGroundOverlayBox(node);
+  function getGroundOverlay(node, styleMap, schema, options2) {
+    const box = getGroundOverlayBox(node);
+    const geometry = box?.geometry || null;
+    if (!geometry && options2.skipNullGeometry) {
+      return null;
+    }
     const feature3 = {
       type: "Feature",
       geometry,
@@ -51675,6 +51403,9 @@ ${content}</tr>
         extractTimeStamp(node)
       )
     };
+    if (box?.bbox) {
+      feature3.bbox = box.bbox;
+    }
     if (feature3.properties?.visibility !== void 0) {
       feature3.properties.visibility = feature3.properties.visibility !== "0";
     }
@@ -51714,24 +51445,28 @@ ${content}</tr>
     }
     return schema;
   }
-  function* kmlGen(node) {
+  function* kmlGen(node, options2 = {
+    skipNullGeometry: false
+  }) {
     const styleMap = buildStyleMap(node);
     const schema = buildSchema(node);
     for (const placemark of $(node, "Placemark")) {
-      const feature3 = getPlacemark(placemark, styleMap, schema);
+      const feature3 = getPlacemark(placemark, styleMap, schema, options2);
       if (feature3)
         yield feature3;
     }
     for (const groundOverlay of $(node, "GroundOverlay")) {
-      const feature3 = getGroundOverlay(groundOverlay, styleMap, schema);
+      const feature3 = getGroundOverlay(groundOverlay, styleMap, schema, options2);
       if (feature3)
         yield feature3;
     }
   }
-  function kml(node) {
+  function kml(node, options2 = {
+    skipNullGeometry: false
+  }) {
     return {
       type: "FeatureCollection",
-      features: Array.from(kmlGen(node))
+      features: Array.from(kmlGen(node, options2))
     };
   }
 
@@ -55427,7 +55162,7 @@ ${content}</tr>
       }).on("interrupt.zoom end.zoom", function() {
         gesture(this, arguments).end(null);
       }).tween("zoom", function() {
-        var that = this, args = arguments, g = gesture(that, args), e = extent.apply(that, args), p = !point2 ? centroid(e) : typeof point2 === "function" ? point2.apply(that, args) : point2, w = Math.max(e[1][0] - e[0][0], e[1][1] - e[0][1]), a = _transform, b = typeof transform2 === "function" ? transform2.apply(that, args) : transform2, i2 = interpolate(a.invert(p).concat(w / a.k), b.invert(p).concat(w / b.k));
+        var that = this, args = arguments, g2 = gesture(that, args), e = extent.apply(that, args), p = !point2 ? centroid(e) : typeof point2 === "function" ? point2.apply(that, args) : point2, w = Math.max(e[1][0] - e[0][0], e[1][1] - e[0][1]), a = _transform, b = typeof transform2 === "function" ? transform2.apply(that, args) : transform2, i2 = interpolate(a.invert(p).concat(w / a.k), b.invert(p).concat(w / b.k));
         return function(t) {
           if (t === 1) {
             t = b;
@@ -55436,7 +55171,7 @@ ${content}</tr>
             var k = w / l[2];
             t = new Transform(k, p[0] - l[0] * k, p[1] - l[1] * k);
           }
-          g.zoom(null, null, t);
+          g2.zoom(null, null, t);
         };
       });
     }
@@ -55479,24 +55214,24 @@ ${content}</tr>
     function wheeled(d3_event) {
       if (!filter2.apply(this, arguments))
         return;
-      var g = gesture(this, arguments), t = _transform, k = Math.max(scaleExtent[0], Math.min(scaleExtent[1], t.k * Math.pow(2, wheelDelta.apply(this, arguments)))), p = utilFastMouse(this)(d3_event);
-      if (g.wheel) {
-        if (g.mouse[0][0] !== p[0] || g.mouse[0][1] !== p[1]) {
-          g.mouse[1] = t.invert(g.mouse[0] = p);
+      var g2 = gesture(this, arguments), t = _transform, k = Math.max(scaleExtent[0], Math.min(scaleExtent[1], t.k * Math.pow(2, wheelDelta.apply(this, arguments)))), p = utilFastMouse(this)(d3_event);
+      if (g2.wheel) {
+        if (g2.mouse[0][0] !== p[0] || g2.mouse[0][1] !== p[1]) {
+          g2.mouse[1] = t.invert(g2.mouse[0] = p);
         }
-        clearTimeout(g.wheel);
+        clearTimeout(g2.wheel);
       } else {
-        g.mouse = [p, t.invert(p)];
+        g2.mouse = [p, t.invert(p)];
         interrupt_default(this);
-        g.start(d3_event);
+        g2.start(d3_event);
       }
       d3_event.preventDefault();
       d3_event.stopImmediatePropagation();
-      g.wheel = setTimeout(wheelidled, _wheelDelay);
-      g.zoom(d3_event, "mouse", constrain(translate(scale(t, k), g.mouse[0], g.mouse[1]), g.extent, translateExtent));
+      g2.wheel = setTimeout(wheelidled, _wheelDelay);
+      g2.zoom(d3_event, "mouse", constrain(translate(scale(t, k), g2.mouse[0], g2.mouse[1]), g2.extent, translateExtent));
       function wheelidled() {
-        g.wheel = null;
-        g.end(d3_event);
+        g2.wheel = null;
+        g2.end(d3_event);
       }
     }
     var _downPointerIDs = /* @__PURE__ */ new Set();
@@ -55505,21 +55240,21 @@ ${content}</tr>
       _downPointerIDs.add(d3_event.pointerId);
       if (!filter2.apply(this, arguments))
         return;
-      var g = gesture(this, arguments, _downPointerIDs.size === 1);
+      var g2 = gesture(this, arguments, _downPointerIDs.size === 1);
       var started;
       d3_event.stopImmediatePropagation();
       _pointerLocGetter = utilFastMouse(this);
       var loc = _pointerLocGetter(d3_event);
       var p = [loc, _transform.invert(loc), d3_event.pointerId];
-      if (!g.pointer0) {
-        g.pointer0 = p;
+      if (!g2.pointer0) {
+        g2.pointer0 = p;
         started = true;
-      } else if (!g.pointer1 && g.pointer0[2] !== p[2]) {
-        g.pointer1 = p;
+      } else if (!g2.pointer1 && g2.pointer0[2] !== p[2]) {
+        g2.pointer1 = p;
       }
       if (started) {
         interrupt_default(this);
-        g.start(d3_event);
+        g2.start(d3_event);
       }
     }
     function pointermove(d3_event) {
@@ -55527,15 +55262,15 @@ ${content}</tr>
         return;
       if (!_activeGesture || !_pointerLocGetter)
         return;
-      var g = gesture(this, arguments);
-      var isPointer0 = g.pointer0 && g.pointer0[2] === d3_event.pointerId;
-      var isPointer1 = !isPointer0 && g.pointer1 && g.pointer1[2] === d3_event.pointerId;
+      var g2 = gesture(this, arguments);
+      var isPointer0 = g2.pointer0 && g2.pointer0[2] === d3_event.pointerId;
+      var isPointer1 = !isPointer0 && g2.pointer1 && g2.pointer1[2] === d3_event.pointerId;
       if ((isPointer0 || isPointer1) && "buttons" in d3_event && !d3_event.buttons) {
-        if (g.pointer0)
-          _downPointerIDs.delete(g.pointer0[2]);
-        if (g.pointer1)
-          _downPointerIDs.delete(g.pointer1[2]);
-        g.end(d3_event);
+        if (g2.pointer0)
+          _downPointerIDs.delete(g2.pointer0[2]);
+        if (g2.pointer1)
+          _downPointerIDs.delete(g2.pointer1[2]);
+        g2.end(d3_event);
         return;
       }
       d3_event.preventDefault();
@@ -55543,22 +55278,22 @@ ${content}</tr>
       var loc = _pointerLocGetter(d3_event);
       var t, p, l;
       if (isPointer0)
-        g.pointer0[0] = loc;
+        g2.pointer0[0] = loc;
       else if (isPointer1)
-        g.pointer1[0] = loc;
+        g2.pointer1[0] = loc;
       t = _transform;
-      if (g.pointer1) {
-        var p02 = g.pointer0[0], l0 = g.pointer0[1], p1 = g.pointer1[0], l1 = g.pointer1[1], dp = (dp = p1[0] - p02[0]) * dp + (dp = p1[1] - p02[1]) * dp, dl = (dl = l1[0] - l0[0]) * dl + (dl = l1[1] - l0[1]) * dl;
+      if (g2.pointer1) {
+        var p02 = g2.pointer0[0], l0 = g2.pointer0[1], p1 = g2.pointer1[0], l1 = g2.pointer1[1], dp = (dp = p1[0] - p02[0]) * dp + (dp = p1[1] - p02[1]) * dp, dl = (dl = l1[0] - l0[0]) * dl + (dl = l1[1] - l0[1]) * dl;
         t = scale(t, Math.sqrt(dp / dl));
         p = [(p02[0] + p1[0]) / 2, (p02[1] + p1[1]) / 2];
         l = [(l0[0] + l1[0]) / 2, (l0[1] + l1[1]) / 2];
-      } else if (g.pointer0) {
-        p = g.pointer0[0];
-        l = g.pointer0[1];
+      } else if (g2.pointer0) {
+        p = g2.pointer0[0];
+        l = g2.pointer0[1];
       } else {
         return;
       }
-      g.zoom(d3_event, "touch", constrain(translate(t, p, l), g.extent, translateExtent));
+      g2.zoom(d3_event, "touch", constrain(translate(t, p, l), g2.extent, translateExtent));
     }
     function pointerup(d3_event) {
       if (!_downPointerIDs.has(d3_event.pointerId))
@@ -55566,20 +55301,20 @@ ${content}</tr>
       _downPointerIDs.delete(d3_event.pointerId);
       if (!_activeGesture)
         return;
-      var g = gesture(this, arguments);
+      var g2 = gesture(this, arguments);
       d3_event.stopImmediatePropagation();
-      if (g.pointer0 && g.pointer0[2] === d3_event.pointerId)
-        delete g.pointer0;
-      else if (g.pointer1 && g.pointer1[2] === d3_event.pointerId)
-        delete g.pointer1;
-      if (g.pointer1 && !g.pointer0) {
-        g.pointer0 = g.pointer1;
-        delete g.pointer1;
+      if (g2.pointer0 && g2.pointer0[2] === d3_event.pointerId)
+        delete g2.pointer0;
+      else if (g2.pointer1 && g2.pointer1[2] === d3_event.pointerId)
+        delete g2.pointer1;
+      if (g2.pointer1 && !g2.pointer0) {
+        g2.pointer0 = g2.pointer1;
+        delete g2.pointer1;
       }
-      if (g.pointer0) {
-        g.pointer0[1] = _transform.invert(g.pointer0[0]);
+      if (g2.pointer0) {
+        g2.pointer0[1] = _transform.invert(g2.pointer0[0]);
       } else {
-        g.end(d3_event);
+        g2.end(d3_event);
       }
     }
     zoom.wheelDelta = function(_) {
@@ -64612,7 +64347,7 @@ ${content}</tr>
     let _selection = select_default2(null);
     let _edtfValue;
     let edtfKey = field.key + ":edtf";
-    let dateTimeFormat = new Intl.DateTimeFormat(_mainLocalizer.languageCode(), {
+    let dateTimeFormat = new Intl.DateTimeFormat(_mainLocalizer.localeCodes(), {
       year: "numeric",
       era: "short",
       month: "long",
@@ -64621,7 +64356,7 @@ ${content}</tr>
     });
     let formatParts = dateTimeFormat.formatToParts(/* @__PURE__ */ new Date()).map((p) => p.type);
     function getEraName(year2, format3) {
-      let longFormat = new Intl.DateTimeFormat(_mainLocalizer.languageCode(), {
+      let longFormat = new Intl.DateTimeFormat(_mainLocalizer.localeCodes(), {
         year: "numeric",
         era: format3,
         timeZone: "UTC"
@@ -64652,7 +64387,7 @@ ${content}</tr>
     ];
     let eraCombo = uiCombobox(context, "date-era").data(eraNames);
     function getMonthName(month, format3) {
-      let longFormat = new Intl.DateTimeFormat(_mainLocalizer.languageCode(), {
+      let longFormat = new Intl.DateTimeFormat(_mainLocalizer.localeCodes(), {
         month: format3,
         timeZone: "UTC"
       });
@@ -64736,24 +64471,26 @@ ${content}</tr>
         return;
       if (!yearValue) {
         tag[field.key] = void 0;
-      } else if (isNaN(yearValue)) {
-        tag[field.key] = context.cleanTagValue(yearValue);
       } else {
         let value = "";
         let year2 = parseInt(context.cleanTagValue(yearValue), 10);
-        if (eraValue === bceName) {
-          value += "-" + String(year2 - 1).padStart(4, "0");
-        } else {
-          value += String(year2).padStart(4, "0");
-        }
-        let month = context.cleanTagValue(monthValue);
-        if (monthNames.includes(month)) {
-          month = monthNames.indexOf(month) + 1;
-          value += "-" + String(month).padStart(2, "0");
-          let day = parseInt(context.cleanTagValue(dayValue), 10);
-          if (!isNaN(day)) {
-            value += "-" + String(day).padStart(2, "0");
+        if (isNaN(year2)) {
+          if (eraValue === bceName) {
+            value += "-" + String(year2 - 1).padStart(4, "0");
+          } else {
+            value += String(year2).padStart(4, "0");
           }
+          let month = context.cleanTagValue(monthValue);
+          if (monthNames.includes(month)) {
+            month = monthNames.indexOf(month) + 1;
+            value += "-" + String(month).padStart(2, "0");
+            let day = parseInt(context.cleanTagValue(dayValue), 10);
+            if (!isNaN(day)) {
+              value += "-" + String(day).padStart(2, "0");
+            }
+          }
+        } else {
+          value = context.cleanTagValue(yearValue);
         }
         tag[field.key] = value;
       }
@@ -64833,7 +64570,7 @@ ${content}</tr>
           }
         }
       }
-      utilGetSetValue(yearInput, typeof yearValue === "number" ? yearValue : "").attr("title", isMixed ? yearValue.filter(Boolean).join("\n") : null).attr("placeholder", isMixed ? _t("inspector.multiple_values") : _t("inspector.date.year")).classed("mixed", isMixed);
+      utilGetSetValue(yearInput, typeof yearValue === "number" || typeof yearValue === "string" ? yearValue : "").attr("title", isMixed ? yearValue.filter(Boolean).join("\n") : null).attr("placeholder", isMixed ? _t("inspector.multiple_values") : _t("inspector.date.year")).classed("mixed", isMixed);
       utilGetSetValue(eraInput, typeof eraValue === "string" ? eraValue : "").attr("placeholder", _t("inspector.date.era"));
       utilGetSetValue(monthInput, typeof monthValue === "string" ? monthValue : "").attr("placeholder", _t("inspector.date.month"));
       utilGetSetValue(dayInput, typeof dayValue === "number" ? dayValue : "").attr("placeholder", _t("inspector.date.day"));
@@ -70958,7 +70695,7 @@ ${content}</tr>
     if (typeof str2 !== "string")
       return "";
     return import_diacritics3.default.remove(
-      str2.replace(/&/g, "and").replace(/İ/ig, "i").replace(/[\s\-=_!"#%'*{},.\/:;?\(\)\[\]@\\$\^*+<>«»~`’\u00a1\u00a7\u00b6\u00b7\u00bf\u037e\u0387\u055a-\u055f\u0589\u05c0\u05c3\u05c6\u05f3\u05f4\u0609\u060a\u060c\u060d\u061b\u061e\u061f\u066a-\u066d\u06d4\u0700-\u070d\u07f7-\u07f9\u0830-\u083e\u085e\u0964\u0965\u0970\u0af0\u0df4\u0e4f\u0e5a\u0e5b\u0f04-\u0f12\u0f14\u0f85\u0fd0-\u0fd4\u0fd9\u0fda\u104a-\u104f\u10fb\u1360-\u1368\u166d\u166e\u16eb-\u16ed\u1735\u1736\u17d4-\u17d6\u17d8-\u17da\u1800-\u1805\u1807-\u180a\u1944\u1945\u1a1e\u1a1f\u1aa0-\u1aa6\u1aa8-\u1aad\u1b5a-\u1b60\u1bfc-\u1bff\u1c3b-\u1c3f\u1c7e\u1c7f\u1cc0-\u1cc7\u1cd3\u200b-\u200f\u2016\u2017\u2020-\u2027\u2030-\u2038\u203b-\u203e\u2041-\u2043\u2047-\u2051\u2053\u2055-\u205e\u2cf9-\u2cfc\u2cfe\u2cff\u2d70\u2e00\u2e01\u2e06-\u2e08\u2e0b\u2e0e-\u2e16\u2e18\u2e19\u2e1b\u2e1e\u2e1f\u2e2a-\u2e2e\u2e30-\u2e39\u3001-\u3003\u303d\u30fb\ua4fe\ua4ff\ua60d-\ua60f\ua673\ua67e\ua6f2-\ua6f7\ua874-\ua877\ua8ce\ua8cf\ua8f8-\ua8fa\ua92e\ua92f\ua95f\ua9c1-\ua9cd\ua9de\ua9df\uaa5c-\uaa5f\uaade\uaadf\uaaf0\uaaf1\uabeb\ufe10-\ufe16\ufe19\ufe30\ufe45\ufe46\ufe49-\ufe4c\ufe50-\ufe52\ufe54-\ufe57\ufe5f-\ufe61\ufe68\ufe6a\ufe6b\ufeff\uff01-\uff03\uff05-\uff07\uff0a\uff0c\uff0e\uff0f\uff1a\uff1b\uff1f\uff20\uff3c\uff61\uff64\uff65]+/g, "").toLowerCase()
+      str2.replace(/&/g, "and").replace(/(İ|i̇)/ig, "i").replace(/[\s\-=_!"#%'*{},.\/:;?\(\)\[\]@\\$\^*+<>«»~`’\u00a1\u00a7\u00b6\u00b7\u00bf\u037e\u0387\u055a-\u055f\u0589\u05c0\u05c3\u05c6\u05f3\u05f4\u0609\u060a\u060c\u060d\u061b\u061e\u061f\u066a-\u066d\u06d4\u0700-\u070d\u07f7-\u07f9\u0830-\u083e\u085e\u0964\u0965\u0970\u0af0\u0df4\u0e4f\u0e5a\u0e5b\u0f04-\u0f12\u0f14\u0f85\u0fd0-\u0fd4\u0fd9\u0fda\u104a-\u104f\u10fb\u1360-\u1368\u166d\u166e\u16eb-\u16ed\u1735\u1736\u17d4-\u17d6\u17d8-\u17da\u1800-\u1805\u1807-\u180a\u1944\u1945\u1a1e\u1a1f\u1aa0-\u1aa6\u1aa8-\u1aad\u1b5a-\u1b60\u1bfc-\u1bff\u1c3b-\u1c3f\u1c7e\u1c7f\u1cc0-\u1cc7\u1cd3\u2000-\u206f\u2cf9-\u2cfc\u2cfe\u2cff\u2d70\u2e00-\u2e7f\u3001-\u3003\u303d\u30fb\ua4fe\ua4ff\ua60d-\ua60f\ua673\ua67e\ua6f2-\ua6f7\ua874-\ua877\ua8ce\ua8cf\ua8f8-\ua8fa\ua92e\ua92f\ua95f\ua9c1-\ua9cd\ua9de\ua9df\uaa5c-\uaa5f\uaade\uaadf\uaaf0\uaaf1\uabeb\ufe10-\ufe16\ufe19\ufe30\ufe45\ufe46\ufe49-\ufe4c\ufe50-\ufe52\ufe54-\ufe57\ufe5f-\ufe61\ufe68\ufe6a\ufe6b\ufeff\uff01-\uff03\uff05-\uff07\uff0a\uff0c\uff0e\uff0f\uff1a\uff1b\uff1f\uff20\uff3c\uff61\uff64\uff65]+/g, "").toLowerCase()
     );
   }
 
@@ -78292,7 +78029,7 @@ ${content}</tr>
       } else {
         prefix = type2 + ":";
       }
-      return prefix + (value ? `${key}=${value}` : key).replace(/_/g, " ").trim();
+      return (prefix + (value ? `${key}=${value}` : key).replace(/_/g, " ")).trim();
     },
     //
     // Pass params object of the form:
