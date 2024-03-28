@@ -284,7 +284,7 @@ describe('iD.serviceOsmWikibase', function () {
           {
             action: 'wbgetentities',
             sites: 'wiki',
-            titles: 'Locale:fr|Key:amenity|Tag:amenity=parking',
+            titles: 'Locale:fr|Key:amenity|OpenHistoricalMap/Tags/Key/amenity|Tag:amenity=parking|OpenHistoricalMap/Tags/Tag/amenity=parking',
             languages: 'fr',
             languagefallback: '1',
             origin: '*',

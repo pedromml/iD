@@ -105,7 +105,7 @@ export default {
         } else {
             prefix = type + ':';
         }
-        return prefix + (value ? `${key}=${value}` : key).replace(/_/g, ' ').trim();
+        return (prefix + (value ? `${key}=${value}` : key).replace(/_/g, ' ')).trim();
     },
 
 
