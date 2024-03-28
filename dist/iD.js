@@ -33022,7 +33022,9 @@
   // modules/presets/index.js
   var _mainPresetIndex = presetIndex();
   function setHistoricalDefaults(defaults2) {
-    defaults2.relation.unshift("type/chronology");
+    if (defaults2.relation) {
+      defaults2.relation.unshift("type/chronology");
+    }
   }
   function addHistoricalPresets(presets) {
     presets["type/chronology"] = {
@@ -33035,12 +33037,16 @@
     };
   }
   function addHistoricalFields(fields) {
-    fields.start_date.type = "date";
-    fields.end_date = {
-      ...fields.start_date,
-      key: "end_date"
-    };
-    fields.source.type = "text";
+    if (fields.start_date) {
+      fields.start_date.type = "date";
+      fields.end_date = {
+        ...fields.start_date,
+        key: "end_date"
+      };
+    }
+    if (fields.source) {
+      fields.source.type = "text";
+    }
     fields.license = {
       key: "license",
       type: "combo",
@@ -85034,7 +85040,7 @@
       } else {
         prefix = type2 + ":";
       }
-      return prefix + (value ? "".concat(key, "=").concat(value) : key).replace(/_/g, " ").trim();
+      return (prefix + (value ? "".concat(key, "=").concat(value) : key).replace(/_/g, " ")).trim();
     },
     //
     // Pass params object of the form:
