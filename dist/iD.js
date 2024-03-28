@@ -32254,7 +32254,7 @@
         let loadStringsPromises = [];
         indexes.forEach((index, i3) => {
           const fullCoverageIndex = _localeCodes.findIndex(function(locale2) {
-            return index[locale2] && index[locale2].pct === 1;
+            return locale2 === "en" && index[locale2] && index[locale2].pct === 1;
           });
           _localeCodes.slice(0, fullCoverageIndex + 1).forEach(function(code) {
             let scopeId = Object.keys(localeDirs)[i3];
