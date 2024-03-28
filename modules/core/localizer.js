@@ -120,7 +120,9 @@ export function coreLocalizer() {
                 indexes.forEach((index, i) => {
                     // Will always return the index for `en` if nothing else
                     const fullCoverageIndex = _localeCodes.findIndex(function(locale) {
-                        return index[locale] && index[locale].pct === 1;
+                        // Only English contains everything including the OpenHistoricalMap additions, because we haven’t set up a translation management system yet.
+                        // https://github.com/OpenHistoricalMap/issues/issues/470
+                        return locale === 'en' && index[locale] && index[locale].pct === 1;
                     });
                     // We only need to load locales up until we find one with full coverage
                     _localeCodes.slice(0, fullCoverageIndex + 1).forEach(function(code) {
