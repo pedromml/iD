@@ -62,6 +62,9 @@ export var osmAreaKeysExceptions = {
     },
     waterway: {
         dam: true
+    },
+    amenity: {
+        bicycle_parking: true
     }
 };
 
@@ -256,7 +259,18 @@ export function isColourValid(value) {
     return true;
 }
 
+// https://wiki.openstreetmap.org/wiki/Special:WhatLinksHere/Property:P44
+export var osmMutuallyExclusiveTagPairs = [
+    ['noname', 'name'],
+    ['noref', 'ref'],
+    ['nohousenumber', 'addr:housenumber'],
+    ['noaddress', 'addr:housenumber'],
+    ['noaddress', 'addr:housename'],
+    ['noaddress', 'addr:unit'],
+    ['addr:nostreet', 'addr:street']
+];
+
 export var osmTimelessFeatureTagValues = {
-    wood: true, wetland: true, beach: true, cave_entrance: true, peak: true, cliff: true, coastline: true, tree_row: true,
-    water: true, scrub: true, grassland: true, heath: true, bare_rock: true, glacier: true, stream: true, river: true, pond: true, basin: true, lake: true
+  wood: true, wetland: true, beach: true, cave_entrance: true, peak: true, cliff: true, coastline: true, tree_row: true,
+  water: true, scrub: true, grassland: true, heath: true, bare_rock: true, glacier: true, stream: true, river: true, pond: true, basin: true, lake: true
 };
