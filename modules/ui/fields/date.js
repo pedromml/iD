@@ -252,7 +252,7 @@ export function uiFieldDate(field, context) {
         } else {
             let value = '';
             let year = parseInt(context.cleanTagValue(yearValue), 10);
-            if (isNaN(year)) {
+            if (!isNaN(year)) {
                 if (eraValue === bceName) {
                     value += '-' + String(year - 1).padStart(4, '0');
                 } else {

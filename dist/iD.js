@@ -69662,7 +69662,7 @@
       } else {
         let value = "";
         let year2 = parseInt(context.cleanTagValue(yearValue), 10);
-        if (isNaN(year2)) {
+        if (!isNaN(year2)) {
           if (eraValue === bceName) {
             value += "-" + String(year2 - 1).padStart(4, "0");
           } else {
