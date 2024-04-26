@@ -270,7 +270,7 @@ describe('iD.validations.crossing_ways', function () {
         verifySingleCrossingIssue(issues, {});
         context.enter(iD.modeSelect(context, ['w-1']));
         const dynamicFixes = issues[0].dynamicFixes(context);
-        expect(dynamicFixes).to.have.lengthOf(5);
+        expect(dynamicFixes).to.have.lengthOf(6);
         expect(dynamicFixes[0]._connectionTags).to.eql({});
         expect(dynamicFixes[1]._connectionTags).to.eql({ highway: 'crossing' });
     });
