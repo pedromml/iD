@@ -2122,11 +2122,13 @@ input.date-selector {
 
 /* nested subfields for name in different languages or date in different formats */
 .localized-multilingual,
+.field-source,
 .date-edtf {
     padding: 0 10px;
     flex-basis: 100%;
 }
 .localized-multilingual .entry,
+.field-source .entry,
 .date-edtf .entry {
     position: relative;
     overflow: hidden;
@@ -2134,6 +2136,7 @@ input.date-selector {
 
 /* draws a little line connecting the multilingual field up to the name field */
 .localized-multilingual .entry::before,
+.field-source .entry::before,
 .date-edtf .entry::before {
     content: "";
     display: block;
@@ -2153,6 +2156,7 @@ input.date-selector {
     width: 100%;
 }
 .localized-multilingual .entry .localized-value,
+.field-source .entry .field-source-value,
 .date-edtf .entry .date-value {
     border-top-width: 0;
     border-radius: 0 0 4px 4px;
