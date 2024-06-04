@@ -9,7 +9,8 @@ import { geoExtent } from '../geo/extent';
 import { uiFieldHelp } from './field_help';
 import { uiFields } from './fields';
 import { uiTagReference } from './tag_reference';
-import { utilGetSetValue, utilRebind, utilUniqueDomId } from '../util';
+import { utilRebind, utilUniqueDomId } from '../util';
+import { uiSourceSubfield } from './source_subfield';
 
 
 export function uiField(context, presetField, entityIDs, options) {
@@ -27,9 +28,6 @@ export function uiField(context, presetField, entityIDs, options) {
     var _show = options.show;
     var _state = '';
     var _tags = {};
-    let sourceInput = d3_select(null);
-    let _sourceValue;
-    let sourceKey = field.key + ':source';
     
     options.source = field.source !== undefined ? field.source : true;
 
@@ -129,150 +127,6 @@ export function uiField(context, presetField, entityIDs, options) {
         dispatch.call('change', d, t);
     }
 
-
-    function renderSourceInput(selection) {
-        console.log('renderSourceInput');
-        let entries = selection.selectAll('div.entry')
-            .data((typeof _sourceValue === 'string' || Array.isArray(_sourceValue)) ? [_sourceValue] : []);
-
-        entries.exit()
-            .style('top', '0')
-            .style('max-height', '240px')
-            .transition()
-            .duration(200)
-            .style('opacity', '0')
-            .style('max-height', '0px')
-            .remove();
-
-        let entriesEnter = entries.enter()
-            .append('div')
-            .attr('class', 'entry')
-            .each(function() {
-                var wrap = d3_select(this);
-
-                let domId = utilUniqueDomId('source-' + field.safeid);
-                let label = wrap
-                    .append('label')
-                    .attr('class', 'field-label')
-                    .attr('for', domId);
-
-                let text = label
-                    .append('span')
-                    .attr('class', 'label-text');
-
-                text
-                    .append('span')
-                    .attr('class', 'label-textvalue')
-                    .call(t.append('inspector.field_source_label'));
-
-                text
-                    .append('span')
-                    .attr('class', 'label-textannotation');
-
-                label
-                    .append('button')
-                    .attr('class', 'remove-icon-source') // 'remove-icon-edtf'
-                    .attr('title', t('icons.remove'))
-                    .on('click', function(d3_event) {
-                        d3_event.preventDefault();
-
-                        // remove the UI item manually
-                        _sourceValue = undefined;
-
-                        if (sourceKey && sourceKey in _tags) {
-                            delete _tags[sourceKey];
-                            // remove from entity tags
-                            let t = {};
-                            t[sourceKey] = undefined;
-                            dispatch.call('change', this, t);
-                            return;
-                        }
-
-                        renderSourceInput(selection);
-                    })
-                    .call(svgIcon('#iD-operation-delete'));
-
-                wrap
-                    .append('input')
-                    .attr('type', 'text')
-                    .attr('class', 'field-source-value')
-                    .on('blur', changeSourceValue)
-                    .on('change', changeSourceValue);
-            });
-
-        entriesEnter
-            .style('margin-top', '0px')
-            .style('max-height', '0px')
-            .style('opacity', '0')
-            .transition()
-            .duration(200)
-            .style('margin-top', '10px')
-            .style('max-height', '240px')
-            .style('opacity', '1')
-            .on('end', function() {
-                d3_select(this)
-                    .style('max-height', '')
-                    .style('overflow', 'visible');
-            });
-
-        entries = entries.merge(entriesEnter);
-
-        entries.order();
-
-        // allow removing the entry UIs even if there isn't a tag to remove
-        entries.classed('present', true);
-
-        utilGetSetValue(entries.select('.field-source-value'), function(d) {
-                return typeof d === 'string' ? d : '';
-            })
-            .attr('title', function(d) {
-                return Array.isArray(d) ? d.filter(Boolean).join('\n') : null;
-            })
-            .attr('placeholder', function(d) {
-                return Array.isArray(d) ? t('inspector.multiple_values') : t('inspector.field_source_placeholder');
-            })
-            .classed('mixed', function(d) {
-                return Array.isArray(d);
-            });
-    }
-
-    function changeSourceValue(d3_event, d) {
-        console.log('changeSourceValue');
-        let value = context.cleanTagValue(utilGetSetValue(d3_select(this))) || undefined;
-        console.log('sourceTagValue');
-        console.log(value);
-        // don't override multiple values with blank string
-        if (!value && Array.isArray(d.value)) return;
-
-        let t = {};
-        t[sourceKey] = value;
-        d.value = value;
-        dispatch.call('change', this, t);
-    }
-
-    function addSource(d3_event, d) {
-        console.log('addSource');
-        d3_event.preventDefault();
-        
-        if (typeof _sourceValue !== 'string' && !Array.isArray(_sourceValue)) {
-            _sourceValue = '';
-
-            sourceInput.call(renderSourceInput);
-        }
-        
-    }
-
-    function calcSourceValue(tags) {
-        console.log('calcSourceValue');
-        if (_sourceValue && !tags[sourceKey]) {
-            // Don't unset the variable based on deleted tags, since this makes the UI
-            // disappear unexpectedly when clearing values - #8164
-            _sourceValue = '';
-        } else {
-            _sourceValue = tags[sourceKey];
-        }
-    }
-
     field.render = function(selection) {
         var container = selection.selectAll('.form-field')
             .data([field]);
@@ -319,35 +173,21 @@ export function uiField(context, presetField, entityIDs, options) {
             }
         }
 
-        if(options.source){
-            let sourceButtonTip = uiTooltip()
-            .title(() => t.append('inspector.field_source'))
-            .placement('left');
-
-            labelEnter
-            .append('button')
-            .attr('class', 'source-icon')
-            .attr('title', 'source-button')
-            .call(sourceButtonTip)
-            .call(svgIcon('#iD-icon-note'));
-        }
-
-        if (_tags && _sourceValue === undefined) {
-            calcSourceValue(_tags);
-        }
+        var sourceSubfield = uiSourceSubfield(field, _tags, dispatch);
 
         // Update
         container = container
-            .merge(enter);
+        .merge(enter);
+        
+        if(options.source){
+            sourceSubfield.button(labelEnter, container);
+        }
 
         container.select('.field-label > .remove-icon')  // propagate bound data
             .on('click', remove);
 
         container.select('.field-label > .modified-icon')  // propagate bound data
             .on('click', revert);
-
-        container.select('.field-label > .source-icon')  // propagate bound data
-           .on('click', addSource);
 
         container
             .each(function(d) {
@@ -427,16 +267,7 @@ export function uiField(context, presetField, entityIDs, options) {
             container.call(_locked ? _lockedTip : _lockedTip.destroy);
 
             if(options.source){
-                sourceInput = selection.selectChild().selectAll('.field-source')
-                .data([0]);
-
-                sourceInput = sourceInput.enter()
-                .append('div')
-                .attr('class', 'field-source')
-                .merge(sourceInput);
-
-                sourceInput
-                .call(renderSourceInput);
+                sourceSubfield.body(selection);
             }
     };
 
@@ -459,8 +290,6 @@ export function uiField(context, presetField, entityIDs, options) {
                 createField();
             }
         }
-
-        calcSourceValue(_tags);
 
         return field;
     };
