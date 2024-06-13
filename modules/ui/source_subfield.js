@@ -47,7 +47,7 @@ export function uiSourceSubfield(field, tags, dispatch) {
                 text
                     .append('span')
                     .attr('class', 'label-textvalue')
-                    .call(t.append('inspector.field_source_label'));
+                    .call(t.append('inspector.field_source_label', { field_name: field.title }));
 
                 text
                     .append('span')
@@ -146,7 +146,7 @@ export function uiSourceSubfield(field, tags, dispatch) {
         .attr('class', 'source-icon')
         .attr('title', 'source-button')
         .call(sourceButtonTip)
-        .call(svgIcon('#fas-book'));
+        .call(svgIcon('#fas-at', 'inline'));
 
         container.select('.field-label > .source-icon')  // propagate bound data
         .on('click', addSource);

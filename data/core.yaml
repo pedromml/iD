@@ -799,7 +799,7 @@ en:
       edtf_label: Extended Date/Time Format
       edtf_placeholder: 1849~, 1804?, 189X, 1906/1908, 1814-23, 1960-05-01T13:00...
     field_source: Add Source
-    field_source_label: Source
+    field_source_label: Source for {field_name}
     field_source_placeholder: URL, newspaper article, book...
     max_length_reached: "This string is longer than the maximum length of {maxChars} characters. Anything exceeding that length will be truncated."
     set_today: "Sets the value to today."
