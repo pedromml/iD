@@ -51,6 +51,18 @@ describe('iD.validations.mismatched_dates', function () {
         expect(issue.entityIds[0]).to.eql('n-1');
     });
 
+    it('ignores way with date narrowed by EDTF time range', function() {
+        createNode({ shop: 'mall', name: 'Forest Fair Mall', start_date: '1988-07-11', 'start_date:edtf': '1988-07-11T10:00', end_date: '2003-06-10', 'end_date:edtf': '2003-06-10T08:00/2003-06-10T21:00' });
+        let issues = validate();
+        expect(issues).to.have.lengthOf(0);
+    });
+
+    it('flags way with date outside of EDTF time range', function() {
+        createNode({ shop: 'mall', name: 'Forest Fair Mall', start_date: '1988-07-11', 'start_date:edtf': '1988-07-12', end_date: '2003-06-11', 'end_date:edtf': '2003-06-10T08:00/2003-06-10T21:00' });
+        let issues = validate();
+        expect(issues).to.have.lengthOf(2);
+    });
+
     it('equates unknown date with unspecified date in EDTF extended interval', function() {
         let validator = iD.validationMismatchedDates(context);
         expect(validator.parseEDTF('/1234').toString()).to.equal(validator.parseEDTF('../1234').toString());
