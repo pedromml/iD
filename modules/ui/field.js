@@ -28,7 +28,7 @@ export function uiField(context, presetField, entityIDs, options) {
     var _show = options.show;
     var _state = '';
     var _tags = {};
-    
+
     options.source = field.source !== undefined ? field.source : true;
 
     var _entityExtent;
@@ -128,6 +128,9 @@ export function uiField(context, presetField, entityIDs, options) {
     }
 
     field.render = function(selection) {
+
+        var sourceSubfield = uiSourceSubfield(context, field, _tags, dispatch);
+
         var container = selection.selectAll('.form-field')
             .data([field]);
 
@@ -171,17 +174,16 @@ export function uiField(context, presetField, entityIDs, options) {
                     .attr('title', t('icons.undo'))
                     .call(svgIcon((localizer.textDirection() === 'rtl') ? '#iD-icon-redo' : '#iD-icon-undo'));
             }
+
+            if (options.source){
+                sourceSubfield.button(labelEnter, container);
+            }
         }
 
-        var sourceSubfield = uiSourceSubfield(field, _tags, dispatch);
 
         // Update
         container = container
         .merge(enter);
-        
-        if(options.source){
-            sourceSubfield.button(labelEnter, container);
-        }
 
         container.select('.field-label > .remove-icon')  // propagate bound data
             .on('click', remove);
@@ -266,7 +268,7 @@ export function uiField(context, presetField, entityIDs, options) {
 
             container.call(_locked ? _lockedTip : _lockedTip.destroy);
 
-            if(options.source){
+            if (options.source){
                 sourceSubfield.body(selection);
             }
     };

@@ -7,7 +7,7 @@ import { svgIcon } from '../svg/icon';
 import { uiTooltip } from './tooltip';
 import { utilGetSetValue, utilUniqueDomId } from '../util';
 
-export function uiSourceSubfield(field, tags, dispatch) {
+export function uiSourceSubfield(context, field, tags, dispatch) {
 
     var sourceSubfield = {};
 
@@ -126,27 +126,30 @@ export function uiSourceSubfield(field, tags, dispatch) {
         dispatch.call('change', this, t);
     }
 
-    function addSource(d3_event, d) {
+    function addSource(d3_event) {
         d3_event.preventDefault();
-        
+
         if (typeof _sourceValue !== 'string' && !Array.isArray(_sourceValue)) {
             _sourceValue = '';
         }
         sourceInput.call(renderSourceInput);
-        
+
     }
 
     sourceSubfield.button = function(labelEnter, container) {
         let sourceButtonTip = uiTooltip()
                 .title(() => t.append('inspector.field_source'))
                 .placement('left');
-    
+
         labelEnter
         .append('button')
         .attr('class', 'source-icon')
         .attr('title', 'source-button')
         .call(sourceButtonTip)
         .call(svgIcon('#fas-at', 'inline'));
+
+        container = container
+        .merge(labelEnter);
 
         container.select('.field-label > .source-icon')  // propagate bound data
         .on('click', addSource);
