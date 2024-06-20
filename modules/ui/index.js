@@ -49,6 +49,7 @@ export { uiPresetList } from './preset_list';
 export { uiRestore } from './restore';
 export { uiScale } from './scale';
 export { uiSidebar } from './sidebar';
+export { uiSourceSubfield } from './source_subfield';
 export { uiSourceSwitch } from './source_switch';
 export { uiSpinner } from './spinner';
 export { uiSplash } from './splash';

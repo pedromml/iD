@@ -10,6 +10,7 @@ import { uiFieldHelp } from './field_help';
 import { uiFields } from './fields';
 import { uiTagReference } from './tag_reference';
 import { utilRebind, utilUniqueDomId } from '../util';
+import { uiSourceSubfield } from './source_subfield';
 
 
 export function uiField(context, presetField, entityIDs, options) {
@@ -27,6 +28,11 @@ export function uiField(context, presetField, entityIDs, options) {
     var _show = options.show;
     var _state = '';
     var _tags = {};
+
+    // This sets option.source to true if it has not been defined proviously
+    // This way, every field will have a source subfield unless explicitly stated otherwise
+    // Currently, only the main Sources field does not have a sources subfield
+    options.source = field.source !== undefined ? field.source : true;
 
     var _entityExtent;
     if (entityIDs && entityIDs.length) {
@@ -124,8 +130,10 @@ export function uiField(context, presetField, entityIDs, options) {
         dispatch.call('change', d, t);
     }
 
-
     field.render = function(selection) {
+
+        var sourceSubfield = uiSourceSubfield(context, field, _tags, dispatch);
+
         var container = selection.selectAll('.form-field')
             .data([field]);
 
@@ -168,6 +176,10 @@ export function uiField(context, presetField, entityIDs, options) {
                     .attr('class', 'modified-icon')
                     .attr('title', t('icons.undo'))
                     .call(svgIcon((localizer.textDirection() === 'rtl') ? '#iD-icon-redo' : '#iD-icon-undo'));
+            }
+
+            if (options.source){
+                sourceSubfield.button(labelEnter, container);
             }
         }
 
@@ -258,6 +270,10 @@ export function uiField(context, presetField, entityIDs, options) {
                 .attr('xlink:href', '#fas-lock');
 
             container.call(_locked ? _lockedTip : _lockedTip.destroy);
+
+            if (options.source){
+                sourceSubfield.body(selection);
+            }
     };
 
 
