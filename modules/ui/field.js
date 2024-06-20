@@ -183,7 +183,7 @@ export function uiField(context, presetField, entityIDs, options) {
 
         // Update
         container = container
-        .merge(enter);
+            .merge(enter);
 
         container.select('.field-label > .remove-icon')  // propagate bound data
             .on('click', remove);
