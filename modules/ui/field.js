@@ -29,6 +29,9 @@ export function uiField(context, presetField, entityIDs, options) {
     var _state = '';
     var _tags = {};
 
+    // This sets option.source to true if it has not been defined proviously
+    // This way, every field will have a source subfield unless explicitly stated otherwise
+    // Currently, only the main Sources field does not have a sources subfield
     options.source = field.source !== undefined ? field.source : true;
 
     var _entityExtent;

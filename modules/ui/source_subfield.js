@@ -15,6 +15,7 @@ export function uiSourceSubfield(context, field, tags, dispatch) {
     let sourceKey = field.key + ':source';
     let _sourceValue = tags[sourceKey];
 
+    // Adapted from renderEDTF from modules/ui/fields/date.js
     function renderSourceInput(selection) {
         let entries = selection.selectAll('div.entry')
             .data((typeof _sourceValue === 'string' || Array.isArray(_sourceValue)) ? [_sourceValue] : []);
@@ -137,15 +138,12 @@ export function uiSourceSubfield(context, field, tags, dispatch) {
     }
 
     sourceSubfield.button = function(labelEnter, container) {
-        let sourceButtonTip = uiTooltip()
-                .title(() => t.append('inspector.field_source'))
-                .placement('left');
-
         labelEnter
         .append('button')
         .attr('class', 'source-icon')
-        .attr('title', 'source-button')
-        .call(sourceButtonTip)
+        .attr('title', function() {
+            return t('inspector.field_source');
+        })
         .call(svgIcon('#fas-at', 'inline'));
 
         container = container
