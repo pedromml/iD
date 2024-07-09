@@ -1597,6 +1597,12 @@ input.date-selector {
     border-radius: 0;
     line-height: 0.95rem;
 }
+.form-field ul.rows li.labeled-input div > span{
+    vertical-align: middle;
+}
+.form-field ul.rows li.labeled-input-source > div {
+    width: auto;
+}
 .form-field ul.rows li input {
     border-radius: 0;
     border-width: 0;
@@ -2051,6 +2057,9 @@ input.date-selector {
 
 /* Field - date, roadheight, and roadspeed
 ------------------------------------------------------- */
+.form-field-input-source {
+    flex-direction: column;
+}
 .form-field-input-date input.date-year,
 .form-field-input-date input.date-month,
 .form-field-input-roadheight input.roadheight-number,
@@ -2959,6 +2968,10 @@ img.tag-reference-wiki-image {
 .add-row .add-relation,
 .add-row .space-value {
     flex: 1 1 50%;
+}
+.add-row .add-subkey {
+    width: 32px;
+    flex: 0 1 auto;
 }
 .add-row .space-buttons {
     flex: 0 0 62px;

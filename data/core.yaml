@@ -2525,6 +2525,11 @@ en:
     identifier: "Identifier"
     label: "Label"
     description: "Description"
+  source:
+    name: "Name"
+    date: "Date"
+    url: "URL"
+    geometry: "Geometry"
   custom_presets:
     fields:
       end_date:

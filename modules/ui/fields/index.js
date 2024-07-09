@@ -54,6 +54,7 @@ import { uiFieldLocalized } from './localized';
 import { uiFieldRoadheight } from './roadheight';
 import { uiFieldRoadspeed } from './roadspeed';
 import { uiFieldRestrictions } from './restrictions';
+import { uiFieldSources } from './sources';
 import { uiFieldTextarea } from './textarea';
 import { uiFieldWikidata } from './wikidata';
 import { uiFieldWikipedia } from './wikipedia';
@@ -82,6 +83,7 @@ export var uiFields = {
     radio: uiFieldRadio,
     restrictions: uiFieldRestrictions,
     semiCombo: uiFieldSemiCombo,
+    source: uiFieldSources,
     structureRadio: uiFieldStructureRadio,
     tel: uiFieldTel,
     text: uiFieldText,

@@ -57,7 +57,7 @@ function addHistoricalFields(fields) {
 
   // A combo box would encourage mappers to choose one of the suggestions, but we want mappers to be as detailed as possible.
   if (fields.source) {
-    fields.source.type = 'text';
+    fields.source.type = 'source';
     fields.source.source = false;
   }
 
