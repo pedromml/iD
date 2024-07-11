@@ -21,7 +21,7 @@ export function uiFieldSources(field, context) {
     const sourceHeader = 'source:';
 
     const possibleSourceSubkeys = [{key:'name', value:'Name'}, {key:'url', value:'URL'}, {key:'date', value:'Date'}]
-    
+
     function addSubkey() {
         if(sourceSubkeys.length < possibleSourceSubkeys.length){
             var newKey = possibleSourceSubkeys.filter((k) => sourceSubkeys.map(e => e.key).indexOf(k.key) === -1)[0];
@@ -183,6 +183,9 @@ export function uiFieldSources(field, context) {
             .append('input')
             .attr('type', 'text')
             .attr('class', 'value')
+            .attr('placeholder', function(d) {
+                return t('inspector.source.' + d.key)
+            })
             .call(utilNoAuto)
             .call(utilGetSetValue, function(d) { return _tags[sourceHeader + d.key]; })
             .on('change', valueChange)
