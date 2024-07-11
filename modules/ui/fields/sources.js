@@ -11,52 +11,110 @@ import { utilGetSetValue, utilNoAuto, utilRebind, utilUniqueDomId } from '../../
 
 export function uiFieldSources(field, context) {
     let dispatch = d3_dispatch('change');
-    let yearInput = d3_select(null);
-    let eraInput = d3_select(null);
-    let monthInput = d3_select(null);
-    let dayInput = d3_select(null);
-    let edtfInput = d3_select(null);
-    let _entityIDs = [];
-    let _tags;
+    let items = d3_select(null);
+    let enter = d3_select(null);
+    let _tags = {};
     let _selection = d3_select(null);
-    let _edtfValue;
+    let _pendingChange;
 
+    const mainKey = 'source';
+    const sourceHeader = 'source:';
 
-    let possibleSourceSubkeys = [{value:'Name', title:'Name'}, {value:'URL', title:'URL'}, {value:'Date', title:'Date'}]
-    let sourceSubkeysNotInUse = ['name', 'url', 'date']
-    let sourceSubkeysInUse = []
-
-    /**
-     * Returns the localized name of the era in the given format.
-     *
-     * @param year A representative year within the era.
-     */
-
+    const possibleSourceSubkeys = [{key:'name', value:'Name'}, {key:'url', value:'URL'}, {key:'date', value:'Date'}]
+    
     function addSubkey() {
-        console.log('in add');
-        console.log(sourceSubkeys.length);
         if(sourceSubkeys.length < possibleSourceSubkeys.length){
-            var newKey = possibleSourceSubkeys.filter((key) => sourceSubkeys.map(e => e.value).indexOf(key.value) === -1)[0];
-            _tags['source:'+ newKey.value] = '';
+            var newKey = possibleSourceSubkeys.filter((k) => sourceSubkeys.map(e => e.key).indexOf(k.key) === -1)[0];
+            _tags[sourceHeader + newKey.key] = '';
+            scheduleChange();
             _selection.call(sources);
         }
+    }
 
+    function getKeyFromTitle(title) {
+        return possibleSourceSubkeys.filter((e) => e.value == title)[0].key;
+    }
+
+    function scheduleChange() {
+        // Delay change in case this change is blurring an edited combo. - #5878
+
+        if (!_pendingChange) return;
+        window.setTimeout(function() {
+            dispatch.call('change', this, _pendingChange);
+            _pendingChange = null;
+            _selection.call(sources);
+        }, 20);
+    }
+
+    function removeTag(d3_event, d) {
+        _pendingChange  = _pendingChange || {};
+        key = sourceHeader + d.key;
+        _pendingChange[key] = undefined;
+        delete _tags[key];
+        scheduleChange();
+        _selection.call(sources);
+    }
+
+    function valueChange(d3_event, d) {
+        // exit if this is a multiselection and no value was entered
+        if (typeof d.key !== 'string' && !this.value) return;
+
+        var key = sourceHeader + d.key;
+
+        _pendingChange = _pendingChange || {};
+
+        _pendingChange[key] = context.cleanTagValue(this.value);
+        _tags[key] = context.cleanTagValue(this.value);
+        scheduleChange();
+    }
+
+    function keyChange(d3_event, d) {
+        var kOld = sourceHeader + d.key;
+        var kNew = sourceHeader + getKeyFromTitle(context.cleanTagKey(this.value.trim()));
+
+        _pendingChange = _pendingChange || {};
+
+        if (kOld && _tags[kOld]) {
+            if (kOld === kNew) return;
+            // a tag key was renamed
+            _pendingChange[kNew] = _tags[kOld];
+            _tags[kNew] = _tags[kOld];
+            _pendingChange[kOld] = undefined;
+            _tags[kOld] = undefined;
+        } else {
+            // a new tag was added
+            let row = this.parentNode;
+            let inputVal = d3_select(row).selectAll('input.value');
+            let vNew = context.cleanTagValue(utilGetSetValue(inputVal));
+            _pendingChange[kNew] = vNew;
+            utilGetSetValue(inputVal, vNew);
+        }
+        var newDatum = possibleSourceSubkeys.filter((e) => e.key == kNew.slice(7))[0];
+        d.key = newDatum.key;
+        d.value = newDatum.value;
+        scheduleChange();
+    }
+
+    function mainChange(d3_event, d) {
+        _pendingChange = _pendingChange || {};
+        _pendingChange[mainKey] = context.cleanTagValue(this.value);
+        scheduleChange();
     }
 
     function sources(selection) {
-        console.log(_tags);
-        console.log(typeof(_tags));
         _selection = selection;
 
         sourceSubkeys = _tags ? Object.keys(_tags)
-        .filter((key, value) => key.indexOf('source:') === 0)
+        .filter((key, value) => (key.indexOf(sourceHeader) === 0))
         .map((tag) => {
-            return {value: tag.slice(7), title: tag.slice(7)}
+            var data =  possibleSourceSubkeys.filter((e) => e.key == tag.slice(7))[0];
+            return {
+                value: data.value,
+                key: data.key
+            };
         })
         : 
         [];
-
-        console.log(sourceSubkeys);
 
         var wrap = selection.selectAll('.form-field-input-wrap')
             .data([0]);
@@ -72,7 +130,10 @@ export function uiFieldSources(field, context) {
         .append('input')
         .attr('type', 'text')
         .attr('placeholder', 'Unknown')
-        .call(utilNoAuto);
+        .call(utilNoAuto)
+        .call(utilGetSetValue, function(d) {return _tags[mainKey]})
+        .on('change', mainChange)
+        .on('blur', mainChange);
 
         var list = wrap.selectAll('ul')
         .data([0]);
@@ -83,13 +144,16 @@ export function uiFieldSources(field, context) {
             .merge(list);
 
         list = list.merge(list);
+
+        list.selectAll('li.labeled-input').remove();
         
-        var items = list.selectAll('li.labeled-input')
+        items = list.selectAll('li.labeled-input')
             .data(sourceSubkeys);
 
-        // Enter
+        items.exit()
+        .remove();
         
-        var enter = items.enter()
+        enter = items.enter()
             .append('li')
             .attr('class', 'labeled-input labeled-input-source');
 
@@ -100,90 +164,38 @@ export function uiFieldSources(field, context) {
             .each(function(d) {
                 var key = d3_select(this);
                 let combo = uiCombobox(context, 'tag-key');
-                combo.data(possibleSourceSubkeys.filter((key) => sourceSubkeys.indexOf(key) === -1));
-                combo
-                key.call(combo);
-            })
-            .attr('title', function(d) { return d.title; })
-            .call(utilGetSetValue, function(d) { return d.value; });
+                combo.fetcher(function(value, callback) {
+                    var keyString = utilGetSetValue(key);
+                    var data = possibleSourceSubkeys.filter((key) => 
+                        sourceSubkeys
+                        .map((e) => e.key)
+                        .indexOf(key.key) === -1);
+                    callback(data);
+                });
+                combo.minItems(1);
+                key.call(combo)
+                .on('change', keyChange)
+                .on('blur', keyChange)
+                .call(utilGetSetValue, function(d) { return d.value; });
+            });
 
         enter
             .append('input')
             .attr('type', 'text')
-            .call(utilNoAuto);
+            .attr('class', 'value')
+            .call(utilNoAuto)
+            .call(utilGetSetValue, function(d) { return _tags[sourceHeader + d.key]; })
+            .on('change', valueChange)
+            .on('blur', valueChange);
 
         enter
             .append('button')
             .attr('class', 'form-field-button remove')
             .attr('title', t('icons.remove'))
-            .call(svgIcon('#iD-operation-delete'));
-
-        // Enter
-        // var itemsEnter = items.enter()
-        //     .append('li')
-        //     .attr('class', 'tag-row');
-
-        // var innerWrap = itemsEnter.append('div')
-        //     .attr('class', 'inner-wrap');
-
-        
-            
-        // innerWrap
-        //     .append('div')
-        //     .attr('class', 'key-wrap')
-        //     .append('input')
-        //     .property('type', 'text')
-        //     .attr('class', 'key')
-        //     .call(utilNoAuto)
-        //     .call(combo);
-
-        // innerWrap
-        //     .append('div')
-        //     .attr('class', 'value-wrap')
-        //     .append('input')
-        //     .property('type', 'text')
-        //     .attr('class', 'value')
-        //     .call(utilNoAuto);
-
-        // innerWrap
-        //     .append('button')
-        //     .attr('class', 'form-field-button remove')
-        //     .attr('title', t('icons.remove'))
-        //     .call(svgIcon('#iD-operation-delete'));
-
-        // items
-        //     .each(function(d) {
-        //         var row = d3_select(this);
-        //         var key = row.select('input.key');      // propagate bound data
-        //         var value = row.select('input.value');  // propagate bound data
-
-        //         if (_entityIDs && taginfo && _state !== 'hover') {
-        //             bindTypeahead(key, value);
-        //         }
-
-        //         var referenceOptions = { key: d.key };
-        //         if (typeof d.value === 'string') {
-        //             referenceOptions.value = d.value;
-        //         }
-        //         var reference = uiTagReference(referenceOptions, context);
-
-        //         if (_state === 'hover') {
-        //             reference.showing(false);
-        //         }
-
-        //         row.select('.inner-wrap')      // propagate bound data
-        //             .call(reference.button);
-
-        //         row.call(reference.body);
-
-        //         row.select('button.remove');   // propagate bound data
-        //     });
+            .call(svgIcon('#iD-operation-delete'))
+            .on('click', removeTag);
 
         // Container for the Add button
-        console.log("in button");
-        console.log(sourceSubkeys.length);
-        console.log(possibleSourceSubkeys.length);
-        console.log(sourceSubkeys.length < possibleSourceSubkeys.length);
         if(sourceSubkeys.length < possibleSourceSubkeys.length){
         
             var addRowEnter = wrap.selectAll('.add-row')
@@ -201,27 +213,20 @@ export function uiFieldSources(field, context) {
                     .title(() => t.append('inspector.add_to_tag'))
                     .placement(localizer.textDirection() === 'ltr' ? 'right' : 'left'))
                 .on('click', addSubkey);
-    
-            addRowEnter
-                .append('div')
-                .attr('class', 'space-value');
-                  // preserve space
-    
-            addRowEnter
-                .append('div')
-                .attr('class', 'space-value');  // preserve space
             
         }
         else {
             _selection.selectAll('.add-row').remove();
-
         }
         
 
     }
 
     sources.tags = function(tags){
+        if (!arguments.length) return _tags;
         _tags = tags;
+
+        _selection.call(sources);
     }
 
     return utilRebind(sources, dispatch, 'on');
