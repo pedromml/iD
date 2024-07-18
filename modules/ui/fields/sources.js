@@ -101,6 +101,9 @@ export function uiFieldSources(field, context) {
             .append('input')
             .attr('type', 'text')
             .attr('class', 'value')
+            .attr('placeholder', function(d) {
+                return t('inspector.source.' + d.key);
+            })
             .call(utilNoAuto)
             .call(utilGetSetValue, function(d) {
                 return _tags[sourceHeader + d.key];
@@ -112,14 +115,11 @@ export function uiFieldSources(field, context) {
             .remove();
 
         utilGetSetValue(_selection.selectAll('.value'), function(d) {
-                return _tags[sourceHeader + d.key];
-            })
-            .attr('placeholder', function(d) {
-                return t('inspector.source.' + d.key);
+                return (_tags[sourceHeader + d.key] === undefined) ? '' : _tags[sourceHeader + d.key];
         });
 
         utilGetSetValue(_selection.selectAll('.main-value'), function() {
-            return _tags[mainKey];
+            return (_tags[mainKey] === undefined) ? '' : _tags[mainKey];
         });
     }
 
