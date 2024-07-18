@@ -802,6 +802,7 @@ en:
     field_source_label: Source for {field_name}
     field_source_placeholder: URL, newspaper article, book...
     source:
+      main_input: General source
       name: Name of the source
       url: https://xyz.com
       date: Date the source was created

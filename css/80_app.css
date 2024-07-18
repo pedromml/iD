@@ -1591,13 +1591,15 @@ input.date-selector {
     display: flex;
     flex-flow: row nowrap;
 }
-.form-field ul.rows li.labeled-input > div {
+.form-field ul.rows li.labeled-input > div,
+.form-field ul.rows li.labeled-input-source > div {
     flex: 1 1 auto;
     width: 100%;
     border-radius: 0;
     line-height: 0.95rem;
 }
-.form-field ul.rows li.labeled-input div > span{
+.form-field ul.rows li.labeled-input div > span,
+.form-field ul.rows li.labeled-input-source div > span{
     vertical-align: middle;
 }
 .form-field ul.rows li.labeled-input-source > div {
@@ -1626,10 +1628,12 @@ input.date-selector {
     display: table;
     width: 100%;
 }
-.form-field ul.rows.rows-table li.labeled-input {
+.form-field ul.rows.rows-table li.labeled-input,
+.form-field ul.rows.rows-table li.labeled-input-source {
     display: table-row;
 }
-.form-field ul.rows.rows-table li.labeled-input > div:first-child {
+.form-field ul.rows.rows-table li.labeled-input > div:first-child,
+.form-field ul.rows.rows-table li.labeled-input-source > div:first-child {
     display: table-cell;
     width: auto;
     max-width: 170px;
@@ -1637,7 +1641,8 @@ input.date-selector {
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.form-field ul.rows.rows-table li.labeled-input > div:nth-child(2) {
+.form-field ul.rows.rows-table li.labeled-input > div:nth-child(2),
+.form-field ul.rows.rows-table li.labeled-input-source > div:nth-child(2) {
     display: table-cell;
     width: auto;
 }
