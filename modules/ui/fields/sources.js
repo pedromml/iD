@@ -14,8 +14,8 @@ export function uiFieldSources(field, context) {
     const mainKey = 'source';
     const sourceHeader = mainKey + ':';
 
-    // Pre-selected subkey values to show
-    const possibleSourceSubkeys = [{key:'name', value:'Name'}, {key:'url', value:'URL'}, {key:'date', value:'Date'}];
+    // Pre-selected subkeys to show
+    const possibleSourceSubkeys = [{key:'name'}, {key:'url'}, {key:'date'}];
 
     function scheduleChange() {
         if (!_pendingChange) return;

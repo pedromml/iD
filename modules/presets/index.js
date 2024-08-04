@@ -59,6 +59,7 @@ function addHistoricalFields(fields) {
   if (fields.source) {
     fields.source.type = 'source';
     fields.source.source = false;
+    fields.source.keys = ['source', 'source:url', 'source:name', 'source:date'];
   }
 
   fields.license = {

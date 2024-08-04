@@ -802,9 +802,9 @@ en:
     field_source_label: Source for {field_name}
     field_source_placeholder: URL, newspaper article, book...
     source:
-      main_input: General source
-      name: Name of the source
-      url: https://xyz.com
+      main_input: Description
+      name: Name
+      url: https://example.com
       date: Date the source was created
     max_length_reached: "This string is longer than the maximum length of {maxChars} characters. Anything exceeding that length will be truncated."
     set_today: "Sets the value to today."
@@ -2530,11 +2530,6 @@ en:
     identifier: "Identifier"
     label: "Label"
     description: "Description"
-  source:
-    name: "Name"
-    date: "Date"
-    url: "URL"
-    geometry: "Geometry"
   custom_presets:
     fields:
       end_date:
