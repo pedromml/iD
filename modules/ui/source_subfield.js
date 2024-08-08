@@ -4,7 +4,6 @@ import {
 
 import { t } from '../core/localizer';
 import { svgIcon } from '../svg/icon';
-import { uiTooltip } from './tooltip';
 import { utilGetSetValue, utilUniqueDomId } from '../util';
 
 export function uiSourceSubfield(context, field, tags, dispatch) {
