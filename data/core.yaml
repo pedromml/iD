@@ -2540,6 +2540,8 @@ en:
         label: License
         placeholder: CC0
         terms: copyleft, copyright
+      source:
+        label: Source
     presets:
       type/chronology:
         name: Chronology
