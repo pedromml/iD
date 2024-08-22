@@ -60,6 +60,23 @@ function addHistoricalFields(fields) {
     fields.source.type = 'source';
     fields.source.source = false;
     fields.source.keys = ['source', 'source:url', 'source:name', 'source:date'];
+
+    const multipleSourceIds = ['', ':2', ':3', ':4'];
+
+    for (var i = 1; i < multipleSourceIds.length; i++){
+        var id = multipleSourceIds[i];
+        var previousId = multipleSourceIds[i-1];
+        fields['source' + id] = {
+            ...fields.source,
+            key: 'source' + id,
+            keys: ['source' + id, 'source'  + id + ':url', 'source' + id + ':name', 'source' + id + ':date'],
+            prerequisiteTag: {
+                keys: [
+                    'source' + previousId,
+                    'source' + previousId + ':url',
+                    'source' + previousId + ':name',
+                    'source' + previousId + ':date']}};
+    }
   }
 
   fields.license = {

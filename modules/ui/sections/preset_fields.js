@@ -78,8 +78,17 @@ export function uiSectionPresetFields(context) {
                 }
             });
 
+            let optionalCoreKeys = ['source:2', 'source:3', 'source:4'];
+            optionalCoreKeys.forEach(key => {
+                let field = presetsManager.field(key);
+                if (field && _fieldsArr.indexOf(field) === -1) {
+                    _fieldsArr.push(uiField(context, field, _entityIDs, { show: false }));
+                }
+            });
+
+
             sharedFields.forEach(function(field) {
-                if (!coreKeys.includes(field.id) && field.matchAllGeometry(geometries)) {
+                if (!coreKeys.includes(field.id) && !optionalCoreKeys.includes(field.id) && field.matchAllGeometry(geometries)) {
                     _fieldsArr.push(
                         uiField(context, field, _entityIDs)
                     );
@@ -101,6 +110,7 @@ export function uiSectionPresetFields(context) {
             additionalFields.forEach(function(field) {
                 if (sharedFields.indexOf(field) === -1 &&
                     !coreKeys.includes(field.id) &&
+                    !optionalCoreKeys.includes(field.id) &&
                     field.matchAllGeometry(geometries)) {
                     _fieldsArr.push(
                         uiField(context, field, _entityIDs, { show: false })
