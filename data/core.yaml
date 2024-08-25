@@ -2542,12 +2542,6 @@ en:
         terms: copyleft, copyright
       source:
         label: Source
-      source:2:
-        label: Source 2
-      source:3:
-        label: Source 3
-      source:4:
-        label: Source 4
     presets:
       type/chronology:
         name: Chronology

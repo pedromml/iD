@@ -61,21 +61,20 @@ function addHistoricalFields(fields) {
     fields.source.source = false;
     fields.source.keys = ['source', 'source:url', 'source:name', 'source:date'];
 
-    const multipleSourceIds = ['', ':2', ':3', ':4'];
-
-    for (var i = 1; i < multipleSourceIds.length; i++){
-        var id = multipleSourceIds[i];
-        var previousId = multipleSourceIds[i-1];
-        fields['source' + id] = {
+    for (let i = 1; i < 4; i++){
+        let id = 'source' + (i > 0 ? ':' + i.toString() : '');
+        let previousId = 'source' + ((i-1) > 0 ? ':' + (i-1).toString() : '');
+        fields[id] = {
             ...fields.source,
-            key: 'source' + id,
-            keys: ['source' + id, 'source'  + id + ':url', 'source' + id + ':name', 'source' + id + ':date'],
+            key: id,
+            keys: [id, id + ':url', id + ':name', id + ':date'],
+            overrideLabel: 'Source ' + i,
             prerequisiteTag: {
                 keys: [
-                    'source' + previousId,
-                    'source' + previousId + ':url',
-                    'source' + previousId + ':name',
-                    'source' + previousId + ':date']}};
+                    previousId,
+                    previousId + ':url',
+                    previousId + ':name',
+                    previousId + ':date']}};
     }
   }
 

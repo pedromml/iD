@@ -353,10 +353,8 @@ export function uiField(context, presetField, entityIDs, options) {
                 if (prerequisiteTag.keys) {
                     // Return true if any key in prerequisiteTag.keys is present, return false otherwise
                     // If prerequisiteTag.keys is present, prerequisiteTag.key will be ignored
-                    for (var i = 0; i < prerequisiteTag.keys.length; i++){
-                        if (entity.tags[prerequisiteTag.keys[i]]) return true;
-                    }
-                    return false;
+                    const inEntityTags = (e) => e in entity.tags;
+                    return prerequisiteTag.keys.some(inEntityTags);
                 }
                 if (prerequisiteTag.key) {
                     var value = entity.tags[prerequisiteTag.key];

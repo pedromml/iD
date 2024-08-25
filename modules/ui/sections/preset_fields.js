@@ -78,10 +78,10 @@ export function uiSectionPresetFields(context) {
                 }
             });
 
-            let optionalCoreKeys = ['source:2', 'source:3', 'source:4'];
+            let optionalCoreKeys = ['source:1', 'source:2', 'source:3'];
             optionalCoreKeys.forEach(key => {
                 let field = presetsManager.field(key);
-                if (field && _fieldsArr.indexOf(field) === -1) {
+                if (field && !_fieldsArr.includes(field)) {
                     _fieldsArr.push(uiField(context, field, _entityIDs, { show: false }));
                 }
             });
