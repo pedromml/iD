@@ -10,10 +10,11 @@ export function presetField(fieldID, field, allFields) {
   allFields = allFields || {};
   let _this = Object.assign({}, field);   // shallow copy
 
-  // This handles fieldIDs that contain ':', like 'source:1'
-  let localizerFieldID = fieldID.includes(':') ? fieldID.split(':')[0] + '_multiple': fieldID;
-  // This is what comes after the ':' in the fieldID. 
-  let localizerOption = fieldID.includes(':') ? fieldID.split(':')[1]: 0;
+  // This handles fields that are composed of a base key and an index, like 'source:1'
+  let localizerFieldID = fieldID;
+  if (field.baseKey && field.index){
+    localizerFieldID = field.baseKey + '_multiple';
+  }
 
   _this.id = fieldID;
 
@@ -48,10 +49,10 @@ export function presetField(fieldID, field, allFields) {
     return _this;
   };
 
-  _this.title = () => _this.overrideLabel || _this.resolveReference('label').t('label', { 'default': fieldID, 'localizerOption': localizerOption });
+  _this.title = () => _this.overrideLabel || _this.resolveReference('label').t('label', { 'default': fieldID, 'index': field.index });
   _this.label = () => _this.overrideLabel ?
       selection => selection.text(_this.overrideLabel) :
-      _this.resolveReference('label').t.append('label', { 'default': fieldID, 'localizerOption': localizerOption });
+      _this.resolveReference('label').t.append('label', { 'default': fieldID, 'index': field.index });
 
   _this.placeholder = () => _this.resolveReference('placeholder').t('placeholder', { 'default': '' });
 

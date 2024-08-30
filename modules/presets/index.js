@@ -62,12 +62,15 @@ function addHistoricalFields(fields) {
     fields.source.keys = ['source', 'source:url', 'source:name', 'source:date'];
 
     for (let i = 1; i < 4; i++){
-        let id = 'source' + (i > 0 ? ':' + i.toString() : '');
+        let id = 'source:' + i.toString();
         let previousId = 'source' + ((i-1) > 0 ? ':' + (i-1).toString() : '');
         fields[id] = {
             ...fields.source,
             key: id,
             keys: [id, id + ':url', id + ':name', id + ':date'],
+            // baseKey and index will be used to create a localized label for this field
+            baseKey: 'source',
+            index: i,
             prerequisiteTag: {
                 keys: [
                     previousId,
