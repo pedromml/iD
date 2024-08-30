@@ -216,6 +216,10 @@ export function uiField(context, presetField, entityIDs, options) {
                         referenceKey = referenceKey.replace(/:$/, '');
                     }
 
+                    if (d.type === 'source') {   // lookup key without the trailing ':'
+                        referenceKey = referenceKey.split(':')[0];
+                    }
+
                     var referenceOptions = d.reference || {
                         key: referenceKey,
                         value: _tags[referenceKey]

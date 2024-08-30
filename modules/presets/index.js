@@ -68,7 +68,6 @@ function addHistoricalFields(fields) {
             ...fields.source,
             key: id,
             keys: [id, id + ':url', id + ':name', id + ':date'],
-            overrideLabel: 'Source ' + i,
             prerequisiteTag: {
                 keys: [
                     previousId,
