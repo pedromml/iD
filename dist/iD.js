@@ -22897,7 +22897,7 @@
 
   // package.json
   var package_default = {
-    name: "iD",
+    name: "@openhistoricalmap/id",
     version: "2.29.0-dev",
     description: "A friendly editor for OpenStreetMap",
     main: "dist/iD.min.js",
@@ -23010,8 +23010,8 @@
       mocha: "^10.4.0",
       "name-suggestion-index": "~6.0",
       "npm-run-all": "^4.0.0",
-      "osm-community-index": "~5.6.2",
       "ohm-editor-layer-index": "github:openhistoricalmap/ohm-editor-layer-index#dist",
+      "osm-community-index": "~5.6.2",
       postcss: "^8.4.38",
       "postcss-selector-prepend": "^0.5.0",
       shelljs: "^0.8.0",
