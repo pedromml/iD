@@ -3,12 +3,15 @@
   "version": "2.29.0-dev",
   "description": "A friendly editor for OpenStreetMap",
   "main": "dist/iD.min.js",
-  "repository": "github:openstreetmap/iD",
-  "homepage": "https://github.com/openstreetmap/iD",
-  "bugs": "https://github.com/openstreetmap/iD/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenHistoricalMap/iD"
+  },
+  "homepage": "https://github.com/OpenHistoricalMap/iD",
+  "bugs": "https://github.com/OpenHistoricalMap/issues/issues",
   "keywords": [
     "editor",
-    "openstreetmap"
+    "openhistoricalmap"
   ],
   "license": "ISC",
   "scripts": {
