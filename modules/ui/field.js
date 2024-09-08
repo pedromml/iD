@@ -216,6 +216,10 @@ export function uiField(context, presetField, entityIDs, options) {
                         referenceKey = referenceKey.replace(/:$/, '');
                     }
 
+                    if (d.type === 'source') {   // lookup key without the trailing ':'
+                        referenceKey = referenceKey.split(':')[0];
+                    }
+
                     var referenceOptions = d.reference || {
                         key: referenceKey,
                         value: _tags[referenceKey]
@@ -350,6 +354,12 @@ export function uiField(context, presetField, entityIDs, options) {
 
             if (!entityIDs.every(function(entityID) {
                 var entity = context.graph().entity(entityID);
+                if (prerequisiteTag.keys) {
+                    // Return true if any key in prerequisiteTag.keys is present, return false otherwise
+                    // If prerequisiteTag.keys is present, prerequisiteTag.key will be ignored
+                    const inEntityTags = (e) => e in entity.tags;
+                    return prerequisiteTag.keys.some(inEntityTags);
+                }
                 if (prerequisiteTag.key) {
                     var value = entity.tags[prerequisiteTag.key];
                     if (!value) return false;

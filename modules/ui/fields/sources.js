@@ -11,7 +11,7 @@ export function uiFieldSources(field, context) {
     let _selection = d3_select(null);
     let _pendingChange;
 
-    const mainKey = 'source';
+    const mainKey = field.key;
     const sourceHeader = mainKey + ':';
 
     // Pre-selected subkeys to show
@@ -128,6 +128,11 @@ export function uiFieldSources(field, context) {
         _tags = tags;
 
         _selection.call(sources);
+    };
+
+    sources.focus = function() {
+        var node = _selection.selectAll('input').node();
+        if (node) node.focus();
     };
 
     return utilRebind(sources, dispatch, 'on');

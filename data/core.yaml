@@ -2542,6 +2542,8 @@ en:
         terms: copyleft, copyright
       source:
         label: Source
+      source_multiple:
+        label: Source {index}
     presets:
       type/chronology:
         name: Chronology
