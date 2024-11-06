@@ -72,8 +72,7 @@ function addHistoricalFields(fields) {
             index: i,
             prerequisiteTag: {
                 prerequisiteFunction: (tag) => {
-                    let sourceRegex = /^source/;
-                    if (tag.match(sourceRegex) ){
+                    if (tag.startsWith('source') ){
                         // allow index 1 if there are any source tags present
                         if (i === 1){
                             return true;
